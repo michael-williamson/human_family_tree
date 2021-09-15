@@ -1,0 +1,1009 @@
+[
+    {
+        "species": "habilis",
+        "city": "Olduvai Gorge",
+        "country": "Tanzania",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": -2.993613888888889,
+            "long": 35.351150000000004
+        },
+        "date": "1.75mya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/5/52/OH_7_replica_04.JPG"
+        ],
+        "name": "OH 7",
+        "wholeNumberYears": 1750000
+    },
+    {
+        "species": "habilis",
+        "city": "Olduvai Gorge",
+        "country": "Tanzania",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": -2.993613888888889,
+            "long": 35.351150000000004
+        },
+        "date": "1.8mya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/7/71/OH_24_replica_03.JPG"
+        ],
+        "name": "OH 24",
+        "wholeNumberYears": 1800000
+    },
+    {
+        "species": "habilis",
+        "city": "Koobi Fora",
+        "country": "Kenya",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": 3.947777777777778,
+            "long": 36.18722222222222
+        },
+        "date": "1.9mya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/0/0e/Homo_habilis_%28KNM-ER_1813_cast%29_at_G%C3%B6teborgs_Naturhistoriska_Museum_8564.jpg"
+        ],
+        "name": "KNM-ER 1813",
+        "wholeNumberYears": 1900000
+    },
+    {
+        "species": "habilis",
+        "city": "Koobi Fora",
+        "country": "Kenya",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": 3.947777777777778,
+            "long": 36.18722222222222
+        },
+        "date": "1.7mya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/3/39/KNM_ER_1805._Pannel_2.jpg"
+        ],
+        "name": "KNM-ER 1805",
+        "wholeNumberYears": 1700000
+    },
+    {
+        "species": "rudolfensis",
+        "city": "Koobi Fora",
+        "country": "Kenya",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": 3.947777777777778,
+            "long": 36.18722222222222
+        },
+        "date": "1.9mya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/f/f5/Homo_rudolfensis_%28KNM-ER_1470_cast%29_at_G%C3%B6teborgs_Naturhistoriska_Museum_8805.jpg"
+        ],
+        "name": "KNM-ER 1470",
+        "wholeNumberYears": 1900000
+    },
+    {
+        "species": "erectus",
+        "city": "West Turkana",
+        "country": "Kenya",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": 3.5833333333333335,
+            "long": 36.11666666666667
+        },
+        "date": "1.6mya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/e/eb/Homo_ergaster_KNM-WT_15000_Turkana_boy_Wien_18.07.19_JM.jpg"
+        ],
+        "name": "KNM-WT 15000",
+        "wholeNumberYears": 1600000
+    },
+    {
+        "species": "erectus",
+        "city": "Koobi Fora",
+        "country": "Kenya",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": 3.947777777777778,
+            "long": 36.18722222222222
+        },
+        "date": "1.8mya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/f/fa/Homo_ergaster_KNM-ER_3733_IMG_5637_BMNH.jpg"
+        ],
+        "name": "KNM-ER 3733",
+        "wholeNumberYears": 1800000
+    },
+    {
+        "species": "erectus",
+        "city": "Dmanisi",
+        "country": "Republic of Georgia",
+        "continent": "Europe",
+        "gpsCoor": {
+            "lat": 41.31666666666667,
+            "long": 44.35
+        },
+        "date": "1.77mya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/9/93/Dmanisi_fossils_D_3444_%2B_D_3900_%28Replika%29.jpg"
+        ],
+        "name": "D3444",
+        "wholeNumberYears": 1770000
+    },
+    {
+        "species": "erectus",
+        "city": "Mojokerto",
+        "country": "Indonesia",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": -7.472222222222222,
+            "long": 112.43361111111112
+        },
+        "date": "1.8mya-1.6mya",
+        "linksToPhotos": [
+            ""
+        ],
+        "name": "Mojokerto",
+        "wholeNumberYears": 1800000
+    },
+    {
+        "species": "erectus",
+        "city": "Dmanisi",
+        "country": "Republic of Georgia",
+        "continent": "Europe",
+        "gpsCoor": {
+            "lat": 41.31666666666667,
+            "long": 44.35
+        },
+        "date": "1.77mya",
+        "linksToPhotos": [
+            ""
+        ],
+        "name": "D2822",
+        "wholeNumberYears": 1770000
+    },
+    {
+        "species": "erectus",
+        "city": "Sangiran",
+        "country": "Indonesia",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": -7.45,
+            "long": 110.83333333333333
+        },
+        "date": "1.3mya-1.0mya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/1/16/Sangiran_17-02.JPG"
+        ],
+        "name": "Sangiran 17",
+        "wholeNumberYears": 1300000
+    },
+    {
+        "species": "erectus",
+        "city": "Sangiran",
+        "country": "Indonesia",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": -7.45,
+            "long": 110.83333333333333
+        },
+        "date": "1.0mya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/5/5b/Pithecanthropus_VIII_Sangiran.JPG"
+        ],
+        "name": "Sangiran 2",
+        "wholeNumberYears": 1000000
+    },
+    {
+        "species": "erectus",
+        "city": "Trinil",
+        "country": "Indonesia",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": -7.3743,
+            "long": 111.3578
+        },
+        "date": "1.0mya-700tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/a/af/1911_Britannica-Anthropology-5.png"
+        ],
+        "name": "Trinil 2",
+        "wholeNumberYears": 1000000
+    },
+    {
+        "species": "erectus",
+        "city": "Olorgesailie",
+        "country": "Kenya",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": -1.5778777777777777,
+            "long": 36.44622777777777
+        },
+        "date": "900tya",
+        "linksToPhotos": [
+            ""
+        ],
+        "name": "KNM-OG 45500",
+        "wholeNumberYears": 900000
+    },
+    {
+        "species": "erectus",
+        "city": "Zhoukoudian",
+        "country": "China",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 39.689166666666665,
+            "long": 115.9238888888889
+        },
+        "date": "780tya-400tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/9/91/The_reconstructed_Zhoukoudian_skull.jpg"
+        ],
+        "name": "Zhoukoudian",
+        "wholeNumberYears": 780000
+    },
+    {
+        "species": "erectus",
+        "city": "Longtandau Cave",
+        "country": "China",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 31.833333333333332,
+            "long": 117
+        },
+        "date": "400tya-300tya",
+        "linksToPhotos": [
+            ""
+        ],
+        "name": "Hexian",
+        "wholeNumberYears": 400000
+    },
+    {
+        "species": "erectus",
+        "city": "Sale",
+        "country": "Morocco",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": 34.03333333333333,
+            "long": -6.8
+        },
+        "date": "250tya-200tya",
+        "linksToPhotos": [
+            ""
+        ],
+        "name": "Sale",
+        "wholeNumberYears": 250000
+    },
+    {
+        "species": "erectus",
+        "city": "Solo River",
+        "country": "Indonesia",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": -6.783333333333333,
+            "long": 112.55
+        },
+        "date": "250tya-70tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/4/47/Ngandong_13._Homo_erectus.jpg"
+        ],
+        "name": "Ngandong 13",
+        "wholeNumberYears": 250000
+    },
+    {
+        "species": "heidelbergensis",
+        "city": "Kabwe",
+        "country": "Zambia",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": -14.433333333333334,
+            "long": 28.45
+        },
+        "date": "324tya-274tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/7/72/Homo_heidelbergensis_Kabwe.jpg"
+        ],
+        "name": "Kabwe 1",
+        "wholeNumberYears": 324000
+    },
+    {
+        "species": "heidelbergensis",
+        "city": "Ceprano",
+        "country": "Italy",
+        "continent": "Europe",
+        "gpsCoor": {
+            "lat": 41.55,
+            "long": 13.516666666666667
+        },
+        "date": "1.0mya-700tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/5/53/Ceprano._Homo_heidelbergensis_or_cepranensis.jpg"
+        ],
+        "name": "Ceprano",
+        "wholeNumberYears": 1000000
+    },
+    {
+        "species": "heidelbergensis",
+        "city": "Petralona",
+        "country": "Greece",
+        "continent": "Europe",
+        "gpsCoor": {
+            "lat": 37.967222222222226,
+            "long": 23.709722222222222
+        },
+        "date": "350tya-150tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/a/a8/Petralona-1.jpg"
+        ],
+        "name": "Petralona",
+        "wholeNumberYears": 350000
+    },
+    {
+        "species": "heidelbergensis",
+        "city": "Steinheim",
+        "country": "Germany",
+        "continent": "Europe",
+        "gpsCoor": {
+            "lat": 51.865833333333335,
+            "long": 9.094444444444445
+        },
+        "date": "350tya",
+        "linksToPhotos": [
+            ""
+        ],
+        "name": "Steinheim",
+        "wholeNumberYears": 350000
+    },
+    {
+        "species": "heidelbergensis",
+        "city": "Dali County",
+        "country": "China",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 34.86666666666667,
+            "long": 109.73333333333333
+        },
+        "date": "260tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/9/9a/Dali_Man_Skull%2C_Replica.jpg"
+        ],
+        "name": "Dali man",
+        "wholeNumberYears": 260000
+    },
+    {
+        "species": "heidelbergensis",
+        "city": "Tautavel",
+        "country": "France",
+        "continent": "Europe",
+        "gpsCoor": {
+            "lat": 42.8153,
+            "long": 2.7472
+        },
+        "date": "450tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/6/6d/Arago_21-01.JPG"
+        ],
+        "name": "Arago 21",
+        "wholeNumberYears": 450000
+    },
+    {
+        "species": "heidelbergensis",
+        "city": "West Turkana",
+        "country": "Kenya",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": 3.15,
+            "long": 35.35
+        },
+        "date": "300tya-200tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/e/ee/KNM-ES_11693._Homo_heidelbergensis_or_sapiens.jpg"
+        ],
+        "name": "Eliye Springs ES11693",
+        "wholeNumberYears": 300000
+    },
+    {
+        "species": "heidelbergensis",
+        "city": "Middle Awash",
+        "country": "Ethiopia",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": 10.283333333333333,
+            "long": 40.5
+        },
+        "date": "600tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/d/df/Bodo_cranium.jpg"
+        ],
+        "name": "Bodo",
+        "wholeNumberYears": 600000
+    },
+    {
+        "species": "heidelbergensis",
+        "city": "Florisbad",
+        "country": "South Africa",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": -28.766,
+            "long": 26.083
+        },
+        "date": "259tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/6/61/Florisbad-Helmei-Homo_heidelbergensis.jpg"
+        ],
+        "name": "Florisbad",
+        "wholeNumberYears": 259000
+    },
+    {
+        "species": "heidelbergensis",
+        "city": "Lake Ndutu",
+        "country": "Tanzania",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": -3.21,
+            "long": 35.46
+        },
+        "date": "350tya",
+        "linksToPhotos": [
+            ""
+        ],
+        "name": "Ndutu",
+        "wholeNumberYears": 350000
+    },
+    {
+        "species": "heidelbergensis",
+        "city": "Guangdong Province",
+        "country": "China",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 23.4,
+            "long": 113.5
+        },
+        "date": "130tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/f/fd/Maba._Homo_heidelbergensis.jpg"
+        ],
+        "name": "Maba",
+        "wholeNumberYears": 130000
+    },
+    {
+        "species": "neanderthalensis",
+        "city": "Wadi Amud",
+        "country": "Israel",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 32.880919444444444,
+            "long": 35.50326388888889
+        },
+        "date": "300tya-200tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/f/f0/IMJ_view_20130115_192522.jpg"
+        ],
+        "name": "Zuttiyeh",
+        "wholeNumberYears": 300000
+    },
+    {
+        "species": "neanderthalensis",
+        "city": "Krapina",
+        "country": "Croatia",
+        "continent": "Europe",
+        "gpsCoor": {
+            "lat": 46.16,
+            "long": 15.870000000000001
+        },
+        "date": "130tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/2/2b/Krapina_3._Homo_neanderthalensis.jpg"
+        ],
+        "name": "Kaprina 3",
+        "wholeNumberYears": 130000
+    },
+    {
+        "species": "neanderthalensis",
+        "city": "Rome",
+        "country": "Italy",
+        "continent": "Europe",
+        "gpsCoor": {
+            "lat": 41.88333333333333,
+            "long": 12.5
+        },
+        "date": "130tya-100tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/5/51/National_Museum_of_Natural_History_%288587341141%29.jpg"
+        ],
+        "name": "Saccopastore 1",
+        "wholeNumberYears": 130000
+    },
+    {
+        "species": "neanderthalensis",
+        "city": "Mount Carmel",
+        "country": "Israel",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 32.733333333333334,
+            "long": 35.05
+        },
+        "date": "122tya-50tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/e/e4/Panel2-tabun_1.jpg"
+        ],
+        "name": "Tabun 1",
+        "wholeNumberYears": 122000
+    },
+    {
+        "species": "neanderthalensis",
+        "city": "Subalyuk Cave",
+        "country": "Hungary",
+        "continent": "",
+        "gpsCoor": {
+            "lat": 47.96131310823249,
+            "long": 20.532070263970034
+        },
+        "date": "110tya-80tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/f/f8/Subalyuk_2.Homo_neanderthalensis_child.jpg"
+        ],
+        "name": "Subalyuk 2",
+        "wholeNumberYears": 110000
+    },
+    {
+        "species": "neanderthalensis",
+        "city": "Pech de l’Azé I",
+        "country": "France",
+        "continent": "Europe",
+        "gpsCoor": {
+            "lat": 44.31725369970762,
+            "long": 1.5382605058921848
+        },
+        "date": "90tya-60tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/c/c7/Pech_de_l%27Az%C3%A9_I._Homo_neanderthalensis_child.jpg"
+        ],
+        "name": "Pech de l’Azé I",
+        "wholeNumberYears": 90000
+    },
+    {
+        "species": "neanderthalensis",
+        "city": " Bajsuntau",
+        "country": "Uzbekistan",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 37.965833333333336,
+            "long": 67.1563888888889
+        },
+        "date": "70tya",
+        "linksToPhotos": [
+            ""
+        ],
+        "name": "Teshik-Tash",
+        "wholeNumberYears": 70000
+    },
+    {
+        "species": "neanderthalensis",
+        "city": "Dederiyeh",
+        "country": "Syria",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 36.4,
+            "long": 36.86666666666667
+        },
+        "date": "70tya-50tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/c/cf/Dederiyeh.Two-year-old_Neanderthal.sideview.jpg"
+        ],
+        "name": "Dederiyeh 1",
+        "wholeNumberYears": 70000
+    },
+    {
+        "species": "neanderthalensis",
+        "city": "La Ferrassie",
+        "country": "France",
+        "continent": "",
+        "gpsCoor": {
+            "lat": 44.95413288943945,
+            "long": 0.9419580569279934
+        },
+        "date": "70tya-50tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/8/8c/Smac_Pal%C3%A4olithikum_008.jpg"
+        ],
+        "name": "La Ferrassie",
+        "wholeNumberYears": 70000
+    },
+    {
+        "species": "neanderthalensis",
+        "city": "Forbes' Quarry",
+        "country": "Gibraltar",
+        "continent": "Europe",
+        "gpsCoor": {
+            "lat": 36.14671666666666,
+            "long": -5.346641666666667
+        },
+        "date": "70tya-45tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/8/8f/Gibraltar_Skull_%281%29.JPG"
+        ],
+        "name": "Gibraltar 1",
+        "wholeNumberYears": 70000
+    },
+    {
+        "species": "neanderthalensis",
+        "city": "Awirs Cave",
+        "country": "Belgium",
+        "continent": "Europe",
+        "gpsCoor": {
+            "lat": 50.592222222222226,
+            "long": 5.408888888888889
+        },
+        "date": "?",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/8/80/Engis_2_Schaedel_3.jpg"
+        ],
+        "name": "Engis 2"
+    },
+    {
+        "species": "neanderthalensis",
+        "city": "La Quina Rock Shelter",
+        "country": "France",
+        "continent": "Europe",
+        "gpsCoor": {
+            "lat": 44.95635512531917,
+            "long": 0.9531016938738852
+        },
+        "date": "65tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/6/61/La_Quina_18._Homo_neanderthalensis_child.jpg"
+        ],
+        "name": "La Quina 18",
+        "wholeNumberYears": 65000
+    },
+    {
+        "species": "neanderthalensis",
+        "city": "La Quina Rock Shelter",
+        "country": "France",
+        "continent": "Europe",
+        "gpsCoor": {
+            "lat": 44.95635512531917,
+            "long": 0.9531016938738852
+        },
+        "date": "65tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/e/e3/Cr%C3%A2ne%2C_maxillaire_et_mandibule_de_l%27individu_de_La_Quina_dit_%22H5%22.jpg"
+        ],
+        "name": "La Quina 5",
+        "wholeNumberYears": 65000
+    },
+    {
+        "species": "neanderthalensis",
+        "city": "La Chapelle-aux-Saints",
+        "country": "France",
+        "continent": "Europe",
+        "gpsCoor": {
+            "lat": 44.9881,
+            "long": 1.7261000000000002
+        },
+        "date": "60tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/8/89/Neandertal_skull_from_la_chapelle_aux_saints.jpg"
+        ],
+        "name": "La Chapelle-aux-Saints",
+        "wholeNumberYears": 60000
+    },
+    {
+        "species": "neanderthalensis",
+        "city": "Shanidar",
+        "country": "Iraq",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 36.800599999999996,
+            "long": 44.2433
+        },
+        "date": "45tya-35tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/7/7c/Shanidar_skull.jpg"
+        ],
+        "name": "Shanidar 1",
+        "wholeNumberYears": 45000
+    },
+    {
+        "species": "neanderthalensis",
+        "city": "Wadi Amud",
+        "country": "Israel",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 32.880919444444444,
+            "long": 35.50326388888889
+        },
+        "date": "41tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/a/ab/Amud_1._Homo_neanderthalensis.jpg"
+        ],
+        "name": "Amud",
+        "wholeNumberYears": 41000
+    },
+    {
+        "species": "neanderthalensis",
+        "city": "Feldhofer Cave",
+        "country": "Germany",
+        "continent": "Europe",
+        "gpsCoor": {
+            "lat": 51.2275,
+            "long": 6.945555555555556
+        },
+        "date": "40tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/6/64/Homo_neanderthalensis_%28cast_of_Neanderthal_1_skullcap%29_at_G%C3%B6teborgs_Naturhistoriska_Museum_8790.jpg"
+        ],
+        "name": "Feldhofer",
+        "wholeNumberYears": 40000
+    },
+    {
+        "species": "neanderthalensis",
+        "city": "Saint-Césaire",
+        "country": "France",
+        "continent": "Europe",
+        "gpsCoor": {
+            "lat": 45.7531,
+            "long": -0.5061
+        },
+        "date": "36tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/8/84/Cr%C3%A2ne_peut-%C3%AAtre_f%C3%A9minin_trouv%C3%A9_%C3%A0_Saint-C%C3%A9saire%2C_Mus%C3%A9e_d%27arch%C3%A9ologie_nationale_-_Domaine_national_de_Saint-Germain-en-Laye.jpg"
+        ],
+        "name": "Saint-Césaire",
+        "wholeNumberYears": 36000
+    },
+    {
+        "species": "sapiens",
+        "city": "Omo River",
+        "country": "Ethiopia",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": 8.316666666666666,
+            "long": 37.46666666666667
+        },
+        "date": "195tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/0/01/Omo_Kibish_-_MCN_4152_%28cropped%29.jpg"
+        ],
+        "name": "Omo 1",
+        "wholeNumberYears": 195000
+    },
+    {
+        "species": "sapiens",
+        "city": "Laetoli",
+        "country": "Tanzania",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": -2.9961111111111114,
+            "long": 35.3525
+        },
+        "date": "120tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/b/bc/LH_18_Replica_02.JPG"
+        ],
+        "name": "Ngaloba LH 18",
+        "wholeNumberYears": 120000
+    },
+    {
+        "species": "sapiens",
+        "city": "Mount Carmel",
+        "country": "Israel",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 32.733333333333334,
+            "long": 35.05
+        },
+        "date": "120tya-80tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/8/8f/Homo_Neanderthalensis-MGL_52625-P5030044-black.jpg"
+        ],
+        "name": "Skhūl V",
+        "wholeNumberYears": 120000
+    },
+    {
+        "species": "sapiens",
+        "city": "Singa",
+        "country": "Sudan",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": 13.15,
+            "long": 33.93333333333333
+        },
+        "date": "150tya-120tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/1/15/Singa._Homo_sapiens.jpg"
+        ],
+        "name": "Singa",
+        "wholeNumberYears": 150000
+    },
+    {
+        "species": "sapiens",
+        "city": "Jebel Qafzeh",
+        "country": "Israel",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 32.68833333333333,
+            "long": 35.318333333333335
+        },
+        "date": "100tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/a/aa/Qafzeh_6_cast.jpg"
+        ],
+        "name": "Qafzeh 6",
+        "wholeNumberYears": 100000
+    },
+    {
+        "species": "sapiens",
+        "city": "Liujiang",
+        "country": "China",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 24.257,
+            "long": 109.33699999999999
+        },
+        "date": "68tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/c/c3/Liujiang_cave_skull-c._Homo_Sapiens_68%2C000_Years_Old.jpg"
+        ],
+        "name": "Liujiang",
+        "wholeNumberYears": 68000
+    },
+    {
+        "species": "sapiens",
+        "city": "Sarawak",
+        "country": "Malaysia",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 2.8,
+            "long": 113.88333333333334
+        },
+        "date": "45tya-39tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/9/96/Niah_Cave_skull-r._Homo_Sapiens_45%2C000_to_39%2C000_Years_Old.jpg"
+        ],
+        "name": "Niah Cave",
+        "wholeNumberYears": 45000
+    },
+    {
+        "species": "sapiens",
+        "city": "Hofmeyr",
+        "country": "South Africa",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": -31.633333333333333,
+            "long": 25.8
+        },
+        "date": "39tya-33tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/0/0b/Hofmeyr_Skull.jpg"
+        ],
+        "name": "Hofmeyr",
+        "wholeNumberYears": 39000
+    },
+    {
+        "species": "sapiens",
+        "city": "Cro-Magnon",
+        "country": "France",
+        "continent": "Europe",
+        "gpsCoor": {
+            "lat": 45.09928716052135,
+            "long": 1.0005080959028796
+        },
+        "date": "30tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/f/f5/Cro-Magnon.jpg"
+        ],
+        "name": "Cro-Magnon 1",
+        "wholeNumberYears": 30000
+    },
+    {
+        "species": "sapiens",
+        "city": "Minas Gerais",
+        "country": "Brazil",
+        "continent": "South America",
+        "gpsCoor": {
+            "lat": -19.816666666666666,
+            "long": -43.95
+        },
+        "date": "11tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/c/c0/Lapa_Vermelha_IV_Hominid_1-Homo_Sapiens_11%2C500_Years_Old.jpg"
+        ],
+        "name": "Lapa Vermelha IV Hominid 1",
+        "wholeNumberYears": 11000
+    },
+    {
+        "species": "sapiens",
+        "city": "Tepexpan 1",
+        "country": "Mexico",
+        "continent": "North America",
+        "gpsCoor": {
+            "lat": 19.61916666666667,
+            "long": -98.93527777777778
+        },
+        "date": "4.7tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/4/42/Tepexpan_1.Homo_Sapiens_4%2C700_Years_Old.jpg"
+        ],
+        "name": "Tepexpan 1",
+        "wholeNumberYears": 4700
+    },
+    {
+        "species": "sapiens",
+        "city": "Kow Swamp",
+        "country": "Australia",
+        "continent": "Australia",
+        "gpsCoor": {
+            "lat": -35.95944444444445,
+            "long": 144.29555555555555
+        },
+        "date": "13tya-9tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/4/4c/Kow_Swamp1-Homo_sapiens.jpg"
+        ],
+        "name": "Kow Swamp",
+        "wholeNumberYears": 13000
+    },
+    {
+        "species": "sapiens",
+        "city": "Peştera cu Oase",
+        "country": "Romania",
+        "continent": "Europe",
+        "gpsCoor": {
+            "lat": 45.016666666666666,
+            "long": 21.833333333333332
+        },
+        "date": "41.5tya-39.5tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/d/d6/Oase_2-Homo_Sapiens_2.jpg"
+        ],
+        "name": "Oase 2",
+        "wholeNumberYears": 41500
+    },
+    {
+        "species": "sapiens",
+        "city": "East of Safi",
+        "country": "Morocco",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": 31.855,
+            "long": -8.8725
+        },
+        "date": "300tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/4/4f/Homo_Sapiens_160%2C000_Years_Old_%284697753017%29.jpg"
+        ],
+        "name": "Jebel Irhoud",
+        "wholeNumberYears": 300000
+    },
+    {
+        "species": "sapiens",
+        "city": "Middle Awash site",
+        "country": "Ethiopia",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": 10.283333333333333,
+            "long": 40.5
+        },
+        "date": "160tya-154tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/9/9b/Homo_Sapiens_Idaltu.JPG"
+        ],
+        "name": "Herto Man",
+        "wholeNumberYears": 160000
+    },
+    {
+        "species": "longi",
+        "city": "Harbin",
+        "country": "China",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 45.7576,
+            "long": 126.6409
+        },
+        "date": "146tya",
+        "linksToPhotos": [
+            ""
+        ],
+        "name": "Dragon Man",
+        "wholeNumberYears": 146000
+    }
+]
