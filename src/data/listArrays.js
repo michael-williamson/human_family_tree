@@ -2,8 +2,12 @@ export const speciesArr = [
   "habilis",
   "rudolfensis",
   "erectus",
+  "floresiensis",
+  "luzonensis",
   "heidelbergensis",
   "neanderthalensis",
+  "denisovan(not yet designated)",
+  "Red Deer Cave People(not yet designated)",
   "sapiens",
   "longi",
 ];
