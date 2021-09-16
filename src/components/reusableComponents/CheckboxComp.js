@@ -2,18 +2,18 @@ import React from "react";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import { speciesArr } from "../data/listArrays";
-import { useStyles } from "./componentStyle/CheckboxCompStyles";
 import { Typography } from "@material-ui/core";
 
+import { useStyles } from "../componentStyle/CheckboxCompStyles";
+
 const CheckBoxMapper = (props) => {
-  const { speciesChecked, handleChange } = props;
-  return speciesArr.map((item) => {
+  const { checked, handleChange, mapArr } = props;
+  return mapArr.map((item) => {
     return (
       <FormControlLabel
         control={
           <Checkbox
-            checked={speciesChecked?.[`${item}`]}
+            checked={checked?.[`${item}`]}
             onChange={handleChange}
             name={item}
             color="primary"
@@ -25,19 +25,20 @@ const CheckBoxMapper = (props) => {
   });
 };
 
-export const CheckboxSpeciesComp = (props) => {
-  const { speciesChecked, handleChange } = props;
+export const CheckboxComp = (props) => {
+  const { checked, handleChange, sortBy, mapArr } = props;
 
   const classes = useStyles();
 
   return (
     <FormGroup row className={classes.root}>
       <Typography component="h2" className={classes.h2}>
-        Sort By Species:
+        {sortBy}
       </Typography>
       <CheckBoxMapper
         handleChange={handleChange}
-        speciesChecked={speciesChecked}
+        checked={checked}
+        mapArr={mapArr}
       />
     </FormGroup>
   );
