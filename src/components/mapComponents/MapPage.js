@@ -22,17 +22,15 @@ export const MapPage = () => {
   const [selectAllDates, setSelectAllDates] = useState(true);
 
   useEffect(() => {
-    for (const prop in speciesChecked) {
-      if (!speciesChecked[prop]) setSelectAllSpecies(false);
-      else setSelectAllSpecies(true);
-    }
+    if (Object.values(speciesChecked).every((item) => item))
+      setSelectAllSpecies(true);
+    else setSelectAllSpecies(false);
   }, [speciesChecked]);
 
   useEffect(() => {
-    for (const prop in datesChecked) {
-      if (!datesChecked[prop]) setSelectAllDates(false);
-      else setSelectAllDates(true);
-    }
+    if (Object.values(datesChecked).every((item) => item)) {
+      setSelectAllDates(true);
+    } else setSelectAllDates(false);
   }, [datesChecked]);
 
   const useStyles = makeStyles({
