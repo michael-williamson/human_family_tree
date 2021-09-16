@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactHtmlParser from "react-html-parser";
 import { Marker, InfoWindow } from "@react-google-maps/api";
 import anthroData from "../../data/anthroData.json";
+import { datesCatergoryObj } from "../../data/listArrays";
 //icons
 import {
   beardedManIconBlack,
@@ -34,37 +35,25 @@ export const MarkerPopulator = (props) => {
   };
 
   const dateComparerControl = (datesChecked, inputDate, dateComparer) => {
-    if (
-      dateComparer(3000000, 1500000, inputDate) &&
-      datesChecked["> 1.5 Million"]
-    ) {
-      return true;
+    const resultsArr = [];
+    for (const prop in datesChecked) {
+      if (
+        datesChecked[prop] &&
+        dateComparer(
+          datesCatergoryObj[prop].greater,
+          datesCatergoryObj[prop].lesser,
+          inputDate
+        )
+      ) {
+        resultsArr.push(true);
+      }
     }
-    if (
-      dateComparer(1500000, 500000, inputDate) &&
-      datesChecked["between 1.5 Million & 500 Thousand"]
-    ) {
-      return true;
-    }
-    if (
-      dateComparer(500000, 200000, inputDate) &&
-      datesChecked["between 500 Thousand & 200 Thousand"]
-    ) {
-      return true;
-    }
-    if (
-      dateComparer(200000, 50000, inputDate) &&
-      datesChecked["between 200 Thousand & 50 Thousand"]
-    ) {
-      return true;
-    }
-    if (
-      dateComparer(50000, 0, inputDate) &&
-      datesChecked["between 50 Thousand & Present"]
-    ) {
-      return true;
-    }
-    return false;
+    // console.log(
+    //   resultsArr.every((item) => item === true),
+    //   "results array"
+    // );
+    console.log(resultsArr, "resultsarr");
+    return resultsArr.find((item) => item === true);
   };
 
   const iconChooser = (itemSpecies) => {
