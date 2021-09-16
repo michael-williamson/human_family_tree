@@ -171,13 +171,11 @@ const TitleGalleryComp = (props) => {
             aria-controls={`panel${index + 1}d-content`}
             id={`panel${index + 1}d-header`}
           >
-            {/* <div key={index} className={classes.titleGalleryComp}> */}
             <h1 className={classes.h1}>{item.species}</h1>
           </AccordionSummary>
           <AccordionDetails>
             <PhotoGalleryComp species={item.species} />
           </AccordionDetails>
-          {/* </div> */}
         </Accordion>
       );
     } else if (item.species !== currentSpecies) {
@@ -194,15 +192,12 @@ const TitleGalleryComp = (props) => {
             aria-controls={`panel${index + 1}d-content`}
             id={`panel${index + 1}d-header`}
           >
-            {/* <div key={index} className={classes.titleGalleryComp}> */}
             <h1 className={classes.h1}>{item.species}</h1>
           </AccordionSummary>
           <AccordionDetails>
             <PhotoGalleryComp species={item.species} />
           </AccordionDetails>
-          {/* </div> */}
         </Accordion>
-        // </div>
       );
     } else {
       return null;
