@@ -13,7 +13,6 @@ export const speciesCheckedObject = (bool) => {
 export const datesCheckedObject = (bool) => {
   const obj = {};
   datesCatergoryProps.forEach((item) => {
-    console.log(item, "item in foreach");
     if (bool) obj[item] = true;
     else obj[item] = false;
   });

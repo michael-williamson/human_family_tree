@@ -48,11 +48,6 @@ export const MarkerPopulator = (props) => {
         resultsArr.push(true);
       }
     }
-    // console.log(
-    //   resultsArr.every((item) => item === true),
-    //   "results array"
-    // );
-    console.log(resultsArr, "resultsarr");
     return resultsArr.find((item) => item === true);
   };
 
