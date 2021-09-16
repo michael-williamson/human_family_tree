@@ -8,8 +8,9 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 100px;
+  height: 158px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -37,5 +38,7 @@
 }
 
 .button_container {
-  margin: 10px 0;
+  width: 20%;
+  display: flex;
+  justify-content: space-evenly;
 }
