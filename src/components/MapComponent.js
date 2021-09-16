@@ -18,10 +18,11 @@ function MapComponent(props) {
   return (
     <LoadScript googleMapsApiKey={REACT_APP_GOOGLE_API}>
       <GoogleMap
+        clusterer={<div> here</div>}
         mapContainerStyle={containerStyle}
         center={center}
         zoom={2.5}
-        options={{ mapTypeId: "satellite" }}
+        options={{ mapTypeId: "satellite", gestureHandling: "auto" }}
       >
         {/* Child components, such as markers, info windows, etc. */}
         <MarkerPopulator {...props} />
