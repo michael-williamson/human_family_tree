@@ -11,6 +11,7 @@ const CheckBoxMapper = (props) => {
   return mapArr.map((item) => {
     return (
       <FormControlLabel
+        key={item}
         control={
           <Checkbox
             checked={checked?.[`${item}`]}
