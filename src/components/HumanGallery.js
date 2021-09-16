@@ -58,6 +58,7 @@ const PhotoGalleryComp = (props) => {
           src={item.linksToPhotos[0]}
           alt={item.species}
           className={classes.img}
+          loading="lazy"
         />
         <div className={classes.attribute}>
           {ReactHtmlParser(item.linksToPhotos[1])}
