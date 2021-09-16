@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactHtmlParser from "react-html-parser";
 import { Marker, InfoWindow } from "@react-google-maps/api";
-import anthroData from "../data/anthroData.json";
+import anthroData from "../../data/anthroData.json";
 //icons
 import {
   beardedManIconBlack,
@@ -10,9 +10,9 @@ import {
   beardedManIconYellow,
   beardedManIconWhite,
   beardedManIconPurple,
-} from "../media/index";
+} from "../../media/index";
 //styles
-import { styles as markerPopulatorStyles } from "./componentStyle/MarkerPopulatorStyles";
+import { styles as markerPopulatorStyles } from "../componentStyle/MarkerPopulatorStyles";
 
 export const MarkerPopulator = (props) => {
   const [specimen, setSpecimen] = useState(null);
@@ -22,6 +22,7 @@ export const MarkerPopulator = (props) => {
     overlayContainer,
     title,
     displayImage,
+    imgAttributation,
     infoLinesContainer,
     infoLines,
     itemProps,
@@ -111,9 +112,10 @@ export const MarkerPopulator = (props) => {
             key={index}
             position={{ lat: item.gpsCoor.lat, lng: item.gpsCoor.long }}
             onClick={() => setSpecimen(item)}
+            opacity={0.75}
             icon={{
               url: iconChooser(item.species),
-              scaledSize: new window.google.maps.Size(23, 23),
+              scaledSize: new window.google.maps.Size(30, 30),
             }}
           />
           {specimen === item && (
@@ -129,7 +131,9 @@ export const MarkerPopulator = (props) => {
                     src={item.linksToPhotos[0]}
                     alt={item.name}
                   />
-                  <div>{ReactHtmlParser(item.linksToPhotos[1])}</div>
+                  <div style={imgAttributation}>
+                    {ReactHtmlParser(item.linksToPhotos[1])}
+                  </div>
                   <div style={infoLinesContainer}>
                     <p style={infoLines}>
                       Location: <span style={itemProps}>{item.city}</span>

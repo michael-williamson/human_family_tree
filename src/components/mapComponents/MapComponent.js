@@ -1,7 +1,6 @@
 import React from "react";
 import { MarkerPopulator } from "./MarkerPopulator";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
-
 const containerStyle = {
   width: "100%",
   height: "100vh",
@@ -26,7 +25,6 @@ function MapComponent(props) {
       >
         {/* Child components, such as markers, info windows, etc. */}
         <MarkerPopulator {...props} />
-
         <></>
       </GoogleMap>
     </LoadScript>

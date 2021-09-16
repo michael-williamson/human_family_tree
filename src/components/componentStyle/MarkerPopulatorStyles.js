@@ -8,7 +8,7 @@ export const styles = {
     backgroundImage: `url(${savannahImage})`,
     backgroundSize: "cover",
     width: 400,
-    height: "calc(100vh - 100px)",
+    height: 620,
     padding: "25px 0",
     position: "relative",
   },
@@ -31,6 +31,16 @@ export const styles = {
     height: 200,
     width: 200,
     borderRadius: 8,
+  },
+  imgAttributation: {
+    color: "white",
+    fontSize: ".5rem",
+    a: {
+      color: "white",
+    },
+    "a:-webkit-any-link": {
+      color: "white",
+    },
   },
   infoLinesContainer: {
     display: "flex",
