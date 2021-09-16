@@ -10,7 +10,6 @@ function App() {
     <div className="App">
       <div className="header_container">
         <h1 className="header_title">Human Family Tree</h1>
-        <div className="header_overlay"></div>
         <div className="button_container">
           <Button
             onClick={() => setShowMap(false)}
