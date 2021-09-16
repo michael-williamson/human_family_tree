@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ReactHtmlParser from "react-html-parser";
 import { Marker, InfoWindow } from "@react-google-maps/api";
 import anthroData from "../data/anthroData.json";
 //icons
@@ -128,6 +129,7 @@ export const MarkerPopulator = (props) => {
                     src={item.linksToPhotos[0]}
                     alt={item.name}
                   />
+                  <div>{ReactHtmlParser(item.linksToPhotos[1])}</div>
                   <div style={infoLinesContainer}>
                     <p style={infoLines}>
                       Location: <span style={itemProps}>{item.city}</span>
