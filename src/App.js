@@ -2,14 +2,32 @@ import { useState } from "react";
 import "./App.css";
 import { HumanGallery } from "./components/HumanGallery";
 import { MapPage } from "./components/MapPage";
+import Button from "@material-ui/core/Button";
 
 function App() {
   const [showMap, setShowMap] = useState(true);
   return (
     <div className="App">
-      <h1>Human Family Tree</h1>
-      <button onClick={() => setShowMap(false)}>Show Fossils</button>
-      <button onClick={() => setShowMap(true)}>Show Map</button>
+      <div className="header_container">
+        <h1 className="header_title">Human Family Tree</h1>
+        <div className="header_overlay"></div>
+      </div>
+      <div className="button_container">
+        <Button
+          onClick={() => setShowMap(false)}
+          variant="contained"
+          color="primary"
+        >
+          Show Fossils
+        </Button>
+        <Button
+          onClick={() => setShowMap(true)}
+          variant="contained"
+          color="primary"
+        >
+          Show Map
+        </Button>
+      </div>
       {!showMap ? <HumanGallery /> : <MapPage />}
     </div>
   );
