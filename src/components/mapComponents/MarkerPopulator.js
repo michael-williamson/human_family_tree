@@ -94,8 +94,11 @@ export const MarkerPopulator = (props) => {
         <div key={index}>
           <Marker
             key={index}
+            animation={window.google.maps.Animation.DROP}
             position={{ lat: item.gpsCoor.lat, lng: item.gpsCoor.long }}
-            onClick={() => setSpecimen(item)}
+            onClick={() => {
+              setSpecimen(item);
+            }}
             opacity={0.75}
             icon={{
               url: iconChooser(item.species),
