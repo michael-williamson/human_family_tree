@@ -99,7 +99,7 @@ export const MarkerPopulator = (props) => {
             onClick={() => {
               setSpecimen(item);
             }}
-            opacity={0.75}
+            opacity={1}
             icon={{
               url: iconChooser(item.species),
               scaledSize: new window.google.maps.Size(30, 30),

@@ -38,7 +38,7 @@ export const styles = {
     a: {
       color: "white",
     },
-    "a:-webkit-any-link": {
+    "a:WebkitAnyLink": {
       color: "white",
     },
   },
