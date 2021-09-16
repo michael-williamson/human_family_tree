@@ -64,7 +64,7 @@ const AccordionComp = (props) => {
         onChange={handleChange(`panel${index + 1}`)}
       >
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon color="primary" />}
           aria-controls={`panel${index + 1}d-content`}
           id={`panel${index + 1}d-header`}
         >

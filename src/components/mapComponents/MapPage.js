@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import MapComponent from "./MapComponent";
 import { CheckboxComp } from "../reusableComponents/CheckboxComp";
-import { speciesArr, datesCatergory } from "../../data/listArrays";
+import { speciesArr, datesCatergoryProps } from "../../data/listArrays";
 //from helper functions
 import { speciesCheckedObject, datesCheckedObject } from "../helperFunctions";
 import { styles as mapPageStyles } from "../componentStyle/MapPageStyles";
 import AccordionComp from "../reusableComponents/AccordionComp";
-import { Typography, Button, makeStyles } from "@material-ui/core";
+import { Typography, Button, makeStyles, Grid } from "@material-ui/core";
+import CheckBoxIcon from "@material-ui/icons/CheckBox";
+
 const { mainCheckboxContainer } = mapPageStyles;
 
 export const MapPage = () => {
@@ -90,7 +92,7 @@ export const MapPage = () => {
         checked={datesChecked}
         handleChange={handleDateChange}
         sortBy={"Sort by Date"}
-        mapArr={datesCatergory}
+        mapArr={datesCatergoryProps}
         selectAllBtn={
           <Button
             onClick={() => handleSelectAll("dates")}
@@ -107,9 +109,12 @@ export const MapPage = () => {
   );
 
   const accordionSummaryComponent = (
-    <Typography variant="h5" color="primary">
-      {expanded ? "Sorting" : "Click to Sort Map"}
-    </Typography>
+    <Grid container direction="row" alignItems="center">
+      <Typography variant="h5" color="primary">
+        {expanded ? "Sorting" : "Click to Sort Map"}
+      </Typography>
+      <CheckBoxIcon color="primary" fontSize="medium" />
+    </Grid>
   );
 
   return (
