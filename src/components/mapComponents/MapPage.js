@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import MapComponent from "./MapComponent";
 import { CheckboxComp } from "../reusableComponents/CheckboxComp";
 import { speciesArr, datesCatergory } from "../../data/listArrays";
@@ -6,16 +6,40 @@ import { speciesArr, datesCatergory } from "../../data/listArrays";
 import { speciesCheckedObject, datesCheckedObject } from "../helperFunctions";
 import { styles as mapPageStyles } from "../componentStyle/MapPageStyles";
 import AccordionComp from "../reusableComponents/AccordionComp";
-import { Typography } from "@material-ui/core";
+import { Typography, Button, makeStyles } from "@material-ui/core";
 const { mainCheckboxContainer } = mapPageStyles;
 
 export const MapPage = () => {
-  const [expanded, setExpanded] = React.useState("panel1");
+  const [expanded, setExpanded] = useState("");
 
-  const [speciesChecked, setSpeciesChecked] = React.useState(
-    speciesCheckedObject()
+  const [speciesChecked, setSpeciesChecked] = useState(
+    speciesCheckedObject(true)
   );
-  const [datesChecked, setDatesChecked] = React.useState(datesCheckedObject());
+  const [datesChecked, setDatesChecked] = useState(datesCheckedObject(true));
+  const [selectAllSpecies, setSelectAllSpecies] = useState(true);
+  const [selectAllDates, setSelectAllDates] = useState(true);
+
+  useEffect(() => {
+    for (const prop in speciesChecked) {
+      if (!speciesChecked[prop]) setSelectAllSpecies(false);
+      else setSelectAllSpecies(true);
+    }
+  }, [speciesChecked]);
+
+  useEffect(() => {
+    for (const prop in datesChecked) {
+      if (!datesChecked[prop]) setSelectAllDates(false);
+      else setSelectAllDates(true);
+    }
+  }, [datesChecked]);
+
+  const useStyles = makeStyles({
+    root: {
+      position: "absolute",
+    },
+  });
+
+  const classes = useStyles();
 
   const handleSpeciesChange = (event) => {
     setSpeciesChecked({
@@ -30,6 +54,19 @@ export const MapPage = () => {
     });
   };
 
+  const handleSelectAll = (prop) => {
+    if (prop === "species" && !selectAllSpecies) {
+      setSpeciesChecked(speciesCheckedObject(true));
+    } else if (prop === "species" && selectAllSpecies) {
+      setSpeciesChecked(speciesCheckedObject(false));
+    }
+    if (prop === "dates" && !selectAllDates) {
+      setDatesChecked(datesCheckedObject(true));
+    } else if (prop === "dates" && selectAllDates) {
+      setDatesChecked(datesCheckedObject(false));
+    }
+  };
+
   const MainCheckboxContainer = (
     <div style={mainCheckboxContainer}>
       <CheckboxComp
@@ -37,12 +74,34 @@ export const MapPage = () => {
         checked={speciesChecked}
         sortBy={"Sort by Species"}
         mapArr={speciesArr}
+        selectAllBtn={
+          <Button
+            onClick={() => handleSelectAll("species")}
+            className={classes.root}
+            variant="outlined"
+            color="primary"
+            size="small"
+          >
+            {selectAllSpecies ? "deselect all" : "select all"}
+          </Button>
+        }
       />
       <CheckboxComp
         checked={datesChecked}
         handleChange={handleDateChange}
         sortBy={"Sort by Date"}
         mapArr={datesCatergory}
+        selectAllBtn={
+          <Button
+            onClick={() => handleSelectAll("dates")}
+            className={classes.root}
+            variant="outlined"
+            color="primary"
+            size="small"
+          >
+            {selectAllDates ? "deselect all" : "select all"}
+          </Button>
+        }
       />
     </div>
   );

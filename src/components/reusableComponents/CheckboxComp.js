@@ -26,7 +26,7 @@ const CheckBoxMapper = (props) => {
 };
 
 export const CheckboxComp = (props) => {
-  const { checked, handleChange, sortBy, mapArr } = props;
+  const { checked, handleChange, sortBy, mapArr, selectAllBtn } = props;
 
   const classes = useStyles();
 
@@ -35,6 +35,7 @@ export const CheckboxComp = (props) => {
       <Typography component="h2" className={classes.h2}>
         {sortBy}
       </Typography>
+      {selectAllBtn ? selectAllBtn : null}
       <CheckBoxMapper
         handleChange={handleChange}
         checked={checked}
