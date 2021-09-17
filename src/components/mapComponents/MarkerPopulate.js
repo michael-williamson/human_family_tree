@@ -2,20 +2,13 @@ import React, { useState } from "react";
 import ReactHtmlParser from "react-html-parser";
 import { Marker, InfoWindow } from "@react-google-maps/api";
 import anthroData from "../../data/anthroData.json";
-import { datesCatergoryObj } from "../../data/listArrays";
+import { datesCategoryObj } from "../../data/listArrays";
 //icons
-import {
-  beardedManIconBlack,
-  beardedManIconBlue,
-  beardedManIconGreen,
-  beardedManIconYellow,
-  beardedManIconWhite,
-  beardedManIconPurple,
-} from "../../media/index";
+import { imageFiles } from "../../data/listArrays";
 //styles
-import { styles as markerPopulatorStyles } from "../componentStyle/MarkerPopulatorStyles";
+import { styles as markerPopulateStyles } from "../componentStyle/MarkerPopulateStyles";
 
-export const MarkerPopulator = (props) => {
+export const MarkerPopulate = (props) => {
   const [specimen, setSpecimen] = useState(null);
   const { speciesChecked, datesChecked } = props;
   const {
@@ -23,12 +16,12 @@ export const MarkerPopulator = (props) => {
     overlayContainer,
     title,
     displayImage,
-    imgAttributation,
+    imgAttribution,
     infoLinesContainer,
     infoLines,
     itemProps,
     speciesText,
-  } = markerPopulatorStyles;
+  } = markerPopulateStyles;
 
   const dateComparer = (compareDateGreater, compareDateLesser, inputDate) => {
     return compareDateGreater >= inputDate && inputDate >= compareDateLesser;
@@ -40,8 +33,8 @@ export const MarkerPopulator = (props) => {
       if (
         datesChecked[prop] &&
         dateComparer(
-          datesCatergoryObj[prop].greater,
-          datesCatergoryObj[prop].lesser,
+          datesCategoryObj[prop].greater,
+          datesCategoryObj[prop].lesser,
           inputDate
         )
       ) {
@@ -49,38 +42,6 @@ export const MarkerPopulator = (props) => {
       }
     }
     return resultsArr.find((item) => item === true);
-  };
-
-  const iconChooser = (itemSpecies) => {
-    let species = itemSpecies;
-    let switchFnChoice;
-    switch (species) {
-      case "habilis":
-        switchFnChoice = beardedManIconBlack;
-        break;
-      case "erectus":
-        switchFnChoice = beardedManIconYellow;
-        break;
-      case "rudolfensis":
-        switchFnChoice = beardedManIconBlue;
-        break;
-      case "sapiens":
-        switchFnChoice = beardedManIconGreen;
-        break;
-      case "heidelbergensis":
-        switchFnChoice = beardedManIconWhite;
-        break;
-      case "neanderthalensis":
-        switchFnChoice = beardedManIconPurple;
-        break;
-      default:
-        switchFnChoice = beardedManIconBlack;
-
-      // case "longi":
-      //   day = "Saturday";
-    }
-
-    return switchFnChoice;
   };
 
   return anthroData.map((item, index) => {
@@ -101,7 +62,7 @@ export const MarkerPopulator = (props) => {
             }}
             opacity={1}
             icon={{
-              url: iconChooser(item.species),
+              url: imageFiles[item.species],
               scaledSize: new window.google.maps.Size(30, 30),
             }}
           />
@@ -118,7 +79,7 @@ export const MarkerPopulator = (props) => {
                     src={item.linksToPhotos[0]}
                     alt={item.name}
                   />
-                  <div style={imgAttributation}>
+                  <div style={imgAttribution}>
                     {ReactHtmlParser(item.linksToPhotos[1])}
                   </div>
                   <div style={infoLinesContainer}>

@@ -1,4 +1,4 @@
-import { speciesArr, datesCatergoryProps } from "../../data/listArrays";
+import { speciesArr, datesCategoryProps } from "../../data/listArrays";
 
 export const speciesCheckedObject = (bool) => {
   const obj = {};
@@ -12,7 +12,7 @@ export const speciesCheckedObject = (bool) => {
 
 export const datesCheckedObject = (bool) => {
   const obj = {};
-  datesCatergoryProps.forEach((item) => {
+  datesCategoryProps.forEach((item) => {
     if (bool) obj[item] = true;
     else obj[item] = false;
   });

@@ -3,7 +3,7 @@ import MapComponent from "./MapComponent";
 import { CheckboxComp } from "../reusableComponents/CheckboxComp";
 import {
   speciesArr,
-  datesCatergoryProps,
+  datesCategoryProps,
   imageFiles,
 } from "../../data/listArrays";
 //from helper functions
@@ -18,16 +18,23 @@ const { mainCheckboxContainer } = mapPageStyles;
 export const IconComponent = (props) => {
   const imageFilesObj = imageFiles;
   const style = {
+    imgDiv: {},
     img: {
       width: 20,
       height: 20,
     },
+    imgWhite: {
+      width: 20,
+      height: 20,
+      borderRadius: "50%",
+      background: "#0000006b",
+    },
   };
   return (
-    <div>
+    <div style={style.imgDiv} className="imgDiv">
       <img
         alt="human species"
-        style={style.img}
+        style={props.props === "heidelbergensis" ? style.imgWhite : style.img}
         src={imageFilesObj[props.props]}
       />
     </div>
@@ -115,7 +122,7 @@ export const MapPage = () => {
         checked={datesChecked}
         handleChange={handleDateChange}
         sortBy={"Sort by Date"}
-        mapArr={datesCatergoryProps}
+        mapArr={datesCategoryProps}
         selectAllBtn={
           <Button
             onClick={() => handleSelectAll("dates")}

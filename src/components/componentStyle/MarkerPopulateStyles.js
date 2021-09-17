@@ -32,7 +32,7 @@ export const styles = {
     width: 200,
     borderRadius: 8,
   },
-  imgAttributation: {
+  imgAttribution: {
     color: "white",
     fontSize: ".5rem",
     a: {
