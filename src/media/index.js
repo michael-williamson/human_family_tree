@@ -11,6 +11,7 @@ import beardedManIconAqua from "./marker_icons/bearded_man_icon_aqua.png";
 import beardedManIconLiteGrey from "./marker_icons/bearded_man_icon_litegrey.png";
 import beardedManIconOrange from "./marker_icons/bearded_man_icon_orange.png";
 import beardedManIconRed from "./marker_icons/bearded_man_icon_red.png";
+import beardedManIconLitePurple from "./marker_icons/bearded_man_icon_litepurple.png";
 
 import savannahImage from "./mapComponentMedia/savannah.jpg";
 
@@ -27,5 +28,6 @@ export {
   beardedManIconLiteGrey,
   beardedManIconOrange,
   beardedManIconRed,
+  beardedManIconLitePurple,
   savannahImage,
 };

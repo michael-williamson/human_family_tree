@@ -9,6 +9,7 @@ import {
   beardedManIconLiteGrey,
   beardedManIconOrange,
   beardedManIconRed,
+  beardedManIconLitePurple,
 } from "../media/index";
 
 export const speciesArr = [
@@ -19,16 +20,14 @@ export const speciesArr = [
   "luzonensis",
   "heidelbergensis",
   "neanderthalensis",
-  "denisovan(not yet designated)",
-  "Red Deer Cave People(not yet designated)",
+  "denisovan",
+  "Red Deer Cave People",
   "sapiens",
   "longi",
 ];
 
-export const datesCatergoryProps = [
-  // "greaterThanOneAndAHalfMillion",
+export const datesCategoryProps = [
   "> 2,000,000",
-
   "2,000,000 - 1,500,000",
   "1,500,000 - 1,000,000",
   "1,000,000 - 800,000",
@@ -47,7 +46,7 @@ export const datesCatergoryProps = [
   "10,000 - present",
 ];
 
-export const datesCatergoryObj = {
+export const datesCategoryObj = {
   "> 2,000,000": { greater: 4000000, lesser: 2000000 },
   "2,000,000 - 1,500,000": { greater: 2000000, lesser: 1500000 },
   "1,500,000 - 1,000,000": { greater: 1500000, lesser: 1000000 },
@@ -74,8 +73,9 @@ export const imageFiles = {
   sapiens: beardedManIconGreen,
   heidelbergensis: beardedManIconWhite,
   neanderthalensis: beardedManIconPurple,
-  "denisovan(not yet designated)": beardedManIconAqua,
-  "Red Deer Cave People(not yet designated)": beardedManIconRed,
+  denisovan: beardedManIconAqua,
+  "Red Deer Cave People": beardedManIconRed,
   floresiensis: beardedManIconLiteGrey,
   luzonensis: beardedManIconOrange,
+  longi: beardedManIconLitePurple,
 };
