@@ -13,6 +13,7 @@ const CheckBoxMapper = (props) => {
   const useStyles = makeStyles({
     root: {
       textAlign: "left",
+      fontStyle: "italic",
     },
   });
   const classes = useStyles();
