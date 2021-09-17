@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import MapComponent from "./MapComponent";
 import { CheckboxComp } from "../reusableComponents/CheckboxComp";
-import { speciesArr, datesCatergoryProps } from "../../data/listArrays";
+import {
+  speciesArr,
+  datesCatergoryProps,
+  imageFiles,
+} from "../../data/listArrays";
 //from helper functions
 import { speciesCheckedObject, datesCheckedObject } from "../helperFunctions";
 import { styles as mapPageStyles } from "../componentStyle/MapPageStyles";
@@ -10,6 +14,25 @@ import { Typography, Button, makeStyles, Grid } from "@material-ui/core";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 
 const { mainCheckboxContainer } = mapPageStyles;
+
+export const IconComponent = (props) => {
+  const imageFilesObj = imageFiles;
+  const style = {
+    img: {
+      width: 20,
+      height: 20,
+    },
+  };
+  return (
+    <div>
+      <img
+        alt="human species"
+        style={style.img}
+        src={imageFilesObj[props.props]}
+      />
+    </div>
+  );
+};
 
 export const MapPage = () => {
   const [expanded, setExpanded] = useState("");
@@ -36,6 +59,8 @@ export const MapPage = () => {
   const useStyles = makeStyles({
     root: {
       position: "absolute",
+      top: 5,
+      left: 10,
     },
   });
 

@@ -6,6 +6,7 @@ export const useStyles = makeStyles({
     border: "1px solid black",
     padding: "4px 30px",
     margin: "0px 30px",
+    position: "relative",
   },
   h2: {
     width: "100%",
