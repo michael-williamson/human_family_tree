@@ -18,9 +18,15 @@ const CheckBoxMapper = (props) => {
   const classes = useStyles();
   return mapArr.map((item) => {
     return (
-      <Grid container xs={4} justifyContent="flex-start" alignItems="center">
+      <Grid
+        key={item}
+        container
+        item
+        xs={4}
+        justifyContent="flex-start"
+        alignItems="center"
+      >
         <FormControlLabel
-          key={item}
           className={classes.root}
           control={
             <Checkbox
