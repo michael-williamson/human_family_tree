@@ -1,3 +1,16 @@
+import {
+  beardedManIconBlack,
+  beardedManIconBlue,
+  beardedManIconGreen,
+  beardedManIconYellow,
+  beardedManIconWhite,
+  beardedManIconPurple,
+  beardedManIconAqua,
+  beardedManIconLiteGrey,
+  beardedManIconOrange,
+  beardedManIconRed,
+} from "../media/index";
+
 export const speciesArr = [
   "habilis",
   "rudolfensis",
@@ -52,4 +65,17 @@ export const datesCatergoryObj = {
   "30,000 - 20,000": { greater: 30000, lesser: 20000 },
   "20,000 - 10,000": { greater: 20000, lesser: 10000 },
   "10,000 - present": { greater: 10000, lesser: 0 },
+};
+
+export const imageFiles = {
+  habilis: beardedManIconBlack,
+  erectus: beardedManIconYellow,
+  rudolfensis: beardedManIconBlue,
+  sapiens: beardedManIconGreen,
+  heidelbergensis: beardedManIconWhite,
+  neanderthalensis: beardedManIconPurple,
+  "denisovan(not yet designated)": beardedManIconAqua,
+  "Red Deer Cave People(not yet designated)": beardedManIconRed,
+  floresiensis: beardedManIconLiteGrey,
+  luzonensis: beardedManIconOrange,
 };
