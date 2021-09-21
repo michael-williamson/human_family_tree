@@ -1,6 +1,7 @@
 import cavemanIconBlack from "./marker_icons/caveman_icon_black.png";
-
-import footprintIconBlue from "./marker_icons/footprint_icon_blue.png";
+import familyTree from "./mapComponentMedia/family_tree.png";
+import footprintIconBlue from "./mapComponentMedia/footprint_icon_blue.png";
+import footprintOutlinedIconPurple from "./mapComponentMedia/footprint_outlined_icon_purple.png";
 import beardedManIconBlue from "./marker_icons/bearded_man_icon_blue.png";
 import beardedManIconBlack from "./marker_icons/bearded_man_icon_black.png";
 import beardedManIconGreen from "./marker_icons/bearded_man_icon_green.png";
@@ -18,6 +19,7 @@ import savannahImage from "./mapComponentMedia/savannah.jpg";
 export {
   cavemanIconBlack,
   footprintIconBlue,
+  footprintOutlinedIconPurple,
   beardedManIconBlue,
   beardedManIconBlack,
   beardedManIconGreen,
@@ -30,4 +32,5 @@ export {
   beardedManIconRed,
   beardedManIconLitePurple,
   savannahImage,
+  familyTree,
 };
