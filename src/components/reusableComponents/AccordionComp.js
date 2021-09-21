@@ -7,8 +7,12 @@ import MuiAccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const AccordionComp = (props) => {
-  const { expanded, setExpanded, index, accordionSummary, accordionDetails } =
-    props;
+  const {
+    expanded,
+    setExpanded,
+    index,
+    children: { AccordionSummaryChild, AccordionDetailsChild },
+  } = props;
 
   const Accordion = withStyles({
     root: {
@@ -48,7 +52,7 @@ const AccordionComp = (props) => {
 
   const AccordionDetails = withStyles((theme) => ({
     root: {
-      flexWrap: "wrap",
+      padding: theme.spacing(1, 2, 5),
     },
   }))(MuiAccordionDetails);
 
@@ -68,9 +72,9 @@ const AccordionComp = (props) => {
           aria-controls={`panel${index + 1}d-content`}
           id={`panel${index + 1}d-header`}
         >
-          {accordionSummary}
+          {AccordionSummaryChild}
         </AccordionSummary>
-        <AccordionDetails>{accordionDetails}</AccordionDetails>
+        <AccordionDetails>{AccordionDetailsChild}</AccordionDetails>
       </Accordion>
     </div>
   );

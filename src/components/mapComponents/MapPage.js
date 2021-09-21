@@ -1,45 +1,16 @@
 import React, { useState, useEffect } from "react";
 import MapComponent from "./MapComponent";
-import { CheckboxComp } from "../reusableComponents/CheckboxComp";
-import {
-  speciesArr,
-  datesCategoryProps,
-  imageFiles,
-} from "../../data/listArrays";
+import { speciesArr, datesCategoryProps } from "../../data/listArrays";
 //from helper functions
 import { speciesCheckedObject, datesCheckedObject } from "../helperFunctions";
-import { styles as mapPageStyles } from "../componentStyle/MapPageStyles";
 import AccordionComp from "../reusableComponents/AccordionComp";
-import { Typography, Button, makeStyles, Grid } from "@material-ui/core";
+import { Typography, Button, Grid, makeStyles } from "@material-ui/core";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
-
-const { mainCheckboxContainer } = mapPageStyles;
-
-export const IconComponent = (props) => {
-  const imageFilesObj = imageFiles;
-  const style = {
-    imgDiv: {},
-    img: {
-      width: 20,
-      height: 20,
-    },
-    imgWhite: {
-      width: 20,
-      height: 20,
-      borderRadius: "50%",
-      background: "#0000006b",
-    },
-  };
-  return (
-    <div style={style.imgDiv} className="imgDiv">
-      <img
-        alt="human species"
-        style={props.props === "heidelbergensis" ? style.imgWhite : style.img}
-        src={imageFilesObj[props.props]}
-      />
-    </div>
-  );
-};
+import TimerIcon from "@material-ui/icons/Timer";
+import { IconImagePngComp } from "../reusableComponents/IconImagePngComp";
+import { footprintOutlinedIconPurple } from "../../media";
+import { CheckboxMapperComp } from "../reusableComponents/CheckboxMapperComp";
+import { IconStaticColorsComponent } from "./IconStaticColorsComponent";
 
 export const MapPage = () => {
   const [expanded, setExpanded] = useState("");
@@ -62,16 +33,6 @@ export const MapPage = () => {
       setSelectAllDates(true);
     } else setSelectAllDates(false);
   }, [datesChecked]);
-
-  const useStyles = makeStyles({
-    root: {
-      position: "absolute",
-      top: 5,
-      left: 10,
-    },
-  });
-
-  const classes = useStyles();
 
   const handleSpeciesChange = (event) => {
     setSpeciesChecked({
@@ -99,53 +60,189 @@ export const MapPage = () => {
     }
   };
 
-  const MainCheckboxContainer = (
-    <div style={mainCheckboxContainer}>
-      <CheckboxComp
-        handleChange={handleSpeciesChange}
-        checked={speciesChecked}
-        sortBy={"Sort by Species"}
-        mapArr={speciesArr}
-        selectAllBtn={
-          <Button
-            onClick={() => handleSelectAll("species")}
-            className={classes.root}
-            variant="outlined"
-            color="primary"
-            size="small"
-          >
-            {selectAllSpecies ? "deselect all" : "select all"}
-          </Button>
-        }
-      />
-      <CheckboxComp
-        checked={datesChecked}
-        handleChange={handleDateChange}
-        sortBy={"Sort by Date"}
-        mapArr={datesCategoryProps}
-        selectAllBtn={
-          <Button
-            onClick={() => handleSelectAll("dates")}
-            className={classes.root}
-            variant="outlined"
-            color="primary"
-            size="small"
-          >
-            {selectAllDates ? "deselect all" : "select all"}
-          </Button>
-        }
-      />
-    </div>
-  );
+  const useStylesDatesItemMain = makeStyles({
+    root: {
+      height: 300,
+    },
+  });
 
-  const accordionSummaryComponent = (
-    <Grid container direction="row" alignItems="center">
-      <Typography variant="h5" color="primary">
-        {expanded ? "Sorting" : "Click to Sort Map"}
-      </Typography>
-      <CheckBoxIcon color="primary" fontSize="medium" />
-    </Grid>
-  );
+  const useStylesDatesItem = makeStyles({
+    root: {
+      flexBasis: 0,
+    },
+  });
+
+  const MainCheckboxContainer = (props) => {
+    const { species, dates } = props;
+
+    const classesDatesItemMain = useStylesDatesItemMain();
+    const classesDatesItem = useStylesDatesItem();
+
+    return (
+      <Grid
+        // main container grid
+        container
+        direction="row"
+        justifyContent="space-evenly"
+        alignItems="baseline"
+        wrap="nowrap"
+        spacing={6}
+        style={{ height: 500 }}
+      >
+        <Grid
+          container
+          item
+          direction="column"
+          justifyContent="flex-start"
+          xs={6}
+          spacing={4}
+        >
+          <Grid
+            container
+            item
+            wrap="nowrap"
+            justifyContent="center"
+            spacing={1}
+          >
+            <Grid item>
+              <Typography variant="h4" color="secondary">
+                {species}
+              </Typography>
+            </Grid>
+            <Grid item>
+              <IconImagePngComp
+                size="medium"
+                alt="foot image"
+                hueDegrees={83}
+                brightness={76}
+                imageURL={footprintOutlinedIconPurple}
+              />
+            </Grid>
+          </Grid>
+          {/**trying out my Component */}
+          <CheckboxMapperComp
+            selectAllBtn={
+              <Button
+                onClick={() => handleSelectAll("species")}
+                variant="outlined"
+                color="primary"
+                size="small"
+              >
+                {selectAllSpecies ? "deselect all" : "select all"}
+              </Button>
+            }
+            MuiGridCheckboxMainContainer={{
+              container: true,
+              item: true,
+              direction: "column",
+              wrap: "nowrap",
+              spacing: 4,
+            }}
+            MuiGridCheckboxItemMainContainer={{
+              container: true,
+              item: true,
+              direction: "row",
+              wrap: "wrap",
+            }}
+            MuiGridCheckboxItemContainer={{
+              container: true,
+              item: true,
+              xs: 4,
+              alignItems: "center",
+            }}
+            checkedObject={speciesChecked}
+            handleChange={handleSpeciesChange}
+            MuiCheckboxComp={{
+              color: "primary",
+            }}
+            mapArr={speciesArr}
+          >
+            <IconStaticColorsComponent />
+          </CheckboxMapperComp>
+
+          {/** */}
+        </Grid>
+        <Grid
+          container
+          item
+          direction="column"
+          justifyContent="flex-start"
+          xs={6}
+          spacing={4}
+        >
+          <Grid
+            container
+            item
+            wrap="nowrap"
+            justifyContent="center"
+            alignItems="center"
+            spacing={1}
+          >
+            <Grid item>
+              <Typography variant="h4" color="secondary">
+                {dates}
+              </Typography>
+            </Grid>
+
+            <Grid item>
+              <TimerIcon color="secondary" />
+            </Grid>
+          </Grid>
+          <CheckboxMapperComp
+            selectAllBtn={
+              <Button
+                onClick={() => handleSelectAll("dates")}
+                variant="outlined"
+                color="primary"
+                size="small"
+              >
+                {selectAllDates ? "deselect all" : "select all"}
+              </Button>
+            }
+            MuiGridCheckboxMainContainer={{
+              container: true,
+              item: true,
+              direction: "column",
+              wrap: "nowrap",
+              spacing: 4,
+            }}
+            classesItemMain={classesDatesItemMain}
+            MuiGridCheckboxItemMainContainer={{
+              container: true,
+              item: true,
+              direction: "column",
+              wrap: "wrap",
+            }}
+            classesItem={classesDatesItem}
+            MuiGridCheckboxItemContainer={{
+              container: true,
+              item: true,
+              xs: 4,
+              alignItems: "center",
+            }}
+            checkedObject={datesChecked}
+            handleChange={handleDateChange}
+            MuiCheckboxComp={{
+              color: "primary",
+            }}
+            mapArr={datesCategoryProps}
+          ></CheckboxMapperComp>
+        </Grid>
+      </Grid>
+    );
+  };
+
+  const AccordionSummaryComponent = (expandedProp) => {
+    const { expanded } = expandedProp;
+    return (
+      <Grid container direction="row" alignItems="center">
+        <Typography variant="h5" color="primary">
+          {expanded ? "Sorting" : "Click to Sort Map"}
+        </Typography>
+        <CheckBoxIcon color="primary" fontSize="medium" />
+      </Grid>
+    );
+  };
 
   return (
     <div>
@@ -153,8 +250,17 @@ export const MapPage = () => {
         expanded={expanded}
         setExpanded={setExpanded}
         index={0}
-        accordionDetails={MainCheckboxContainer}
-        accordionSummary={accordionSummaryComponent}
+        children={{
+          AccordionDetailsChild: (
+            <MainCheckboxContainer
+              species="Sort by Species"
+              dates="Sort by Dates"
+            />
+          ),
+          AccordionSummaryChild: (
+            <AccordionSummaryComponent expandedProp={expanded} />
+          ),
+        }}
       />
       <MapComponent
         speciesChecked={speciesChecked}
