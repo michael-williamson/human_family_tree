@@ -1,0 +1,112 @@
+.infoWindowContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(../../media/mapComponentMedia/savannah.jpg);
+  background-size: cover;
+  width: 200px;
+  height: 400px;
+  padding: 25px 0;
+  position: relative;
+}
+.overlayContainer {
+  background: #000000b8;
+  width: inherit;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.title {
+  color: #d78800;
+  text-shadow: 7px 6px 2px rgb(0 0 0 / 40%);
+}
+.displayImage {
+  height: 100px;
+  width: 100px;
+  border-radius: 8px;
+}
+.imgAttribution {
+  color: white;
+  font-size: 0.5rem;
+}
+a {
+  color: white;
+}
+
+.infoLinesContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* padding: 10px 22px; */
+  background: #ffe4c447;
+  font-weight: bold;
+  border-radius: 4px;
+  box-shadow: inset 1px 1px 19px 5px rgb(213 152 0 / 8%);
+  border: 5px rgb(255 255 255 / 24%);
+  border-style: ridge;
+}
+.infoLines {
+  color: #f4ffc5;
+  display: flex;
+  align-items: center;
+  box-shadow: rgb(215 136 0 / 8%) 10px 2px 20px 5px;
+  background-color: rgb(215 136 0 / 8%);
+}
+.itemProps {
+  color: #d78800;
+  font-size: 1.5rem;
+  padding-left: 9px;
+  white-space: nowrap;
+}
+.speciesText {
+  font-style: italic;
+  font-size: 1.25rem;
+  font-weight: 400px;
+  color: rgb(255 221 162);
+  font-family: none;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .infoWindowContainer {
+    width: 400px;
+    height: 620px;
+    padding: 25px 0;
+    position: relative;
+  }
+  .displayImage {
+    height: 200px;
+    width: 200px;
+    border-radius: 8px;
+  }
+  .title {
+    font-size: 2.3rem;
+  }
+  .infoLinesContainer {
+    width: 70%;
+    margin: 13px auto 0px;
+    padding: 10px 22px;
+    font-size: 1rem;
+    border: 5px rgb(255 255 255 / 24%);
+    border-style: ridge;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+}

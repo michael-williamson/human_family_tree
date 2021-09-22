@@ -6,22 +6,11 @@ import { datesCategoryObj } from "../../data/listArrays";
 //icons
 import { imageFiles } from "../../data/listArrays";
 //styles
-import { styles as markerPopulateStyles } from "../componentStyle/MarkerPopulateStyles";
+import "../componentStyle/MarkerPopulateStyles.css";
 
 export const MarkerPopulate = (props) => {
   const [specimen, setSpecimen] = useState(null);
   const { speciesChecked, datesChecked } = props;
-  const {
-    infoWindowContainer,
-    overlayContainer,
-    title,
-    displayImage,
-    imgAttribution,
-    infoLinesContainer,
-    infoLines,
-    itemProps,
-    speciesText,
-  } = markerPopulateStyles;
 
   const dateComparer = (compareDateGreater, compareDateLesser, inputDate) => {
     return compareDateGreater >= inputDate && inputDate >= compareDateLesser;
@@ -71,35 +60,39 @@ export const MarkerPopulate = (props) => {
               position={{ lat: item.gpsCoor.lat, lng: item.gpsCoor.long }}
               onCloseClick={() => setSpecimen(null)}
             >
-              <div style={infoWindowContainer}>
-                <div style={overlayContainer}>
-                  <h1 style={title}>{item.name}</h1>
+              <div className="infoWindowContainer">
+                <div className="overlayContainer">
+                  <h1 className="title">{item.name}</h1>
                   <img
-                    style={displayImage}
+                    className="displayImage"
                     src={item.linksToPhotos[0]}
                     alt={item.name}
                   />
-                  <div style={imgAttribution}>
+                  <div className="imgAttribution">
                     {ReactHtmlParser(item.linksToPhotos[1])}
                   </div>
-                  <div style={infoLinesContainer}>
-                    <p style={infoLines}>
-                      Location: <span style={itemProps}>{item.city}</span>
+                  <div className="infoLinesContainer">
+                    <p className="infoLines">
+                      Location: <span className="itemProps">{item.city}</span>
                     </p>
-                    <p style={infoLines}>
-                      Country: <span style={itemProps}>{item.country}</span>
+                    <p className="infoLines">
+                      Country: <span className="itemProps">{item.country}</span>
                     </p>
-                    <p style={infoLines}>
-                      Continent: <span style={itemProps}>{item.continent}</span>
+                    <p className="infoLines">
+                      Continent:{" "}
+                      <span className="itemProps">{item.continent}</span>
                     </p>
-                    <p style={infoLines}>
-                      Species:{" "}
-                      <span style={{ ...itemProps, ...speciesText }}>
-                        Homo {item.species}
-                      </span>
+                    <p className="infoLines">
+                      Species: <span className="">Homo {item.species}</span>
                     </p>
-                    <p style={infoLines}>
-                      Date: <span style={itemProps}>{item.date}</span>
+                    <p className="infoLines">
+                      Date: <span className="itemProps">{item.date}</span>
+                    </p>
+                    <p className="infoLines">
+                      More Info:
+                      <a href={item.linkToInfo}>
+                        <span className="">Click Here</span>
+                      </a>
                     </p>
                   </div>
                 </div>
