@@ -4,9 +4,10 @@ import React from "react";
 export const CheckboxMapperComp = (props) => {
   const { MuiGridCheckboxMainContainer } = props;
   const { MuiGridCheckboxItemMainContainer } = props;
+  const { classesMain } = props;
   const { classesItemMain } = props;
   const { classesItem } = props;
-  const { selectAllBtn } = props;
+  const { Button } = props;
   const { MuiGridCheckboxItemContainer } = props;
   const { MuiFormControlLabel } = props;
   const { MuiCheckboxComp } = props;
@@ -43,9 +44,9 @@ export const CheckboxMapperComp = (props) => {
   });
 
   return (
-    <Grid {...MuiGridCheckboxMainContainer}>
+    <Grid {...MuiGridCheckboxMainContainer} className={classesMain?.root}>
       <Grid container item>
-        <Grid item>{selectAllBtn}</Grid>
+        <Grid item>{Button}</Grid>
       </Grid>
       <Grid
         {...MuiGridCheckboxItemMainContainer}

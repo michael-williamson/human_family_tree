@@ -1,6 +1,8 @@
 import React from "react";
 import { MarkerPopulate } from "./MarkerPopulate";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
+import { PolygonComponent } from "../PolygonComponent";
+import { arabiaPaths, saharaPaths } from "./pathsForPolygon";
 const containerStyle = {
   width: "100%",
   height: "100vh",
@@ -13,6 +15,7 @@ const center = {
 
 function MapComponent(props) {
   const { REACT_APP_GOOGLE_API } = process.env;
+  const { saharaPolygon, arabiaPolygon } = props;
 
   return (
     <LoadScript googleMapsApiKey={REACT_APP_GOOGLE_API}>
@@ -25,6 +28,8 @@ function MapComponent(props) {
       >
         {/* Child components, such as markers, info windows, etc. */}
         <MarkerPopulate {...props} />
+        {saharaPolygon ? <PolygonComponent paths={saharaPaths} /> : null}
+        {arabiaPolygon ? <PolygonComponent paths={arabiaPaths} /> : null}
         <></>
       </GoogleMap>
     </LoadScript>
