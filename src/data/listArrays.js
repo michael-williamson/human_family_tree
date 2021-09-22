@@ -46,6 +46,9 @@ export const datesCategoryProps = [
   "10,000 - present",
 ];
 
+export const greenSaharaDates = ["placeholder"];
+export const greenArabiaDates = ["placeholder"];
+
 export const datesCategoryObj = {
   "> 2,000,000": { greater: 4000000, lesser: 2000000 },
   "2,000,000 - 1,500,000": { greater: 2000000, lesser: 1500000 },
