@@ -306,6 +306,24 @@
     },
     {
         "species": "erectus",
+        "city": "Tighennif",
+        "country": "Algeria",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": 35.416667,
+            "long": 0.333333
+        },
+        "date": "700tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/9/91/Atlanthropus_mauritanicus.jpg",
+            "<a href=\"https://commons.wikimedia.org/wiki/File:Atlanthropus_mauritanicus.jpg\">Locutus Borg</a>, Public domain, via Wikimedia Commons"
+        ],
+        "linkToInfo": "https://www.britannica.com/place/Ternifine",
+        "name": "Ternifine",
+        "wholeNumberYears": 700000
+    },
+    {
+        "species": "erectus",
         "city": "Longtandau Cave",
         "country": "China",
         "continent": "Asia",
@@ -336,6 +354,24 @@
         ],
         "name": "Gawis Cranium",
         "wholeNumberYears": 500000
+    },
+    {
+        "species": "erectus",
+        "city": "Nanjing(Hulu cave)",
+        "country": "China",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 32.0614,
+            "long": 118.7636
+        },
+        "date": "300tya",
+        "linksToPhotos": [
+            "",
+            ""
+        ],
+        "linkToInfo": "https://www.pnas.org/content/116/20/9820",
+        "name": "Nanjing Man",
+        "wholeNumberYears": 300000
     },
     {
         "species": "erectus",
@@ -404,6 +440,24 @@
         ],
         "name": "CCH-1",
         "wholeNumberYears": 67000
+    },
+    {
+        "species": "antecessor",
+        "city": "Sierra de Atapuerca",
+        "country": "Spain",
+        "continent": "Europe",
+        "gpsCoor": {
+            "lat": 42.3525,
+            "long": -3.518333
+        },
+        "date": "930tya-780tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/e/ee/Reproducciones_del_cr%C3%A1neo_%28frontal_ATD6-15_%29_y_mand%C3%ADbula_%28parte_del_esqueleto_facial_ATD6-69%29_del_Ni%C3%B1o_de_la_Gran_Dolina_%28Hom%C3%ADnido_3%29._Museo_Arqueol%C3%B3gico_Nacional_de_Espa%C3%B1a.jpg",
+            "<a href=\"https://commons.wikimedia.org/wiki/File:Reproducciones_del_cr%C3%A1neo_(frontal_ATD6-15_)_y_mand%C3%ADbula_(parte_del_esqueleto_facial_ATD6-69)_del_Ni%C3%B1o_de_la_Gran_Dolina_(Hom%C3%ADnido_3)._Museo_Arqueol%C3%B3gico_Nacional_de_Espa%C3%B1a.jpg\">Jerónimo Roure Pérez</a>, <a href=\"https://creativecommons.org/licenses/by-sa/4.0\">CC BY-SA 4.0</a>, via Wikimedia Commons"
+        ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Homo_antecessor",
+        "name": "Boy of Gran Dolina",
+        "wholeNumberYears": 780000
     },
     {
         "species": "heidelbergensis",
@@ -557,6 +611,24 @@
         ],
         "name": "Bodo",
         "wholeNumberYears": 600000
+    },
+    {
+        "species": "heidelbergensis",
+        "city": "Hopefield",
+        "country": "South Africa",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": -33.091667,
+            "long": 18.238889
+        },
+        "date": "500tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/1/13/Saldanha_man-Homo_heidelbergensis.jpg",
+            "<a href=\"https://commons.wikimedia.org/wiki/File:Saldanha_man-Homo_heidelbergensis.jpg\">Ryan Somma from Occoquan, USA</a>, <a href=\"https://creativecommons.org/licenses/by-sa/2.0\">CC BY-SA 2.0</a>, via Wikimedia Commons"
+        ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Saldanha_man",
+        "name": "Saldanha man",
+        "wholeNumberYears": 500000
     },
     {
         "species": "heidelbergensis",
@@ -967,6 +1039,42 @@
     },
     {
         "species": "sapiens",
+        "city": "Apidima Cave",
+        "country": "Greece",
+        "continent": "Europe",
+        "gpsCoor": {
+            "lat": 36.661389,
+            "long": 22.363333
+        },
+        "date": "210tya",
+        "linksToPhotos": [
+            "",
+            ""
+        ],
+        "linkToInfo": "https://anthropology.net/2019/07/11/apidima-1-a-new-look-at-old-skull/",
+        "name": "Apidima 1",
+        "wholeNumberYears": 210000
+    },
+    {
+        "species": "sapiens",
+        "city": "Misliya Cave",
+        "country": "Israel",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 32.7413,
+            "long": 34.9724
+        },
+        "date": "194tya-177tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/e/e5/Misliya_Cave.JPG",
+            "<a href=\"https://commons.wikimedia.org/wiki/File:Misliya_Cave.JPG\">Reuveny</a>, <a href=\"https://creativecommons.org/licenses/by-sa/3.0\">CC BY-SA 3.0</a>, via Wikimedia Commons"
+        ],
+        "linkToInfo": "https://anthropology.net/2018/01/26/the-misliya-specimen-pushes-homo-sapiens-out-of-africa-by-more-than-50000-years/",
+        "name": "Misliya 1",
+        "wholeNumberYears": 194000
+    },
+    {
+        "species": "sapiens",
         "city": "Omo River",
         "country": "Ethiopia",
         "continent": "Africa",
@@ -979,6 +1087,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/0/01/Omo_Kibish_-_MCN_4152_%28cropped%29.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Omo_Kibish_-_MCN_4152_(cropped).jpg\">GuillaumeG</a>, <a href=\"https://creativecommons.org/licenses/by-sa/4.0\">CC BY-SA 4.0</a>, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Omo_remains",
         "name": "Omo 1",
         "wholeNumberYears": 195000
     },
@@ -996,6 +1105,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/b/bc/LH_18_Replica_02.JPG",
             "<a href=\"https://commons.wikimedia.org/wiki/File:LH_18_Replica_02.JPG\">Nachosan</a>, <a href=\"https://creativecommons.org/licenses/by-sa/3.0\">CC BY-SA 3.0</a>, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://humanorigins.si.edu/evidence/human-fossils/fossils/ngaloba-lh-18",
         "name": "Ngaloba LH 18",
         "wholeNumberYears": 120000
     },
@@ -1010,9 +1120,12 @@
         },
         "date": "120tya-80tya",
         "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/6/6a/Skhul.JPG",
+            "<a href=\"https://commons.wikimedia.org/wiki/File:Skhul.JPG\">Wapondaponda</a>, <a href=\"https://creativecommons.org/licenses/by-sa/3.0\">CC BY-SA 3.0</a>, via Wikimedia Commons",
             "https://upload.wikimedia.org/wikipedia/commons/8/8f/Homo_Neanderthalensis-MGL_52625-P5030044-black.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Homo_Neanderthalensis-MGL_52625-P5030044-black.jpg\">Rama</a>, <a href=\"https://creativecommons.org/licenses/by-sa/3.0/fr/deed.en\">CC BY-SA 3.0 FR</a>, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Skhul_and_Qafzeh_hominins",
         "name": "Skhūl V",
         "wholeNumberYears": 120000
     },
@@ -1030,6 +1143,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/1/15/Singa._Homo_sapiens.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Singa._Homo_sapiens.jpg\">Ryan Somma from Occoquan, USA</a>, <a href=\"https://creativecommons.org/licenses/by-sa/2.0\">CC BY-SA 2.0</a>, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://humanorigins.si.edu/evidence/human-fossils/fossils/singa",
         "name": "Singa",
         "wholeNumberYears": 150000
     },
@@ -1047,6 +1161,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/a/aa/Qafzeh_6_cast.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Qafzeh_6_cast.jpg\">Nicolas Perrault III</a>, CC0, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Skhul_and_Qafzeh_hominins",
         "name": "Qafzeh 6",
         "wholeNumberYears": 100000
     },
@@ -1064,6 +1179,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/8/86/Qafzeh.JPG",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Qafzeh.JPG\">Wapondaponda</a>, <a href=\"https://creativecommons.org/licenses/by-sa/3.0\">CC BY-SA 3.0</a>, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Skhul_and_Qafzeh_hominins",
         "name": "Qafzeh 9",
         "wholeNumberYears": 100000
     },
@@ -1081,6 +1197,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/d/d6/Qafzeh_11_child_skull_cast.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Qafzeh_11_child_skull_cast.jpg\">Nicolas Perrault III</a>, CC0, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Skhul_and_Qafzeh_hominins",
         "name": "Qafzeh 11",
         "wholeNumberYears": 100000
     },
@@ -1098,6 +1215,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/a/ab/TPL1_Human_fossil_remains.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:TPL1_Human_fossil_remains.jpg\">Demeter F, Shackelford L, Westaway K, Duringer P, Bacon A-M, et al.</a>, CC0, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Tam_Pa_Ling_Cave",
         "name": "TP-1",
         "wholeNumberYears": 63000
     },
@@ -1115,6 +1233,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/c/c3/Liujiang_cave_skull-c._Homo_Sapiens_68%2C000_Years_Old.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Liujiang_cave_skull-c._Homo_Sapiens_68,000_Years_Old.jpg\">Ryan Somma from Occoquan, USA</a>, <a href=\"https://creativecommons.org/licenses/by-sa/2.0\">CC BY-SA 2.0</a>, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Liujiang_man",
         "name": "Liujiang",
         "wholeNumberYears": 68000
     },
@@ -1132,8 +1251,27 @@
             "https://upload.wikimedia.org/wikipedia/commons/f/fc/Mungo_Man.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Mungo_Man.jpg\">James Maurice Bowler</a>, <a href=\"https://creativecommons.org/licenses/by-sa/3.0\">CC BY-SA 3.0</a>, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Lake_Mungo_remains",
         "name": "Mungo Man",
         "wholeNumberYears": 60000
+    },
+    {
+        "species": "sapiens",
+        "city": "Manot cave",
+        "country": "Israel",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 33.035,
+            "long": 35.193333
+        },
+        "date": "55tya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/3/3e/MANOT_CAVE_EXCAVATION.JPG",
+            "<a href=\"https://commons.wikimedia.org/wiki/File:MANOT_CAVE_EXCAVATION.JPG\">Manot Cave Expedition משלחת החפירות במערת מנות</a>, <a href=\"https://creativecommons.org/licenses/by-sa/3.0\">CC BY-SA 3.0</a>, via Wikimedia Commons"
+        ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Manot_1",
+        "name": "Manot 1",
+        "wholeNumberYears": 55000
     },
     {
         "species": "sapiens",
@@ -1149,6 +1287,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/9/96/Niah_Cave_skull-r._Homo_Sapiens_45%2C000_to_39%2C000_Years_Old.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Niah_Cave_skull-r._Homo_Sapiens_45,000_to_39,000_Years_Old.jpg\">Ryan Somma from Occoquan, USA</a>, <a href=\"https://creativecommons.org/licenses/by-sa/2.0\">CC BY-SA 2.0</a>, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://humanorigins.si.edu/evidence/human-fossils/fossils/niah-cave",
         "name": "Niah Cave",
         "wholeNumberYears": 45000
     },
@@ -1166,6 +1305,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/0/0b/Hofmeyr_Skull.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Hofmeyr_Skull.jpg\">Frederick E. Grine</a>, <a href=\"http://creativecommons.org/licenses/by-sa/3.0/\">CC BY-SA 3.0</a>, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Hofmeyr_Skull",
         "name": "Hofmeyr",
         "wholeNumberYears": 39000
     },
@@ -1183,6 +1323,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/8/80/Wadjak_I%2C_cast.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Wadjak_I,_cast.jpg\">Midori</a>, <a href=\"https://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Wajak_crania",
         "name": "Wajak crania",
         "wholeNumberYears": 37000
     },
@@ -1200,7 +1341,8 @@
             "https://upload.wikimedia.org/wikipedia/commons/e/e0/Lake_Mungo_the_Wall_of_China-.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Lake_Mungo_the_Wall_of_China-.jpg\">DOMENICO STALLO</a>, <a href=\"https://creativecommons.org/licenses/by-sa/4.0\">CC BY-SA 4.0</a>, via Wikimedia Commons"
         ],
-        "name": "Mungo Woman",
+        "linkToInfo": "https://en.wikipedia.org/wiki/Lake_Mungo_remains",
+        "name": "Mungo Lady",
         "wholeNumberYears": 26265
     },
     {
@@ -1217,6 +1359,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/b/b5/Homo_sapiens_sapiens_%282238258674%29.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Homo_sapiens_sapiens_(2238258674).jpg\">Ryan Somma from Occoquan, USAVisit my blog at ideonexus.com</a>, <a href=\"https://creativecommons.org/licenses/by-sa/2.0\">CC BY-SA 2.0</a>, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/P%C5%99edmost%C3%AD_3",
         "name": "Předmostí 3",
         "wholeNumberYears": 26000
     },
@@ -1234,6 +1377,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/f/f5/Cro-Magnon.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Cro-Magnon.jpg\">120</a>, <a href=\"http://creativecommons.org/licenses/by-sa/3.0/\">CC BY-SA 3.0</a>, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Cro-Magnon_rock_shelter#Cro-Magnon_1",
         "name": "Cro-Magnon 1",
         "wholeNumberYears": 30000
     },
@@ -1251,6 +1395,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/c/c0/Lapa_Vermelha_IV_Hominid_1-Homo_Sapiens_11%2C500_Years_Old.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Lapa_Vermelha_IV_Hominid_1-Homo_Sapiens_11,500_Years_Old.jpg\">Ryan Somma from Occoquan, USA</a>, <a href=\"https://creativecommons.org/licenses/by-sa/2.0\">CC BY-SA 2.0</a>, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://humanorigins.si.edu/evidence/human-fossils/fossils/lapa-vermelha-iv-hominid-1",
         "name": "Lapa Vermelha IV Hominid 1",
         "wholeNumberYears": 11000
     },
@@ -1268,6 +1413,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/6/67/La_Brea_woman.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:La_Brea_woman.jpg\">Franko Fonseca from Redondo Beach, USA</a>, <a href=\"https://creativecommons.org/licenses/by-sa/2.0\">CC BY-SA 2.0</a>, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/La_Brea_Woman",
         "name": "La Brea Woman",
         "wholeNumberYears": 10220
     },
@@ -1285,6 +1431,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/9/93/Homo_sapiens_Combe_Capelle.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Homo_sapiens_Combe_Capelle.jpg\">Dr. Günter Bechly</a>, <a href=\"https://creativecommons.org/licenses/by-sa/3.0\">CC BY-SA 3.0</a>, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Combe-Capelle",
         "name": "Combe-Capelle",
         "wholeNumberYears": 9500
     },
@@ -1302,6 +1449,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/b/b5/Em_-_Cheddar_Man_-_1.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Em_-_Cheddar_Man_-_1.jpg\">Emőke Dénes</a>, <a href=\"https://creativecommons.org/licenses/by-sa/4.0\">CC BY-SA 4.0</a>, via Wikimedia Common"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Cheddar_Man",
         "name": "Cheddar Man",
         "wholeNumberYears": 9100
     },
@@ -1319,6 +1467,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/4/40/Kennewick_Man.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Kennewick_Man.jpg\">Ghedoghedo</a>, <a href=\"https://creativecommons.org/licenses/by-sa/4.0\">CC BY-SA 4.0</a>, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Kennewick_Man",
         "name": "Kennewick Man",
         "wholeNumberYears": 9000
     },
@@ -1336,6 +1485,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/d/d0/Mnwomanskull.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Mnwomanskull.jpg\">Possibly Dr. Albert Ernest Jenks</a>, Public domain, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Minnesota_Woman",
         "name": "Minnesota Woman",
         "wholeNumberYears": 8000
     },
@@ -1353,6 +1503,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/4/42/Tepexpan_1.Homo_Sapiens_4%2C700_Years_Old.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Tepexpan_1.Homo_Sapiens_4,700_Years_Old.jpg\">Ryan Somma from Occoquan, USA</a>, <a href=\"https://creativecommons.org/licenses/by-sa/2.0\">CC BY-SA 2.0</a>, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Tepexpan_man",
         "name": "Tepexpan 1",
         "wholeNumberYears": 4700
     },
@@ -1370,6 +1521,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/e/ee/Otzi-Quinson.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Otzi-Quinson.jpg\">120</a>, <a href=\"https://creativecommons.org/licenses/by-sa/3.0\">CC BY-SA 3.0</a>, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/%C3%96tzi",
         "name": "The Iceman",
         "wholeNumberYears": 3300
     },
@@ -1387,6 +1539,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/4/4c/Kow_Swamp1-Homo_sapiens.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Kow_Swamp1-Homo_sapiens.jpg\">Ryan Somma from Occoquan, USA</a>, <a href=\"https://creativecommons.org/licenses/by-sa/2.0\">CC BY-SA 2.0</a>, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Kow_Swamp_Archaeological_Site",
         "name": "Kow Swamp",
         "wholeNumberYears": 13000
     },
@@ -1404,6 +1557,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/6/64/Lat%C3%A9nium-cr%C3%A2ne-bichon.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Lat%C3%A9nium-cr%C3%A2ne-bichon.jpg\">Laténium</a>, <a href=\"https://creativecommons.org/licenses/by-sa/3.0\">CC BY-SA 3.0</a>, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Grotte_du_Bichon",
         "name": "Bichon Man",
         "wholeNumberYears": 13770
     },
@@ -1418,9 +1572,10 @@
         },
         "date": "13.5tya",
         "linksToPhotos": [
-            "",
+            "https://upload.wikimedia.org/wikipedia/en/c/c9/Talgai_Skull_front.jpg",
             ""
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Talgai_Skull",
         "name": "Talgai Skull",
         "wholeNumberYears": 13500
     },
@@ -1438,6 +1593,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/d/d6/Oase_2-Homo_Sapiens_2.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Oase_2-Homo_Sapiens_2.jpg\">Ryan SommaNachosan</a>, <a href=\"https://creativecommons.org/licenses/by-sa/2.0\">CC BY-SA 2.0</a>, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Pe%C8%99tera_cu_Oase#Oase_2_and_3",
         "name": "Oase 2",
         "wholeNumberYears": 41500
     },
@@ -1455,6 +1611,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/4/4f/Homo_Sapiens_160%2C000_Years_Old_%284697753017%29.jpg",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Homo_Sapiens_160,000_Years_Old_(4697753017).jpg\">Ryan Somma from Occoquan, USA</a>, <a href=\"https://creativecommons.org/licenses/by-sa/2.0\">CC BY-SA 2.0</a>, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Jebel_Irhoud",
         "name": "Jebel Irhoud",
         "wholeNumberYears": 300000
     },
@@ -1472,6 +1629,7 @@
             "https://upload.wikimedia.org/wikipedia/commons/9/9b/Homo_Sapiens_Idaltu.JPG",
             "<a href=\"https://commons.wikimedia.org/wiki/File:Homo_Sapiens_Idaltu.JPG\">Alessandrosmerilli</a>, Public domain, via Wikimedia Commons"
         ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Herto_Man",
         "name": "Herto Man",
         "wholeNumberYears": 160000
     },
