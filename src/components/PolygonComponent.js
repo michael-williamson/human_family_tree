@@ -2,23 +2,20 @@ import React from "react";
 import { Polygon } from "@react-google-maps/api";
 
 export const PolygonComponent = (props) => {
-  const { paths } = props;
+  const { paths, fillColor, editable, clickable, draggable, strokeWeight } =
+    props;
   const options = {
-    fillColor: "rgb(81 101 74 / 75%)",
+    fillColor: fillColor,
     fillOpacity: 1,
     strokeColor: "green",
     strokeOpacity: 1,
-    strokeWeight: 0,
-    clickable: false,
-    draggable: false,
-    editable: false,
+    strokeWeight: strokeWeight || 0,
+    clickable: clickable || false,
+    draggable: draggable || false,
+    editable: editable || false,
     geodesic: false,
     zIndex: 1,
   };
-
-  // const onLoad = (polygon) => {
-  //   console.log("polygon: ", polygon);
-  // };
 
   return (
     <div>
