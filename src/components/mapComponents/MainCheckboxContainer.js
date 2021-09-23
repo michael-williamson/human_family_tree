@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { speciesArr, datesCategoryProps } from "../../data/listArrays";
 //from helper functions
-import { speciesCheckedObject, datesCheckedObject } from "../helperFunctions";
+import { checkedObject, filterIceAgeDates } from "../helperFunctions";
 import { Typography, Button, Grid, makeStyles } from "@material-ui/core";
 import TimerIcon from "@material-ui/icons/Timer";
 import { IconImagePngComp } from "../reusableComponents/IconImagePngComp";
@@ -33,6 +33,7 @@ export const MainCheckboxContainer = (props) => {
   const { species, dates } = props;
   const { datesChecked, setDatesChecked } = props;
   const { speciesChecked, setSpeciesChecked } = props;
+  const { iceAgeChecked, setIceAgeChecked } = props;
 
   const [selectAllSpecies, setSelectAllSpecies] = useState(true);
   const [selectAllDates, setSelectAllDates] = useState(true);
@@ -59,6 +60,9 @@ export const MainCheckboxContainer = (props) => {
     });
   };
   const handleDateChange = (event) => {
+    let checked = event.target.checked;
+    let currentProp = event.target.name;
+    filterIceAgeDates(checked, iceAgeChecked, setIceAgeChecked, currentProp);
     setDatesChecked({
       ...datesChecked,
       [event.target.name]: event.target.checked,
@@ -67,14 +71,14 @@ export const MainCheckboxContainer = (props) => {
 
   const handleSelectAll = (prop) => {
     if (prop === "species" && !selectAllSpecies) {
-      setSpeciesChecked(speciesCheckedObject(true));
+      setSpeciesChecked(checkedObject(true, speciesArr));
     } else if (prop === "species" && selectAllSpecies) {
-      setSpeciesChecked(speciesCheckedObject(false));
+      setSpeciesChecked(checkedObject(false, speciesArr));
     }
     if (prop === "dates" && !selectAllDates) {
-      setDatesChecked(datesCheckedObject(true));
+      setDatesChecked(checkedObject(true, datesCategoryProps));
     } else if (prop === "dates" && selectAllDates) {
-      setDatesChecked(datesCheckedObject(false));
+      setDatesChecked(checkedObject(false, datesCategoryProps));
     }
   };
   return (
