@@ -3,6 +3,7 @@ import ReactHtmlParser from "react-html-parser";
 import { Marker, InfoWindow } from "@react-google-maps/api";
 import anthroData from "../../data/anthroData.json";
 import { datesCategoryObj } from "../../data/listArrays";
+import { dateComparer } from "../helperFunctions";
 //icons
 import { imageFiles } from "../../data/listArrays";
 //styles
@@ -11,10 +12,6 @@ import "../componentStyle/MarkerPopulateStyles.css";
 export const MarkerPopulate = (props) => {
   const [specimen, setSpecimen] = useState(null);
   const { speciesChecked, datesChecked } = props;
-
-  const dateComparer = (compareDateGreater, compareDateLesser, inputDate) => {
-    return compareDateGreater >= inputDate && inputDate >= compareDateLesser;
-  };
 
   const dateComparerControl = (datesChecked, inputDate, dateComparer) => {
     const resultsArr = [];

@@ -1,28 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import MapComponent from "./MapComponent";
 import AccordionComp from "../reusableComponents/AccordionComp";
 import { Typography, Grid } from "@material-ui/core";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import { MainCheckboxContainer } from "./MainCheckboxContainer";
-import { speciesCheckedObject, datesCheckedObject } from "../helperFunctions";
+import { checkedObject } from "../helperFunctions";
 import { TimeLineEventsComponent } from "./TimeLineEventsComponent";
+import {
+  datesCategoryProps,
+  greenArabiaDates,
+  greenSaharaDates,
+  iceAgeDatesArr,
+  speciesArr,
+} from "../../data/listArrays";
 
 export const MapPage = () => {
-  const [speciesDateExpanded, setSpeciesDateExpanded] = useState("");
+  const [speciesDateExpanded, setSpeciesDateExpanded] = useState(false);
   const [timeLineEventsExpanded, setTimeLineEventsExpanded] = useState(false);
   const [speciesChecked, setSpeciesChecked] = useState(
-    speciesCheckedObject(true)
+    checkedObject(true, speciesArr)
   );
-  const [datesChecked, setDatesChecked] = useState(datesCheckedObject(true));
+  const [datesChecked, setDatesChecked] = useState(
+    checkedObject(true, datesCategoryProps)
+  );
+
   const [greenSaharaChecked, setGreenSaharaChecked] = useState(
-    datesCheckedObject(true)
+    checkedObject(true, greenSaharaDates)
   );
   const [greenArabiaChecked, setGreenArabiaChecked] = useState(
-    datesCheckedObject(true)
+    checkedObject(true, greenArabiaDates)
   );
+
+  const [iceAgeChecked, setIceAgeChecked] = useState(
+    checkedObject(false, iceAgeDatesArr)
+  );
+  const [northAmericanPolygon, setNorthAmericanPolygon] = useState(false);
+  const [europeanPolygon, setEuropeanPolygon] = useState(false);
 
   const [arabiaPolygon, setArabiaPolygon] = useState(false);
   const [saharaPolygon, setSaharaPolygon] = useState(false);
+
+  useMemo(() => {
+    const arrVals = Object.values(iceAgeChecked);
+    setNorthAmericanPolygon(arrVals.find((item) => item === true));
+    setEuropeanPolygon(arrVals.find((item) => item === true));
+  }, [iceAgeChecked]);
 
   const AccordionSummaryComponent = (props) => {
     const { expanded, toggleTextExpanded, toggleTextCollapsed } = props;
@@ -51,14 +73,23 @@ export const MapPage = () => {
             <TimeLineEventsComponent
               item1="Green Sahara Time Periods"
               item2="Green Arabia Time Periods"
+              item3="Ice Age Time Periods"
               checkedState1={greenSaharaChecked}
               checkedState2={greenArabiaChecked}
+              checkedState3={iceAgeChecked}
               setCheckedState1={setGreenSaharaChecked}
               setCheckedState2={setGreenArabiaChecked}
+              setCheckedState3={setIceAgeChecked}
               showComponent1={saharaPolygon}
               setShowComponent1={setSaharaPolygon}
               showComponent2={arabiaPolygon}
               setShowComponent2={setArabiaPolygon}
+              showComponent3={northAmericanPolygon}
+              setShowComponent3={setNorthAmericanPolygon}
+              showComponent4={europeanPolygon}
+              setShowComponent4={setEuropeanPolygon}
+              datesChecked={datesChecked}
+              setDatesChecked={setDatesChecked}
             />
           ),
           AccordionSummaryChild: (
@@ -83,6 +114,8 @@ export const MapPage = () => {
               setSpeciesChecked={setSpeciesChecked}
               datesChecked={datesChecked}
               setDatesChecked={setDatesChecked}
+              iceAgeChecked={iceAgeChecked}
+              setIceAgeChecked={setIceAgeChecked}
             />
           ),
           AccordionSummaryChild: (
@@ -101,6 +134,8 @@ export const MapPage = () => {
         setDatesChecked={setDatesChecked}
         saharaPolygon={saharaPolygon}
         arabiaPolygon={arabiaPolygon}
+        northAmericanPolygon={northAmericanPolygon}
+        europeanPolygon={europeanPolygon}
       />
     </div>
   );

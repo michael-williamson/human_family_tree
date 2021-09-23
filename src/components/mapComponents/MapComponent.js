@@ -1,15 +1,21 @@
 import React from "react";
-import { GoogleMap, useLoadScript } from "@react-google-maps/api";
+import {
+  // DrawingManager,
+  GoogleMap,
+  useLoadScript,
+} from "@react-google-maps/api";
 import { MarkerPopulate } from "./MarkerPopulate";
 
 import { PolygonComponent } from "../PolygonComponent";
 import {
   arabiaPaths,
-  iceAgeEuropePaths,
+  iceAgeEurope2Paths,
   laurentideIceSheetPaths,
   saharaPaths,
 } from "./pathsForPolygon";
 import { CircularProgress } from "@material-ui/core";
+import { librariesArr } from "../../data/listArrays";
+// import { onDrawingManagerLoad, onPolygonComplete } from "../helperFunctions";
 const containerStyle = {
   width: "100%",
   height: "100vh",
@@ -24,14 +30,17 @@ const { REACT_APP_GOOGLE_API } = process.env;
 
 const options = { mapTypeId: "satellite", gestureHandling: "auto" };
 
-const libraryArr = ["drawing"];
-
 function MapComponent(props) {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: REACT_APP_GOOGLE_API,
-    libraries: libraryArr,
+    libraries: librariesArr,
   });
-  const { saharaPolygon, arabiaPolygon } = props;
+  const {
+    saharaPolygon,
+    arabiaPolygon,
+    northAmericanPolygon,
+    europeanPolygon,
+  } = props;
 
   if (loadError) {
     return <div>Map cannot be loaded right now, sorry.</div>;
@@ -64,14 +73,22 @@ function MapComponent(props) {
             fillColor="rgb(81 101 74 / 75%)"
           />
         ) : null}
-        <PolygonComponent
-          paths={iceAgeEuropePaths}
-          fillColor="rgb(246 246 246 / 60%)"
-        />
-        <PolygonComponent
-          paths={laurentideIceSheetPaths}
-          fillColor="rgb(246 246 246 / 60%)"
-        />
+        {!europeanPolygon || (
+          <PolygonComponent
+            paths={iceAgeEurope2Paths}
+            fillColor="rgb(246 246 246 / 60%)"
+          />
+        )}
+        {!northAmericanPolygon || (
+          <PolygonComponent
+            paths={laurentideIceSheetPaths}
+            fillColor="rgb(246 246 246 / 60%)"
+          />
+        )}
+        {/* <DrawingManager
+          onLoad={onDrawingManagerLoad}
+          onPolygonComplete={onPolygonComplete}
+        /> */}
       </GoogleMap>
     );
   }
