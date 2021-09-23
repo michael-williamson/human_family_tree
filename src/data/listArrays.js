@@ -12,6 +12,8 @@ import {
   beardedManIconLitePurple,
 } from "../media/index";
 
+export const librariesArr = ["drawing"];
+
 export const speciesArr = [
   "habilis",
   "rudolfensis",
@@ -82,3 +84,26 @@ export const imageFiles = {
   luzonensis: beardedManIconOrange,
   longi: beardedManIconLitePurple,
 };
+
+export const northAmericaGlacialTimeline = {
+  "900,000 - 780,000": { greater: 900000, lesser: 780000 },
+  "640,000 - 500,000": { greater: 640000, lesser: 500000 },
+  "350,000 - 140,000": { greater: 350000, lesser: 140000 },
+  "60,000 - 13,000": { greater: 60000, lesser: 13000 },
+};
+
+export const europeanGlacialTimeline = {
+  "1,500,000 - 1,300,000": { greater: 1500000, lesser: 1300000 },
+  "900,000 - 780,000": { greater: 900000, lesser: 780000 },
+  "640,000 - 500,000": { greater: 640000, lesser: 500000 },
+  "350,000 - 140,000": { greater: 350000, lesser: 140000 },
+  "60,000 - 13,000": { greater: 60000, lesser: 13000 },
+};
+
+export const iceAgeDatesArr = [
+  "1,500,000 - 1,300,000",
+  "900,000 - 780,000",
+  "640,000 - 500,000",
+  "350,000 - 140,000",
+  "60,000 - 13,000",
+];
