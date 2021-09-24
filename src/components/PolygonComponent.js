@@ -13,7 +13,7 @@ export const PolygonComponent = (props) => {
     clickable: clickable || false,
     draggable: draggable || false,
     editable: editable || false,
-    geodesic: false,
+    geodesic: true,
     zIndex: 1,
   };
 

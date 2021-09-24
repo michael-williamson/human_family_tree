@@ -12,18 +12,27 @@ const theme = createTheme({
     },
     secondary: {
       //brown
-      main: "#a52a2a",
+      // main: "#a52a2a",
+      main: "#bc5829",
     },
     error: {
       main: red.A400,
     },
     info: {
-      main: "#fff",
+      main: "#fffcaa",
     },
     background: {
       default: "#fff",
     },
   },
 });
+
+theme.typography.h5 = {
+  fontSize: "1rem",
+};
+
+theme.typography.h4 = {
+  fontSize: "1.5rem",
+};
 
 export default theme;

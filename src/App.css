@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  padding-bottom: 100px;
 }
 
 .header_container {
@@ -8,10 +9,10 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 275px;
+  height: 395px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -34,15 +35,17 @@
 
 .header_title::before {
   content: "";
-  background: linear-gradient(79deg, beige, #fedb00de, beige);
-  border-radius: 2px 7px 7px 2px;
+  /* background: linear-gradient(79deg, beige, #fedb00de, beige); */
+  background: linear-gradient(185deg, #f5f5dc70, #fedb00ba, #f5f5dcfc);
+  border-radius: 2px 7px 7px 6px;
   position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
-  height: 100%;
+  height: 141%;
   width: 100%;
   mix-blend-mode: color;
+  transform: rotate3d(14, 0, 0, 48deg);
 }
 
 .header_title_overlay {
@@ -64,6 +67,9 @@
   z-index: 1000;
   font-size: 3rem;
   text-shadow: -2px -2px 0px #00000047;
+  margin: 0;
+  transform: translateY(8px);
+  background-position: -20px -3px;
 }
 
 .button_container {
@@ -73,6 +79,9 @@
 }
 
 @media screen and (min-width: 480px) {
+  .App {
+    padding-bottom: 100px;
+  }
   .header_container {
     height: 158px;
   }
@@ -87,7 +96,7 @@
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
   .header_container {
-    height: 281px;
+    height: 411px;
   }
   .header_title {
     width: 54%;
@@ -112,6 +121,10 @@
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+  .App {
+    padding: 0 3px 100px;
+    background-color: beige;
+  }
   .header_container {
     /* height: 158px; */
   }
@@ -128,6 +141,9 @@
   .header_container {
     justify-content: flex-start;
   }
+  .header_title {
+    margin: 30px 1px 80px;
+  }
 }
 @media only screen and (min-width: 1440px) {
   .header_title {
@@ -135,6 +151,9 @@
   }
 }
 @media only screen and (min-width: 1600px) {
+  .App {
+    padding: 0 27px 100px;
+  }
   .header_title {
     width: 20%;
   }
