@@ -49,14 +49,14 @@ export const MapPage = () => {
   const AccordionSummaryComponent = (props) => {
     const { expanded, toggleTextExpanded, toggleTextCollapsed } = props;
     return (
-      <Grid container direction="row" alignItems="center" spacing={2}>
+      <Grid container direction="row" alignItems="center" spacing={2} xs={12}>
+        <Grid item>
+          <CheckBoxIcon color="primary" fontSize="medium" />
+        </Grid>
         <Grid item>
           <Typography variant="h5" color="primary">
             {expanded ? toggleTextExpanded : toggleTextCollapsed}
           </Typography>
-        </Grid>
-        <Grid item>
-          <CheckBoxIcon color="primary" fontSize="medium" />
         </Grid>
       </Grid>
     );

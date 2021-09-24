@@ -11,9 +11,19 @@ import {
 } from "../../data/listArrays";
 import { filterDates } from "../helperFunctions/index";
 
-const useStylesCheckBoxMain = makeStyles({
-  root: {},
+const useStylesMainContainer = makeStyles({
+  root: { height: 340 },
 });
+
+const useStylesItemContainer = makeStyles({
+  root: {
+    border: "1px solid #b05113",
+    backgroundColor: "#f5f5dc5e",
+    height: 300,
+  },
+});
+
+const useStylesCheckBoxMain = makeStyles({});
 
 const useStylesDatesItemMain = makeStyles((theme) => ({
   root: {
@@ -66,7 +76,8 @@ export const TimeLineEventsComponent = (props) => {
       ? setShowComponent1(!showComponent1)
       : setShowComponent2(!showComponent2);
   };
-
+  const classesMainContainer = useStylesMainContainer();
+  const classesItemsContainer = useStylesItemContainer();
   const classesMain = useStylesCheckBoxMain();
   const classesDatesItemMain = useStylesDatesItemMain();
   const classesDatesItem = useStylesDatesItem();
@@ -76,9 +87,11 @@ export const TimeLineEventsComponent = (props) => {
       // main container grid
       container
       direction="row"
-      justifyContent="space-evenly"
-      alignItems="baseline"
+      wrap="nowrap"
+      justifyContent="space-around"
+      alignItems="center"
       spacing={2}
+      className={classesMainContainer.root}
     >
       <Grid
         container
@@ -86,8 +99,9 @@ export const TimeLineEventsComponent = (props) => {
         direction="column"
         justifyContent="flex-start"
         xs={12}
-        lg={4}
+        lg={3}
         spacing={2}
+        className={classesItemsContainer.root}
       >
         <Grid container item wrap="nowrap" justifyContent="center">
           <Grid item>
@@ -155,10 +169,12 @@ export const TimeLineEventsComponent = (props) => {
         container
         item
         direction="column"
+        wrap="nowrap"
         justifyContent="flex-start"
         xs={12}
-        lg={4}
+        lg={3}
         spacing={2}
+        className={classesItemsContainer.root}
       >
         <Grid
           container
@@ -224,8 +240,9 @@ export const TimeLineEventsComponent = (props) => {
         direction="column"
         justifyContent="flex-start"
         xs={12}
-        lg={4}
+        lg={3}
         spacing={2}
+        className={classesItemsContainer.root}
       >
         <Grid container item wrap="nowrap" justifyContent="center">
           <Grid item>
