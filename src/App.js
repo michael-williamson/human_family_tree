@@ -5,7 +5,6 @@ import FullWidthTabs from "./components/reusableComponents/MuiTabsComp";
 // import Button from "@material-ui/core/Button";
 
 function App() {
-  // const [showMap, setShowMap] = useState(true);
   return (
     <div className="App">
       <div className="header_container">
@@ -14,24 +13,6 @@ function App() {
       </div>
 
       <MapPage />
-      {/* <div className="button_container">
-          <Button
-            onClick={() => setShowMap(false)}
-            variant="contained"
-            color="primary"
-          >
-            Show Fossils
-          </Button>
-          <Button
-            onClick={() => setShowMap(true)}
-            variant="contained"
-            color="primary"
-          >
-            Show Map
-          </Button>
-        </div> */}
-
-      {/* {!showMap ? <HumanGallery /> : <MapPage />} */}
     </div>
   );
 }
