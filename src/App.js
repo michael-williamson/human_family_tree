@@ -11,8 +11,10 @@ function App() {
       <div className="header_container">
         <h1 className="header_title">Human Family Tree</h1>
         <FullWidthTabs />
-        <MapPage />
-        {/* <div className="button_container">
+      </div>
+
+      <MapPage />
+      {/* <div className="button_container">
           <Button
             onClick={() => setShowMap(false)}
             variant="contained"
@@ -28,7 +30,6 @@ function App() {
             Show Map
           </Button>
         </div> */}
-      </div>
 
       {/* {!showMap ? <HumanGallery /> : <MapPage />} */}
     </div>

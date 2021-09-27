@@ -78,7 +78,7 @@ export default function FullWidthTabs() {
           <Tab label="Stone Tools" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
-      <SwipeableViews
+      {/* <SwipeableViews
         axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={value}
         onChangeIndex={handleChangeIndex}
@@ -92,7 +92,7 @@ export default function FullWidthTabs() {
         <TabPanel value={value} index={2} dir={theme.direction}>
           Item Three
         </TabPanel>
-      </SwipeableViews>
+      </SwipeableViews> */}
     </div>
   );
 }

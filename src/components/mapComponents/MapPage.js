@@ -2,7 +2,6 @@ import React, { useState, useMemo } from "react";
 import MapComponent from "./MapComponent";
 import AccordionComp from "../reusableComponents/AccordionComp";
 import { Typography, Grid } from "@material-ui/core";
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import { MainCheckboxContainer } from "./MainCheckboxContainer";
 import { checkedObject } from "../helperFunctions";
 import { TimeLineEventsComponent } from "./TimeLineEventsComponent";
@@ -13,6 +12,7 @@ import {
   iceAgeDatesArr,
   speciesArr,
 } from "../../data/listArrays";
+import { AlarmOutlined, PublicOutlined } from "@material-ui/icons";
 
 export const MapPage = () => {
   const [speciesDateExpanded, setSpeciesDateExpanded] = useState(false);
@@ -47,11 +47,16 @@ export const MapPage = () => {
   }, [iceAgeChecked]);
 
   const AccordionSummaryComponent = (props) => {
-    const { expanded, toggleTextExpanded, toggleTextCollapsed } = props;
+    const { expanded, toggleTextExpanded, toggleTextCollapsed, whichSummary } =
+      props;
     return (
       <Grid container direction="row" alignItems="center" spacing={2} xs={12}>
         <Grid item>
-          <CheckBoxIcon color="primary" fontSize="medium" />
+          {whichSummary !== "map" ? (
+            <AlarmOutlined color="primary" />
+          ) : (
+            <PublicOutlined color="primary" />
+          )}
         </Grid>
         <Grid item>
           <Typography variant="h5" color="primary">
@@ -97,6 +102,7 @@ export const MapPage = () => {
               expanded={timeLineEventsExpanded}
               toggleTextExpanded="Choose Timeline Events"
               toggleTextCollapsed="Click to choose Timeline Events"
+              whichSummary="timeline"
             />
           ),
         }}
@@ -123,6 +129,7 @@ export const MapPage = () => {
               expanded={speciesDateExpanded}
               toggleTextExpanded="Sorting"
               toggleTextCollapsed="Click to Sort Map"
+              whichSummary="map"
             />
           ),
         }}
