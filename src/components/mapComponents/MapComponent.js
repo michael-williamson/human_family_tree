@@ -35,12 +35,7 @@ function MapComponent(props) {
     googleMapsApiKey: REACT_APP_GOOGLE_API,
     libraries: librariesArr,
   });
-  const {
-    saharaPolygon,
-    arabiaPolygon,
-    northAmericanPolygon,
-    europeanPolygon,
-  } = props;
+  const { desertPolygon, northAmericanPolygon, europeanPolygon } = props;
 
   if (loadError) {
     return <div>Map cannot be loaded right now, sorry.</div>;
@@ -61,13 +56,13 @@ function MapComponent(props) {
         {/* Child components, such as markers, info windows, etc. */}
 
         <MarkerPopulate {...props} />
-        {saharaPolygon ? (
+        {desertPolygon.greenSahara ? (
           <PolygonComponent
             paths={saharaPaths}
             fillColor="rgb(81 101 74 / 75%)"
           />
         ) : null}
-        {arabiaPolygon ? (
+        {desertPolygon.greenArabia ? (
           <PolygonComponent
             paths={arabiaPaths}
             fillColor="rgb(81 101 74 / 75%)"

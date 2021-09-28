@@ -7,8 +7,6 @@ import { checkedObject } from "../helperFunctions";
 import { TimeLineEventsComponent } from "./TimeLineEventsComponent";
 import {
   datesCategoryProps,
-  greenArabiaDates,
-  greenSaharaDates,
   iceAgeDatesArr,
   speciesArr,
 } from "../../data/listArrays";
@@ -24,23 +22,31 @@ const MapPage = () => {
     checkedObject(true, datesCategoryProps)
   );
 
-  const [greenSaharaChecked, setGreenSaharaChecked] = useState(
-    checkedObject(true, greenSaharaDates)
-  );
-  const [greenArabiaChecked, setGreenArabiaChecked] = useState(
-    checkedObject(true, greenArabiaDates)
-  );
-
   const [iceAgeChecked, setIceAgeChecked] = useState(
     checkedObject(false, iceAgeDatesArr)
   );
+
+  const [iceAgeEnabled, setIceAgeEnabled] = useState(true);
+
   const [northAmericanPolygon, setNorthAmericanPolygon] = useState(false);
   const [europeanPolygon, setEuropeanPolygon] = useState(false);
 
-  const [arabiaPolygon, setArabiaPolygon] = useState(false);
-  const [saharaPolygon, setSaharaPolygon] = useState(false);
+  const [desertPolygon, setDesertPolygon] = useState({
+    greenSahara: false,
+    greenArabia: false,
+  });
 
   useMemo(() => {
+    if (!iceAgeEnabled) {
+      setNorthAmericanPolygon(false);
+      setEuropeanPolygon(false);
+    } else if (iceAgeEnabled) {
+      setIceAgeChecked({ ...iceAgeChecked });
+    }
+  }, [iceAgeEnabled]);
+
+  useMemo(() => {
+    if (iceAgeEnabled === false) return null;
     const arrVals = Object.values(iceAgeChecked);
     setNorthAmericanPolygon(arrVals.find((item) => item === true));
     setEuropeanPolygon(arrVals.find((item) => item === true));
@@ -74,19 +80,15 @@ const MapPage = () => {
         children={{
           AccordionDetailsChild: (
             <TimeLineEventsComponent
-              item1="Green Sahara Time Periods"
-              item2="Green Arabia Time Periods"
+              item1="Green Sahara"
+              item2="Green Arabia"
               item3="Ice Age Time Periods"
-              checkedState1={greenSaharaChecked}
-              checkedState2={greenArabiaChecked}
               checkedState3={iceAgeChecked}
-              setCheckedState1={setGreenSaharaChecked}
-              setCheckedState2={setGreenArabiaChecked}
               setCheckedState3={setIceAgeChecked}
-              showComponent1={saharaPolygon}
-              setShowComponent1={setSaharaPolygon}
-              showComponent2={arabiaPolygon}
-              setShowComponent2={setArabiaPolygon}
+              iceAgeEnabled={iceAgeEnabled}
+              setIceAgeEnabled={setIceAgeEnabled}
+              showComponent1={desertPolygon}
+              setShowComponent1={setDesertPolygon}
               showComponent3={northAmericanPolygon}
               setShowComponent3={setNorthAmericanPolygon}
               showComponent4={europeanPolygon}
@@ -135,8 +137,7 @@ const MapPage = () => {
         datesChecked={datesChecked}
         setSpeciesChecked={setSpeciesChecked}
         setDatesChecked={setDatesChecked}
-        saharaPolygon={saharaPolygon}
-        arabiaPolygon={arabiaPolygon}
+        desertPolygon={desertPolygon}
         northAmericanPolygon={northAmericanPolygon}
         europeanPolygon={europeanPolygon}
       />
