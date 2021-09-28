@@ -5,6 +5,8 @@ import {
   iceAgeDatesArr,
 } from "../../data/listArrays";
 
+import anthroData from "../../data/anthroData.json";
+
 export const dateComparer = (
   compareDateGreater,
   compareDateLesser,
@@ -110,4 +112,17 @@ export const onPolygonComplete = (polygon) => {
     );
   }
   console.log(coordinates, "polygon complete");
+};
+
+export const populateSpeciesObject = () => {
+  const speciesObject = {};
+  anthroData.forEach((item) => {
+    if (speciesObject[item.species]) {
+      speciesObject[item.species].push(item);
+    } else {
+      speciesObject[item.species] = [];
+      speciesObject[item.species].push(item);
+    }
+  });
+  return speciesObject;
 };
