@@ -14,6 +14,7 @@ export const CheckboxMapperComp = (props) => {
   const { mapArr } = props;
   const { handleChange } = props;
   const { checkedObject } = props;
+  const { disabled } = props;
 
   const MapperComp = mapArr.map((item) => {
     const childrenWithProps = React.Children.map(props.children, (child) => {
@@ -32,7 +33,8 @@ export const CheckboxMapperComp = (props) => {
               {...MuiCheckboxComp}
               onChange={handleChange}
               name={item}
-              checked={checkedObject?.[`${item}`]}
+              disabled={disabled}
+              checked={disabled ? false : checkedObject?.[`${item}`]}
             />
           }
           label={item}
