@@ -36,7 +36,7 @@ export const GalleryItemComponent = (props) => {
     ? null
     : arr.map((item, index) => {
         return (
-          <Grid item xs={6} key={index}>
+          <Grid item xs={6} lg={2} key={index}>
             <Card className={classes.root}>
               <CardActionArea>
                 <CardMedia
