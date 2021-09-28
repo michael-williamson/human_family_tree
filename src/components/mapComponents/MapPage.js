@@ -50,7 +50,7 @@ const MapPage = () => {
     const { expanded, toggleTextExpanded, toggleTextCollapsed, whichSummary } =
       props;
     return (
-      <Grid container direction="row" alignItems="center" spacing={2} xs={12}>
+      <Grid container direction="row" alignItems="center" spacing={2}>
         <Grid item>
           {whichSummary !== "map" ? (
             <AlarmOutlined color="primary" />
