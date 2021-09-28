@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import theme from "../../theme";
 import MuiAccordion from "@material-ui/core/Accordion";
@@ -7,17 +7,18 @@ import MuiAccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const AccordionComp = (props) => {
+  const [expandedAccordion, setAccordionExpanded] = useState(false);
   const {
-    expanded,
-    setExpanded,
     index,
+    // accordionSummaryHeight,
+    // accordionDetailsBg,
     children: { AccordionSummaryChild, AccordionDetailsChild },
   } = props;
 
   const Accordion = withStyles({
     root: {
       boxShadow: "none",
-      color: theme.palette.main,
+      color: theme.palette.primary.main,
       margin: theme.spacing(1, 0),
       "&:not(:last-child)": {
         borderBottom: 0,
@@ -37,7 +38,7 @@ const AccordionComp = (props) => {
       borderBottom: "1px solid rgba(0, 0, 0, .125)",
       marginBottom: -1,
       minHeight: 56,
-      backgroundColor: "beige",
+      background: "linear-gradient(45deg, rgb(251 255 186 / 65%), #fff00426)",
       "&$expanded": {
         minHeight: 56,
       },
@@ -57,14 +58,14 @@ const AccordionComp = (props) => {
   }))(MuiAccordionDetails);
 
   const handleChange = (panel) => (event, newExpanded) => {
-    setExpanded(newExpanded ? panel : false);
+    setAccordionExpanded(newExpanded ? panel : false);
   };
 
   return (
     <div>
       <Accordion
         square
-        expanded={expanded === `panel${index + 1}`}
+        expanded={expandedAccordion === `panel${index + 1}`}
         onChange={handleChange(`panel${index + 1}`)}
       >
         <AccordionSummary
