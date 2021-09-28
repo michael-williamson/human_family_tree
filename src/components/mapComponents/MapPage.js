@@ -14,9 +14,9 @@ import {
 } from "../../data/listArrays";
 import { AlarmOutlined, PublicOutlined } from "@material-ui/icons";
 
-export const MapPage = () => {
-  const [speciesDateExpanded, setSpeciesDateExpanded] = useState(false);
-  const [timeLineEventsExpanded, setTimeLineEventsExpanded] = useState(false);
+const MapPage = () => {
+  // const [speciesDateExpanded, setSpeciesDateExpanded] = useState(false);
+  // const [timeLineEventsExpanded, setTimeLineEventsExpanded] = useState(false);
   const [speciesChecked, setSpeciesChecked] = useState(
     checkedObject(true, speciesArr)
   );
@@ -70,8 +70,6 @@ export const MapPage = () => {
   return (
     <div>
       <AccordionComp
-        expanded={timeLineEventsExpanded}
-        setExpanded={setTimeLineEventsExpanded}
         index={0}
         children={{
           AccordionDetailsChild: (
@@ -99,7 +97,7 @@ export const MapPage = () => {
           ),
           AccordionSummaryChild: (
             <AccordionSummaryComponent
-              expanded={timeLineEventsExpanded}
+              // expanded={timeLineEventsExpanded}
               toggleTextExpanded="Choose Timeline Events"
               toggleTextCollapsed="Click to choose Timeline Events"
               whichSummary="timeline"
@@ -108,9 +106,7 @@ export const MapPage = () => {
         }}
       />
       <AccordionComp
-        expanded={speciesDateExpanded}
-        setExpanded={setSpeciesDateExpanded}
-        index={0}
+        index={1}
         children={{
           AccordionDetailsChild: (
             <MainCheckboxContainer
@@ -126,7 +122,7 @@ export const MapPage = () => {
           ),
           AccordionSummaryChild: (
             <AccordionSummaryComponent
-              expanded={speciesDateExpanded}
+              // expanded={speciesDateExpanded}
               toggleTextExpanded="Sorting"
               toggleTextCollapsed="Click to Sort Map"
               whichSummary="map"
@@ -147,3 +143,5 @@ export const MapPage = () => {
     </div>
   );
 };
+
+export default MapPage;
