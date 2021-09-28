@@ -79,7 +79,24 @@ export const filterDates = (event, datesChecked) => {
         ))
     ) {
       obj[prop] = true;
-    } else {
+    } else if (
+      !event.target.checked &&
+      (dateComparer(
+        datesCategoryObj[prop].greater,
+        datesCategoryObj[prop].lesser,
+        europeanGlacialTimeline[event.target.name].greater
+      ) ||
+        dateComparer(
+          datesCategoryObj[prop].greater,
+          datesCategoryObj[prop].lesser,
+          europeanGlacialTimeline[event.target.name].lesser
+        ) ||
+        dateComparer(
+          europeanGlacialTimeline[event.target.name].greater,
+          europeanGlacialTimeline[event.target.name].lesser,
+          currentMidpoint
+        ))
+    ) {
       obj[prop] = false;
     }
   }

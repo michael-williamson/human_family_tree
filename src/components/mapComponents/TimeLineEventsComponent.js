@@ -63,12 +63,11 @@ export const TimeLineEventsComponent = (props) => {
     });
   };
   const handleIceAgeChange = (event) => {
-    console.log(`event in ice change is fireing`, event);
     setCheckedState3({
       ...checkedState3,
       [event.target.name]: event.target.checked,
     });
-    setDatesChecked(filterDates(event, datesChecked));
+    setDatesChecked({ ...datesChecked, ...filterDates(event, datesChecked) });
   };
 
   const handleToggle = (whichToggle) => {
