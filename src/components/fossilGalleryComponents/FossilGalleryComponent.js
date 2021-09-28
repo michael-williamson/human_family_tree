@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, Box } from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
 import anthroData from "../../data/anthroData.json";
 import MuiAccordion from "@material-ui/core/Accordion";
@@ -9,6 +9,7 @@ import { GalleryItemComponent } from "./GalleryItemComponent";
 import { speciesArr } from "../../data/listArrays";
 import theme from "../../theme";
 import ExpandMore from "@material-ui/icons/ExpandMore";
+import NearMeOutlinedIcon from "@material-ui/icons/NearMeOutlined";
 
 const populateSpeciesObject = () => {
   const speciesObject = {};
@@ -64,6 +65,7 @@ const AccordionSummary = withStyles({
 const AccordionDetails = withStyles((theme) => ({
   root: {
     padding: theme.spacing(2),
+    background: theme.palette.background.default,
   },
 }))(MuiAccordionDetails);
 
@@ -81,6 +83,7 @@ function Item() {
 
   const GridGalleryItemProps = {
     container: true,
+    item: true,
     direction: "row",
     justifyContent: "space-evenly",
     spacing: 4,
@@ -93,14 +96,14 @@ function Item() {
           square
           expanded={expanded === `panel${index + 100}`}
           onChange={handleChange(`panel${index + 100}`)}
-          onClick={handleClick(item)}
         >
           <AccordionSummary
             aria-controls={`panel${index + 100}d-content`}
             id={`panel${index + 100}d-header`}
             expandIcon={<ExpandMore color="primary" />}
+            onClick={handleClick(item)}
           >
-            {item}
+            <Box fontStyle="italic">{item}</Box>
           </AccordionSummary>
           <AccordionDetails>
             <Grid {...GridGalleryItemProps}>
@@ -120,6 +123,15 @@ function Item() {
 const FossilGalleryComponent = () => {
   return (
     <div>
+      <Box color="primary.main" px={2} py={2} bgcolor="background.default">
+        <Box variant="h2" fontSize={25}>
+          <NearMeOutlinedIcon />
+          Click any tab to open
+        </Box>
+        <Box fontStyle="italic" variant="p" py={2}>
+          features specimens of the world with geographical and dating data
+        </Box>
+      </Box>
       <Item />
     </div>
   );

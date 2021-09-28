@@ -20,9 +20,12 @@ const theme = createTheme({
     },
     info: {
       main: "#fffcaa",
+      //lighter beige
+      light: "#f2ef89",
     },
     background: {
-      default: "#fff",
+      //beige
+      default: "#f5f5dc",
     },
   },
 });
