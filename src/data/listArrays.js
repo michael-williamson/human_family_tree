@@ -20,6 +20,7 @@ export const speciesArr = [
   "erectus",
   "floresiensis",
   "luzonensis",
+  "antecessor",
   "heidelbergensis",
   "neanderthalensis",
   "denisovan",
@@ -83,6 +84,7 @@ export const imageFiles = {
   floresiensis: beardedManIconLiteGrey,
   luzonensis: beardedManIconOrange,
   longi: beardedManIconLitePurple,
+  antecessor: beardedManIconBlack,
 };
 
 export const northAmericaGlacialTimeline = {

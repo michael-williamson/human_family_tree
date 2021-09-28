@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -43,8 +44,14 @@ function a11yProps(index) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: "#fffbf1;",
     width: "85%",
+  },
+  appBar: {
+    backgroundColor: "#f8ea88",
+    // "& a": {
+    //   color: "orange",
+    //   textDecoration: "none",
+    // },
   },
 }));
 
@@ -58,7 +65,7 @@ export default function FullWidthTabs() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
+      <AppBar position="static" className={classes.appBar}>
         <Tabs
           value={value}
           onChange={handleChange}
@@ -67,9 +74,25 @@ export default function FullWidthTabs() {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab label="Prehistory Map" {...a11yProps(0)} />
-          <Tab label="Human Fossil Gallery" {...a11yProps(1)} />
-          <Tab label="Stone Tools" {...a11yProps(2)} />
+          {/* <Link to="/">
+            <Tab label="Prehistory Map" {...a11yProps(0)} />
+          </Link>
+          <Link to="fossil_gallery">
+            <Tab label="Human Fossil Gallery" {...a11yProps(1)} />
+          </Link> */}
+          <Tab
+            label="Prehistory Map"
+            {...a11yProps(0)}
+            component={Link}
+            to="/"
+          />
+          <Tab
+            label="Human Fossil Gallery"
+            {...a11yProps(1)}
+            component={Link}
+            to="/fossil_gallery"
+          />
+          {/* <Tab label="Stone Tools" {...a11yProps(2)} /> */}
         </Tabs>
       </AppBar>
     </div>
