@@ -40,8 +40,6 @@ const MapPage = () => {
     if (!iceAgeEnabled) {
       setNorthAmericanPolygon(false);
       setEuropeanPolygon(false);
-    } else if (iceAgeEnabled) {
-      setIceAgeChecked({ ...iceAgeChecked });
     }
   }, [iceAgeEnabled]);
 
@@ -50,7 +48,7 @@ const MapPage = () => {
     const arrVals = Object.values(iceAgeChecked);
     setNorthAmericanPolygon(arrVals.find((item) => item === true));
     setEuropeanPolygon(arrVals.find((item) => item === true));
-  }, [iceAgeChecked]);
+  }, [iceAgeChecked, iceAgeEnabled]);
 
   const AccordionSummaryComponent = (props) => {
     const { expanded, toggleTextExpanded, toggleTextCollapsed, whichSummary } =
