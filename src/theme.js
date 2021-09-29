@@ -25,6 +25,8 @@ const theme = createTheme({
       main: "rgb(255 241 192)",
       //lighter beige
       light: "#f2ef89",
+      //dark blue
+      dark: "#02245a",
     },
     background: {
       //beige

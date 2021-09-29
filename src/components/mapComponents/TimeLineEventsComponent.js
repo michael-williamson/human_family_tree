@@ -16,14 +16,38 @@ import {
   sahara_map_no_filler,
   rain,
   oasis,
+  north_american_ice_sheet,
+  european_ice_sheet,
+  north_american_ice_sheet_no_filler,
+  european_ice_sheet_no_filler,
 } from "../../media";
 
-const useStylesMainContainer = makeStyles({
-  root: { minHeight: 340 },
-});
+//***********variables to keep styling consistent between similar or identical elements */
+const eventStyles = {
+  title: {
+    position: "relative",
+    isolation: "isolate",
+    perspectiveOrigin: "left",
+    perspective: 113,
+  },
+  titleImgAfter: {
+    content: "' '",
+    position: "absolute",
+    minHeight: 100,
+    width: 142,
+    filter: "drop-shadow(2px 4px 6px black)",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    transform: "translate(25%,-8%)",
+    borderRadius: 20,
+    cursor: "pointer",
+    transition: "transform 500ms,box-shadow 600ms",
+  },
+};
 
-const useStylesItemContainer = makeStyles((theme) => ({
-  root: {
+const useStylesMainContainer = makeStyles((theme) => ({
+  root: { minHeight: 340 },
+  itemContainer: {
     backgroundColor: "#f5f5dc5e",
     minHeight: 300,
     [theme.breakpoints.up("lg")]: {
@@ -37,28 +61,15 @@ const useStylesItemContainer = makeStyles((theme) => ({
     // },
   },
   titleBoxSahara: {
-    position: "relative",
-    isolation: "isolate",
-    perspectiveOrigin: "left",
-    perspective: 113,
+    ...eventStyles.title,
     "&::after": {
-      content: "' '",
-      position: "absolute",
-      filter: "drop-shadow(2px 4px 6px black)",
+      ...eventStyles.titleImgAfter,
+      outline: `4px solid ${theme.palette.primary.light}`,
+      animation: `$enter 1000ms ${theme.transitions.easing.easeIn} 1 forwards`,
       backgroundImage: (props) =>
         props.showComponent1.greenSahara
           ? `url(${sahara_map})`
           : `url(${sahara_map_no_filler})`,
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "cover",
-      transform: "translate(25%,-8%)",
-      minHeight: 100,
-      width: 142,
-      borderRadius: 20,
-      outline: `4px solid ${theme.palette.primary.light}`,
-      transition: "transform 500ms,box-shadow 600ms",
-      animation: `$enter 1000ms ${theme.transitions.easing.easeIn} 1 forwards`,
-      cursor: "pointer",
     },
     "&:hover::after": {
       boxShadow: " -20px 3px 11px 20px #00000091",
@@ -71,8 +82,8 @@ const useStylesItemContainer = makeStyles((theme) => ({
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover",
       transform: "translate(134%,0%)",
-      minHeight: 100,
-      width: 142,
+      minHeight: eventStyles.titleImgAfter.minHeight,
+      width: eventStyles.titleImgAfter.width,
       borderRadius: "24%",
       filter: "drop-shadow(0px 12px 13px rgb(173 216 230 / 30%))",
       boxShadow: "inset 4px -3px 20px 15px #e1e1e1c2",
@@ -87,28 +98,15 @@ const useStylesItemContainer = makeStyles((theme) => ({
     },
   },
   titleBoxArabia: {
-    position: "relative",
-    isolation: "isolate",
-    perspectiveOrigin: "left",
-    perspective: 113,
+    ...eventStyles.title,
     "&::after": {
-      content: "' '",
-      position: "absolute",
-      filter: "drop-shadow(2px 4px 6px black)",
+      ...eventStyles.titleImgAfter,
+      outline: `4px solid ${theme.palette.primary.light}`,
+      animation: `$enter 1000ms ${theme.transitions.easing.easeIn} 1 forwards`,
       backgroundImage: (props) =>
         props.showComponent1.greenArabia
           ? `url(${arabia_map})`
           : `url(${arabia_map_no_filler})`,
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "cover",
-      transform: "translate(25%,-8%)",
-      minHeight: 100,
-      width: 142,
-      borderRadius: 20,
-      outline: `4px solid ${theme.palette.primary.light}`,
-      transition: "transform 500ms,box-shadow 600ms",
-      animation: `$enter 1000ms ${theme.transitions.easing.easeIn} 1 forwards`,
-      cursor: "pointer",
     },
     "&:hover::after": {
       boxShadow: " -20px 3px 11px 20px #00000091",
@@ -121,22 +119,35 @@ const useStylesItemContainer = makeStyles((theme) => ({
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover",
       transform: "translate(134%,0%)",
-      minHeight: 100,
-      width: 142,
+      minHeight: eventStyles.titleImgAfter.minHeight,
+      width: eventStyles.titleImgAfter.width,
       borderRadius: "24%",
       filter: "drop-shadow(0px 12px 13px  rgb(84 231 5 / 10%))",
       boxShadow: "inset 4px -3px 20px 15px #e1e1e1c2",
     },
   },
+  iceAgeImages: {
+    width: eventStyles.titleImgAfter.width,
+    height: 100,
+    borderRadius: 20,
+    cursor: "pointer",
+    outline: `4px solid ${theme.palette.primary.light}`,
+    animation: `$enter 1000ms ${theme.transitions.easing.easeIn} 1 forwards`,
+  },
 }));
-
-const useStylesCheckBoxMain = makeStyles({});
 
 export const TimeLineEventsComponent = (props) => {
   const { item1, item2, item3 } = props;
+  //checkedState3 is connected with iceAgeChecked
   const { checkedState3 } = props;
   const { setCheckedState3 } = props;
+
+  //showComponent1 is connected with desertPolygon
   const { showComponent1, setShowComponent1 } = props;
+
+  //showComponent3 = northAmericanPolygon  and showComponent4 = europeanPolygon
+  const { showComponent3, showComponent4 } = props;
+
   const { datesChecked, setDatesChecked } = props;
   const { iceAgeEnabled, setIceAgeEnabled } = props;
 
@@ -159,9 +170,7 @@ export const TimeLineEventsComponent = (props) => {
     });
   };
 
-  const classesMainContainer = useStylesMainContainer();
-  const classesItemsContainer = useStylesItemContainer(props);
-  const classesMain = useStylesCheckBoxMain();
+  const classes = useStylesMainContainer(props);
 
   return (
     <Grid
@@ -171,7 +180,7 @@ export const TimeLineEventsComponent = (props) => {
       justifyContent="space-around"
       alignItems="center"
       spacing={2}
-      className={classesMainContainer.root}
+      className={classes.root}
     >
       <Grid
         //contains all items in desert component
@@ -182,7 +191,7 @@ export const TimeLineEventsComponent = (props) => {
         alignContent="center"
         xs={12}
         lg={5}
-        className={classesItemsContainer.root}
+        className={classes.itemContainer}
       >
         <Grid
           container
@@ -214,7 +223,7 @@ export const TimeLineEventsComponent = (props) => {
             direction="column"
             wrap="nowrap"
             spacing={2}
-            className={classesItemsContainer.saharaArabiaContainer}
+            className={classes.saharaArabiaContainer}
           >
             <Grid item>
               <Box
@@ -222,7 +231,7 @@ export const TimeLineEventsComponent = (props) => {
                 color="secondary.main"
                 fontSize="1.5rem"
                 fontWeight="bold"
-                className={classesItemsContainer.titleBoxSahara}
+                className={classes.titleBoxSahara}
               >
                 {item1}
               </Box>
@@ -246,7 +255,7 @@ export const TimeLineEventsComponent = (props) => {
             item
             direction="column"
             spacing={2}
-            className={classesItemsContainer.saharaArabiaContainer}
+            className={classes.saharaArabiaContainer}
           >
             <Grid item>
               <Box
@@ -254,7 +263,7 @@ export const TimeLineEventsComponent = (props) => {
                 color="secondary.main"
                 fontSize="1.5rem"
                 fontWeight="bold"
-                className={classesItemsContainer.titleBoxArabia}
+                className={classes.titleBoxArabia}
               >
                 {item2}
               </Box>
@@ -277,6 +286,7 @@ export const TimeLineEventsComponent = (props) => {
       </Grid>
 
       <Grid
+        //container for all ice age items
         container
         item
         direction="column"
@@ -284,7 +294,7 @@ export const TimeLineEventsComponent = (props) => {
         xs={12}
         lg={5}
         spacing={2}
-        className={classesItemsContainer.root}
+        className={classes.itemContainer}
       >
         <Grid
           container
@@ -294,33 +304,85 @@ export const TimeLineEventsComponent = (props) => {
           justifyContent="center"
           spacing={2}
         >
-          <Grid item>
-            <Box
-              variant="h4"
-              color="secondary.main"
-              fontSize="1.5rem"
-              fontWeight="bold"
-            >
-              {item3}
-            </Box>
-          </Grid>
-          <Grid item>
-            <FormControlLabel
-              control={
-                <Switch
-                  checked={iceAgeEnabled}
-                  onChange={handleEnableIceAge}
-                  name="iceAge"
-                  color="primary"
+          <Grid
+            //*****wraps both ice sheet images and title************
+            container
+            item
+            direction="row"
+            wrap="nowrap"
+            justifyContent="space-evenly"
+          >
+            <Grid container item direction="column" lg={4}>
+              <Grid item>
+                <img
+                  src={
+                    showComponent3
+                      ? north_american_ice_sheet
+                      : north_american_ice_sheet_no_filler
+                  }
+                  alt="ice sheet"
+                  className={classes.iceAgeImages}
                 />
-              }
-              label="enable/disable"
-            />
+              </Grid>
+              <Grid item>
+                <Box color="info.dark">North American Ice Sheet</Box>
+              </Grid>
+            </Grid>
+            <Grid
+              //Grid that wraps item title and switch
+              container
+              item
+              direction="column"
+              lg={4}
+              spacing={2}
+            >
+              {/* //may need a grid around Box */}
+              <Grid item>
+                <Box
+                  variant="h4"
+                  color="secondary.main"
+                  fontSize="1.5rem"
+                  fontWeight="bold"
+                >
+                  {item3}
+                </Box>
+              </Grid>
+
+              <Grid item>
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={iceAgeEnabled}
+                      onChange={handleEnableIceAge}
+                      name="iceAge"
+                      color="primary"
+                    />
+                  }
+                  label={iceAgeEnabled ? "enabled" : "disabled"}
+                />
+              </Grid>
+            </Grid>
+            <Grid container item direction="column" lg={4}>
+              <Grid item>
+                <img
+                  src={
+                    showComponent4
+                      ? european_ice_sheet
+                      : european_ice_sheet_no_filler
+                  }
+                  alt="ice sheet"
+                  className={classes.iceAgeImages}
+                />
+              </Grid>
+              <Grid>
+                <Box color="info.dark">European Ice Age Sheet</Box>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
         {/**trying out my Component */}
         <CheckboxMapperComp
-          classesMain={classesMain}
+          classesMain={classes.root}
           MuiGridCheckboxMainContainer={{
             container: true,
             item: true,

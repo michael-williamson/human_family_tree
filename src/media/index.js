@@ -6,6 +6,10 @@ import sahara_map_no_filler from "./mapComponentMedia/sahara_map_no_filler.png";
 import arabia_map_no_filler from "./mapComponentMedia/arabia_map_no_filler.png";
 import rain from "./mapComponentMedia/rain.jpg";
 import oasis from "./mapComponentMedia/oasis.jpg";
+import european_ice_sheet from "./mapComponentMedia/european_ice_sheet.png";
+import north_american_ice_sheet from "./mapComponentMedia/north_american_ice_sheet.png";
+import european_ice_sheet_no_filler from "./mapComponentMedia/european_ice_sheet_no_filler.png";
+import north_american_ice_sheet_no_filler from "./mapComponentMedia/north_american_ice_sheet_no_filler.png";
 import footprintIconBlue from "./mapComponentMedia/footprint_icon_blue.png";
 import footprintOutlinedIconPurple from "./mapComponentMedia/footprint_outlined_icon_purple.png";
 import beardedManIconBlue from "./marker_icons/bearded_man_icon_blue.png";
@@ -45,4 +49,8 @@ export {
   arabia_map_no_filler,
   rain,
   oasis,
+  european_ice_sheet,
+  north_american_ice_sheet,
+  european_ice_sheet_no_filler,
+  north_american_ice_sheet_no_filler,
 };
