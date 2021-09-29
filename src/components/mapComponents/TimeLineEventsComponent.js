@@ -20,6 +20,8 @@ import {
   european_ice_sheet,
   north_american_ice_sheet_no_filler,
   european_ice_sheet_no_filler,
+  glacier_canyon,
+  ice_bergs,
 } from "../../media";
 
 //***********variables to keep styling consistent between similar or identical elements */
@@ -126,6 +128,46 @@ const useStylesMainContainer = makeStyles((theme) => ({
       boxShadow: "inset 4px -3px 20px 15px #e1e1e1c2",
     },
   },
+  iceAgeImageContainer1: {
+    perspectiveOrigin: "left",
+    perspective: 406,
+    position: "relative",
+    isolation: "isolate",
+    "&::after": {
+      content: "' '",
+      position: "absolute",
+      backgroundImage: `url(${ice_bergs})`,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+      width: 142,
+      height: 100,
+      borderRadius: 20,
+      left: 0,
+      right: 0,
+      margin: "0 auto",
+      zIndex: -1,
+    },
+  },
+  iceAgeImageContainer2: {
+    perspectiveOrigin: "left",
+    perspective: 406,
+    position: "relative",
+    isolation: "isolate",
+    "&::after": {
+      content: "' '",
+      position: "absolute",
+      backgroundImage: `url(${glacier_canyon})`,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+      width: 142,
+      height: 100,
+      borderRadius: 20,
+      left: 0,
+      right: 0,
+      margin: "0 auto",
+      zIndex: -1,
+    },
+  },
   iceAgeImages: {
     width: eventStyles.titleImgAfter.width,
     height: 100,
@@ -133,6 +175,12 @@ const useStylesMainContainer = makeStyles((theme) => ({
     cursor: "pointer",
     outline: `4px solid ${theme.palette.primary.light}`,
     animation: `$enter 1000ms ${theme.transitions.easing.easeIn} 1 forwards`,
+    transition: "transform 500ms,box-shadow 600ms",
+    "&:hover": {
+      boxShadow: " -20px 3px 11px 20px #00000091",
+      transform: "rotate3d(0, 97, 7, 59deg) translateX(-90px)",
+      // transform:"rotate3d(6, 97, 10, 59deg) translateX(-90px)"
+    },
   },
 }));
 
@@ -312,7 +360,13 @@ export const TimeLineEventsComponent = (props) => {
             wrap="nowrap"
             justifyContent="space-evenly"
           >
-            <Grid container item direction="column" lg={4}>
+            <Grid
+              container
+              item
+              direction="column"
+              lg={4}
+              className={classes.iceAgeImageContainer1}
+            >
               <Grid item>
                 <img
                   src={
@@ -362,7 +416,13 @@ export const TimeLineEventsComponent = (props) => {
                 />
               </Grid>
             </Grid>
-            <Grid container item direction="column" lg={4}>
+            <Grid
+              container
+              item
+              direction="column"
+              lg={4}
+              className={classes.iceAgeImageContainer2}
+            >
               <Grid item>
                 <img
                   src={
