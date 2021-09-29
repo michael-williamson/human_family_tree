@@ -87,6 +87,7 @@ export const GalleryItemComponent = (props) => {
                   color="primary"
                   href={item.linkToInfo}
                   target="_blank"
+                  rel="noreferrer"
                 >
                   Learn More
                 </Button>

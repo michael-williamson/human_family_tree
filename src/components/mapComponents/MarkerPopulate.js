@@ -87,7 +87,11 @@ export const MarkerPopulate = (props) => {
                     </p>
                     <p className="infoLines">
                       More Info:
-                      <a href={item.linkToInfo}>
+                      <a
+                        href={item.linkToInfo}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         <span className="">Click Here</span>
                       </a>
                     </p>
