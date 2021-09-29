@@ -1,5 +1,9 @@
 import cavemanIconBlack from "./marker_icons/caveman_icon_black.png";
 import familyTree from "./mapComponentMedia/family_tree.png";
+import sahara_map from "./mapComponentMedia/sahara.png";
+import arabia_map from "./mapComponentMedia/arabia.png";
+import sahara_map_no_filler from "./mapComponentMedia/sahara_map_no_filler.png";
+import arabia_map_no_filler from "./mapComponentMedia/arabia_map_no_filler.png";
 import footprintIconBlue from "./mapComponentMedia/footprint_icon_blue.png";
 import footprintOutlinedIconPurple from "./mapComponentMedia/footprint_outlined_icon_purple.png";
 import beardedManIconBlue from "./marker_icons/bearded_man_icon_blue.png";
@@ -33,4 +37,8 @@ export {
   beardedManIconLitePurple,
   savannahImage,
   familyTree,
+  sahara_map,
+  arabia_map,
+  sahara_map_no_filler,
+  arabia_map_no_filler,
 };

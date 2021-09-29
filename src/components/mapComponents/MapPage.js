@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import MapComponent from "./MapComponent";
 import AccordionComp from "../reusableComponents/AccordionComp";
 import { Typography, Grid } from "@material-ui/core";
@@ -36,15 +36,12 @@ const MapPage = () => {
     greenArabia: false,
   });
 
-  useMemo(() => {
-    if (!iceAgeEnabled) {
+  useEffect(() => {
+    if (iceAgeEnabled === false) {
       setNorthAmericanPolygon(false);
       setEuropeanPolygon(false);
+      return null;
     }
-  }, [iceAgeEnabled]);
-
-  useMemo(() => {
-    if (iceAgeEnabled === false) return null;
     const arrVals = Object.values(iceAgeChecked);
     setNorthAmericanPolygon(arrVals.find((item) => item === true));
     setEuropeanPolygon(arrVals.find((item) => item === true));
