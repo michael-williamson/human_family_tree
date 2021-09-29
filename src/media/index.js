@@ -4,6 +4,8 @@ import sahara_map from "./mapComponentMedia/sahara.png";
 import arabia_map from "./mapComponentMedia/arabia.png";
 import sahara_map_no_filler from "./mapComponentMedia/sahara_map_no_filler.png";
 import arabia_map_no_filler from "./mapComponentMedia/arabia_map_no_filler.png";
+import rain from "./mapComponentMedia/rain.jpg";
+import oasis from "./mapComponentMedia/oasis.jpg";
 import footprintIconBlue from "./mapComponentMedia/footprint_icon_blue.png";
 import footprintOutlinedIconPurple from "./mapComponentMedia/footprint_outlined_icon_purple.png";
 import beardedManIconBlue from "./marker_icons/bearded_man_icon_blue.png";
@@ -41,4 +43,6 @@ export {
   arabia_map,
   sahara_map_no_filler,
   arabia_map_no_filler,
+  rain,
+  oasis,
 };

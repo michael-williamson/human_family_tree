@@ -14,6 +14,8 @@ import {
   arabia_map_no_filler,
   sahara_map,
   sahara_map_no_filler,
+  rain,
+  oasis,
 } from "../../media";
 
 const useStylesMainContainer = makeStyles({
@@ -30,13 +32,15 @@ const useStylesItemContainer = makeStyles((theme) => ({
   },
   saharaArabiaContainer: {
     alignItems: "flex-start",
-    [theme.breakpoints.up("sm")]: {
-      alignItems: "center",
-    },
+    // [theme.breakpoints.up("sm")]: {
+    //   alignItems: "center",
+    // },
   },
   titleBoxSahara: {
     position: "relative",
     isolation: "isolate",
+    perspectiveOrigin: "left",
+    perspective: 113,
     "&::after": {
       content: "' '",
       position: "absolute",
@@ -52,7 +56,26 @@ const useStylesItemContainer = makeStyles((theme) => ({
       width: 142,
       borderRadius: 20,
       outline: `4px solid ${theme.palette.primary.light}`,
+      transition: "transform 500ms,box-shadow 600ms",
       animation: `$enter 1000ms ${theme.transitions.easing.easeIn} 1 forwards`,
+      cursor: "pointer",
+    },
+    "&:hover::after": {
+      boxShadow: " -20px 3px 11px 20px #00000091",
+      transform: "rotate3d(2, 17, 10, 14deg)",
+    },
+    "&::before": {
+      content: "' '",
+      position: "absolute",
+      backgroundImage: `url(${rain})`,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+      transform: "translate(134%,0%)",
+      minHeight: 100,
+      width: 142,
+      borderRadius: "24%",
+      filter: "drop-shadow(0px 12px 13px rgb(173 216 230 / 30%))",
+      boxShadow: "inset 4px -3px 20px 15px #e1e1e1c2",
     },
   },
   "@keyframes enter": {
@@ -66,6 +89,8 @@ const useStylesItemContainer = makeStyles((theme) => ({
   titleBoxArabia: {
     position: "relative",
     isolation: "isolate",
+    perspectiveOrigin: "left",
+    perspective: 113,
     "&::after": {
       content: "' '",
       position: "absolute",
@@ -81,7 +106,26 @@ const useStylesItemContainer = makeStyles((theme) => ({
       width: 142,
       borderRadius: 20,
       outline: `4px solid ${theme.palette.primary.light}`,
+      transition: "transform 500ms,box-shadow 600ms",
       animation: `$enter 1000ms ${theme.transitions.easing.easeIn} 1 forwards`,
+      cursor: "pointer",
+    },
+    "&:hover::after": {
+      boxShadow: " -20px 3px 11px 20px #00000091",
+      transform: "rotate3d(2, 17, 10, 14deg)",
+    },
+    "&::before": {
+      content: "' '",
+      position: "absolute",
+      backgroundImage: `url(${oasis})`,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+      transform: "translate(134%,0%)",
+      minHeight: 100,
+      width: 142,
+      borderRadius: "24%",
+      filter: "drop-shadow(0px 12px 13px  rgb(84 231 5 / 10%))",
+      boxShadow: "inset 4px -3px 20px 15px #e1e1e1c2",
     },
   },
 }));
@@ -130,79 +174,104 @@ export const TimeLineEventsComponent = (props) => {
       className={classesMainContainer.root}
     >
       <Grid
+        //contains all items in desert component
         container
         item
-        direction="column"
+        direction="row"
         justifyContent="space-around"
+        alignContent="center"
         xs={12}
         lg={5}
-        spacing={2}
         className={classesItemsContainer.root}
       >
         <Grid
           container
           item
-          direction="column"
-          wrap="nowrap"
+          lg={6}
           spacing={2}
-          className={classesItemsContainer.saharaArabiaContainer}
+          alignContent="center"
+          style={{ backgroundColor: "brown" }}
         >
-          <Grid item>
-            <Box
-              variant="h4"
-              color="secondary.main"
-              fontSize="1.5rem"
-              fontWeight="bold"
-              className={classesItemsContainer.titleBoxSahara}
-            >
-              {item1}
-            </Box>
-          </Grid>
-          <Grid item>
-            <FormControlLabel
-              control={
-                <Switch
-                  checked={showComponent1.greenSahara}
-                  onChange={handleDesertChange}
-                  name="greenSahara"
-                  color="primary"
-                />
-              }
-              label="show/hide"
-            />
-          </Grid>
+          <Box bgcolor="info.main" fontStyle="italic" py={1} px={1}>
+            Due to factors such as Earth's varying orbit the desert regions of
+            North Africa and Saudi Arabia experienced elevated moisture content
+            leading to vegetation growth and an ecological system. This would
+            have been new fertile ground for humans to experience and perhaps
+            develop torward a modern human through selective pressure and
+            population boom and busts
+          </Box>
         </Grid>
         <Grid
+          //container for greenSahara and greenArabia
           container
           item
-          direction="column"
-          spacing={2}
-          className={classesItemsContainer.saharaArabiaContainer}
+          lg={6}
+          spacing={6}
         >
-          <Grid item>
-            <Box
-              variant="h4"
-              color="secondary.main"
-              fontSize="1.5rem"
-              fontWeight="bold"
-              className={classesItemsContainer.titleBoxArabia}
-            >
-              {item2}
-            </Box>
+          <Grid
+            container
+            item
+            direction="column"
+            wrap="nowrap"
+            spacing={2}
+            className={classesItemsContainer.saharaArabiaContainer}
+          >
+            <Grid item>
+              <Box
+                variant="h4"
+                color="secondary.main"
+                fontSize="1.5rem"
+                fontWeight="bold"
+                className={classesItemsContainer.titleBoxSahara}
+              >
+                {item1}
+              </Box>
+            </Grid>
+            <Grid item>
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={showComponent1.greenSahara}
+                    onChange={handleDesertChange}
+                    name="greenSahara"
+                    color="primary"
+                  />
+                }
+                label="show/hide"
+              />
+            </Grid>
           </Grid>
-
-          <Grid item>
-            <FormControlLabel
-              control={
-                <Switch
-                  checked={showComponent1.greenArabia}
-                  onChange={handleDesertChange}
-                  name="greenArabia"
-                  color="primary"
-                />
-              }
-              label="show/hide"
-            />
+          <Grid
+            container
+            item
+            direction="column"
+            spacing={2}
+            className={classesItemsContainer.saharaArabiaContainer}
+          >
+            <Grid item>
+              <Box
+                variant="h4"
+                color="secondary.main"
+                fontSize="1.5rem"
+                fontWeight="bold"
+                className={classesItemsContainer.titleBoxArabia}
+              >
+                {item2}
+              </Box>
+            </Grid>
+            <Grid item>
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={showComponent1.greenArabia}
+                    onChange={handleDesertChange}
+                    name="greenArabia"
+                    color="primary"
+                  />
+                }
+                label="show/hide"
+              />
+            </Grid>
           </Grid>
         </Grid>
       </Grid>

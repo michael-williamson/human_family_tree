@@ -21,7 +21,8 @@ const theme = createTheme({
       main: red.A400,
     },
     info: {
-      main: "#fffcaa",
+      //darker beige
+      main: "rgb(255 241 192)",
       //lighter beige
       light: "#f2ef89",
     },
