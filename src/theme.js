@@ -9,6 +9,8 @@ const theme = createTheme({
       main: "rgb(215, 136, 0)",
       //almost blanched almond
       contrastText: "rgb(244, 255, 197)",
+      //variation of orange,  used on image outline
+      light: "#c4760ba1",
     },
     secondary: {
       //brown

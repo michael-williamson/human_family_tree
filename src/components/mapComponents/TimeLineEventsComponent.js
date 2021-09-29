@@ -51,18 +51,16 @@ const useStylesItemContainer = makeStyles((theme) => ({
       minHeight: 100,
       width: 142,
       borderRadius: 20,
-      outline: "4px solid black",
+      outline: `4px solid ${theme.palette.primary.light}`,
       animation: `$enter 1000ms ${theme.transitions.easing.easeIn} 1 forwards`,
     },
   },
   "@keyframes enter": {
     "0%": {
       opacity: 0.5,
-      outline: "4px solid black",
     },
     "100%": {
       opacity: 1,
-      outline: "4px solid black",
     },
   },
   titleBoxArabia: {
@@ -82,7 +80,7 @@ const useStylesItemContainer = makeStyles((theme) => ({
       minHeight: 100,
       width: 142,
       borderRadius: 20,
-      outline: "4px solid black",
+      outline: `4px solid ${theme.palette.primary.light}`,
       animation: `$enter 1000ms ${theme.transitions.easing.easeIn} 1 forwards`,
     },
   },
