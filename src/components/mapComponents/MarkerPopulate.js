@@ -66,7 +66,7 @@ export const MarkerPopulate = (props) => {
                     alt={item.name}
                   />
                   <div className="imgAttribution">
-                    {ReactHtmlParser(item.linksToPhotos[1])}
+                    {ReactHtmlParser(item.linksToPhotos[2])}
                   </div>
                   <div className="infoLinesContainer">
                     <p className="infoLines">

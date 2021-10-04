@@ -1,30 +1,57 @@
 import React, { useState } from "react";
-import { Grid, Box } from "@material-ui/core";
+import {
+  Grid,
+  Box,
+  // Accordion,
+  // AccordionDetails,
+  // AccordionSummary,
+  makeStyles,
+} from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
-import anthroData from "../../data/anthroData.json";
+import speciesArrays from "../../data/speciesArrays.json";
 import MuiAccordion from "@material-ui/core/Accordion";
 import MuiAccordionSummary from "@material-ui/core/AccordionSummary";
 import MuiAccordionDetails from "@material-ui/core/AccordionDetails";
-import { GalleryItemComponent } from "./GalleryItemComponent";
+import GalleryItemComponent from "./GalleryItemComponent";
 import { speciesArr } from "../../data/listArrays";
 import theme from "../../theme";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import NearMeOutlinedIcon from "@material-ui/icons/NearMeOutlined";
 
-const populateSpeciesObject = () => {
-  const speciesObject = {};
-  anthroData.forEach((item) => {
-    if (speciesObject[item.species]) {
-      speciesObject[item.species].push(item);
-    } else {
-      speciesObject[item.species] = [];
-      speciesObject[item.species].push(item);
-    }
-  });
-  return speciesObject;
-};
-
-const speciesObject = populateSpeciesObject();
+const useStyles = makeStyles({
+  root: {
+    border: "1px solid rgba(0, 0, 0, .125)",
+    color: theme.palette.primary.main,
+    boxShadow: "none",
+    "&:not(:last-child)": {
+      borderBottom: 0,
+    },
+    "&:before": {
+      display: "none",
+    },
+    "&$expanded": {
+      margin: "auto",
+    },
+  },
+  accordionSummary: {
+    background: "linear-gradient(45deg, rgb(251 255 186 / 65%), #fff00426)",
+    borderBottom: "1px solid rgba(0, 0, 0, .125)",
+    marginBottom: -1,
+    minHeight: 56,
+    "&$expanded": {
+      minHeight: 56,
+    },
+  },
+  content: {
+    "&$expanded": {
+      margin: "12px 0",
+    },
+  },
+  accordionDetails: {
+    padding: theme.spacing(2),
+    background: theme.palette.background.default,
+  },
+});
 
 const Accordion = withStyles({
   root: {
@@ -69,18 +96,17 @@ const AccordionDetails = withStyles((theme) => ({
   },
 }))(MuiAccordionDetails);
 
-function Item() {
-  const [expanded, setExpanded] = React.useState("panel1");
-  const [itemsToRender, setItemsToRender] = useState(null);
+function Item(props) {
+  const [itemToRender, setItemToRender] = useState(null);
+  const classes = useStyles();
+  const { expanded, setExpanded } = props;
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
-
   const handleClick = (item) => (event) => {
-    setItemsToRender(item);
+    setItemToRender(item);
   };
-
   const GridGalleryItemProps = {
     container: true,
     item: true,
@@ -91,36 +117,41 @@ function Item() {
 
   return speciesArr.map((item, index) => {
     return (
-      <div key={index}>
-        <Accordion
-          square
-          expanded={expanded === `panel${index + 100}`}
-          onChange={handleChange(`panel${index + 100}`)}
+      <Accordion
+        square
+        key={index}
+        expanded={expanded === `panel${index + 100}`}
+        onChange={handleChange(`panel${index + 100}`)}
+        className={classes.root}
+      >
+        <AccordionSummary
+          aria-controls={`panel${index + 100}d-content`}
+          id={`panel${index + 100}d-header`}
+          className={classes.accordionSummary}
+          expandIcon={<ExpandMore color="primary" />}
+          onClick={handleClick(item)}
         >
-          <AccordionSummary
-            aria-controls={`panel${index + 100}d-content`}
-            id={`panel${index + 100}d-header`}
-            expandIcon={<ExpandMore color="primary" />}
-            onClick={handleClick(item)}
-          >
-            <Box fontStyle="italic">{item}</Box>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Grid {...GridGalleryItemProps}>
-              <GalleryItemComponent
-                arr={speciesObject[item]}
-                item={item}
-                itemsToRender={itemsToRender}
-              />
-            </Grid>
-          </AccordionDetails>
-        </Accordion>
-      </div>
+          <Box fontStyle="italic" className={classes.content}>
+            {item}
+          </Box>
+        </AccordionSummary>
+        <AccordionDetails className={classes.accordionDetails}>
+          <Grid {...GridGalleryItemProps}>
+            <GalleryItemComponent
+              arr={speciesArrays[item]}
+              item={item}
+              itemToRender={itemToRender}
+            />
+          </Grid>
+        </AccordionDetails>
+      </Accordion>
     );
   });
 }
 
 const FossilGalleryComponent = () => {
+  const [expanded, setExpanded] = useState("panel1");
+
   return (
     <div>
       <Box color="primary.main" px={2} py={2} bgcolor="background.default">
@@ -132,7 +163,7 @@ const FossilGalleryComponent = () => {
           features specimens of the world with geographical and dating data
         </Box>
       </Box>
-      <Item />
+      <Item expanded={expanded} setExpanded={setExpanded} />
     </div>
   );
 };
