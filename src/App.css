@@ -3,6 +3,16 @@
   padding-bottom: 100px;
 }
 
+/*keyframes defined globally here to bypass material ui keyframes issues*/
+@keyframes enter {
+  0% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .header_container {
   position: relative;
   background-image: url("./media/mapComponentMedia/africa_1.jpg");

@@ -44,6 +44,7 @@ const eventStyles = {
     borderRadius: 20,
     cursor: "pointer",
     transition: "transform 500ms,box-shadow 600ms",
+    opacity: 1,
   },
 };
 
@@ -67,7 +68,10 @@ const useStylesMainContainer = makeStyles((theme) => ({
     "&::after": {
       ...eventStyles.titleImgAfter,
       outline: `4px solid ${theme.palette.primary.light}`,
-      animation: `$enter 1000ms ${theme.transitions.easing.easeIn} 1 forwards`,
+      animation: (props) =>
+        props.playState.greenSahara === "running"
+          ? `enter 250ms ${theme.transitions.easing.easeIn}  1 forwards ${props.playState.greenSahara}`
+          : "none",
       backgroundImage: (props) =>
         props.showComponent1.greenSahara
           ? `url(${sahara_map})`
@@ -91,20 +95,16 @@ const useStylesMainContainer = makeStyles((theme) => ({
       boxShadow: "inset 4px -3px 20px 15px #e1e1e1c2",
     },
   },
-  "@keyframes enter": {
-    "0%": {
-      opacity: 0.5,
-    },
-    "100%": {
-      opacity: 1,
-    },
-  },
+
   titleBoxArabia: {
     ...eventStyles.title,
     "&::after": {
       ...eventStyles.titleImgAfter,
       outline: `4px solid ${theme.palette.primary.light}`,
-      animation: `$enter 1000ms ${theme.transitions.easing.easeIn} 1 forwards`,
+      animation: (props) =>
+        props.playState.greenArabia === "running"
+          ? `enter 250ms ${theme.transitions.easing.easeIn} 1 forwards ${props.playState.greenArabia}`
+          : "none",
       backgroundImage: (props) =>
         props.showComponent1.greenArabia
           ? `url(${arabia_map})`
@@ -174,7 +174,10 @@ const useStylesMainContainer = makeStyles((theme) => ({
     borderRadius: 20,
     cursor: "pointer",
     outline: `4px solid ${theme.palette.primary.light}`,
-    animation: `$enter 1000ms ${theme.transitions.easing.easeIn} 1 forwards`,
+    animation: (props) =>
+      props.playState.iceAge === "running" && props.iceAgeEnabled
+        ? `enter 250ms ${theme.transitions.easing.easeIn} 1 forwards `
+        : "none",
     transition: "transform 500ms,box-shadow 600ms",
     "&:hover": {
       boxShadow: " -20px 3px 11px 20px #00000091",
@@ -186,6 +189,8 @@ const useStylesMainContainer = makeStyles((theme) => ({
 
 export const TimeLineEventsComponent = (props) => {
   const { item1, item2, item3 } = props;
+  //animation play state
+  const { playState, setPlayState } = props;
   //checkedState3 is connected with iceAgeChecked
   const { checkedState3 } = props;
   const { setCheckedState3 } = props;
@@ -209,12 +214,35 @@ export const TimeLineEventsComponent = (props) => {
 
   const handleEnableIceAge = (event) => {
     setIceAgeEnabled(event.target.checked);
+    const stateObj = {};
+    for (const props in playState) {
+      if ("iceAge" !== props) {
+        stateObj[props] = "paused";
+      } else {
+        stateObj["iceAge"] = "running";
+      }
+    }
+    setPlayState((prevProps) => {
+      return { ...prevProps, ...stateObj };
+    });
   };
 
   const handleDesertChange = (event) => {
     setShowComponent1({
       ...showComponent1,
       [event.target.name]: event.target.checked,
+    });
+
+    const stateObj = {};
+    for (const props in playState) {
+      if (event.target.name !== props) {
+        stateObj[props] = "paused";
+      } else {
+        stateObj[event.target.name] = "running";
+      }
+    }
+    setPlayState((prevProps) => {
+      return { ...prevProps, ...stateObj };
     });
   };
 
@@ -251,11 +279,11 @@ export const TimeLineEventsComponent = (props) => {
         >
           <Box bgcolor="info.main" fontStyle="italic" py={1} px={1}>
             Due to factors such as Earth's varying orbit the desert regions of
-            North Africa and Saudi Arabia experienced elevated moisture content
-            leading to vegetation growth and an ecological system. This would
-            have been new fertile ground for humans to experience and perhaps
-            develop torward a modern human through selective pressure and
-            population boom and busts
+            North Africa and Saudi Arabia periodically experienced elevated
+            moisture content leading to vegetation growth and a more complex
+            ecological system. This would have been new fertile ground for
+            humans to experience and perhaps develop towards a modern human
+            through selective pressure along with population booms and busts
           </Box>
         </Grid>
         <Grid

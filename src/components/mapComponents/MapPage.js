@@ -36,6 +36,13 @@ const MapPage = () => {
     greenArabia: false,
   });
 
+  //state to control animation play state of TimeLineComponent
+  const [playState, setPlayState] = useState({
+    greenSahara: "paused",
+    greenArabia: "paused",
+    iceAge: "paused",
+  });
+
   useEffect(() => {
     if (iceAgeEnabled === false) {
       setNorthAmericanPolygon(false);
@@ -78,6 +85,8 @@ const MapPage = () => {
               item1="Green Sahara"
               item2="Green Arabia"
               item3="Ice Age Time Periods"
+              playState={playState}
+              setPlayState={setPlayState}
               checkedState3={iceAgeChecked}
               setCheckedState3={setIceAgeChecked}
               iceAgeEnabled={iceAgeEnabled}
