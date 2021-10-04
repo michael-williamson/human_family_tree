@@ -210,21 +210,23 @@ export const TimeLineEventsComponent = (props) => {
       [event.target.name]: event.target.checked,
     });
     setDatesChecked({ ...datesChecked, ...filterDates(event, datesChecked) });
+    if (playState.iceAge !== "running") {
+      const stateObj = {};
+      for (const props in playState) {
+        if ("iceAge" !== props) {
+          stateObj[props] = "paused";
+        } else {
+          stateObj["iceAge"] = "running";
+        }
+      }
+      setPlayState((prevProps) => {
+        return { ...prevProps, ...stateObj };
+      });
+    }
   };
 
   const handleEnableIceAge = (event) => {
     setIceAgeEnabled(event.target.checked);
-    const stateObj = {};
-    for (const props in playState) {
-      if ("iceAge" !== props) {
-        stateObj[props] = "paused";
-      } else {
-        stateObj["iceAge"] = "running";
-      }
-    }
-    setPlayState((prevProps) => {
-      return { ...prevProps, ...stateObj };
-    });
   };
 
   const handleDesertChange = (event) => {
