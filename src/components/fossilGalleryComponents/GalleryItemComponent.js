@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { Link } from "@material-ui/core";
 import ImageSearchIcon from "@material-ui/icons/ImageSearch";
 import { makeStyles } from "@material-ui/core";
 
@@ -18,7 +19,7 @@ const htmlParser = (item) => {
       </Fragment>
     );
   } catch (error) {
-    console.log(`error`, item);
+    console.log(`error`, error);
     return null;
   }
 };
@@ -27,18 +28,22 @@ const GalleryItemComponent = (props) => {
   const { arr, item, itemToRender } = props;
   const useStyles = makeStyles((theme) => ({
     root: {
-      backgroundColor: "#707070",
+      backgroundColor: "#323131",
       fontSize: 20,
       margin: 10,
       padding: 10,
       position: "relative",
       height: "fit-content",
       minHeight: 440,
-      minWidth: 240,
+      minWidth: 330,
+      width: "unset",
+      [theme.breakpoints.down("xs")]: {
+        width: "100%",
+      },
     },
     showImageIcon: {
       position: "absolute",
-      color: "white",
+      color: theme.palette.background.default,
       top: 5,
       left: 10,
       zIndex: 10,
@@ -52,7 +57,9 @@ const GalleryItemComponent = (props) => {
       height: "100%",
       width: "100%",
       top: 0,
-      backgroundColor: "rgb(0 0 0 / 69%)",
+      left: 0,
+      // almost black color with 91% opacity
+      backgroundColor: "rgb(11 11 11 / 91%)",
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
@@ -67,30 +74,33 @@ const GalleryItemComponent = (props) => {
     },
     itemLabel: {
       fontSize: "1rem",
-      color: "beige",
+      color: theme.palette.background.default,
+      [theme.breakpoints.down("sm")]: {
+        padding: "0 5px",
+      },
     },
     titleLabel: {
       fontSize: "2rem",
-      color: "beige",
+      color: theme.palette.background.default,
       fontWeight: "bold",
     },
     itemInfo: {
-      color: "orange",
+      color: theme.palette.primary.main,
       fontWeight: "bold",
     },
     speciesInfo: {
       fontStyle: "italic",
-      color: "orange",
+      color: theme.palette.primary.main,
       fontWeight: "bold",
     },
     imgCreditItem: {
-      color: "cadetblue",
+      color: theme.status.link,
       fontStyle: "italic",
       fontSize: ".8rem",
       paddingTop: 10,
       "& a": {
         textDecoration: "none",
-        color: "#1f9ed2",
+        color: theme.status.darkerLink,
       },
     },
     img: {
@@ -107,7 +117,7 @@ const GalleryItemComponent = (props) => {
   return item === itemToRender
     ? arr.map((item, index) => {
         return (
-          <div className={classes.root}>
+          <div className={classes.root} key={index}>
             <div>
               <img
                 src={item.linksToPhotos[0]}
@@ -148,6 +158,18 @@ const GalleryItemComponent = (props) => {
                 <div className={classes.imgCreditItem}>
                   {htmlParser(item.linksToPhotos[2])}
                 </div>
+              </div>
+              <div className={classes.item}>
+                <span className={classes.itemLabel}>More Info: </span>
+                <Link
+                  underline="none"
+                  href={item.linkToInfo}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={classes.itemInfo}
+                >
+                  Click here
+                </Link>
               </div>
             </div>
           </div>
