@@ -10,6 +10,7 @@ import {
   beardedManIconOrange,
   beardedManIconRed,
   beardedManIconLitePurple,
+  beardedManIconBrightYellow,
 } from "../media/index";
 
 export const librariesArr = ["drawing"];
@@ -84,7 +85,7 @@ export const imageFiles = {
   floresiensis: beardedManIconLiteGrey,
   luzonensis: beardedManIconOrange,
   longi: beardedManIconLitePurple,
-  antecessor: beardedManIconBlack,
+  antecessor: beardedManIconBrightYellow,
 };
 
 export const northAmericaGlacialTimeline = {

@@ -25,6 +25,7 @@ import beardedManIconLiteGrey from "./marker_icons/bearded_man_icon_litegrey.png
 import beardedManIconOrange from "./marker_icons/bearded_man_icon_orange.png";
 import beardedManIconRed from "./marker_icons/bearded_man_icon_red.png";
 import beardedManIconLitePurple from "./marker_icons/bearded_man_icon_litepurple.png";
+import beardedManIconBrightYellow from "./marker_icons/bearded_man_icon_bright_yellow.png";
 
 import savannahImage from "./mapComponentMedia/savannah.jpg";
 
@@ -43,6 +44,7 @@ export {
   beardedManIconOrange,
   beardedManIconRed,
   beardedManIconLitePurple,
+  beardedManIconBrightYellow,
   savannahImage,
   familyTree,
   sahara_map,
