@@ -33,6 +33,15 @@ const theme = createTheme({
       default: "#f5f5dc",
     },
   },
+  //end of palette
+  status: {
+    //cadet blue
+    link: "#5f9ea0",
+    //darker link
+    darkerLink: "#1f9ed2",
+    //click here link
+    clickLink: "#b1fde3",
+  },
 });
 
 theme.typography.h5 = {

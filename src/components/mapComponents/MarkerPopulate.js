@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import ReactHtmlParser from "react-html-parser";
+import React, { useState, Fragment } from "react";
 import { Marker, InfoWindow } from "@react-google-maps/api";
 import anthroData from "../../data/anthroData.json";
 import { datesCategoryObj } from "../../data/listArrays";
@@ -8,6 +7,32 @@ import { dateComparer } from "../helperFunctions";
 import { imageFiles } from "../../data/listArrays";
 //styles
 import "../componentStyle/MarkerPopulateStyles.css";
+
+const htmlParser = (item) => {
+  let regExHttp = /(http[^\\"]*)/g;
+  let regExAnchorText = /<a [^>]+>([^<]+)<\/a>/;
+  const httpArr = item.match(regExHttp);
+  let result1 = item.match(regExAnchorText);
+
+  try {
+    return (
+      <Fragment>
+        <a
+          href={httpArr[0]}
+          target="_blank"
+          rel="noreferrer"
+          className="anchor imgAttribution"
+        >
+          {result1[1]}
+        </a>
+        <span className="imgAttribution">, via Wikipedia Commons</span>
+      </Fragment>
+    );
+  } catch (error) {
+    console.log(`error`, error);
+    return null;
+  }
+};
 
 export const MarkerPopulate = (props) => {
   const [specimen, setSpecimen] = useState(null);
@@ -60,13 +85,17 @@ export const MarkerPopulate = (props) => {
               <div className="infoWindowContainer">
                 <div className="overlayContainer">
                   <h1 className="title">{item.name}</h1>
-                  <img
-                    className="displayImage"
-                    src={item.linksToPhotos[0]}
-                    alt={item.name}
-                  />
-                  <div className="imgAttribution">
-                    {ReactHtmlParser(item.linksToPhotos[2])}
+
+                  <div className="imgContainer">
+                    <img
+                      className="displayImage"
+                      src={item.linksToPhotos[0]}
+                      alt={item.name}
+                    />
+
+                    <div className="imgAttributionContainer">
+                      {htmlParser(item.linksToPhotos[2])}
+                    </div>
                   </div>
                   <div className="infoLinesContainer">
                     <p className="infoLines">
@@ -80,7 +109,10 @@ export const MarkerPopulate = (props) => {
                       <span className="itemProps">{item.continent}</span>
                     </p>
                     <p className="infoLines">
-                      Species: <span className="">Homo {item.species}</span>
+                      Species:{" "}
+                      <span className="speciesText itemProps">
+                        {item.species}
+                      </span>
                     </p>
                     <p className="infoLines">
                       Date: <span className="itemProps">{item.date}</span>
@@ -91,8 +123,9 @@ export const MarkerPopulate = (props) => {
                         href={item.linkToInfo}
                         target="_blank"
                         rel="noreferrer"
+                        className="anchor"
                       >
-                        <span className="">Click Here</span>
+                        <span className="moreInfoLink">Click Here</span>
                       </a>
                     </p>
                   </div>
