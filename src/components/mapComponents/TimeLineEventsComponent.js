@@ -52,9 +52,17 @@ const useStylesMainContainer = makeStyles((theme) => ({
   root: { minHeight: 340 },
   itemContainer: {
     backgroundColor: "#f5f5dc5e",
-    minHeight: 300,
+
     [theme.breakpoints.up("lg")]: {
       border: "1px solid #b05113",
+    },
+
+    [theme.breakpoints.up("xs")]: {
+      minHeight: 500,
+      marginTop: 22,
+    },
+    [theme.breakpoints.up("sm")]: {
+      minHeight: 300,
     },
   },
   saharaArabiaContainer: {
@@ -266,7 +274,7 @@ export const TimeLineEventsComponent = (props) => {
         item
         direction="row"
         justifyContent="space-around"
-        alignContent="center"
+        alignContent="space-around"
         xs={12}
         lg={5}
         className={classes.itemContainer}
@@ -274,6 +282,7 @@ export const TimeLineEventsComponent = (props) => {
         <Grid
           container
           item
+          md={6}
           lg={6}
           spacing={2}
           alignContent="center"
@@ -292,6 +301,7 @@ export const TimeLineEventsComponent = (props) => {
           //container for greenSahara and greenArabia
           container
           item
+          md={6}
           lg={6}
           spacing={6}
         >
@@ -301,6 +311,8 @@ export const TimeLineEventsComponent = (props) => {
             direction="column"
             wrap="nowrap"
             spacing={2}
+            sm={6}
+            md={12}
             className={classes.saharaArabiaContainer}
           >
             <Grid item>
@@ -333,6 +345,8 @@ export const TimeLineEventsComponent = (props) => {
             item
             direction="column"
             spacing={2}
+            sm={6}
+            md={12}
             className={classes.saharaArabiaContainer}
           >
             <Grid item>
@@ -387,13 +401,17 @@ export const TimeLineEventsComponent = (props) => {
             container
             item
             direction="row"
-            wrap="nowrap"
+            wrap="wrap"
+            spacing={2}
+            md={12}
             justifyContent="space-evenly"
           >
             <Grid
               container
               item
               direction="column"
+              xs={12}
+              md={4}
               lg={4}
               className={classes.iceAgeImageContainer1}
             >
@@ -416,12 +434,15 @@ export const TimeLineEventsComponent = (props) => {
               //Grid that wraps item title and switch
               container
               item
-              direction="column"
+              direction="row"
+              justifyContent="center"
+              xs={12}
+              sm={6}
+              md={4}
               lg={4}
-              spacing={2}
             >
               {/* //may need a grid around Box */}
-              <Grid item>
+              <Grid item xs={6} sm={6} md={12}>
                 <Box
                   variant="h4"
                   color="secondary.main"
@@ -432,7 +453,7 @@ export const TimeLineEventsComponent = (props) => {
                 </Box>
               </Grid>
 
-              <Grid item>
+              <Grid item xs={6} sm={6} md={12}>
                 <FormControlLabel
                   control={
                     <Switch
@@ -450,6 +471,8 @@ export const TimeLineEventsComponent = (props) => {
               container
               item
               direction="column"
+              xs={12}
+              md={4}
               lg={4}
               className={classes.iceAgeImageContainer2}
             >
