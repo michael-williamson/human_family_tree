@@ -24,6 +24,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  isolation: isolate;
 }
 
 .header_container::after {
@@ -31,17 +32,15 @@
   position: absolute;
   z-index: -1;
   inset: 0;
-  background: #0000005c;
-  mix-blend-mode: overlay;
+  background: rgb(0 0 0 / 21%);
 }
 
 .container_header_title {
   position: relative;
 }
 
-.header_title::before {
+/* .header_title::before {
   content: "";
-  /* background: linear-gradient(79deg, beige, #fedb00de, beige); */
   background: linear-gradient(185deg, #f5f5dc70, #fedb00ba, #f5f5dcfc);
   border-radius: 2px 7px 7px 6px;
   position: absolute;
@@ -52,14 +51,15 @@
   width: 100%;
   mix-blend-mode: color;
   transform: rotate3d(14, 0, 0, 48deg);
-}
+} */
 
 .header_title {
-  color: brown;
+  /* color: brown; */
+  color: beige;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(45deg, white, #ffffffe8);
+  /* background: linear-gradient(45deg, white, #ffffffe8); */
   width: 88%;
   background-image: url("../src/media/mapComponentMedia/family_tree.png");
   background-size: contain;
@@ -67,7 +67,8 @@
   position: relative;
   z-index: 1000;
   font-size: 3rem;
-  text-shadow: -2px -2px 0px #00000047;
+  /* text-shadow: -2px -2px 0px #00000047; */
+  text-shadow: -3px -3px 0px #000000ad;
   margin: 0;
   transform: translateY(8px);
   background-position: -20px -3px;
@@ -125,7 +126,8 @@
     justify-content: flex-start;
   }
   .header_title {
-    margin: 30px 1px 80px;
+    margin: 30px 1px 20px;
+    /* margin: 30px 1px 80px; */
   }
 }
 @media only screen and (min-width: 1440px) {
