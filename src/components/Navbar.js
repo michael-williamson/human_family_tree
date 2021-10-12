@@ -4,48 +4,38 @@ import { NavLink } from "react-router-dom";
 import { skull_icon } from "../media";
 import { globe_icon } from "../media";
 
+const navLinkStyles = {
+  color: "beige",
+  textDecoration: "none",
+  padding: "18px 65px",
+  fontWeight: 900,
+  position: "relative",
+  borderRadius: "21px 21px 1px 1px",
+  textShadow: "-4px -1px 0px #434343",
+  backgroundColor: "#00000038",
+};
+
+const navLinkPseudoBefore = {
+  top: 0,
+  left: 0,
+  position: "absolute",
+  filter: "drop-shadow(2px 4px 6px black)",
+};
+
 const useStyles = makeStyles((theme) => ({
   navLinkContainer: {},
   navLink: {
-    // color: "#a52a2ab0",
-    color: "beige",
-    textDecoration: "none",
-    // padding: "20px 70px",
-    padding: "18px 65px",
-    fontWeight: 900,
-    position: "relative",
-    // backgroundImage: "linear-gradient(185deg, #f5f5dc70, #fedb00ba, #f5f5dcfc)",
-    // letterSpacing: 4,
-    // fontSize: 22,
-    borderRadius: "21px 21px 1px 1px",
-    textShadow: "-4px -1px 0px #434343",
-    backgroundColor: "#00000038",
+    ...navLinkStyles,
     "&:before": {
       content: `url(${globe_icon})`,
-      top: 0,
-      left: 0,
-      position: "absolute",
-      filter: "drop-shadow(2px 4px 6px black)",
+      ...navLinkPseudoBefore,
     },
   },
   navLink2: {
-    color: "beige",
-    textDecoration: "none",
-    padding: "18px 65px",
-    fontWeight: 900,
-    position: "relative",
-    // backgroundImage: "linear-gradient(185deg, #f5f5dc70, #fedb00ba, #f5f5dcfc)",
-    // letterSpacing: 4,
-    // fontSize: 22,
-    borderRadius: "21px 21px 1px 1px",
-    textShadow: "-4px -1px 0px #434343",
-    backgroundColor: "#00000038",
+    ...navLinkStyles,
     "&:before": {
       content: `url(${skull_icon})`,
-      top: 0,
-      left: 0,
-      position: "absolute",
-      filter: "drop-shadow(2px 4px 6px black)",
+      ...navLinkPseudoBefore,
     },
   },
   activeLink: {

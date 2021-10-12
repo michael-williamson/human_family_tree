@@ -61,7 +61,7 @@ const useStylesMainContainer = makeStyles((theme) => ({
       minHeight: 500,
       marginTop: 22,
     },
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("md")]: {
       minHeight: 300,
     },
   },
@@ -276,7 +276,8 @@ export const TimeLineEventsComponent = (props) => {
         justifyContent="space-around"
         alignContent="space-around"
         xs={12}
-        lg={5}
+        lg={8}
+        xl={6}
         className={classes.itemContainer}
       >
         <Grid
@@ -311,7 +312,7 @@ export const TimeLineEventsComponent = (props) => {
             direction="column"
             wrap="nowrap"
             spacing={2}
-            sm={6}
+            sm={12}
             md={12}
             className={classes.saharaArabiaContainer}
           >
@@ -345,7 +346,7 @@ export const TimeLineEventsComponent = (props) => {
             item
             direction="column"
             spacing={2}
-            sm={6}
+            sm={12}
             md={12}
             className={classes.saharaArabiaContainer}
           >

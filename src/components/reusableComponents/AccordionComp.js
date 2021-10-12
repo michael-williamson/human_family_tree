@@ -38,7 +38,9 @@ const AccordionComp = (props) => {
       borderBottom: "1px solid rgba(0, 0, 0, .125)",
       marginBottom: -1,
       minHeight: 56,
-      background: "linear-gradient(45deg, rgb(251 255 186 / 65%), #fff00426)",
+      // background: "linear-gradient(45deg, rgb(251 255 186 / 65%), #fff00426)",
+      background:
+        "linear-gradient(45deg,#ffe00457, rgb(251 255 186 / 32%), #ffe00452)",
       "&$expanded": {
         minHeight: 56,
       },
@@ -69,7 +71,7 @@ const AccordionComp = (props) => {
         onChange={handleChange(`panel${index + 1}`)}
       >
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon color="primary" />}
+          // expandIcon={<ExpandMoreIcon color="primary" />}
           aria-controls={`panel${index + 1}d-content`}
           id={`panel${index + 1}d-header`}
         >

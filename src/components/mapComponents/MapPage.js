@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MapComponent from "./MapComponent";
 import AccordionComp from "../reusableComponents/AccordionComp";
-import { Typography, Grid } from "@material-ui/core";
+import { Box, Grid } from "@material-ui/core";
 import { MainCheckboxContainer } from "./MainCheckboxContainer";
 import { checkedObject } from "../helperFunctions";
 import { TimeLineEventsComponent } from "./TimeLineEventsComponent";
@@ -58,18 +58,24 @@ const MapPage = () => {
     const { expanded, toggleTextExpanded, toggleTextCollapsed, whichSummary } =
       props;
     return (
-      <Grid container direction="row" alignItems="center" spacing={2}>
-        <Grid item>
+      <Grid
+        container
+        direction="row"
+        alignItems="center"
+        justifyContent="center"
+        spacing={2}
+      >
+        {/* <Grid item>
           {whichSummary !== "map" ? (
             <AlarmOutlined color="primary" />
           ) : (
             <PublicOutlined color="primary" />
           )}
-        </Grid>
+        </Grid> */}
         <Grid item>
-          <Typography variant="h5" color="primary">
+          <Box letterSpacing={2} color="primary" fontWeight="bold">
             {expanded ? toggleTextExpanded : toggleTextCollapsed}
-          </Typography>
+          </Box>
         </Grid>
       </Grid>
     );
