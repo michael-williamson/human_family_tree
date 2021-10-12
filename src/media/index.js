@@ -12,6 +12,8 @@ import european_ice_sheet_no_filler from "./mapComponentMedia/european_ice_sheet
 import north_american_ice_sheet_no_filler from "./mapComponentMedia/north_american_ice_sheet_no_filler.png";
 import glacier_canyon from "./mapComponentMedia/glacier_canyon.jpg";
 import ice_bergs from "./mapComponentMedia/ice_bergs.jpg";
+import globe_icon from "./mapComponentMedia/globe_icon.png";
+import skull_icon from "./mapComponentMedia/skull_icon.png";
 import footprintIconBlue from "./mapComponentMedia/footprint_icon_blue.png";
 import footprintOutlinedIconPurple from "./mapComponentMedia/footprint_outlined_icon_purple.png";
 import beardedManIconBlue from "./marker_icons/bearded_man_icon_blue.png";
@@ -59,4 +61,6 @@ export {
   north_american_ice_sheet_no_filler,
   glacier_canyon,
   ice_bergs,
+  globe_icon,
+  skull_icon,
 };
