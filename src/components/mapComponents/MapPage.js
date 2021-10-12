@@ -10,7 +10,6 @@ import {
   iceAgeDatesArr,
   speciesArr,
 } from "../../data/listArrays";
-import { AlarmOutlined, PublicOutlined } from "@material-ui/icons";
 
 const MapPage = () => {
   // const [speciesDateExpanded, setSpeciesDateExpanded] = useState(false);
@@ -55,8 +54,7 @@ const MapPage = () => {
   }, [iceAgeChecked, iceAgeEnabled]);
 
   const AccordionSummaryComponent = (props) => {
-    const { expanded, toggleTextExpanded, toggleTextCollapsed, whichSummary } =
-      props;
+    const { expanded, toggleTextExpanded, toggleTextCollapsed } = props;
     return (
       <Grid
         container
