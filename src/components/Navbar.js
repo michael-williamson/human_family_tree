@@ -62,7 +62,14 @@ export const Navbar = () => {
   const classes = useStyles();
   return (
     <Grid container item xs={12} alignItems="center" justifyContent="center">
-      <Grid container item className={classes.navLinkContainer} xs={12} lg={4}>
+      <Grid
+        container
+        item
+        className={classes.navLinkContainer}
+        xs={12}
+        lg={4}
+        justifyContent="center"
+      >
         <NavLink
           to="/map"
           className={classes.navLink}
@@ -71,7 +78,14 @@ export const Navbar = () => {
           Prehistory Map
         </NavLink>
       </Grid>
-      <Grid container item className={classes.navLinkContainer} xs={12} lg={4}>
+      <Grid
+        container
+        item
+        className={classes.navLinkContainer}
+        xs={12}
+        lg={4}
+        justifyContent="center"
+      >
         <NavLink
           to="/fossil_gallery"
           className={classes.navLink2}
