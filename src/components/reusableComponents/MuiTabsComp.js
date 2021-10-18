@@ -48,10 +48,6 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     backgroundColor: "#f8ea88",
-    // "& a": {
-    //   color: "orange",
-    //   textDecoration: "none",
-    // },
   },
 }));
 
@@ -74,12 +70,6 @@ export default function FullWidthTabs() {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          {/* <Link to="/">
-            <Tab label="Prehistory Map" {...a11yProps(0)} />
-          </Link>
-          <Link to="fossil_gallery">
-            <Tab label="Human Fossil Gallery" {...a11yProps(1)} />
-          </Link> */}
           <Tab
             label="Prehistory Map"
             {...a11yProps(0)}
@@ -92,7 +82,6 @@ export default function FullWidthTabs() {
             component={Link}
             to="/fossil_gallery"
           />
-          {/* <Tab label="Stone Tools" {...a11yProps(2)} /> */}
         </Tabs>
       </AppBar>
     </div>

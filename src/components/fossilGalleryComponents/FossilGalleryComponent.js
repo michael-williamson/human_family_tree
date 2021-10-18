@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Grid,
-  Box,
-  // Accordion,
-  // AccordionDetails,
-  // AccordionSummary,
-  makeStyles,
-} from "@material-ui/core";
+import { Grid, Box, makeStyles } from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
 import speciesArrays from "../../data/speciesArrays.json";
 import MuiAccordion from "@material-ui/core/Accordion";

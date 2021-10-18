@@ -58,7 +58,7 @@ const GalleryItemComponent = (props) => {
       width: "100%",
       top: 0,
       left: 0,
-      // almost black color with 91% opacity
+      //*** */ almost black color with 91% opacity
       backgroundColor: "rgb(11 11 11 / 91%)",
       display: "flex",
       flexDirection: "column",
