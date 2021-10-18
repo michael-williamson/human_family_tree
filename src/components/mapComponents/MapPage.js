@@ -3,7 +3,7 @@ import MapComponent from "./MapComponent";
 import AccordionComp from "../reusableComponents/AccordionComp";
 import { Box, Grid } from "@material-ui/core";
 import { MainCheckboxContainer } from "./MainCheckboxContainer";
-import { checkedObject } from "../helperFunctions";
+import { checkedObject, datesCorrespondingDataObj } from "../helperFunctions";
 import { TimeLineEventsComponent } from "./TimeLineEventsComponent";
 import {
   datesCategoryProps,
@@ -22,7 +22,11 @@ const MapPage = () => {
   );
 
   const [iceAgeChecked, setIceAgeChecked] = useState(
-    checkedObject(false, iceAgeDatesArr)
+    checkedObject(true, iceAgeDatesArr)
+  );
+
+  const [datesCorrespondingData, setDatesCorrespondingData] = useState(
+    datesCorrespondingDataObj()
   );
 
   const [iceAgeEnabled, setIceAgeEnabled] = useState(true);
@@ -63,13 +67,6 @@ const MapPage = () => {
         justifyContent="center"
         spacing={2}
       >
-        {/* <Grid item>
-          {whichSummary !== "map" ? (
-            <AlarmOutlined color="primary" />
-          ) : (
-            <PublicOutlined color="primary" />
-          )}
-        </Grid> */}
         <Grid item>
           <Box letterSpacing={2} color="primary" fontWeight="bold">
             {expanded ? toggleTextExpanded : toggleTextCollapsed}
@@ -103,6 +100,8 @@ const MapPage = () => {
               setShowComponent4={setEuropeanPolygon}
               datesChecked={datesChecked}
               setDatesChecked={setDatesChecked}
+              datesCorrespondingData={datesCorrespondingData}
+              setDatesCorrespondingData={setDatesCorrespondingData}
             />
           ),
           AccordionSummaryChild: (
@@ -128,6 +127,9 @@ const MapPage = () => {
               setDatesChecked={setDatesChecked}
               iceAgeChecked={iceAgeChecked}
               setIceAgeChecked={setIceAgeChecked}
+              datesCorrespondingData={datesCorrespondingData}
+              setDatesCorrespondingData={setDatesCorrespondingData}
+              setPlayState={setPlayState}
             />
           ),
           AccordionSummaryChild: (

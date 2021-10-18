@@ -8,7 +8,6 @@ import {
 } from "@material-ui/core";
 import { CheckboxMapperComp } from "../reusableComponents/CheckboxMapperComp";
 import { iceAgeDatesArr } from "../../data/listArrays";
-import { filterDates } from "../helperFunctions/index";
 import {
   arabia_map,
   arabia_map_no_filler,
@@ -23,6 +22,7 @@ import {
   glacier_canyon,
   ice_bergs,
 } from "../../media";
+import { animationPlayState } from "../helperFunctions";
 
 //***********variables to keep styling consistent between similar or identical elements */
 const eventStyles = {
@@ -67,9 +67,6 @@ const useStylesMainContainer = makeStyles((theme) => ({
   },
   saharaArabiaContainer: {
     alignItems: "flex-start",
-    // [theme.breakpoints.up("sm")]: {
-    //   alignItems: "center",
-    // },
   },
   titleBoxSahara: {
     ...eventStyles.title,
@@ -184,7 +181,7 @@ const useStylesMainContainer = makeStyles((theme) => ({
     outline: `4px solid ${theme.palette.primary.light}`,
     animation: (props) =>
       props.playState.iceAge === "running" && props.iceAgeEnabled
-        ? `enter 250ms ${theme.transitions.easing.easeIn} 1 forwards `
+        ? `iceAgeEnter 250ms ${theme.transitions.easing.easeIn} 1 forwards ${props.playState.iceAge}`
         : "none",
     transition: "transform 500ms,box-shadow 600ms",
     "&:hover": {
@@ -197,62 +194,73 @@ const useStylesMainContainer = makeStyles((theme) => ({
 
 export const TimeLineEventsComponent = (props) => {
   const { item1, item2, item3 } = props;
-  //animation play state
+  //***animation play state
   const { playState, setPlayState } = props;
-  //checkedState3 is connected with iceAgeChecked
+  //***checkedState3 is connected with iceAgeChecked
   const { checkedState3 } = props;
   const { setCheckedState3 } = props;
 
-  //showComponent1 is connected with desertPolygon
+  //***showComponent1 is connected with desertPolygon
   const { showComponent1, setShowComponent1 } = props;
 
-  //showComponent3 = northAmericanPolygon  and showComponent4 = europeanPolygon
+  //***showComponent3 = northAmericanPolygon  and showComponent4 = europeanPolygon
   const { showComponent3, showComponent4 } = props;
 
-  const { datesChecked, setDatesChecked } = props;
+  const { setDatesChecked } = props;
   const { iceAgeEnabled, setIceAgeEnabled } = props;
+  const { datesCorrespondingData, setDatesCorrespondingData } = props;
 
   const handleIceAgeChange = (event) => {
+    animationPlayState(setPlayState, checkedState3, event);
+    const iceAgePropName = event.target.name;
+    const checked = event.target.checked;
+
     setCheckedState3({
       ...checkedState3,
       [event.target.name]: event.target.checked,
     });
-    setDatesChecked({ ...datesChecked, ...filterDates(event, datesChecked) });
-    if (playState.iceAge !== "running") {
-      const stateObj = {};
-      for (const props in playState) {
-        if ("iceAge" !== props) {
-          stateObj[props] = "paused";
-        } else {
-          stateObj["iceAge"] = "running";
-        }
-      }
-      setPlayState((prevProps) => {
-        return { ...prevProps, ...stateObj };
-      });
-    }
+    const datesCorrespondingIceAgeObj = datesCorrespondingData[iceAgePropName];
+    const datesCorrespondingMergeObject = {
+      [iceAgePropName]: {
+        ...datesCorrespondingIceAgeObj,
+        counter: checked ? datesCorrespondingIceAgeObj.arrOfDates.length : 0,
+      },
+    };
+    setDatesCorrespondingData((prev) => {
+      return { ...prev, ...datesCorrespondingMergeObject };
+    });
+
+    const datesMergeObj = {};
+
+    datesCorrespondingData[event.target.name].arrOfDates.forEach((item) => {
+      datesMergeObj[item] = event.target.checked;
+    });
+    setDatesChecked((prev) => {
+      return { ...prev, ...datesMergeObj };
+    });
   };
 
   const handleEnableIceAge = (event) => {
+    // animationPlayState(setPlayState, checkedState3, event);
     setIceAgeEnabled(event.target.checked);
   };
 
   const handleDesertChange = (event) => {
+    animationPlayState(setPlayState, playState, event);
     setShowComponent1({
       ...showComponent1,
       [event.target.name]: event.target.checked,
     });
+  };
 
-    const stateObj = {};
-    for (const props in playState) {
-      if (event.target.name !== props) {
-        stateObj[props] = "paused";
-      } else {
-        stateObj[event.target.name] = "running";
-      }
-    }
-    setPlayState((prevProps) => {
-      return { ...prevProps, ...stateObj };
+  const handleOnAnimationEnd = () => {
+    setPlayState((prev) => {
+      return {
+        ...prev,
+        greenArabia: "paused",
+        greenSahara: "paused",
+        iceAge: "paused",
+      };
     });
   };
 
@@ -323,6 +331,7 @@ export const TimeLineEventsComponent = (props) => {
                 fontSize="1.5rem"
                 fontWeight="bold"
                 className={classes.titleBoxSahara}
+                onAnimationEnd={handleOnAnimationEnd}
               >
                 {item1}
               </Box>
@@ -356,6 +365,7 @@ export const TimeLineEventsComponent = (props) => {
                 color="secondary.main"
                 fontSize="1.5rem"
                 fontWeight="bold"
+                onAnimationEnd={handleOnAnimationEnd}
                 className={classes.titleBoxArabia}
               >
                 {item2}
@@ -425,6 +435,7 @@ export const TimeLineEventsComponent = (props) => {
                   }
                   alt="ice sheet"
                   className={classes.iceAgeImages}
+                  onAnimationEnd={handleOnAnimationEnd}
                 />
               </Grid>
               <Grid item>
@@ -486,6 +497,7 @@ export const TimeLineEventsComponent = (props) => {
                   }
                   alt="ice sheet"
                   className={classes.iceAgeImages}
+                  onAnimationEnd={handleOnAnimationEnd}
                 />
               </Grid>
               <Grid>

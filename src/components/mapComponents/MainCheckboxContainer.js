@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { speciesArr, datesCategoryProps } from "../../data/listArrays";
+import {
+  speciesArr,
+  datesCategoryProps,
+  iceAgeDatesArr,
+} from "../../data/listArrays";
 //from helper functions
-import { checkedObject, filterIceAgeDates } from "../helperFunctions";
+import {
+  animationPlayState,
+  checkedObject,
+  updateCorrespondingAfterDateChange,
+  updateCounterCorrespondingDateObj,
+} from "../helperFunctions";
 import { Typography, Button, Grid, makeStyles } from "@material-ui/core";
 import TimerIcon from "@material-ui/icons/Timer";
 import { IconImagePngComp } from "../reusableComponents/IconImagePngComp";
@@ -34,6 +43,8 @@ export const MainCheckboxContainer = (props) => {
   const { datesChecked, setDatesChecked } = props;
   const { speciesChecked, setSpeciesChecked } = props;
   const { iceAgeChecked, setIceAgeChecked } = props;
+  const { datesCorrespondingData, setDatesCorrespondingData } = props;
+  const { setPlayState } = props;
 
   const [selectAllSpecies, setSelectAllSpecies] = useState(true);
   const [selectAllDates, setSelectAllDates] = useState(true);
@@ -60,25 +71,55 @@ export const MainCheckboxContainer = (props) => {
     });
   };
   const handleDateChange = (event) => {
-    let checked = event.target.checked;
-    let currentProp = event.target.name;
-    filterIceAgeDates(checked, iceAgeChecked, setIceAgeChecked, currentProp);
+    updateCorrespondingAfterDateChange(
+      event,
+      datesCorrespondingData,
+      setIceAgeChecked,
+      setDatesCorrespondingData
+    );
+
     setDatesChecked({
       ...datesChecked,
       [event.target.name]: event.target.checked,
     });
   };
 
-  const handleSelectAll = (prop) => {
-    if (prop === "species" && !selectAllSpecies) {
-      setSpeciesChecked(checkedObject(true, speciesArr));
+  const handleSelectAll = (prop) => (event) => {
+    if (prop === "species" && selectAllSpecies === false) {
+      setSpeciesChecked((prev) => {
+        return { ...prev, ...checkedObject(true, speciesArr) };
+      });
     } else if (prop === "species" && selectAllSpecies) {
-      setSpeciesChecked(checkedObject(false, speciesArr));
+      setSpeciesChecked((prev) => {
+        return { ...prev, ...checkedObject(false, speciesArr) };
+      });
     }
-    if (prop === "dates" && !selectAllDates) {
-      setDatesChecked(checkedObject(true, datesCategoryProps));
+    if (prop === "dates" && selectAllDates === false) {
+      setDatesChecked((prev) => {
+        return { ...prev, ...checkedObject(true, datesCategoryProps) };
+      });
+      animationPlayState(setPlayState, iceAgeChecked, event);
+      setIceAgeChecked((prev) => {
+        return { ...prev, ...checkedObject(true, iceAgeDatesArr) };
+      });
+      updateCounterCorrespondingDateObj(
+        datesCorrespondingData,
+        setDatesCorrespondingData,
+        true
+      );
     } else if (prop === "dates" && selectAllDates) {
-      setDatesChecked(checkedObject(false, datesCategoryProps));
+      setDatesChecked((prev) => {
+        return { ...prev, ...checkedObject(false, datesCategoryProps) };
+      });
+      animationPlayState(setPlayState, iceAgeChecked, event);
+      setIceAgeChecked((prev) => {
+        return { ...prev, ...checkedObject(false, iceAgeDatesArr) };
+      });
+      updateCounterCorrespondingDateObj(
+        datesCorrespondingData,
+        setDatesCorrespondingData,
+        false
+      );
     }
   };
   return (
@@ -115,11 +156,10 @@ export const MainCheckboxContainer = (props) => {
             />
           </Grid>
         </Grid>
-        {/**trying out my Component */}
         <CheckboxMapperComp
           Button={
             <Button
-              onClick={() => handleSelectAll("species")}
+              onClick={handleSelectAll("species")}
               variant="outlined"
               color="primary"
               size="small"
@@ -158,8 +198,6 @@ export const MainCheckboxContainer = (props) => {
         >
           <IconStaticColorsComponent />
         </CheckboxMapperComp>
-
-        {/** */}
       </Grid>
       <Grid
         container
@@ -191,7 +229,7 @@ export const MainCheckboxContainer = (props) => {
         <CheckboxMapperComp
           Button={
             <Button
-              onClick={() => handleSelectAll("dates")}
+              onClick={handleSelectAll("dates")}
               variant="outlined"
               color="primary"
               size="small"

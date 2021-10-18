@@ -12,6 +12,14 @@
     opacity: 1;
   }
 }
+@keyframes iceAgeEnter {
+  0% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 .header_container {
   position: relative;
