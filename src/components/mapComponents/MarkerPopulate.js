@@ -1,8 +1,8 @@
 import React, { useState, Fragment } from "react";
 import { Marker, InfoWindow } from "@react-google-maps/api";
 import anthroData from "../../data/anthroData.json";
-import { datesCategoryObj } from "../../data/listArrays";
-import { dateComparer } from "../helperFunctions";
+import { datesCatergoryGreater } from "../../data/listArrays";
+import { comparatorMain } from "../helperFunctions";
 //icons
 import { imageFiles } from "../../data/listArrays";
 //styles
@@ -38,31 +38,12 @@ export const MarkerPopulate = (props) => {
   const [specimen, setSpecimen] = useState(null);
   const { speciesChecked, datesChecked } = props;
 
-  const dateComparerControl = (datesChecked, inputDate, dateComparer) => {
-    const resultsArr = [];
-    for (const prop in datesChecked) {
-      if (
-        datesChecked[prop] &&
-        dateComparer(
-          datesCategoryObj[prop].greater,
-          datesCategoryObj[prop].lesser,
-          inputDate
-        )
-      ) {
-        resultsArr.push(true);
-      }
-    }
-    return resultsArr.find((item) => item === true);
-  };
-
   return anthroData.map((item, index) => {
+    const compareFn = comparatorMain(item.wholeNumberYears);
+    let propString = compareFn();
     return (
       speciesChecked[`${item.species}`] &&
-      dateComparerControl(
-        datesChecked,
-        item.wholeNumberYears,
-        dateComparer
-      ) && (
+      datesChecked[datesCatergoryGreater[propString]?.timePeriod] && (
         <div key={index}>
           <Marker
             key={index}

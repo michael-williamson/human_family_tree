@@ -1,16 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   speciesArr,
   datesCategoryProps,
   iceAgeDatesArr,
 } from "../../data/listArrays";
 //from helper functions
-import {
-  animationPlayState,
-  checkedObject,
-  updateCorrespondingAfterDateChange,
-  updateCounterCorrespondingDateObj,
-} from "../helperFunctions";
+import { animationPlayState, checkedObject } from "../helperFunctions";
 import { Typography, Button, Grid, makeStyles } from "@material-ui/core";
 import TimerIcon from "@material-ui/icons/Timer";
 import { IconImagePngComp } from "../reusableComponents/IconImagePngComp";
@@ -43,23 +38,28 @@ export const MainCheckboxContainer = (props) => {
   const { datesChecked, setDatesChecked } = props;
   const { speciesChecked, setSpeciesChecked } = props;
   const { iceAgeChecked, setIceAgeChecked } = props;
-  const { datesCorrespondingData, setDatesCorrespondingData } = props;
-  const { setPlayState } = props;
+  const { selectAllSpecies, setSelectAllSpecies } = props;
+  const { selectAllDates, setSelectAllDates } = props;
 
-  const [selectAllSpecies, setSelectAllSpecies] = useState(true);
-  const [selectAllDates, setSelectAllDates] = useState(true);
+  const { setIceAgeCounterArr } = props;
+  const { setPlayState } = props;
+  const { correspondingCounterObject } = props;
 
   useEffect(() => {
     if (Object.values(speciesChecked).every((item) => item))
       setSelectAllSpecies(true);
     else setSelectAllSpecies(false);
-  }, [speciesChecked]);
+  }, [speciesChecked, setSelectAllSpecies]);
 
   useEffect(() => {
-    if (Object.values(datesChecked).every((item) => item)) {
+    const bool = Object.values(datesChecked).every((item) => item);
+    if (bool && selectAllDates === false) {
       setSelectAllDates(true);
-    } else setSelectAllDates(false);
-  }, [datesChecked]);
+    } else if (bool === false && selectAllDates) {
+      setSelectAllDates(false);
+    }
+  }, [datesChecked, setSelectAllDates, selectAllDates]);
+
   const classesMain = useStylesCheckBoxMain();
   const classesDatesItemMain = useStylesDatesItemMain();
   const classesDatesItem = useStylesDatesItem();
@@ -71,13 +71,16 @@ export const MainCheckboxContainer = (props) => {
     });
   };
   const handleDateChange = (event) => {
-    updateCorrespondingAfterDateChange(
-      event,
-      datesCorrespondingData,
-      setIceAgeChecked,
-      setDatesCorrespondingData
-    );
+    const name = event.target.name;
+    const checked = event.target.checked;
 
+    const iceAgeCounterIndex = correspondingCounterObject[name];
+    setIceAgeCounterArr((prev) => {
+      checked
+        ? (prev[iceAgeCounterIndex] += 1)
+        : (prev[iceAgeCounterIndex] -= 1);
+      return [...prev];
+    });
     setDatesChecked({
       ...datesChecked,
       [event.target.name]: event.target.checked,
@@ -102,11 +105,7 @@ export const MainCheckboxContainer = (props) => {
       setIceAgeChecked((prev) => {
         return { ...prev, ...checkedObject(true, iceAgeDatesArr) };
       });
-      updateCounterCorrespondingDateObj(
-        datesCorrespondingData,
-        setDatesCorrespondingData,
-        true
-      );
+      setIceAgeCounterArr([1, 2, 2, 3, 5]);
     } else if (prop === "dates" && selectAllDates) {
       setDatesChecked((prev) => {
         return { ...prev, ...checkedObject(false, datesCategoryProps) };
@@ -115,11 +114,7 @@ export const MainCheckboxContainer = (props) => {
       setIceAgeChecked((prev) => {
         return { ...prev, ...checkedObject(false, iceAgeDatesArr) };
       });
-      updateCounterCorrespondingDateObj(
-        datesCorrespondingData,
-        setDatesCorrespondingData,
-        false
-      );
+      setIceAgeCounterArr([0, 0, 0, 0, 0]);
     }
   };
   return (

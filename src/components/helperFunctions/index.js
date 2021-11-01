@@ -1,9 +1,4 @@
 import { latLngObj } from "../mapComponents/pathsForPolygon";
-import {
-  datesCategoryObj,
-  europeanGlacialTimeline,
-  iceAgeDatesArr,
-} from "../../data/listArrays";
 
 import anthroData from "../../data/anthroData.json";
 
@@ -15,119 +10,117 @@ export const dateComparer = (
   return compareDateGreater > inputDate && inputDate > compareDateLesser;
 };
 
-//updates datesCorresponding state after date change
-export const updateCorrespondingAfterDateChange = (...props) => {
-  const [
-    event,
-    datesCorrespondingData,
-    setIceAgeChecked,
-    setDatesCorrespondingData,
-  ] = props;
-  const targetName = event.target.name;
-  const iceAgePropName = datesCorrespondingData[targetName];
-  const datesCorrespondingIceAgeObj = datesCorrespondingData[iceAgePropName];
-  if (event.target.checked === false && datesCorrespondingIceAgeObj) {
-    setIceAgeChecked((prev) => {
-      return { ...prev, [iceAgePropName]: false };
-    });
-    const datesCorrespondingMergeObject = {
-      [iceAgePropName]: {
-        ...datesCorrespondingIceAgeObj,
-        counter:
-          datesCorrespondingIceAgeObj.counter > 1
-            ? datesCorrespondingIceAgeObj.counter - 1
-            : 0,
-      },
-    };
+const datesComparisonArray = [
+  1, 10000, 10001, 20000, 20001, 30000, 30001, 40000, 40001, 50000, 50001,
+  70000, 70001, 100000, 100001, 200000, 200001, 300000, 300001, 400000, 400001,
+  500000, 500001, 600000, 600001, 800000, 800001, 1000000, 1000001, 1500000,
+  1500001, 2000000, 2000001, 4000000,
+];
 
-    setDatesCorrespondingData((prev) => {
-      return { ...prev, ...datesCorrespondingMergeObject };
-    });
-  } else if (event.target.checked && datesCorrespondingIceAgeObj) {
-    //***set length variable to account for array lengths that are equal to one...since
-    //***counter is coming off of a potential 0 this is important
-    const length =
-      datesCorrespondingIceAgeObj.arrOfDates.length === 1
-        ? 1
-        : datesCorrespondingIceAgeObj.arrOfDates.length - 1;
-    //***length can be either 1 or array length minus 1 depending on prior assignment
-    length === datesCorrespondingIceAgeObj.counter &&
-      setIceAgeChecked((prev) => {
-        return { ...prev, [iceAgePropName]: true };
-      });
-    //***set counterValue to either length plus one(make up for subtraction earlier) or increment by one
-    const counterValue =
-      length === datesCorrespondingIceAgeObj.counter
-        ? length + 1
-        : datesCorrespondingIceAgeObj.counter + 1;
-    const datesCorrespondingMergeObject = {
-      [iceAgePropName]: {
-        ...datesCorrespondingIceAgeObj,
-        counter: counterValue,
-      },
-    };
-    setDatesCorrespondingData((prev) => {
-      return { ...prev, ...datesCorrespondingMergeObject };
-    });
-  }
-};
-
-//updates after selectAll button is clicked in MainCheckboxComp
-export const updateCounterCorrespondingDateObj = (...props) => {
-  const [state, setState, selectAll] = props;
-  const mergerWithStateObject = {};
-  iceAgeDatesArr.forEach((item) => {
-    const stateItem = state[item];
-    mergerWithStateObject[item] = {
-      ...stateItem,
-      counter: selectAll ? stateItem.arrOfDates.length : 0,
-    };
-  });
-  setState((prev) => {
-    return { ...prev, ...mergerWithStateObject };
-  });
-};
-
-//function that produces the datesCorrespondingData state on after first render
-export const datesCorrespondingDataObj = () => {
-  const obj = {};
-  for (const currentProp in datesCategoryObj) {
-    let currentMidpoint =
-      datesCategoryObj[currentProp].greater -
-      datesCategoryObj[currentProp].lesser;
-    currentMidpoint = currentMidpoint / 2;
-    currentMidpoint = currentMidpoint + datesCategoryObj[currentProp].lesser;
-    for (const prop in europeanGlacialTimeline) {
-      if (
-        dateComparer(
-          datesCategoryObj[currentProp].greater,
-          datesCategoryObj[currentProp].lesser,
-          europeanGlacialTimeline[prop].greater
-        ) ||
-        dateComparer(
-          datesCategoryObj[currentProp].greater,
-          datesCategoryObj[currentProp].lesser,
-          europeanGlacialTimeline[prop].lesser
-        ) ||
-        dateComparer(
-          europeanGlacialTimeline[prop].greater,
-          europeanGlacialTimeline[prop].lesser,
-          currentMidpoint
-        )
-      ) {
-        obj[currentProp] = prop;
-        if (!obj[prop]) {
-          obj[prop] = {};
-          obj[prop].arrOfDates = [currentProp];
-          obj[prop].counter = 1;
-        } else {
-          obj[prop].arrOfDates.push(currentProp);
-          obj[prop].counter++;
-        }
-      }
+export const comparatorMain = (inputProp) => {
+  const mid = datesComparisonArray.length / 2;
+  const quad = Math.floor(datesComparisonArray.length / 4);
+  const input = inputProp;
+  let quadState = false;
+  let currentIndexGreater = 0;
+  let currentIndexLesser = 0;
+  return function comparator() {
+    if (
+      quadState === false &&
+      ((input >= datesComparisonArray[mid] &&
+        input < datesComparisonArray[mid + quad]) ||
+        (input <= datesComparisonArray[mid] &&
+          input > datesComparisonArray[mid - quad]))
+    ) {
+      quadState = true;
+      currentIndexGreater = mid;
+      currentIndexLesser = currentIndexGreater - 1;
+      comparator();
+    } else if (
+      quadState === false &&
+      input >= datesComparisonArray[mid + quad]
+    ) {
+      quadState = true;
+      currentIndexGreater = mid + quad;
+      currentIndexLesser = currentIndexGreater - 1;
+      comparator();
+    } else if (
+      quadState === false &&
+      input <= datesComparisonArray[mid - quad]
+    ) {
+      quadState = true;
+      currentIndexGreater = mid - quad;
+      currentIndexLesser = currentIndexGreater - 1;
+      comparator();
+    } else if (quadState && input > datesComparisonArray[currentIndexGreater]) {
+      currentIndexGreater += 2;
+      currentIndexLesser += 2;
+      comparator();
+    } else if (quadState && input < datesComparisonArray[currentIndexLesser]) {
+      currentIndexGreater -= 2;
+      currentIndexLesser -= 2;
+      comparator();
     }
-  }
-  return obj;
+    return datesComparisonArray[currentIndexGreater];
+  };
+};
+
+const iceAgeDatesComparatorArr = [
+  13001, 60000, 140001, 350000, 500001, 640000, 780001, 900000, 1300001,
+  1500000,
+];
+
+export const comparatorIceAgeDates = (inputStack) => {
+  const mid = iceAgeDatesComparatorArr.length / 2;
+  const inputStackArr = inputStack;
+  let input = inputStackArr.pop();
+  let currentIndexGreater = mid;
+  let currentIndexLesser = mid - 1;
+  let match = false;
+  return function comparator() {
+    if (
+      (input > iceAgeDatesComparatorArr[currentIndexGreater] &&
+        input < iceAgeDatesComparatorArr[currentIndexGreater + 1]) ||
+      (input > iceAgeDatesComparatorArr[currentIndexLesser - 1] &&
+        input < iceAgeDatesComparatorArr[currentIndexLesser])
+    ) {
+      console.log(inputStackArr.length, "length");
+      input = inputStackArr.length > 0 ? inputStackArr.pop() : 0;
+      currentIndexGreater = mid;
+      currentIndexLesser = mid - 1;
+      input && comparator();
+    } else if (
+      input > iceAgeDatesComparatorArr[currentIndexGreater] &&
+      input >= iceAgeDatesComparatorArr[currentIndexGreater + 1]
+    ) {
+      currentIndexGreater += 2;
+      currentIndexLesser += 2;
+      comparator();
+    } else if (
+      input < iceAgeDatesComparatorArr[currentIndexLesser] &&
+      input <= iceAgeDatesComparatorArr[currentIndexLesser - 1]
+    ) {
+      currentIndexGreater -= 2;
+      currentIndexLesser -= 2;
+      comparator();
+    } else if (
+      input <= iceAgeDatesComparatorArr[currentIndexGreater] &&
+      input >= iceAgeDatesComparatorArr[currentIndexLesser]
+    ) {
+      console.log(
+        input,
+        iceAgeDatesComparatorArr[currentIndexGreater],
+        iceAgeDatesComparatorArr[currentIndexLesser]
+      );
+      match = true;
+    } else if (inputStack.length > 1) {
+      input = inputStack.pop();
+      currentIndexGreater = mid;
+      currentIndexLesser = mid - 1;
+      comparator();
+    }
+    return match && iceAgeDatesComparatorArr[currentIndexGreater];
+  };
 };
 
 //function for setting animation-play-state
@@ -192,94 +185,6 @@ export const animationPlayState = (...props) => {
       });
     //end of iceAge fn
   }
-};
-
-export const filterIceAgeDates = (
-  checked,
-  iceAgeChecked,
-  setIceAgeChecked,
-  currentProp
-) => {
-  const obj = {};
-  for (const prop of iceAgeDatesArr) {
-    let currentMidpoint =
-      datesCategoryObj[currentProp].greater -
-      datesCategoryObj[currentProp].lesser;
-    currentMidpoint = currentMidpoint / 2;
-    currentMidpoint = currentMidpoint + datesCategoryObj[currentProp].lesser;
-    if (
-      dateComparer(
-        datesCategoryObj[currentProp].greater,
-        datesCategoryObj[currentProp].lesser,
-        europeanGlacialTimeline[prop].greater
-      ) ||
-      dateComparer(
-        datesCategoryObj[currentProp].greater,
-        datesCategoryObj[currentProp].lesser,
-        europeanGlacialTimeline[prop].lesser
-      ) ||
-      dateComparer(
-        europeanGlacialTimeline[prop].greater,
-        europeanGlacialTimeline[prop].lesser,
-        currentMidpoint
-      )
-    ) {
-      obj[prop] = checked;
-    } else {
-      obj[prop] = iceAgeChecked[prop];
-    }
-  }
-  setIceAgeChecked({ ...iceAgeChecked, ...obj });
-};
-
-export const filterDates = (event, datesChecked) => {
-  const obj = {};
-  for (const prop in datesChecked) {
-    let currentMidpoint =
-      datesCategoryObj[prop].greater - datesCategoryObj[prop].lesser;
-    currentMidpoint = currentMidpoint / 2;
-    currentMidpoint = currentMidpoint + datesCategoryObj[prop].lesser;
-    if (
-      event.target.checked &&
-      (dateComparer(
-        datesCategoryObj[prop].greater,
-        datesCategoryObj[prop].lesser,
-        europeanGlacialTimeline[event.target.name].greater
-      ) ||
-        dateComparer(
-          datesCategoryObj[prop].greater,
-          datesCategoryObj[prop].lesser,
-          europeanGlacialTimeline[event.target.name].lesser
-        ) ||
-        dateComparer(
-          europeanGlacialTimeline[event.target.name].greater,
-          europeanGlacialTimeline[event.target.name].lesser,
-          currentMidpoint
-        ))
-    ) {
-      obj[prop] = true;
-    } else if (
-      !event.target.checked &&
-      (dateComparer(
-        datesCategoryObj[prop].greater,
-        datesCategoryObj[prop].lesser,
-        europeanGlacialTimeline[event.target.name].greater
-      ) ||
-        dateComparer(
-          datesCategoryObj[prop].greater,
-          datesCategoryObj[prop].lesser,
-          europeanGlacialTimeline[event.target.name].lesser
-        ) ||
-        dateComparer(
-          europeanGlacialTimeline[event.target.name].greater,
-          europeanGlacialTimeline[event.target.name].lesser,
-          currentMidpoint
-        ))
-    ) {
-      obj[prop] = false;
-    }
-  }
-  return obj;
 };
 
 export const checkedObject = (bool, array) => {

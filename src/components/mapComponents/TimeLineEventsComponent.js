@@ -206,9 +206,8 @@ export const TimeLineEventsComponent = (props) => {
   //***showComponent3 = northAmericanPolygon  and showComponent4 = europeanPolygon
   const { showComponent3, showComponent4 } = props;
 
-  const { setDatesChecked } = props;
   const { iceAgeEnabled, setIceAgeEnabled } = props;
-  const { datesCorrespondingData, setDatesCorrespondingData } = props;
+  const { setIceAgeCounterArr } = props;
 
   const handleIceAgeChange = (event) => {
     animationPlayState(setPlayState, checkedState3, event);
@@ -217,26 +216,14 @@ export const TimeLineEventsComponent = (props) => {
 
     setCheckedState3({
       ...checkedState3,
-      [event.target.name]: event.target.checked,
-    });
-    const datesCorrespondingIceAgeObj = datesCorrespondingData[iceAgePropName];
-    const datesCorrespondingMergeObject = {
-      [iceAgePropName]: {
-        ...datesCorrespondingIceAgeObj,
-        counter: checked ? datesCorrespondingIceAgeObj.arrOfDates.length : 0,
-      },
-    };
-    setDatesCorrespondingData((prev) => {
-      return { ...prev, ...datesCorrespondingMergeObject };
+      [iceAgePropName]: checked,
     });
 
-    const datesMergeObj = {};
-
-    datesCorrespondingData[event.target.name].arrOfDates.forEach((item) => {
-      datesMergeObj[item] = event.target.checked;
-    });
-    setDatesChecked((prev) => {
-      return { ...prev, ...datesMergeObj };
+    const index = iceAgeDatesArr.indexOf(iceAgePropName);
+    const iceAgeDatesCounter = [1, 2, 2, 3, 5];
+    setIceAgeCounterArr((prev) => {
+      checked ? (prev[index] = iceAgeDatesCounter[index]) : (prev[index] = 0);
+      return [...prev];
     });
   };
 
