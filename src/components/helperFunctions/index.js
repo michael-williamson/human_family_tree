@@ -84,7 +84,6 @@ export const comparatorIceAgeDates = (inputStack) => {
       (input > iceAgeDatesComparatorArr[currentIndexLesser - 1] &&
         input < iceAgeDatesComparatorArr[currentIndexLesser])
     ) {
-      console.log(inputStackArr.length, "length");
       input = inputStackArr.length > 0 ? inputStackArr.pop() : 0;
       currentIndexGreater = mid;
       currentIndexLesser = mid - 1;
@@ -107,11 +106,6 @@ export const comparatorIceAgeDates = (inputStack) => {
       input <= iceAgeDatesComparatorArr[currentIndexGreater] &&
       input >= iceAgeDatesComparatorArr[currentIndexLesser]
     ) {
-      console.log(
-        input,
-        iceAgeDatesComparatorArr[currentIndexGreater],
-        iceAgeDatesComparatorArr[currentIndexLesser]
-      );
       match = true;
     } else if (inputStack.length > 1) {
       input = inputStack.pop();
