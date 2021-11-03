@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Box, makeStyles } from "@material-ui/core";
+import { Grid, Box } from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
 import speciesArrays from "../../data/speciesArrays.json";
 import MuiAccordion from "@material-ui/core/Accordion";
@@ -10,41 +10,6 @@ import { speciesArr } from "../../data/listArrays";
 import theme from "../../theme";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import NearMeOutlinedIcon from "@material-ui/icons/NearMeOutlined";
-
-const useStyles = makeStyles({
-  root: {
-    border: "1px solid rgba(0, 0, 0, .125)",
-    color: theme.palette.primary.main,
-    boxShadow: "none",
-    "&:not(:last-child)": {
-      borderBottom: 0,
-    },
-    "&:before": {
-      display: "none",
-    },
-    "&$expanded": {
-      margin: "auto",
-    },
-  },
-  accordionSummary: {
-    background: "linear-gradient(45deg, rgb(251 255 186 / 65%), #fff00426)",
-    borderBottom: "1px solid rgba(0, 0, 0, .125)",
-    marginBottom: -1,
-    minHeight: 56,
-    "&$expanded": {
-      minHeight: 56,
-    },
-  },
-  content: {
-    "&$expanded": {
-      margin: "12px 0",
-    },
-  },
-  accordionDetails: {
-    padding: theme.spacing(2),
-    background: theme.palette.background.default,
-  },
-});
 
 const Accordion = withStyles({
   root: {
@@ -91,7 +56,6 @@ const AccordionDetails = withStyles((theme) => ({
 
 function Item(props) {
   const [itemToRender, setItemToRender] = useState(null);
-  const classes = useStyles();
   const { expanded, setExpanded } = props;
 
   const handleChange = (panel) => (event, newExpanded) => {
@@ -115,20 +79,16 @@ function Item(props) {
         key={index}
         expanded={expanded === `panel${index + 100}`}
         onChange={handleChange(`panel${index + 100}`)}
-        className={classes.root}
       >
         <AccordionSummary
           aria-controls={`panel${index + 100}d-content`}
           id={`panel${index + 100}d-header`}
-          className={classes.accordionSummary}
           expandIcon={<ExpandMore color="primary" />}
           onClick={handleClick(item)}
         >
-          <Box fontStyle="italic" className={classes.content}>
-            {item}
-          </Box>
+          <Box fontStyle="italic">{item}</Box>
         </AccordionSummary>
-        <AccordionDetails className={classes.accordionDetails}>
+        <AccordionDetails>
           <Grid {...GridGalleryItemProps}>
             <GalleryItemComponent
               arr={speciesArrays[item]}
