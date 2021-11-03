@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MapComponent from "./MapComponent";
-import AccordionComp from "../reusableComponents/AccordionComp";
+import { AccordionComponent } from "../reusableComponents/AccordionComponent";
 import { Box, Grid } from "@material-ui/core";
 import { MainCheckboxContainer } from "./MainCheckboxContainer";
 import { checkedObject, comparatorIceAgeDates } from "../helperFunctions";
@@ -14,8 +14,6 @@ import {
 } from "../../data/listArrays";
 
 const MapPage = () => {
-  // const [speciesDateExpanded, setSpeciesDateExpanded] = useState(false);
-  // const [timeLineEventsExpanded, setTimeLineEventsExpanded] = useState(false);
   const [speciesChecked, setSpeciesChecked] = useState(
     checkedObject(true, speciesArr)
   );
@@ -54,6 +52,7 @@ const MapPage = () => {
   const [counterStateObject, setCounterStateObject] = useState({});
 
   useEffect(() => {
+    //*** creates state object linking dates to iceAgeDates by comparing dates.
     const counterStateObj = {};
     const correspondingCounterStateObj = {};
     for (const name in datesCategoryObj) {
@@ -151,73 +150,77 @@ const MapPage = () => {
     );
   };
 
+  const TimeLineEventsProps = {
+    item1: "Green Sahara",
+    item2: "Green Arabia",
+    item3: "Ice Age Time Periods",
+    playState: playState,
+    setPlayState: setPlayState,
+    checkedState3: iceAgeChecked,
+    setCheckedState3: setIceAgeChecked,
+    iceAgeEnabled: iceAgeEnabled,
+    setIceAgeEnabled: setIceAgeEnabled,
+    showComponent1: desertPolygon,
+    setShowComponent1: setDesertPolygon,
+    showComponent3: northAmericanPolygon,
+    setShowComponent3: setNorthAmericanPolygon,
+    showComponent4: europeanPolygon,
+    setShowComponent4: setEuropeanPolygon,
+    setIceAgeCounterArr: setIceAgeCounterArr,
+  };
+
+  const TimeLineSummary = {
+    toggleTextExpanded: "Choose Timeline Events",
+    toggleTextCollapsed: "Click to choose Timeline Events",
+    whichSummary: "timeline",
+  };
+
+  const MainCheckBoxProps = {
+    species: "Sort by Species",
+    dates: "Sort by Dates",
+    speciesChecked: speciesChecked,
+    setSpeciesChecked: setSpeciesChecked,
+    datesChecked: datesChecked,
+    setDatesChecked: setDatesChecked,
+    iceAgeChecked: iceAgeChecked,
+    setIceAgeChecked: setIceAgeChecked,
+    selectAllDates: selectAllDates,
+    setSelectAllDates: setSelectAllDates,
+    selectAllSpecies: selectAllSpecies,
+    setSelectAllSpecies: setSelectAllSpecies,
+    setPlayState: setPlayState,
+    setIceAgeCounterArr: setIceAgeCounterArr,
+    correspondingCounterObject: correspondingCounterObject,
+  };
+
+  const MainCheckBoxSummary = {
+    toggleTextExpanded: "Sorting",
+    toggleTextCollapsed: "Click to Sort Map",
+    whichSummary: "map",
+  };
+
+  const TimeLineAccordion = AccordionComponent(
+    0,
+    AccordionSummaryComponent,
+    TimeLineEventsComponent,
+    TimeLineSummary,
+    TimeLineEventsProps
+  );
+
+  const MainCheckBoxAccordion = AccordionComponent(
+    1,
+    AccordionSummaryComponent,
+    MainCheckboxContainer,
+    MainCheckBoxSummary,
+
+    MainCheckBoxProps
+  );
+
   return (
     <div>
-      <AccordionComp
-        index={0}
-        children={{
-          AccordionDetailsChild: (
-            <TimeLineEventsComponent
-              item1="Green Sahara"
-              item2="Green Arabia"
-              item3="Ice Age Time Periods"
-              playState={playState}
-              setPlayState={setPlayState}
-              checkedState3={iceAgeChecked}
-              setCheckedState3={setIceAgeChecked}
-              iceAgeEnabled={iceAgeEnabled}
-              setIceAgeEnabled={setIceAgeEnabled}
-              showComponent1={desertPolygon}
-              setShowComponent1={setDesertPolygon}
-              showComponent3={northAmericanPolygon}
-              setShowComponent3={setNorthAmericanPolygon}
-              showComponent4={europeanPolygon}
-              setShowComponent4={setEuropeanPolygon}
-              setIceAgeCounterArr={setIceAgeCounterArr}
-            />
-          ),
-          AccordionSummaryChild: (
-            <AccordionSummaryComponent
-              // expanded={timeLineEventsExpanded}
-              toggleTextExpanded="Choose Timeline Events"
-              toggleTextCollapsed="Click to choose Timeline Events"
-              whichSummary="timeline"
-            />
-          ),
-        }}
-      />
-      <AccordionComp
-        index={1}
-        children={{
-          AccordionDetailsChild: (
-            <MainCheckboxContainer
-              species="Sort by Species"
-              dates="Sort by Dates"
-              speciesChecked={speciesChecked}
-              setSpeciesChecked={setSpeciesChecked}
-              datesChecked={datesChecked}
-              setDatesChecked={setDatesChecked}
-              iceAgeChecked={iceAgeChecked}
-              setIceAgeChecked={setIceAgeChecked}
-              selectAllDates={selectAllDates}
-              setSelectAllDates={setSelectAllDates}
-              selectAllSpecies={selectAllSpecies}
-              setSelectAllSpecies={setSelectAllSpecies}
-              setPlayState={setPlayState}
-              setIceAgeCounterArr={setIceAgeCounterArr}
-              correspondingCounterObject={correspondingCounterObject}
-            />
-          ),
-          AccordionSummaryChild: (
-            <AccordionSummaryComponent
-              // expanded={speciesDateExpanded}
-              toggleTextExpanded="Sorting"
-              toggleTextCollapsed="Click to Sort Map"
-              whichSummary="map"
-            />
-          ),
-        }}
-      />
+      {TimeLineAccordion}
+      {MainCheckBoxAccordion}
+
       <MapComponent
         speciesChecked={speciesChecked}
         datesChecked={datesChecked}

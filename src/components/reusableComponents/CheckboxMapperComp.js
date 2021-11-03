@@ -16,34 +16,39 @@ export const CheckboxMapperComp = (props) => {
   const { checkedObject } = props;
   const { disabled } = props;
 
-  const MapperComp = mapArr.map((item) => {
-    const childrenWithProps = React.Children.map(props.children, (child) => {
-      return React.cloneElement(child, { props: item });
+  const MapperComp = (
+    MuiGridCheckboxItemContainer,
+    classesItem,
+    MuiFormControlLabel,
+    MuiCheckboxComp,
+    handleChange,
+    disabled,
+    checkedObject
+  ) => {
+    return mapArr.map((item) => {
+      return (
+        <Grid
+          {...MuiGridCheckboxItemContainer}
+          key={item}
+          className={classesItem?.root}
+        >
+          <FormControlLabel
+            {...MuiFormControlLabel}
+            control={
+              <Checkbox
+                {...MuiCheckboxComp}
+                onChange={handleChange}
+                name={item}
+                disabled={disabled}
+                checked={disabled ? false : checkedObject?.[`${item}`]}
+              />
+            }
+            label={item}
+          />
+        </Grid>
+      );
     });
-    return (
-      <Grid
-        {...MuiGridCheckboxItemContainer}
-        key={item}
-        className={classesItem?.root}
-      >
-        <FormControlLabel
-          {...MuiFormControlLabel}
-          control={
-            <Checkbox
-              {...MuiCheckboxComp}
-              onChange={handleChange}
-              name={item}
-              disabled={disabled}
-              checked={disabled ? false : checkedObject?.[`${item}`]}
-            />
-          }
-          label={item}
-        />
-        {/** Icon from the children props */}
-        <Grid item>{childrenWithProps}</Grid>
-      </Grid>
-    );
-  });
+  };
 
   return (
     <Grid {...MuiGridCheckboxMainContainer} className={classesMain?.root}>
@@ -54,7 +59,15 @@ export const CheckboxMapperComp = (props) => {
         {...MuiGridCheckboxItemMainContainer}
         className={classesItemMain?.root}
       >
-        {MapperComp}
+        {MapperComp(
+          MuiGridCheckboxItemContainer,
+          classesItem,
+          MuiFormControlLabel,
+          MuiCheckboxComp,
+          handleChange,
+          disabled,
+          checkedObject
+        )}
       </Grid>
     </Grid>
   );

@@ -493,7 +493,6 @@ export const TimeLineEventsComponent = (props) => {
             </Grid>
           </Grid>
         </Grid>
-        {/**trying out my Component */}
         <CheckboxMapperComp
           classesMain={classes.root}
           MuiGridCheckboxMainContainer={{
@@ -524,11 +523,7 @@ export const TimeLineEventsComponent = (props) => {
             color: "primary",
           }}
           mapArr={iceAgeDatesArr}
-        >
-          {/* <IconStaticColorsComponent /> */}
-        </CheckboxMapperComp>
-
-        {/** */}
+        ></CheckboxMapperComp>
       </Grid>
     </Grid>
   );
