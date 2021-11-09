@@ -6,8 +6,8 @@ import {
   Switch,
   makeStyles,
 } from "@material-ui/core";
-import { CheckboxMapperComp } from "../reusableComponents/CheckboxMapperComp";
-import { iceAgeDatesArr } from "../../data/listArrays";
+import { CheckboxMapperComp } from "../../reusableComponents/CheckboxMapperComp";
+import { iceAgeDatesArr } from "../../../data/listArrays";
 import {
   arabia_map,
   arabia_map_no_filler,
@@ -21,8 +21,8 @@ import {
   european_ice_sheet_no_filler,
   glacier_canyon,
   ice_bergs,
-} from "../../media";
-import { animationPlayState } from "../helperFunctions";
+} from "../../../media";
+import { animationPlayState } from "../../helperFunctions";
 
 //***********variables to keep styling consistent between similar or identical elements */
 const eventStyles = {

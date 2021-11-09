@@ -7,7 +7,7 @@ import MuiAccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import ReactHtmlParser from "react-html-parser";
-import anthroData from "../data/anthroData.json";
+import anthroData from "../../data/anthroData.json";
 
 const PhotoGalleryComp = (props) => {
   const useStyles = makeStyles({

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import MapComponent from "./MapComponent";
+import MapComponent from "./mapComponents/MapComponent";
 import { AccordionComponent } from "../reusableComponents/AccordionComponent";
 import { Box, Grid } from "@material-ui/core";
-import { MainCheckboxContainer } from "./MainCheckboxContainer";
+import { MainCheckboxContainer } from "./checkboxComponents/MainCheckboxContainer";
 import { checkedObject, comparatorIceAgeDates } from "../helperFunctions";
-import { TimeLineEventsComponent } from "./TimeLineEventsComponent";
+import { TimeLineEventsComponent } from "./checkboxComponents/TimeLineEventsComponent";
 import {
   datesCategoryProps,
   datesCategoryObj,

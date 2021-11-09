@@ -1,12 +1,12 @@
 import React, { useState, Fragment } from "react";
 import { Marker, InfoWindow } from "@react-google-maps/api";
-import anthroData from "../../data/anthroData.json";
-import { datesCatergoryGreater } from "../../data/listArrays";
-import { comparatorMain } from "../helperFunctions";
+import anthroData from "../../../data/anthroData.json";
+import { datesCatergoryGreater } from "../../../data/listArrays";
+import { comparatorMain } from "../../helperFunctions";
 //icons
-import { imageFiles } from "../../data/listArrays";
+import { imageFiles } from "../../../data/listArrays";
 //styles
-import "../componentStyle/MarkerPopulateStyles.css";
+import "../../componentStyle/MarkerPopulateStyles.css";
 
 const htmlParser = (item) => {
   let regExHttp = /(http[^\\"]*)/g;

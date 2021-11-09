@@ -3,15 +3,15 @@ import {
   speciesArr,
   datesCategoryProps,
   iceAgeDatesArr,
-} from "../../data/listArrays";
+} from "../../../data/listArrays";
 //from helper functions
-import { animationPlayState, checkedObject } from "../helperFunctions";
+import { animationPlayState, checkedObject } from "../../helperFunctions";
 import { Typography, Button, Grid, makeStyles } from "@material-ui/core";
 import TimerIcon from "@material-ui/icons/Timer";
-import { IconImagePngComp } from "../reusableComponents/IconImagePngComp";
-import { footprintOutlinedIconPurple } from "../../media";
-import { CheckboxMapperComp } from "../reusableComponents/CheckboxMapperComp";
-import { IconStaticColorsComponent } from "./IconStaticColorsComponent";
+import { IconImagePngComp } from "../../reusableComponents/IconImagePngComp";
+import { footprintOutlinedIconPurple } from "../../../media";
+import { CheckboxMapperComp } from "../../reusableComponents/CheckboxMapperComp";
+import { IconStaticColorsComponent } from "../mapComponents/IconStaticColorsComponent";
 
 const useStylesCheckBoxMain = makeStyles({
   root: {},

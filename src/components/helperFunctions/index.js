@@ -1,4 +1,4 @@
-import { latLngObj } from "../mapComponents/pathsForPolygon";
+import { latLngObj } from "../mapPage/mapComponents/pathsForPolygon";
 
 import anthroData from "../../data/anthroData.json";
 

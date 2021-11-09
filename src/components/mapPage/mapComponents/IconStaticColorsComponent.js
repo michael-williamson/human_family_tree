@@ -1,4 +1,4 @@
-import { imageFiles } from "../../data/listArrays";
+import { imageFiles } from "../../../data/listArrays";
 
 export const IconStaticColorsComponent = (props) => {
   const imageFilesObj = imageFiles;

@@ -2,7 +2,7 @@ import React from "react";
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import { MarkerPopulate } from "./MarkerPopulate";
 
-import { PolygonComponent } from "../PolygonComponent";
+import { PolygonComponent } from "./PolygonComponent";
 import {
   arabiaPaths,
   iceAgeEurope2Paths,

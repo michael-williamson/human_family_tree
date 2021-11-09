@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Grid, Box } from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
-import speciesArrays from "../../data/speciesArrays.json";
+import speciesArrays from "../../../data/speciesArrays.json";
 import MuiAccordion from "@material-ui/core/Accordion";
 import MuiAccordionSummary from "@material-ui/core/AccordionSummary";
 import MuiAccordionDetails from "@material-ui/core/AccordionDetails";
 import GalleryItemComponent from "./GalleryItemComponent";
-import { speciesArr } from "../../data/listArrays";
-import theme from "../../theme";
+import { speciesArr } from "../../../data/listArrays";
+import theme from "../../../theme";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import NearMeOutlinedIcon from "@material-ui/icons/NearMeOutlined";
 

@@ -3,11 +3,13 @@ import "./App.css";
 
 import { Switch, Route, Redirect } from "react-router";
 import { Container, CircularProgress } from "@material-ui/core";
-import { Navbar } from "./components/Navbar";
+import { Navbar } from "./components/navigationBar/Navbar";
 
-const MapPage = lazy(() => import("./components/mapComponents/MapPage.js"));
+const MapPage = lazy(() => import("./components/mapPage/MapPage.js"));
 const FossilGalleryComponent = lazy(() =>
-  import("./components/fossilGalleryComponents/FossilGalleryComponent.js")
+  import(
+    "./components/galleryPage/fossilGalleryComponents/FossilGalleryComponent.js"
+  )
 );
 
 function App() {

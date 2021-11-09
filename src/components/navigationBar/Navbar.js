@@ -1,8 +1,8 @@
 import { Grid, makeStyles } from "@material-ui/core";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { skull_icon } from "../media";
-import { globe_icon } from "../media";
+import { skull_icon } from "../../media";
+import { globe_icon } from "../../media";
 
 const navLinkStyles = {
   color: "beige",
