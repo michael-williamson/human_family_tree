@@ -14,6 +14,7 @@ import glacier_canyon from "./mapComponentMedia/glacier_canyon.jpg";
 import ice_bergs from "./mapComponentMedia/ice_bergs.jpg";
 import globe_icon from "./mapComponentMedia/globe_icon.png";
 import skull_icon from "./mapComponentMedia/skull_icon.png";
+import chart_icon from "./mapComponentMedia/chart.png";
 import footprintIconBlue from "./mapComponentMedia/footprint_icon_blue.png";
 import footprintOutlinedIconPurple from "./mapComponentMedia/footprint_outlined_icon_purple.png";
 import beardedManIconBlue from "./marker_icons/bearded_man_icon_blue.png";
@@ -63,4 +64,5 @@ export {
   ice_bergs,
   globe_icon,
   skull_icon,
+  chart_icon,
 };

@@ -1,7 +1,7 @@
 import { Grid, makeStyles } from "@material-ui/core";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { skull_icon } from "../../media";
+import { chart_icon, skull_icon } from "../../media";
 import { globe_icon } from "../../media";
 
 const navLinkStyles = {
@@ -35,6 +35,13 @@ const useStyles = makeStyles((theme) => ({
     ...navLinkStyles,
     "&:before": {
       content: `url(${skull_icon})`,
+      ...navLinkPseudoBefore,
+    },
+  },
+  navLink3: {
+    ...navLinkStyles,
+    "&:before": {
+      content: `url(${chart_icon})`,
       ...navLinkPseudoBefore,
     },
   },
@@ -82,6 +89,22 @@ export const Navbar = () => {
           activeClassName={classes.activeLink}
         >
           Human Fossil Gallery
+        </NavLink>
+      </Grid>
+      <Grid
+        container
+        item
+        className={classes.navLinkContainer}
+        xs={12}
+        lg={4}
+        justifyContent="center"
+      >
+        <NavLink
+          to="/charts"
+          activeClassName={classes.activeLink}
+          className={classes.navLink3}
+        >
+          Charts
         </NavLink>
       </Grid>
     </Grid>

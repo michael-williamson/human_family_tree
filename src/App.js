@@ -4,7 +4,7 @@ import "./App.css";
 import { Switch, Route, Redirect } from "react-router";
 import { Container, CircularProgress } from "@material-ui/core";
 import { Navbar } from "./components/navigationBar/Navbar";
-
+import { ChartPage } from "./components/chartPage/ChartPage";
 const MapPage = lazy(() => import("./components/mapPage/MapPage.js"));
 const FossilGalleryComponent = lazy(() =>
   import(
@@ -34,6 +34,9 @@ function App() {
             </Route>
             <Route exact path="/fossil_gallery">
               <FossilGalleryComponent />
+            </Route>
+            <Route exact path="/charts">
+              <ChartPage />
             </Route>
             <Route path="/">
               <div>No Match</div>
