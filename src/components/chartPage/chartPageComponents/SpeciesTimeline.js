@@ -1,4 +1,5 @@
 import React from "react";
+import { Box } from "@material-ui/core";
 import { Line } from "react-chartjs-2";
 import {
   datesCategoryObj,
@@ -17,7 +18,7 @@ function DataSetItem(label, data, fillBool, bgColor, borderColor) {
   this.label = label;
   this.data = data;
   this.fillBool = fillBool;
-  this.bgColor = bgColor;
+  this.backgroundColor = bgColor;
   this.borderColor = borderColor;
 }
 
@@ -106,6 +107,20 @@ const data = {
 };
 
 const options = {
+  plugins: {
+    title: {
+      display: true,
+      align: "left",
+      text: "Specimens By Timeline",
+      font: {
+        size: 40,
+        weight: "bold",
+      },
+    },
+  },
+  layout: {
+    padding: { top: 20, left: 0, right: 0, bottom: 0 },
+  },
   animation: {
     easing: "linear",
     duration: 2000,
@@ -141,7 +156,7 @@ const options = {
       },
       beginAtZero: false,
       title: {
-        display: true,
+        display: false,
         text: "Timeline in Years",
         font: {
           size: 30,
@@ -167,8 +182,10 @@ const options = {
 
 export const SpeciesTimeline = () => {
   return (
-    <div>
-      <Line data={data} options={options} height={400} width={400} />
-    </div>
+    <Box mb={10} pt={4}>
+      <div>
+        <Line data={data} options={options} height={400} width={400} />
+      </div>
+    </Box>
   );
 };
