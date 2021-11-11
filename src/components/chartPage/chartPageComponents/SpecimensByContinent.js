@@ -2,6 +2,7 @@ import React from "react";
 import { Box } from "@material-ui/core";
 import { Bar } from "react-chartjs-2";
 import anthroData from "../../../data/anthroData.json";
+import { colorGenerator } from "../../helperFunctions";
 
 const continentsArray = [
   "Africa",
@@ -15,27 +16,12 @@ const continentsArray = [
 function DataSetItem(data, fillBool, colorArray) {
   this.data = data;
   this.fillBool = fillBool;
-  this.backgroundColor = colorArray;
-  this.borderColor = colorArray;
+  this.backgroundColor = colorArray[0];
+  this.borderColor = colorArray[1];
 }
 
-const colorGenerator = (length) => {
-  const colorArray = [];
-  const colorRandomizer = () => {
-    let randomNum = Math.random() * 255;
-    randomNum = Math.ceil(randomNum);
-    return randomNum;
-  };
-  for (let i = 0; i < length; i++) {
-    colorArray.push(
-      `rgba(${colorRandomizer()},${colorRandomizer()},${colorRandomizer()},1)`
-    );
-  }
-  return colorArray;
-};
-
 const continentCountObject = () => {
-  const colorArray = colorGenerator(continentsArray.length);
+  const colorArray = colorGenerator(continentsArray.length, 0.2, 1);
   const resultObject = {};
   anthroData.forEach((item) => {
     const currentContinent = item.continent;
@@ -125,6 +111,7 @@ const options = {
   elements: {
     bar: {
       pointStyle: "circle",
+      borderWidth: 1,
     },
   },
 };

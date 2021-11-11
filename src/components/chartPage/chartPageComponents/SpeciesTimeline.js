@@ -7,6 +7,8 @@ import {
   speciesArr,
 } from "../../../data/listArrays";
 import speciesArrays from "../../../data/speciesArrays.json";
+import { colorGenerator } from "../../helperFunctions";
+
 const labels = (number) => {
   return datesCategoryProps.map((item) => {
     if (number) return datesCategoryObj[item].lesser;
@@ -22,24 +24,9 @@ function DataSetItem(label, data, fillBool, bgColor, borderColor) {
   this.borderColor = borderColor;
 }
 
-const colorGenerator = (length) => {
-  const colorArray = [];
-  const colorRandomizer = () => {
-    let randomNum = Math.random() * 255;
-    randomNum = Math.ceil(randomNum);
-    return randomNum;
-  };
-  for (let i = 0; i < length; i++) {
-    colorArray.push(
-      `rgba(${colorRandomizer()},${colorRandomizer()},${colorRandomizer()},1)`
-    );
-  }
-  return colorArray;
-};
-
 const dataSetCreator = () => {
   const labelsArr = labels(true);
-  const colorArray = colorGenerator(labelsArr.length);
+  const colorArray = colorGenerator(labelsArr.length, 0.2, 1);
 
   const mid = Math.floor((labelsArr.length - 1) / 2);
   const quad = Math.floor((labelsArr.length - 1) / 4);
@@ -89,8 +76,8 @@ const dataSetCreator = () => {
       item,
       dataObject,
       false,
-      colorArray[index],
-      colorArray[index]
+      colorArray[0][index],
+      colorArray[1][index]
     );
   });
 };
@@ -115,6 +102,13 @@ const options = {
       font: {
         size: 40,
         weight: "bold",
+      },
+    },
+    legend: {
+      display: true,
+      labels: {
+        pointStyle: "star",
+        usePointStyle: true,
       },
     },
   },

@@ -181,6 +181,25 @@ export const animationPlayState = (...props) => {
   }
 };
 
+export const colorGenerator = (length, opacity1, opacity2) => {
+  const colorArray = [[], []];
+  const colorRandomizer = () => {
+    let randomNum = Math.random() * 255;
+    randomNum = Math.ceil(randomNum);
+    return randomNum;
+  };
+
+  for (let i = 0; i < length; i++) {
+    let r, g, b;
+    r = colorRandomizer();
+    g = colorRandomizer();
+    b = colorRandomizer();
+    colorArray[0].push(`rgba(${r},${g},${b},${opacity1})`);
+    colorArray[1].push(`rgba(${r},${g},${b},${opacity2})`);
+  }
+  return colorArray;
+};
+
 export const checkedObject = (bool, array) => {
   const obj = {};
   array.forEach((item) => {
