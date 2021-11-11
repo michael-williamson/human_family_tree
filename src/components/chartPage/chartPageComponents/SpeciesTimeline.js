@@ -122,7 +122,6 @@ const options = {
   scales: {
     y: {
       ticks: {
-        // color: "darkblue",
         font: {
           size: 15,
           weight: "bold",
@@ -130,9 +129,8 @@ const options = {
       },
       beginAtZero: true,
       title: {
-        display: true,
+        display: false,
         text: "Specimens",
-        // color: "darkgreen",
         font: {
           size: 30,
           weight: "bold",
@@ -142,7 +140,6 @@ const options = {
     },
     x: {
       ticks: {
-        // color: "darkblue",
         font: {
           size: 15,
           weight: "bold",

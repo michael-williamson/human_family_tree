@@ -1,17 +1,8 @@
 import React from "react";
-import { Box } from "@material-ui/core";
 import { Bar } from "react-chartjs-2";
+import { speciesArr } from "../../../data/listArrays";
 import anthroData from "../../../data/anthroData.json";
 import { colorGenerator } from "../../helperFunctions";
-
-const continentsArray = [
-  "Africa",
-  "Europe",
-  "Asia",
-  "Australia",
-  "North America",
-  "South America",
-];
 
 function DataSetItem(data, fillBool, colorArray) {
   this.data = data;
@@ -20,36 +11,54 @@ function DataSetItem(data, fillBool, colorArray) {
   this.borderColor = colorArray[1];
 }
 
-const continentCountObject = () => {
-  const colorArray = colorGenerator(continentsArray.length, 0.2, 1);
+const speciesCountObject = () => {
+  const colorArray = colorGenerator(speciesArr.length, 0.2, 1);
   const resultObject = {};
   anthroData.forEach((item) => {
-    const currentContinent = item.continent;
-    if (resultObject[currentContinent]) {
-      resultObject[currentContinent] += 1;
+    const currentSpecies = item.species;
+    if (resultObject[currentSpecies]) {
+      resultObject[currentSpecies] += 1;
     } else {
-      resultObject[currentContinent] = 1;
+      resultObject[currentSpecies] = 1;
     }
   });
   const dataArray = [];
 
-  for (const prop of continentsArray) {
+  for (const prop of speciesArr) {
     dataArray.push(resultObject[prop]);
   }
   return new DataSetItem(dataArray, false, colorArray);
 };
 
-const data = {
-  labels: continentsArray,
-  datasets: [continentCountObject()],
-};
+// const image = new Image();
+// image.src = oasis;
 
+// const bgImage = {
+//   id: "custom_canvas_background_image",
+//   beforeDraw: (chart) => {
+//     if (image.complete) {
+//       const ctx = chart.ctx;
+//       const { top, left, width, height } = chart.chartArea;
+//       const x = left + width / 2 - image.width / 2;
+//       const y = top + height / 2 - image.height / 2;
+//       ctx.drawImage(image, x, y);
+//     } else {
+//       image.onload = () => chart.draw();
+//     }
+//   },
+// };
+
+const data = {
+  labels: speciesArr,
+  datasets: [speciesCountObject()],
+};
 const options = {
+  indexAxis: "y",
   plugins: {
     title: {
       display: true,
       align: "left",
-      text: "Specimens By Continent",
+      text: "Specimens By Species",
       font: {
         size: 40,
         weight: "bold",
@@ -69,6 +78,7 @@ const options = {
   scales: {
     y: {
       ticks: {
+        // color: "darkblue",
         font: {
           size: 15,
           weight: "bold",
@@ -88,6 +98,7 @@ const options = {
     },
     x: {
       ticks: {
+        // color: "darkblue",
         font: {
           size: 15,
           weight: "bold",
@@ -114,12 +125,10 @@ const options = {
   },
 };
 
-export const SpecimensByContinent = () => {
+export const SpecimensBySpecies = () => {
   return (
-    <Box>
-      <div>
-        <Bar data={data} options={options} height={400} width={400} />
-      </div>
-    </Box>
+    <div>
+      <Bar data={data} options={options} height={400} width={400} />
+    </div>
   );
 };
