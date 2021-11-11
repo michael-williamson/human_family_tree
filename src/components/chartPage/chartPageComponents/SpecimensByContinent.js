@@ -35,9 +35,7 @@ const colorGenerator = (length) => {
 };
 
 const continentCountObject = () => {
-  // console.log(anthroData, "anthrodata", typeof anthroData);
   const colorArray = colorGenerator(continentsArray.length);
-  console.log(colorArray, "colorarray");
   const resultObject = {};
   anthroData.forEach((item) => {
     const currentContinent = item.continent;
@@ -47,7 +45,6 @@ const continentCountObject = () => {
       resultObject[currentContinent] = 1;
     }
   });
-  console.log(resultObject, "resultobj");
   const dataArray = [];
 
   for (const prop of continentsArray) {
