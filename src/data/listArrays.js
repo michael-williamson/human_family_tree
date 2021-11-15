@@ -30,6 +30,21 @@ export const speciesArr = [
   "longi",
 ];
 
+export const speciesColors = [
+  "rgba(27,87,217,1)",
+  "rgba(182,212,38,1)",
+  "rgba(59,152,208,1)",
+  "rgba(249,184,115,1)",
+  "rgba(225,240,180,1)",
+  "rgba(12,47,147,1)",
+  "rgba(153,175,244,1)",
+  "rgba(232,42,216,1)",
+  "rgba(200,200,220,1)",
+  "rgba(120,115,97,1)",
+  "rgba(22,218,188,1)",
+  "rgba(224,142,124,1)",
+];
+
 export const datesCategoryProps = [
   "> 2,000,000",
   "2,000,000 - 1,500,000",

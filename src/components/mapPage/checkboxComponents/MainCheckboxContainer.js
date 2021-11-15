@@ -11,7 +11,6 @@ import TimerIcon from "@material-ui/icons/Timer";
 import { IconImagePngComp } from "../../reusableComponents/IconImagePngComp";
 import { footprintOutlinedIconPurple } from "../../../media";
 import { CheckboxMapperComp } from "../../reusableComponents/CheckboxMapperComp";
-import { IconStaticColorsComponent } from "../mapComponents/IconStaticColorsComponent";
 
 const useStylesCheckBoxMain = makeStyles({
   root: {},
@@ -190,9 +189,8 @@ export const MainCheckboxContainer = (props) => {
             color: "primary",
           }}
           mapArr={speciesArr}
-        >
-          <IconStaticColorsComponent />
-        </CheckboxMapperComp>
+          fontAwesomeIcon="faSkull"
+        ></CheckboxMapperComp>
       </Grid>
       <Grid
         container

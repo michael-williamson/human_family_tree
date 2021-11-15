@@ -45,6 +45,10 @@ const data = {
 };
 
 const options = {
+  animation: {
+    delay: 1000,
+    duration: 2000,
+  },
   plugins: {
     title: {
       display: true,

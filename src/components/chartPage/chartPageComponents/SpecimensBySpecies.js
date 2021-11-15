@@ -99,12 +99,13 @@ const options = {
     x: {
       ticks: {
         // color: "darkblue",
+        stepSize: 1,
         font: {
           size: 15,
           weight: "bold",
         },
       },
-      beginAtZero: false,
+      beginAtZero: true,
       title: {
         display: false,
         text: "Continents",

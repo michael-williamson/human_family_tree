@@ -1,5 +1,10 @@
+import { faSkull } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Checkbox, FormControlLabel, Grid } from "@material-ui/core";
 import React from "react";
+import { iconColorGen } from "../helperFunctions";
+
+const iconColor = iconColorGen();
 
 export const CheckboxMapperComp = (props) => {
   const { MuiGridCheckboxMainContainer } = props;
@@ -15,6 +20,7 @@ export const CheckboxMapperComp = (props) => {
   const { handleChange } = props;
   const { checkedObject } = props;
   const { disabled } = props;
+  const { fontAwesomeIcon } = props;
 
   const MapperComp = (
     MuiGridCheckboxItemContainer,
@@ -23,7 +29,8 @@ export const CheckboxMapperComp = (props) => {
     MuiCheckboxComp,
     handleChange,
     disabled,
-    checkedObject
+    checkedObject,
+    fontAwesomeIcon
   ) => {
     return mapArr.map((item) => {
       return (
@@ -45,6 +52,9 @@ export const CheckboxMapperComp = (props) => {
             }
             label={item}
           />
+          {fontAwesomeIcon ? (
+            <FontAwesomeIcon icon={faSkull} color={iconColor[item]} />
+          ) : null}
         </Grid>
       );
     });
@@ -66,7 +76,8 @@ export const CheckboxMapperComp = (props) => {
           MuiCheckboxComp,
           handleChange,
           disabled,
-          checkedObject
+          checkedObject,
+          fontAwesomeIcon
         )}
       </Grid>
     </Grid>

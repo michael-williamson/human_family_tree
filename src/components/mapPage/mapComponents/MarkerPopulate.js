@@ -2,11 +2,10 @@ import React, { useState, Fragment } from "react";
 import { Marker, InfoWindow } from "@react-google-maps/api";
 import anthroData from "../../../data/anthroData.json";
 import { datesCatergoryGreater } from "../../../data/listArrays";
-import { comparatorMain } from "../../helperFunctions";
-//icons
-import { imageFiles } from "../../../data/listArrays";
+import { iconColorGen, comparatorMain } from "../../helperFunctions";
 //styles
 import "../../componentStyle/MarkerPopulateStyles.css";
+import { faSkull } from "@fortawesome/free-solid-svg-icons";
 
 const htmlParser = (item) => {
   let regExHttp = /(http[^\\"]*)/g;
@@ -34,6 +33,8 @@ const htmlParser = (item) => {
   }
 };
 
+const speciesColorObj = iconColorGen();
+
 export const MarkerPopulate = (props) => {
   const [specimen, setSpecimen] = useState(null);
   const { speciesChecked, datesChecked } = props;
@@ -54,8 +55,10 @@ export const MarkerPopulate = (props) => {
             }}
             opacity={1}
             icon={{
-              url: imageFiles[item.species],
-              scaledSize: new window.google.maps.Size(30, 30),
+              path: faSkull.icon[4],
+              fillColor: speciesColorObj[item.species],
+              fillOpacity: 1,
+              scale: 0.035,
             }}
           />
           {specimen === item && (

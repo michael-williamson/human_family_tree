@@ -1,6 +1,7 @@
 import { latLngObj } from "../mapPage/mapComponents/pathsForPolygon";
 
 import anthroData from "../../data/anthroData.json";
+import { speciesArr, speciesColors } from "../../data/listArrays";
 
 export const dateComparer = (
   compareDateGreater,
@@ -239,4 +240,13 @@ export const populateSpeciesObject = () => {
     }
   });
   return speciesObject;
+};
+
+export const iconColorGen = () => {
+  const length = speciesArr.length;
+  const speciesColorObj = {};
+  for (let i = 0; i < length; i++) {
+    speciesColorObj[speciesArr[i]] = speciesColors[i];
+  }
+  return speciesColorObj;
 };
