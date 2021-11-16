@@ -18,6 +18,9 @@ import { LevalloisTechMarker } from "./MarkerComponents/LevalloisTechMarker";
 import { AurignacianTechMarker } from "./MarkerComponents/AurignacianTechMarker";
 import { MicrolithTechMarker } from "./MarkerComponents/MicrolithTechMarker";
 import { ClothingTechMarker } from "./MarkerComponents/ClothingTechMarker";
+import { CaveArtMarker } from "./MarkerComponents/CaveArtMarker";
+import { BowTechMarker } from "./MarkerComponents/BowTechMarker";
+import { MusicTechMarker } from "./MarkerComponents/MusicTechMarker";
 const containerStyle = {
   width: "100%",
   height: "100vh",
@@ -65,6 +68,9 @@ function MapComponent(props) {
         <AurignacianTechMarker />
         <MicrolithTechMarker />
         <ClothingTechMarker />
+        <CaveArtMarker />
+        <BowTechMarker />
+        <MusicTechMarker />
         {desertPolygon.greenSahara ? (
           <PolygonComponent
             paths={saharaPaths}

@@ -35,6 +35,10 @@ import stoneIcon from "./marker_icons/stones_48px.png";
 import rockIcon from "./marker_icons/rock_48px.png";
 import ironIcon from "./marker_icons/iron_ore_48px.png";
 import clothingIcon from "./marker_icons/leather_48px.png";
+import caveArtIcon from "./marker_icons/cave_art.png";
+import arrowIcon from "./marker_icons/archers_arrow_48px.png";
+import bowIcon from "./marker_icons/bow_cupid_48px.png";
+import fluteIcon from "./marker_icons/flute_48px.png";
 
 import savannahImage from "./mapComponentMedia/savannah.jpg";
 
@@ -77,4 +81,8 @@ export {
   rockIcon,
   ironIcon,
   clothingIcon,
+  caveArtIcon,
+  arrowIcon,
+  bowIcon,
+  fluteIcon,
 };

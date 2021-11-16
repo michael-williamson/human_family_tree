@@ -104,6 +104,32 @@
         "wholeNumberYears": 170000
     },
     {
+        "eventName": "Bow and Arrow Technology",
+        "eventDescription": "",
+        "city": "Sibudu Cave",
+        "country": "South Africa",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": -29.522639,
+            "long": 31.085889
+        },
+        "date": "64tya",
+        "photoSourceLinks": [
+            "https://commons.wikimedia.org/wiki/File:Bushmen_hunters_(cropped).png"
+        ],
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Bushmen_hunters_%28cropped%29.png/256px-Bushmen_hunters_%28cropped%29.png",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Bushmen_hunters_%28cropped%29.png/512px-Bushmen_hunters_%28cropped%29.png"
+        ],
+        "photoAttribution": [
+            "Andy Maano, CC BY-SA 4.0",
+            "https://creativecommons.org/licenses/by-sa/4.0",
+            "via Wikimedia Commons"
+        ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/History_of_archery",
+        "wholeNumberYears": 64000
+    },
+    {
         "eventName": "Aurignacian Stone Technology",
         "eventDescription": "",
         "city": "Ksar Akil",
@@ -128,6 +154,58 @@
         ],
         "linkToInfo": "https://en.wikipedia.org/wiki/Aurignacian",
         "wholeNumberYears": 43000
+    },
+    {
+        "eventName": "Musical Instrument Technology",
+        "eventDescription": "",
+        "city": "Geissenklösterle Cave",
+        "country": "Germany",
+        "continent": "Europe",
+        "gpsCoor": {
+            "lat": 48.398333,
+            "long": 9.772222
+        },
+        "date": "43tya",
+        "photoSourceLinks": [
+            "https://commons.wikimedia.org/wiki/File:Flauta_paleol%C3%ADtica_blanco.jpg"
+        ],
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Flauta_paleol%C3%ADtica_blanco.jpg/512px-Flauta_paleol%C3%ADtica_blanco.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/8/8e/Flauta_paleol%C3%ADtica_blanco.jpg"
+        ],
+        "photoAttribution": [
+            "José-Manuel Benito Álvarez, CC BY-SA 2.5",
+            "https://creativecommons.org/licenses/by-sa/2.5",
+            "via Wikimedia Commons"
+        ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Paleolithic_flutes",
+        "wholeNumberYears": 43000
+    },
+    {
+        "eventName": "Cave Painting",
+        "eventDescription": "",
+        "city": "Lubang Jeriji Saléh",
+        "country": "Indonesia",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 1.241472,
+            "long": 117.329111
+        },
+        "date": "40tya",
+        "photoSourceLinks": [
+            "https://commons.wikimedia.org/wiki/File:Lubang_Jeriji_Sal%C3%A9h_cave_painting_of_Bull.jpg"
+        ],
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Lubang_Jeriji_Sal%C3%A9h_cave_painting_of_Bull.jpg/256px-Lubang_Jeriji_Sal%C3%A9h_cave_painting_of_Bull.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Lubang_Jeriji_Sal%C3%A9h_cave_painting_of_Bull.jpg/512px-Lubang_Jeriji_Sal%C3%A9h_cave_painting_of_Bull.jpg"
+        ],
+        "photoAttribution": [
+            "@ photo Luc-Henri Fage",
+            "https://fage.fr",
+            "via Wikimedia Commons"
+        ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Lubang_Jeriji_Sal%C3%A9h",
+        "wholeNumberYears": 40000
     },
     {
         "eventName": "Microlith Stone Technology",
