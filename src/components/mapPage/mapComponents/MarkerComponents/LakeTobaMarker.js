@@ -11,7 +11,6 @@ const lakeTobaEvent = () => {
 };
 
 const lakeTobaObject = lakeTobaEvent();
-console.log(lakeTobaObject, "obj");
 
 export const LakeTobaMarker = () => {
   const [showInfo, setShowInfo] = useState(false);
