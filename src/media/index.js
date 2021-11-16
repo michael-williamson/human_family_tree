@@ -30,11 +30,12 @@ import beardedManIconRed from "./marker_icons/bearded_man_icon_red.png";
 import beardedManIconLitePurple from "./marker_icons/bearded_man_icon_litepurple.png";
 import beardedManIconBrightYellow from "./marker_icons/bearded_man_icon_bright_yellow.png";
 import skullSolidSvg from "./marker_icons/skull-solid.svg";
-import lakeTobaIcon from "./marker_icons/lake_toba_icon.png";
+import lakeTobaIcon from "./marker_icons/volcano_48px.png";
 import fireIcon from "./marker_icons/fire_48px.png";
 import stoneIcon from "./marker_icons/stones_48px.png";
 import rockIcon from "./marker_icons/rock_48px.png";
 import ironIcon from "./marker_icons/iron_ore_48px.png";
+import clothingIcon from "./marker_icons/leather_48px.png";
 
 import savannahImage from "./mapComponentMedia/savannah.jpg";
 
@@ -77,4 +78,5 @@ export {
   stoneIcon,
   rockIcon,
   ironIcon,
+  clothingIcon,
 };

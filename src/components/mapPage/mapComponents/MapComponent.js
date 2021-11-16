@@ -17,6 +17,7 @@ import { AcheuleanTechMarker } from "./MarkerComponents/AcheuleanTechMarker";
 import { LevalloisTechMarker } from "./MarkerComponents/LevalloisTechMarker";
 import { AurignacianTechMarker } from "./MarkerComponents/AurignacianTechMarker";
 import { MicrolithTechMarker } from "./MarkerComponents/MicrolithTechMarker";
+import { ClothingTechMarker } from "./MarkerComponents/ClothingTechMarker";
 const containerStyle = {
   width: "100%",
   height: "100vh",
@@ -63,6 +64,7 @@ function MapComponent(props) {
         <LevalloisTechMarker />
         <AurignacianTechMarker />
         <MicrolithTechMarker />
+        <ClothingTechMarker />
         {desertPolygon.greenSahara ? (
           <PolygonComponent
             paths={saharaPaths}

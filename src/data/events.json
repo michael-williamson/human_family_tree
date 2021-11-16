@@ -78,6 +78,32 @@
         "wholeNumberYears": 315000
     },
     {
+        "eventName": "Clothing Technology",
+        "eventDescription": "",
+        "city": "pending",
+        "country": "pending",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": 28.20518457991961,
+            "long": 20.879522491975273
+        },
+        "date": "1.7tya",
+        "photoSourceLinks": [
+            "https://commons.wikimedia.org/wiki/File:Kousnetzoff-Caveman.jpg"
+        ],
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/6/63/Kousnetzoff-Caveman.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/6/63/Kousnetzoff-Caveman.jpg"
+        ],
+        "photoAttribution": [
+            "Constantin Kousnetzoff, Public domain",
+            "https://commons.wikimedia.org/wiki/File:Kousnetzoff-Caveman.jpg",
+            "via Wikimedia Commons"
+        ],
+        "linkToInfo": "https://www.sciencedaily.com/releases/2011/01/110106164616.htm",
+        "wholeNumberYears": 170000
+    },
+    {
         "eventName": "Aurignacian Stone Technology",
         "eventDescription": "",
         "city": "Ksar Akil",
