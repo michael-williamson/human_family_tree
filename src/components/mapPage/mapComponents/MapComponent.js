@@ -10,6 +10,8 @@ import {
   saharaPaths,
 } from "./pathsForPolygon";
 import { CircularProgress } from "@material-ui/core";
+import { LakeTobaMarker } from "./MarkerComponents/LakeTobaMarker";
+import { FireControlMarker } from "./MarkerComponents/FireControlMarker";
 const containerStyle = {
   width: "100%",
   height: "100vh",
@@ -49,6 +51,8 @@ function MapComponent(props) {
         {/* Child components, such as markers, info windows, etc. */}
 
         <MarkerPopulate {...props} />
+        <LakeTobaMarker />
+        <FireControlMarker />
         {desertPolygon.greenSahara ? (
           <PolygonComponent
             paths={saharaPaths}
