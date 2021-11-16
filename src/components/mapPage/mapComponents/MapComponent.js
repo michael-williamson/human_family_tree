@@ -12,6 +12,11 @@ import {
 import { CircularProgress } from "@material-ui/core";
 import { LakeTobaMarker } from "./MarkerComponents/LakeTobaMarker";
 import { FireControlMarker } from "./MarkerComponents/FireControlMarker";
+import { OldowanTechMarker } from "./MarkerComponents/OldowanTechMarker";
+import { AcheuleanTechMarker } from "./MarkerComponents/AcheuleanTechMarker";
+import { LevalloisTechMarker } from "./MarkerComponents/LevalloisTechMarker";
+import { AurignacianTechMarker } from "./MarkerComponents/AurignacianTechMarker";
+import { MicrolithTechMarker } from "./MarkerComponents/MicrolithTechMarker";
 const containerStyle = {
   width: "100%",
   height: "100vh",
@@ -53,6 +58,11 @@ function MapComponent(props) {
         <MarkerPopulate {...props} />
         <LakeTobaMarker />
         <FireControlMarker />
+        <OldowanTechMarker />
+        <AcheuleanTechMarker />
+        <LevalloisTechMarker />
+        <AurignacianTechMarker />
+        <MicrolithTechMarker />
         {desertPolygon.greenSahara ? (
           <PolygonComponent
             paths={saharaPaths}

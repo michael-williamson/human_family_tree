@@ -32,6 +32,9 @@ import beardedManIconBrightYellow from "./marker_icons/bearded_man_icon_bright_y
 import skullSolidSvg from "./marker_icons/skull-solid.svg";
 import lakeTobaIcon from "./marker_icons/lake_toba_icon.png";
 import fireIcon from "./marker_icons/fire_48px.png";
+import stoneIcon from "./marker_icons/stones_48px.png";
+import rockIcon from "./marker_icons/rock_48px.png";
+import ironIcon from "./marker_icons/iron_ore_48px.png";
 
 import savannahImage from "./mapComponentMedia/savannah.jpg";
 
@@ -71,4 +74,7 @@ export {
   skullSolidSvg,
   lakeTobaIcon,
   fireIcon,
+  stoneIcon,
+  rockIcon,
+  ironIcon,
 };

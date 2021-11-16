@@ -1,5 +1,135 @@
 [
     {
+        "eventName": "Oldowan Stone Technology",
+        "eventDescription": "",
+        "city": "Olduvai Gorge",
+        "country": "Tanzania",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": 36.2009,
+            "long": 5.6544
+        },
+        "date": "2.6mya",
+        "photoSourceLinks": [
+            "https://commons.wikimedia.org/wiki/File:Canto_tallado-Tipo_13.jpg"
+        ],
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Canto_tallado-Tipo_13.jpg/256px-Canto_tallado-Tipo_13.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Canto_tallado-Tipo_13.jpg/512px-Canto_tallado-Tipo_13.jpg"
+        ],
+        "photoAttribution": [
+            "Locutus Borg",
+            "https://commons.wikimedia.org/wiki/File:Canto_tallado-Tipo_13.jpg",
+            "Public domain, via Wikimedia Commons"
+        ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Oldowan",
+        "wholeNumberYears": 2600000
+    },
+    {
+        "eventName": "Acheulean Stone Technology",
+        "eventDescription": "",
+        "city": "West Turkana",
+        "country": "Kenya",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": 3.15,
+            "long": 35.35
+        },
+        "date": "1.76mya",
+        "photoSourceLinks": [
+            "https://commons.wikimedia.org/wiki/File:Acheulean_hand_axe_(FindID_73844).jpg"
+        ],
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Acheulean_hand_axe_%28FindID_73844%29.jpg/256px-Acheulean_hand_axe_%28FindID_73844%29.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Acheulean_hand_axe_%28FindID_73844%29.jpg/512px-Acheulean_hand_axe_%28FindID_73844%29.jpg"
+        ],
+        "photoAttribution": [
+            "The Portable Antiquities Scheme/ The Trustees of the British Museum, CC BY-SA 2.0",
+            "https://creativecommons.org/licenses/by-sa/2.0",
+            "via Wikimedia Commons"
+        ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Acheulean",
+        "wholeNumberYears": 1760000
+    },
+    {
+        "eventName": "Levallois Stone Technology",
+        "eventDescription": "",
+        "city": "Jebel Irhoud",
+        "country": "Morocco",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": 31.855,
+            "long": -8.8725
+        },
+        "date": "3.15tya",
+        "photoSourceLinks": [
+            "https://commons.wikimedia.org/wiki/File:Production_of_points_%26_spearheads_from_a_flint_stone_core,_Levallois_technique,_Mousterian_Culture,_Tabun_Cave,_250,000-50,000_BP_(detail).jpg"
+        ],
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Production_of_points_%26_spearheads_from_a_flint_stone_core%2C_Levallois_technique%2C_Mousterian_Culture%2C_Tabun_Cave%2C_250%2C000-50%2C000_BP_%28detail%29.jpg/256px-Production_of_points_%26_spearheads_from_a_flint_stone_core%2C_Levallois_technique%2C_Mousterian_Culture%2C_Tabun_Cave%2C_250%2C000-50%2C000_BP_%28detail%29.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Production_of_points_%26_spearheads_from_a_flint_stone_core%2C_Levallois_technique%2C_Mousterian_Culture%2C_Tabun_Cave%2C_250%2C000-50%2C000_BP_%28detail%29.jpg/512px-Production_of_points_%26_spearheads_from_a_flint_stone_core%2C_Levallois_technique%2C_Mousterian_Culture%2C_Tabun_Cave%2C_250%2C000-50%2C000_BP_%28detail%29.jpg"
+        ],
+        "photoAttribution": [
+            "Gary Todd, CC0",
+            "https://commons.wikimedia.org/wiki/File:Production_of_points_%26_spearheads_from_a_flint_stone_core,_Levallois_technique,_Mousterian_Culture,_Tabun_Cave,_250,000-50,000_BP_(detail).jpg",
+            "via Wikimedia Commons"
+        ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Levallois_technique",
+        "wholeNumberYears": 315000
+    },
+    {
+        "eventName": "Aurignacian Stone Technology",
+        "eventDescription": "",
+        "city": "Ksar Akil",
+        "country": "Lebanon",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 33.91185,
+            "long": 35.60325
+        },
+        "date": "43tya",
+        "photoSourceLinks": [
+            "https://commons.wikimedia.org/wiki/File:Pointe_%C3%A0_dos_courbe_MHNT_PRE_.2009.0.227.5.jpg"
+        ],
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Pointe_%C3%A0_dos_courbe_MHNT_PRE_.2009.0.227.5.jpg/256px-Pointe_%C3%A0_dos_courbe_MHNT_PRE_.2009.0.227.5.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Pointe_%C3%A0_dos_courbe_MHNT_PRE_.2009.0.227.5.jpg/512px-Pointe_%C3%A0_dos_courbe_MHNT_PRE_.2009.0.227.5.jpg"
+        ],
+        "photoAttribution": [
+            "Muséum de Toulouse, CC BY-SA 3.0",
+            "https://creativecommons.org/licenses/by-sa/3.0",
+            "via Wikimedia Commons"
+        ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Aurignacian",
+        "wholeNumberYears": 43000
+    },
+    {
+        "eventName": "Microlith Stone Technology",
+        "eventDescription": "",
+        "city": "Kebara Cave",
+        "country": "Israel",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 32.558278,
+            "long": 34.937306
+        },
+        "date": "18tya",
+        "photoSourceLinks": [
+            "https://commons.wikimedia.org/wiki/File:Mesolithic_and_Microliths.jpg"
+        ],
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Mesolithic_and_Microliths.jpg/256px-Mesolithic_and_Microliths.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Mesolithic_and_Microliths.jpg/512px-Mesolithic_and_Microliths.jpg"
+        ],
+        "photoAttribution": [
+            "Gustavimam, CC BY-SA 4.0",
+            "https://creativecommons.org/licenses/by-sa/4.0",
+            "via Wikimedia Commons"
+        ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Microlith",
+        "wholeNumberYears": 18000
+    },
+    {
         "eventName": "Control of Fire",
         "eventDescription": "",
         "city": "Wonderwerk Cave",
