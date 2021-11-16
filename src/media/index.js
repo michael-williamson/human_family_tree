@@ -39,6 +39,7 @@ import caveArtIcon from "./marker_icons/cave_art.png";
 import arrowIcon from "./marker_icons/archers_arrow_48px.png";
 import bowIcon from "./marker_icons/bow_cupid_48px.png";
 import fluteIcon from "./marker_icons/flute_48px.png";
+import fishHookIcon from "./marker_icons/wobbler_lure_48px.png";
 
 import savannahImage from "./mapComponentMedia/savannah.jpg";
 
@@ -85,4 +86,5 @@ export {
   arrowIcon,
   bowIcon,
   fluteIcon,
+  fishHookIcon,
 };

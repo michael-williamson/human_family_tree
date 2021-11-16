@@ -208,6 +208,32 @@
         "wholeNumberYears": 40000
     },
     {
+        "eventName": "Fishing Technology",
+        "eventDescription": "",
+        "city": "Okinawa Island",
+        "country": "Japan",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 26.479444,
+            "long": 127.927778
+        },
+        "date": "23tya",
+        "photoSourceLinks": [
+            "https://commons.wikimedia.org/wiki/File:Hook_(AM_1939.232-7).jpg"
+        ],
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Hook_%28AM_1939.232-7%29.jpg/256px-Hook_%28AM_1939.232-7%29.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Hook_%28AM_1939.232-7%29.jpg/512px-Hook_%28AM_1939.232-7%29.jpg"
+        ],
+        "photoAttribution": [
+            "Auckland Museum, CC BY 4.0",
+            "https://creativecommons.org/licenses/by/4.0",
+            "via Wikimedia Commons"
+        ],
+        "linkToInfo": "https://www.theguardian.com/world/2016/sep/18/worlds-oldest-fish-hooks-okinawa-japan-sakitari-cave",
+        "wholeNumberYears": 23000
+    },
+    {
         "eventName": "Microlith Stone Technology",
         "eventDescription": "",
         "city": "Kebara Cave",

@@ -21,6 +21,7 @@ import { ClothingTechMarker } from "./MarkerComponents/ClothingTechMarker";
 import { CaveArtMarker } from "./MarkerComponents/CaveArtMarker";
 import { BowTechMarker } from "./MarkerComponents/BowTechMarker";
 import { MusicTechMarker } from "./MarkerComponents/MusicTechMarker";
+import { FishingTechMarker } from "./MarkerComponents/FishingTechMarker";
 const containerStyle = {
   width: "100%",
   height: "100vh",
@@ -71,6 +72,7 @@ function MapComponent(props) {
         <CaveArtMarker />
         <BowTechMarker />
         <MusicTechMarker />
+        <FishingTechMarker />
         {desertPolygon.greenSahara ? (
           <PolygonComponent
             paths={saharaPaths}
