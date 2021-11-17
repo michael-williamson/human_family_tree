@@ -1,6 +1,7 @@
 import { latLngObj } from "../mapPage/mapComponents/pathsForPolygon";
 
 import anthroData from "../../data/anthroData.json";
+import events from "../../data/events.json";
 import { speciesArr, speciesColors } from "../../data/listArrays";
 
 export const dateComparer = (
@@ -249,4 +250,12 @@ export const iconColorGen = () => {
     speciesColorObj[speciesArr[i]] = speciesColors[i];
   }
   return speciesColorObj;
+};
+
+export const eventsImageObjectFn = () => {
+  const eventsImageObject = {};
+  for (const element of events) {
+    eventsImageObject[element.eventName] = element.linksToPhotos[0];
+  }
+  return eventsImageObject;
 };

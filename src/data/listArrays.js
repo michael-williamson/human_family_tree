@@ -11,6 +11,14 @@ import {
   beardedManIconRed,
   beardedManIconLitePurple,
   beardedManIconBrightYellow,
+  lakeTobaIcon,
+  fireIcon,
+  rockIcon,
+  clothingIcon,
+  caveArtIcon,
+  bowIcon,
+  fluteIcon,
+  fishHookIcon,
 } from "../media/index";
 
 export const librariesArr = ["drawing"];
@@ -176,3 +184,18 @@ export const iceAgeDatesArrComparator = [
 ];
 
 export const iceAgeDatesCounter = [1, 2, 2, 3, 5];
+
+export const eventIconObject = {
+  "Acheulean Stone Technology": rockIcon,
+  "Aurignacian Stone Technology": rockIcon,
+  "Bow and Arrow Technology": bowIcon,
+  "Cave Painting": caveArtIcon,
+  "Clothing Technology": clothingIcon,
+  "Control of Fire": fireIcon,
+  "Fishing Technology": fishHookIcon,
+  "Lake Toba Eruption": lakeTobaIcon,
+  "Levallois Stone Technology": rockIcon,
+  "Microlith Stone Technology": rockIcon,
+  "Musical Instrument Technology": fluteIcon,
+  "Oldowan Stone Technology": rockIcon,
+};

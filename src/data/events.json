@@ -9,7 +9,7 @@
             "lat": 36.2009,
             "long": 5.6544
         },
-        "date": "2.6mya",
+        "date": "2.6 mya",
         "photoSourceLinks": [
             "https://commons.wikimedia.org/wiki/File:Canto_tallado-Tipo_13.jpg"
         ],
@@ -35,7 +35,7 @@
             "lat": 3.15,
             "long": 35.35
         },
-        "date": "1.76mya",
+        "date": "1.76 mya",
         "photoSourceLinks": [
             "https://commons.wikimedia.org/wiki/File:Acheulean_hand_axe_(FindID_73844).jpg"
         ],
@@ -52,6 +52,32 @@
         "wholeNumberYears": 1760000
     },
     {
+        "eventName": "Control of Fire",
+        "eventDescription": "",
+        "city": "Wonderwerk Cave",
+        "country": "South Africa",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": -27.845,
+            "long": 23.553889
+        },
+        "date": "1 mya",
+        "photoSourceLinks": [
+            "https://commons.wikimedia.org/wiki/File:Cave_Fire_(3800495402).jpg"
+        ],
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cave_Fire_%283800495402%29.jpg/256px-Cave_Fire_%283800495402%29.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cave_Fire_%283800495402%29.jpg/512px-Cave_Fire_%283800495402%29.jpg"
+        ],
+        "photoAttribution": [
+            "Vincent_AF from Rotterdam, Netherlands, CC BY-SA 2.0",
+            "https://creativecommons.org/licenses/by-sa/2.0",
+            "via Wikimedia Commons"
+        ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Control_of_fire_by_early_humans",
+        "wholeNumberYears": 1000000
+    },
+    {
         "eventName": "Levallois Stone Technology",
         "eventDescription": "",
         "city": "Jebel Irhoud",
@@ -61,7 +87,7 @@
             "lat": 31.855,
             "long": -8.8725
         },
-        "date": "3.15tya",
+        "date": "315 tya",
         "photoSourceLinks": [
             "https://commons.wikimedia.org/wiki/File:Production_of_points_%26_spearheads_from_a_flint_stone_core,_Levallois_technique,_Mousterian_Culture,_Tabun_Cave,_250,000-50,000_BP_(detail).jpg"
         ],
@@ -87,7 +113,7 @@
             "lat": 28.20518457991961,
             "long": 20.879522491975273
         },
-        "date": "1.7tya",
+        "date": "170 tya",
         "photoSourceLinks": [
             "https://commons.wikimedia.org/wiki/File:Kousnetzoff-Caveman.jpg"
         ],
@@ -104,6 +130,35 @@
         "wholeNumberYears": 170000
     },
     {
+        "eventName": "Lake Toba Eruption",
+        "eventDescription": "",
+        "city": "Sumatra",
+        "country": "Indonesia",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 2.6845,
+            "long": 98.8756
+        },
+        "date": "75 tya",
+        "photoSourceLinks": [
+            "https://commons.wikimedia.org/wiki/File:Caldera_Toba.jpg",
+            "https://commons.wikimedia.org/wiki/File:Lake_Toba_(SRTM).jpg"
+        ],
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Caldera_Toba.jpg/256px-Caldera_Toba.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Caldera_Toba.jpg/512px-Caldera_Toba.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Lake_Toba_%28SRTM%29.jpg/256px-Lake_Toba_%28SRTM%29.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Lake_Toba_%28SRTM%29.jpg/512px-Lake_Toba_%28SRTM%29.jpg"
+        ],
+        "photoAttribution": [
+            "Yudhapohan, CC BY-SA 4.0",
+            "https://creativecommons.org/licenses/by-sa/4.0",
+            "via Wikimedia Commons"
+        ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Toba_catastrophe_theory",
+        "wholeNumberYears": 75000
+    },
+    {
         "eventName": "Bow and Arrow Technology",
         "eventDescription": "",
         "city": "Sibudu Cave",
@@ -113,7 +168,7 @@
             "lat": -29.522639,
             "long": 31.085889
         },
-        "date": "64tya",
+        "date": "64 tya",
         "photoSourceLinks": [
             "https://commons.wikimedia.org/wiki/File:Bushmen_hunters_(cropped).png"
         ],
@@ -139,7 +194,7 @@
             "lat": 33.91185,
             "long": 35.60325
         },
-        "date": "43tya",
+        "date": "43 tya",
         "photoSourceLinks": [
             "https://commons.wikimedia.org/wiki/File:Pointe_%C3%A0_dos_courbe_MHNT_PRE_.2009.0.227.5.jpg"
         ],
@@ -165,7 +220,7 @@
             "lat": 48.398333,
             "long": 9.772222
         },
-        "date": "43tya",
+        "date": "42 tya",
         "photoSourceLinks": [
             "https://commons.wikimedia.org/wiki/File:Flauta_paleol%C3%ADtica_blanco.jpg"
         ],
@@ -179,7 +234,7 @@
             "via Wikimedia Commons"
         ],
         "linkToInfo": "https://en.wikipedia.org/wiki/Paleolithic_flutes",
-        "wholeNumberYears": 43000
+        "wholeNumberYears": 42000
     },
     {
         "eventName": "Cave Painting",
@@ -191,7 +246,7 @@
             "lat": 1.241472,
             "long": 117.329111
         },
-        "date": "40tya",
+        "date": "40 tya",
         "photoSourceLinks": [
             "https://commons.wikimedia.org/wiki/File:Lubang_Jeriji_Sal%C3%A9h_cave_painting_of_Bull.jpg"
         ],
@@ -217,7 +272,7 @@
             "lat": 26.479444,
             "long": 127.927778
         },
-        "date": "23tya",
+        "date": "23 tya",
         "photoSourceLinks": [
             "https://commons.wikimedia.org/wiki/File:Hook_(AM_1939.232-7).jpg"
         ],
@@ -243,7 +298,7 @@
             "lat": 32.558278,
             "long": 34.937306
         },
-        "date": "18tya",
+        "date": "18 tya",
         "photoSourceLinks": [
             "https://commons.wikimedia.org/wiki/File:Mesolithic_and_Microliths.jpg"
         ],
@@ -258,60 +313,5 @@
         ],
         "linkToInfo": "https://en.wikipedia.org/wiki/Microlith",
         "wholeNumberYears": 18000
-    },
-    {
-        "eventName": "Control of Fire",
-        "eventDescription": "",
-        "city": "Wonderwerk Cave",
-        "country": "South Africa",
-        "continent": "Africa",
-        "gpsCoor": {
-            "lat": -27.845,
-            "long": 23.553889
-        },
-        "date": "1mya",
-        "photoSourceLinks": [
-            "https://commons.wikimedia.org/wiki/File:Cave_Fire_(3800495402).jpg"
-        ],
-        "linksToPhotos": [
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cave_Fire_%283800495402%29.jpg/256px-Cave_Fire_%283800495402%29.jpg",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cave_Fire_%283800495402%29.jpg/512px-Cave_Fire_%283800495402%29.jpg"
-        ],
-        "photoAttribution": [
-            "Vincent_AF from Rotterdam, Netherlands, CC BY-SA 2.0",
-            "https://creativecommons.org/licenses/by-sa/2.0",
-            "via Wikimedia Commons"
-        ],
-        "linkToInfo": "https://en.wikipedia.org/wiki/Control_of_fire_by_early_humans",
-        "wholeNumberYears": 1000000
-    },
-    {
-        "eventName": "Lake Toba Eruption",
-        "eventDescription": "",
-        "city": "Sumatra",
-        "country": "Indonesia",
-        "continent": "Asia",
-        "gpsCoor": {
-            "lat": 2.6845,
-            "long": 98.8756
-        },
-        "date": "75tya",
-        "photoSourceLinks": [
-            "https://commons.wikimedia.org/wiki/File:Caldera_Toba.jpg",
-            "https://commons.wikimedia.org/wiki/File:Lake_Toba_(SRTM).jpg"
-        ],
-        "linksToPhotos": [
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Caldera_Toba.jpg/256px-Caldera_Toba.jpg",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Caldera_Toba.jpg/512px-Caldera_Toba.jpg",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Lake_Toba_%28SRTM%29.jpg/256px-Lake_Toba_%28SRTM%29.jpg",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Lake_Toba_%28SRTM%29.jpg/512px-Lake_Toba_%28SRTM%29.jpg"
-        ],
-        "photoAttribution": [
-            "Yudhapohan, CC BY-SA 4.0",
-            "https://creativecommons.org/licenses/by-sa/4.0",
-            "via Wikimedia Commons"
-        ],
-        "linkToInfo": "https://en.wikipedia.org/wiki/Toba_catastrophe_theory",
-        "wholeNumberYears": 75000
     }
 ]
