@@ -20,6 +20,7 @@ export const CheckboxMapperComp = (props) => {
   const { handleChange } = props;
   const { checkedObject } = props;
   const { disabled } = props;
+  const { addedLabelText } = props;
   const { fontAwesomeIcon } = props;
 
   const MapperComp = (
@@ -30,6 +31,7 @@ export const CheckboxMapperComp = (props) => {
     handleChange,
     disabled,
     checkedObject,
+    addedLabelText,
     fontAwesomeIcon
   ) => {
     return mapArr.map((item) => {
@@ -50,7 +52,7 @@ export const CheckboxMapperComp = (props) => {
                 checked={disabled ? false : checkedObject?.[`${item}`]}
               />
             }
-            label={item}
+            label={addedLabelText ? `${item} ${addedLabelText}` : item}
           />
           {fontAwesomeIcon ? (
             <FontAwesomeIcon icon={faSkull} color={iconColor[item]} />
@@ -77,6 +79,7 @@ export const CheckboxMapperComp = (props) => {
           handleChange,
           disabled,
           checkedObject,
+          addedLabelText,
           fontAwesomeIcon
         )}
       </Grid>
