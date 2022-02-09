@@ -1387,6 +1387,25 @@
         },
         {
             "species": "sapiens",
+            "city": "Grotte Mandrin cave",
+            "country": "France",
+            "continent": "Europe",
+            "gpsCoor": {
+                "lat": 44.46971,
+                "long": 4.7713
+            },
+            "date": "54tya",
+            "linksToPhotos": [
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Grottes_de_Mandrin_-_Grenoble.jpg/256px-Grottes_de_Mandrin_-_Grenoble.jpg",
+                "https://upload.wikimedia.org/wikipedia/commons/2/23/Grottes_de_Mandrin_-_Grenoble.jpg",
+                "<a href=\"https://commons.wikimedia.org/wiki/File:Grottes_de_Mandrin_-_Grenoble.jpg\">Simdaperce</a>, <a href=\"https://creativecommons.org/licenses/by-sa/3.0\">CC BY-SA 3.0</a>, via Wikimedia Commons"
+            ],
+            "linkToInfo": "https://www.science.org/doi/10.1126/sciadv.abj9496#.YgQzqkiRD-M.twitter",
+            "name": "Man02 C 983",
+            "wholeNumberYears": 54000
+        },
+        {
+            "species": "sapiens",
             "city": "Sarawak",
             "country": "Malaysia",
             "continent": "Asia",
