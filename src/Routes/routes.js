@@ -1,9 +1,9 @@
 import {
-  chartsIcon,
-  galleryIcon,
   homeIcon,
   mapIcon,
-} from "../Media/PageTitle_Navigation_Icons/index";
+  galleryIcon,
+  chartsIcon,
+} from "../Media/PageTitle_Navigation_Icons/index.js";
 
 export const routes = {
   Welcome: "",
