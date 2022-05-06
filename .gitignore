@@ -1,0 +1,51 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+fileWriter.js
+settings.json
+listArrays.js
+speciesArrays.json
+
+/.vscode
+components_explained.txt
+descriptionText.txt
+tutorial.txt
+.vscode/launch.json
+src/components/GeologicTimeScale.js
+src/components/HorizontalNonLinearAlternativeLabelStepper.js
+src/components/mapPage/mapComponents/empty.js
+src/components/mapPage/mapComponents/SelectAllComponent.js
+src/components/mapPage/mapComponents/SortTitleComponent.js
+src/data/anthro_data.js
+src/data/archeologySites.json
+src/data/quarternaryTable.html
+src/data/tempSave.js
+src/media/mapComponentMedia/bgSort.jpg
+src/media/mapComponentMedia/green_nature.jpg
+src/media/mapComponentMedia/world_icon.png
+src/media/marker_icons/bearded_man_icon_.png
+src/media/marker_icons/lake_toba_icon.png
+src/media/readMeMedia/site_gallery.png
+src/media/readMeMedia/site_map.png
