@@ -1,9 +1,8 @@
-import headerBGImage from "../../Media/HeaderMedia/africa_1.jpg";
-import titleBGImage from "../../Media/HeaderMedia/family_tree.png";
+import { HeaderBGImage, HeaderTitleBGImage } from "../../Media/HeaderMedia";
 
 export const headerContainerStyles = {
   position: "relative",
-  backgroundImage: `url(${headerBGImage})`,
+  backgroundImage: `url(${HeaderBGImage})`,
   backgroundSize: "cover",
   backgroundRepeat: "no-repeat",
   backgroundPosition: "center",
@@ -33,7 +32,7 @@ export const headerTitleStyles = {
   backgroundSize: "contain",
   backgroundRepeat: "no-repeat",
   backgroundPosition: "-20px -3px",
-  backgroundImage: `url(${titleBGImage})`,
+  backgroundImage: `url(${HeaderTitleBGImage})`,
   fontFamily: "sans-serif",
   position: "relative",
   zIndex: 1000,
