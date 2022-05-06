@@ -3,7 +3,7 @@ import {
   galleryIcon,
   homeIcon,
   mapIcon,
-} from "../Media/PageTitle_Navigation_Icons";
+} from "../Media/PageTitle_Navigation_Icons/index";
 
 export const routes = {
   Welcome: "",
