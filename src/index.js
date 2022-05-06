@@ -1,9 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import "./index.css";
 import App from "./App";
-import { ThemeProvider } from "@material-ui/styles";
+import { ThemeProvider } from "@mui/material";
 import theme from "./theme";
 import reportWebVitals from "./reportWebVitals";
 

@@ -1,5 +1,18 @@
-import { createTheme } from "@material-ui/core/styles";
+import { createTheme } from "@mui/material/styles";
 import { red } from "@material-ui/core/colors";
+
+const googleFonts = {
+  Caveat: "Caveat",
+  GrapeNuts: "Grape Nuts",
+  Kalam: "Kalam",
+  LondrinaSolid: "Londrina Solid",
+};
+
+// text for copy-paste in chrome developer tools to view font family in browser
+// font-family: 'Caveat', cursive;
+// font-family: 'Grape Nuts', cursive;
+// font-family: 'Kalam', cursive;
+// font-family: 'Londrina Solid', cursive;
 
 // A custom theme for this app
 const theme = createTheme({
@@ -32,8 +45,17 @@ const theme = createTheme({
       //beige
       default: "#f5f5dc",
     },
+    customColors: {
+      beige: "#f5f5dc",
+      chocolate: "#d2691e",
+      swipeableNavBG: "#0e0e0ee6",
+      menuButtonBorder: "#fffde1",
+    },
   },
   //end of palette
+  fonts: {
+    ...googleFonts,
+  },
   status: {
     //cadet blue
     link: "#5f9ea0",
