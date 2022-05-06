@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import {
-  routesArrayProperties,
-  routesArrayValues,
-  routesIcons,
-} from "../../Routes/routes";
+import { routesArrayProperties, routesArrayValues } from "../../Routes/routes";
 import { SwipeableDrawerComponent } from "../ReusableComponents/SwipeableDrawerComponent";
 import { NavLink } from "react-router-dom";
 import { CardMedia, IconButton } from "@mui/material";
@@ -15,6 +11,7 @@ import {
   navLinkStyles,
   swipeableDrawerStyles,
 } from "../../Styles/NavigationComponents/SwipeableNavbar";
+import { routesIcons } from "../../HelperFunctions/Routes";
 
 export const SwipeableNavbar = (props) => {
   const [open, setOpen] = useState(false);
@@ -58,6 +55,7 @@ export const SwipeableNavbar = (props) => {
         anchor="left"
         open={open}
         onClose={handleChange(false)}
+        onOpen={(e) => null}
         sx={swipeableDrawerStyles}
       >
         {NavLinks}

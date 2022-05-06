@@ -1,8 +1,8 @@
 import React from "react";
 import { Box } from "@mui/system";
-import { routesIcons } from "../Routes/routes";
 import { PageTitle } from "../Components/ReusableComponents/PageTitle";
 import { MapContainer } from "../Components/MapComponents/GoogleMapComponents/MapContainer";
+import { routesIcons } from "../HelperFunctions/Routes";
 
 export const MapPage = () => {
   return (

@@ -1,8 +1,8 @@
 import React from "react";
 import { Box } from "@mui/system";
-import { routesIcons } from "../Routes/routes";
 import { PageTitle } from "../Components/ReusableComponents/PageTitle";
 import { ChartsMainContainer } from "../Components/ChartComponents/ChartsMainContainer";
+import { routesIcons } from "../HelperFunctions/Routes";
 
 export const ChartPage = () => {
   return (
