@@ -14,6 +14,7 @@ export const PageTitle = (props) => {
     pageTitleContainerAdditionalStyles = {},
     specificTextStyles = {},
     imageSrc,
+    imageAltText = "icon",
   } = props;
   return (
     <Box sx={{ ...pageTitleContainer, ...pageTitleContainerAdditionalStyles }}>
@@ -21,7 +22,12 @@ export const PageTitle = (props) => {
         text={text}
         styles={{ ...pageTitleStyles, ...specificTextStyles }}
       />
-      <CardMedia src={imageSrc} component="img" sx={pageTitleIconStyles} />
+      <CardMedia
+        src={imageSrc}
+        component="img"
+        sx={pageTitleIconStyles}
+        alt={imageAltText}
+      />
     </Box>
   );
 };
