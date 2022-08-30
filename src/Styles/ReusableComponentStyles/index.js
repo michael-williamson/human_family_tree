@@ -10,7 +10,7 @@ export const pageTitleStyles = {
   color: "primary.main",
   fontWeight: "bold",
   textAlign: "center",
-  fontFamily: (theme) => theme.fonts.Kalam,
+  fontFamily: (theme) => theme.fonts?.Kalam,
 };
 
 export const pageTitleIconStyles = {
