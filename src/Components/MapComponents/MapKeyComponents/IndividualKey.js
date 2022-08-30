@@ -45,7 +45,7 @@ export const IndividualKey = (props) => {
 
       <Collapse in={showList}>
         {handleSelectAll && (
-          <Button onClick={handleSelectAll(selectOrDeselectFN(checkboxState))}>
+          <Button onClick={handleSelectAll(checkboxState)}>
             {selectOrDeselectFN(checkboxState) ? "Select All" : "Deselect All"}
           </Button>
         )}

@@ -4,6 +4,7 @@ import { Skeleton } from "@mui/material";
 import { MarkerList } from "./MarkerList";
 import { PolygonListArrayFN } from "../../../HelperFunctions/MapComponent/GoogleMapsComponent";
 import { InfoWindowComponentContainer } from "./InfoWindowComponents/InfoWindowComponentContainer";
+import { useMapLegendContext } from "../MapStateComponents/MapLegendStateProvider";
 
 const containerStyle = {
   width: "100%",
@@ -23,9 +24,9 @@ export const GoogleMapComponent = (props) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: REACT_APP_GOOGLE_API,
   });
+  const mapLegendContext = useMapLegendContext();
 
   const {
-    polygonVisibilityState,
     speciesIconColorObject,
     handleMarkerClick,
     currentItem,
@@ -46,9 +47,8 @@ export const GoogleMapComponent = (props) => {
       zoom={2.5}
       options={options}
     >
-      {PolygonListArrayFN(polygonVisibilityState)}
+      {PolygonListArrayFN(mapLegendContext.overlays)}
       <MarkerList
-        arr={props.specimensArrayState}
         speciesIconColorObject={speciesIconColorObject}
         handleMarkerClick={handleMarkerClick}
       />

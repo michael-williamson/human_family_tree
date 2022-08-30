@@ -1,9 +1,11 @@
 import React from "react";
 import { Box } from "@mui/system";
 import { MarkerComponent } from "./MarkerComponent";
+import { useSpecimensArrayContext } from "../MapStateComponents/SpecimensArrayStateProvider";
 
 export const MarkerList = (props) => {
-  const { arr, speciesIconColorObject, handleMarkerClick } = props;
+  const arr = useSpecimensArrayContext();
+  const { speciesIconColorObject, handleMarkerClick } = props;
   return (
     <Box>
       {arr.map((item) => (
