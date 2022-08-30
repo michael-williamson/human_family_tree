@@ -49,7 +49,10 @@ export const IndividualSpecimen = (props) => {
   };
 
   return (
-    <Box sx={individualSpecimenContainer(linksToPhotos[0]) || {}}>
+    <Box
+      sx={individualSpecimenContainer(linksToPhotos[0]) || {}}
+      className="individualSpecimen"
+    >
       <ImageSearch
         sx={imageViewIconStyles}
         onMouseEnter={opacityHandler(false)}
@@ -58,8 +61,8 @@ export const IndividualSpecimen = (props) => {
       />
 
       <Box sx={individualSpecimenFieldsContainerFN(opacity)}>
-        {labels.map((item) => (
-          <Box sx={{ ...individualSpecimenFields }}>
+        {labels.map((item, index) => (
+          <Box sx={{ ...individualSpecimenFields }} key={index}>
             <SpecimenLabels label={`${item}:`} styles={specimenLabelStyles} />
             <SpecimenInfoText
               text={
