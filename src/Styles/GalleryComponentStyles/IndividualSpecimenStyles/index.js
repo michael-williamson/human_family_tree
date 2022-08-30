@@ -18,7 +18,7 @@ export const imageViewIconStyles = {
   width: 50,
   height: 50,
   zIndex: 1000,
-  color: (theme) => theme.palette.customColors.beige,
+  color: (theme) => theme.palette.customColors?.beige,
   cursor: "pointer",
 };
 
@@ -44,14 +44,14 @@ export const specimenLabelStyles = {
   fontWeight: "bold",
   fontSize: 20,
   fontFamily: "monospace",
-  color: (theme) => theme.palette.primary.contrastText,
+  color: (theme) => theme.palette.primary?.contrastText,
 };
 
 export const specimenInfoStyles = {
   fontWeight: "bold",
   fontSize: 30,
-  fontFamily: (theme) => theme.fonts.Caveat,
-  color: (theme) => theme.palette.primary.main,
+  fontFamily: (theme) => theme.fonts?.Caveat,
+  color: (theme) => theme.palette.primary?.main,
 };
 
 export const moreInfoLinkStyles = {
