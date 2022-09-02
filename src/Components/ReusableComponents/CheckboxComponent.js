@@ -11,6 +11,7 @@ export const CheckboxComponent = (props) => {
     formControlStyles = {},
     label = "label",
     handleChange,
+    handleHover,
     siblingElements = null,
   } = props;
 
@@ -21,6 +22,8 @@ export const CheckboxComponent = (props) => {
         label={label}
         checked={checked}
         onChange={handleChange(label)}
+        onMouseEnter={handleHover}
+        onMouseLeave={handleHover}
         control={<Checkbox sx={{ ...checkboxStyles }} />}
       />
       {siblingElements}

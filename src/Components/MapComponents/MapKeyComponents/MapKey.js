@@ -13,22 +13,10 @@ import {
   useMapLegendContext,
   useMapLegendContextUpdater,
 } from "../MapStateComponents/MapLegendStateProvider";
-import {
-  speciesKeyObject,
-  datesKeyObject,
-  overlaysKeyObject,
-  keyObject,
-} from "../../../HelperFunctions/MapComponent/MapContainerComponent/StateMaintenanceFN";
+import { keyObject } from "../../../HelperFunctions/MapComponent/MapContainerComponent/StateMaintenanceFN";
 import { selectOrDeselectFN } from "../../../HelperFunctions/MapComponent/MapKeyComponents";
-import { svgObjectFN } from "../../../HelperFunctions/General";
-import { speciesIconColorObject } from "../../../HelperFunctions/MapComponent/GoogleMapsComponent/MarkerComponents";
 import { useSpecimensArrayContextUpdater } from "../MapStateComponents/SpecimensArrayStateProvider";
-
-const functionSelectorObject = {
-  species: speciesKeyObject,
-  dates: datesKeyObject,
-  overlays: overlaysKeyObject,
-};
+import { DATES, SPECIES, OVERLAYS } from "../../../ConstantVariableNames";
 
 export const MapKey = (props) => {
   const mapLegendContext = useMapLegendContext();
@@ -36,6 +24,7 @@ export const MapKey = (props) => {
   const specimensArrayStateUpdater = useSpecimensArrayContextUpdater();
   const handleStateChange = (statePropertyName) => (item) => () => {
     const { [statePropertyName]: stateObject } = mapLegendContext;
+    const copyOfMapLegendObject = { ...mapLegendContext };
 
     const updatedStateObject = {
       [statePropertyName]: {
@@ -49,7 +38,13 @@ export const MapKey = (props) => {
       payload: updatedStateObject,
     });
 
-    specimensArrayStateUpdater({ type: statePropertyName, payload: item });
+    const payload = {
+      propertyName: item,
+      prevStateCopy: copyOfMapLegendObject,
+    };
+
+    statePropertyName !== OVERLAYS &&
+      specimensArrayStateUpdater({ type: statePropertyName, payload });
   };
 
   const handleSelectAll = (statePropertyName) => (state) => () => {
@@ -66,7 +61,7 @@ export const MapKey = (props) => {
   const individualKeyObjectArray = [
     {
       titleText: "Sort by Species",
-      name: "species",
+      name: SPECIES,
       additionalProps: {
         siblingElements: returnSVGObjectItem,
         svgObject: props.svgObject,
@@ -75,12 +70,12 @@ export const MapKey = (props) => {
     },
     {
       titleText: "Sort by Dates",
-      name: "dates",
+      name: DATES,
       additionalProps: {},
     },
     {
       titleText: "Overlays",
-      name: "overlays",
+      name: OVERLAYS,
       additionalProps: {},
     },
   ];

@@ -12,9 +12,11 @@ import {
   showListButtonStyles,
 } from "../../../Styles/MapComponentStyles/MapKeyComponentStyles";
 import { selectOrDeselectFN } from "../../../HelperFunctions/MapComponent/MapKeyComponents";
+import { useMapLegendFieldContextUpdater } from "../MapStateComponents/MapLegendStateProvider";
 
 export const IndividualKey = (props) => {
   const [showList, setShowList] = useState(false);
+  const mapLegendFieldContextUpdater = useMapLegendFieldContextUpdater();
   const {
     titleText,
     checkboxState,
@@ -26,6 +28,11 @@ export const IndividualKey = (props) => {
   } = props;
   const clickHandler = (e) => {
     setShowList(!showList);
+  };
+
+  const handleHover = ({ type, target: { innerText } }) => {
+    const arg = type === "mouseenter" ? innerText : "";
+    mapLegendFieldContextUpdater(arg);
   };
 
   return (
@@ -54,7 +61,10 @@ export const IndividualKey = (props) => {
           state={checkboxState}
           checkboxListStyles={checkboxListStyles}
           checkboxComponentContainerStyles={checkboxComponentContainerStyles}
-          checkboxComponentProps={{ handleChange: setCheckboxState }}
+          checkboxComponentProps={{
+            handleChange: setCheckboxState,
+            handleHover,
+          }}
           siblingElements={siblingElements}
           svgObject={svgObject}
         />
