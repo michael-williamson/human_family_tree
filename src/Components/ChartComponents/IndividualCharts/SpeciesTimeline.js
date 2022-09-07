@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "@material-ui/core";
+import { Box } from "@mui/system";
 import { Line } from "react-chartjs-2";
 import { speciesArr } from "../../../HelperFunctions/General";
 import {

@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material/styles";
-import { red } from "@material-ui/core/colors";
+import { red } from "@mui/material/colors";
 
 const googleFonts = {
   Caveat: "Caveat",
