@@ -1,4 +1,8 @@
-import { MOUSE_ENTER, MOUSE_LEAVE } from "../../../ConstantVariableNames";
+import {
+  MOUSE_ENTER,
+  MOUSE_LEAVE,
+  SPECIES,
+} from "../../../ConstantVariableNames";
 
 export const speciesArr = [
   "habilis",
@@ -21,6 +25,12 @@ export const selectOrDeselectFN = (checkboxState) => {
   );
 };
 
+// hover function used by components: ClassList,CheckListComponent.
+// avoids cluttered MapKey component by allowing import rather than
+//--> passing down the function instance.  Also by returning anonymous
+//--> functions ()=>()=> values can persist and be added as they become
+//--> available in children components.  This allows some level of
+//--> abstraction & adds dynamics.
 export const handleHover = (contextFN) => (value) => (e) => {
   const { type } = e;
   let arg;
@@ -37,6 +47,11 @@ export const handleHover = (contextFN) => (value) => (e) => {
 
   contextFN(arg);
 };
+
+// allows passing an event object only to Components
+// --> correlated to functionality.  Evaluation occurs
+// --> in the IndividualKeys Component.
+export const eventObjectArrayNames = [SPECIES];
 
 export const objectEval = (obj, label) => {
   const objCopy = { ...obj };

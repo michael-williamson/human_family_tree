@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Box } from "@mui/system";
 import { FormControlLabel } from "@mui/material";
 import { Checkbox } from "@mui/material";
 import { objectEval } from "../../HelperFunctions/MapComponent/MapKeyComponents";
 
 export const CheckboxComponent = (props) => {
+  //useMemo because new event object unnecessary on rerenders
+  const memoizedEventObject = useMemo(
+    () => objectEval(props.fieldEventObject, props.label),
+    [props.fieldEventObject, props.label]
+  );
   const {
     checkboxComponentContainerStyles = {},
     checkboxStyles = {},
@@ -12,15 +17,11 @@ export const CheckboxComponent = (props) => {
     formControlStyles = {},
     label = "label",
     handleChange,
-    fieldEventObject = {},
     siblingElements = null,
   } = props;
 
   return (
-    <Box
-      sx={checkboxComponentContainerStyles}
-      {...objectEval(fieldEventObject, label)}
-    >
+    <Box sx={checkboxComponentContainerStyles} {...memoizedEventObject}>
       <FormControlLabel
         sx={{ ...formControlStyles }}
         label={label}

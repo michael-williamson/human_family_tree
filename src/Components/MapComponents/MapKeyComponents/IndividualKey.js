@@ -12,6 +12,7 @@ import {
   showListButtonStyles,
 } from "../../../Styles/MapComponentStyles/MapKeyComponentStyles";
 import {
+  eventObjectArrayNames,
   handleHover,
   selectOrDeselectFN,
 } from "../../../HelperFunctions/MapComponent/MapKeyComponents";
@@ -59,7 +60,7 @@ export const IndividualKey = (props) => {
           arr={Object.keys(checkboxState)}
           state={checkboxState}
           containerEventObject={
-            individualPropertyState === "species"
+            eventObjectArrayNames.includes(individualPropertyState)
               ? {
                   onMouseLeave: handleHover(contextFN)(individualPropertyState),
                 }
@@ -69,12 +70,13 @@ export const IndividualKey = (props) => {
           checkboxComponentContainerStyles={checkboxComponentContainerStyles}
           checkboxComponentProps={{
             handleChange: setCheckboxState,
-            fieldEventObject:
-              individualPropertyState === "species"
-                ? {
-                    onMouseEnter: handleHover(contextFN),
-                  }
-                : {},
+            fieldEventObject: eventObjectArrayNames.includes(
+              individualPropertyState
+            )
+              ? {
+                  onMouseEnter: handleHover(contextFN),
+                }
+              : {},
           }}
           siblingElements={siblingElements}
           svgObject={svgObject}

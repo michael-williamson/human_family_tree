@@ -12,8 +12,10 @@ Human Family Tree is a tool for anyone who is intrigued by human history and wou
 2. React Google Maps API 2.2.0
 3. Material UI Core 4.12.3
 
-Note:
+Notes:
 
 Testing around MUI Components requires awareness
 
 > Inline Function calling in MUI styles Objects to return a property from the theme Object will fail a test. To bypass this failure an Optional Chaining operator has been added to all affected
+
+> JavaScript/React/JSX Comments that extend themselves by multi-lines will be marked "// --> some text continued" to make description easier to read and follow
