@@ -23,7 +23,6 @@ export const selectOrDeselectFN = (checkboxState) => {
 
 export const handleHover = (contextFN) => (value) => (e) => {
   const { type } = e;
-  console.log(type, "type happened");
   let arg;
   switch (type) {
     case MOUSE_ENTER:
