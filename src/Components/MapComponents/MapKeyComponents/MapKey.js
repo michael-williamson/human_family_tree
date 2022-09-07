@@ -12,6 +12,7 @@ import { speciesCheckboxContainerStyles } from "../../../Styles/MapComponentStyl
 import {
   useMapLegendContext,
   useMapLegendContextUpdater,
+  useMapLegendFieldContextUpdater,
 } from "../MapStateComponents/MapLegendStateProvider";
 import { keyObject } from "../../../HelperFunctions/MapComponent/MapContainerComponent/StateMaintenanceFN";
 import { selectOrDeselectFN } from "../../../HelperFunctions/MapComponent/MapKeyComponents";
@@ -22,6 +23,7 @@ export const MapKey = (props) => {
   const mapLegendContext = useMapLegendContext();
   const mapLegendContextUpdater = useMapLegendContextUpdater();
   const specimensArrayStateUpdater = useSpecimensArrayContextUpdater();
+  const mapLegendFieldContextUpdater = useMapLegendFieldContextUpdater();
   const handleStateChange = (statePropertyName) => (item) => () => {
     const { [statePropertyName]: stateObject } = mapLegendContext;
     const copyOfMapLegendObject = { ...mapLegendContext };
@@ -94,6 +96,7 @@ export const MapKey = (props) => {
               handleSelectAll={handleSelectAll(item.name)}
               setUpdatedProperty={props.setUpdatedProperty}
               individualPropertyState={item.name}
+              contextFN={mapLegendFieldContextUpdater}
               {...item.additionalProps}
             />
           );

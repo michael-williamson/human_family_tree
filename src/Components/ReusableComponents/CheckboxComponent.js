@@ -2,6 +2,7 @@ import React from "react";
 import { Box } from "@mui/system";
 import { FormControlLabel } from "@mui/material";
 import { Checkbox } from "@mui/material";
+import { objectEval } from "../../HelperFunctions/MapComponent/MapKeyComponents";
 
 export const CheckboxComponent = (props) => {
   const {
@@ -11,19 +12,20 @@ export const CheckboxComponent = (props) => {
     formControlStyles = {},
     label = "label",
     handleChange,
-    handleHover,
+    fieldEventObject = {},
     siblingElements = null,
   } = props;
 
   return (
-    <Box sx={checkboxComponentContainerStyles}>
+    <Box
+      sx={checkboxComponentContainerStyles}
+      {...objectEval(fieldEventObject, label)}
+    >
       <FormControlLabel
         sx={{ ...formControlStyles }}
         label={label}
         checked={checked}
         onChange={handleChange(label)}
-        onMouseEnter={handleHover}
-        onMouseLeave={handleHover}
         control={<Checkbox sx={{ ...checkboxStyles }} />}
       />
       {siblingElements}

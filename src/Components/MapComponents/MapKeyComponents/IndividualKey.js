@@ -11,12 +11,14 @@ import {
   checkboxListContainerStyles,
   showListButtonStyles,
 } from "../../../Styles/MapComponentStyles/MapKeyComponentStyles";
-import { selectOrDeselectFN } from "../../../HelperFunctions/MapComponent/MapKeyComponents";
-import { useMapLegendFieldContextUpdater } from "../MapStateComponents/MapLegendStateProvider";
+import {
+  handleHover,
+  selectOrDeselectFN,
+} from "../../../HelperFunctions/MapComponent/MapKeyComponents";
 
 export const IndividualKey = (props) => {
   const [showList, setShowList] = useState(false);
-  const mapLegendFieldContextUpdater = useMapLegendFieldContextUpdater();
+
   const {
     titleText,
     checkboxState,
@@ -24,15 +26,12 @@ export const IndividualKey = (props) => {
     handleSelectAll = null,
     siblingElements = null,
     svgObject = null,
+    individualPropertyState,
     checkboxComponentContainerStyles = {},
+    contextFN,
   } = props;
   const clickHandler = (e) => {
     setShowList(!showList);
-  };
-
-  const handleHover = ({ type, target: { innerText } }) => {
-    const arg = type === "mouseenter" ? innerText : "";
-    mapLegendFieldContextUpdater(arg);
   };
 
   return (
@@ -59,11 +58,23 @@ export const IndividualKey = (props) => {
         <CheckBoxList
           arr={Object.keys(checkboxState)}
           state={checkboxState}
+          containerEventObject={
+            individualPropertyState === "species"
+              ? {
+                  onMouseLeave: handleHover(contextFN)(individualPropertyState),
+                }
+              : {}
+          }
           checkboxListStyles={checkboxListStyles}
           checkboxComponentContainerStyles={checkboxComponentContainerStyles}
           checkboxComponentProps={{
             handleChange: setCheckboxState,
-            handleHover,
+            fieldEventObject:
+              individualPropertyState === "species"
+                ? {
+                    onMouseEnter: handleHover(contextFN),
+                  }
+                : {},
           }}
           siblingElements={siblingElements}
           svgObject={svgObject}

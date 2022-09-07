@@ -76,7 +76,7 @@ export const svgObjectFN = (colorObject, svgObject) => {
   const objectToConstruct = {};
   Object.keys(colorObject).forEach((item) => {
     objectToConstruct[item] = (
-      <Box>
+      <Box sx={{ cursor: "pointer" }}>
         <svg
           width={svgObject.width}
           height={svgObject.height}

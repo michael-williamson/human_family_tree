@@ -10,6 +10,8 @@ export const CheckBoxList = (props) => {
   const {
     arr = [{}],
     state = {},
+    containerEventObject = {},
+    className = null,
     checkboxComponentContainerStyles = {},
     checkboxListStyles = {},
     checkboxComponentProps = {},
@@ -20,11 +22,12 @@ export const CheckBoxList = (props) => {
   //
   //options for checkboxComponentProps: checkboxStyles, formControlStyles, handleChange
   return (
-    <Box sx={checkboxListStyles}>
+    <Box sx={checkboxListStyles} {...containerEventObject}>
       {arr.map((item) => (
         <CheckboxComponent
           key={item}
           label={item}
+          className={className}
           checked={state[item]}
           formControlStyles={formControlStyles}
           checkboxStyles={checkboxStyles}
