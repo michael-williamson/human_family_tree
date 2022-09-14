@@ -8,21 +8,28 @@ export const MarkerComponent = (props) => {
     fillColor,
     strokeColor,
     handleMarkerClick,
-    highLighted,
-    preventAnimation,
+    showIcon = true,
+    labelObject,
+    highLighted = false,
   } = props;
   return (
     <Marker
-      animation={preventAnimation && window.google.maps.Animation.DROP}
+      // animation={animation && window.google.maps.Animation.DROP}
+      animation={false}
       position={{ lat, lng }}
-      icon={{
-        path: window.google.maps.SymbolPath.CIRCLE,
-        fillColor: fillColor,
-        fillOpacity: 0.6,
-        strokeColor: strokeColor,
-        strokeWeight: 2,
-        scale: highLighted ? 25 : 7,
-      }}
+      icon={
+        showIcon
+          ? {
+              path: window.google.maps.SymbolPath.CIRCLE,
+              fillColor: fillColor,
+              fillOpacity: 0.6,
+              strokeColor: strokeColor,
+              strokeWeight: 2,
+              scale: highLighted ? 25 : 7,
+            }
+          : "cancel"
+      }
+      label={labelObject}
       onClick={handleMarkerClick(true)}
     />
   );

@@ -1,0 +1,30 @@
+[
+    {
+        "name":"Green Sahara",
+        "gpsCoor":{
+            "lat":23.83,
+            "long":13.56975
+        }
+    },
+    {
+        "name":"Green Arabia",
+        "gpsCoor":{
+            "lat":26.42131,
+            "long":44.0223
+        }
+    },
+    {
+        "name":"North American Ice Sheet",
+        "gpsCoor":{
+            "lat":58.12419,
+            "long":-99.6241
+        }
+    },
+    {
+        "name":"European Ice Sheet",
+        "gpsCoor":{
+            "lat":71.26682,
+            "long":38.32205
+        }
+    }
+]

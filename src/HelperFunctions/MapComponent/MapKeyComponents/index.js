@@ -20,6 +20,12 @@ export const speciesArr = [
 ];
 
 export const selectOrDeselectFN = (checkboxState) => {
+  // if 3 or more checkboxes are false the only option is to select all & by
+  // --> this function returning true tells the IndividualKey Component
+  // --> to list the "SELECT ALL" option & vice versa, the other message
+  // --> sent by returning true is that a click event tells the SpecimensArrayStateContext
+  // --> to evaluate this new condition, this of course is the exact opposite
+  // --> if false and "DESELECT ALL" are the command
   return (
     Object.values(checkboxState).filter((item) => item === false).length >= 3
   );
@@ -39,10 +45,10 @@ export const handleHover = (contextFN) => (value) => (e) => {
       arg = value;
       break;
     case MOUSE_LEAVE:
-      arg = "";
+      arg = null;
       break;
     default:
-      arg = "";
+      arg = null;
   }
 
   contextFN(arg);
@@ -62,3 +68,18 @@ export const objectEval = (obj, label) => {
   }
   return objCopy;
 };
+
+// function that creates an object with key/values representing recurring similarities in array objects
+// --> & creating a count based on criteria
+export const itemPropertyCountObject = (arr, propertyToCount) => {
+  const countObject = {};
+  arr.forEach((item) =>
+    countObject[item[propertyToCount]]
+      ? countObject[item[propertyToCount]]++
+      : (countObject[item[propertyToCount]] = 1)
+  );
+  return countObject;
+};
+
+// array to determine which IndividualKey Components to use itemPropertyCountObject
+export const keysToCountArray = [SPECIES];

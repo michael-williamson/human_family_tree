@@ -1,14 +1,24 @@
 import React from "react";
 import { Box } from "@mui/system";
 import { MarkerComponent } from "./MarkerComponent";
-import { useSpecimensArrayContext } from "../MapStateComponents/SpecimensArrayStateProvider";
-import { useMapLegendFieldContext } from "../MapStateComponents/MapLegendStateProvider";
-import { SPECIES } from "../../../ConstantVariableNames";
 
 export const MarkerList = (props) => {
-  const arr = useSpecimensArrayContext();
-  const field = useMapLegendFieldContext();
-  const { speciesIconColorObject, handleMarkerClick } = props;
+  const {
+    handleMarkerClick,
+
+    arr = [],
+    labelObject,
+    addIconOptionsFN = () => {},
+    googleMarkerComponentProps = {},
+    comparisonFN,
+  } = props;
+
+  const labelObjectUpdater = (obj, name) => {
+    const objCopy = { ...obj };
+    objCopy.text = name;
+    return obj["mapKeyValues"][name] ? objCopy : null;
+  };
+
   return (
     <Box>
       {arr.map((item) => (
@@ -16,12 +26,15 @@ export const MarkerList = (props) => {
           key={`${item.name}${Math.random() * 1000}`}
           lat={item.gpsCoor.lat}
           lng={item.gpsCoor.long}
-          markerLabel={item.name}
-          preventAnimation={field === ""}
-          highLighted={item[SPECIES] === field}
-          fillColor={speciesIconColorObject[item[SPECIES]]}
-          strokeColor={speciesIconColorObject[item[SPECIES]]}
-          handleMarkerClick={handleMarkerClick(item)}
+          labelObject={
+            labelObject ? labelObjectUpdater(labelObject, item.name) : undefined
+          }
+          highLighted={comparisonFN && comparisonFN(item)}
+          handleMarkerClick={
+            handleMarkerClick ? handleMarkerClick(item) : (arg) => null
+          }
+          {...addIconOptionsFN(item)}
+          {...googleMarkerComponentProps}
         />
       ))}
     </Box>

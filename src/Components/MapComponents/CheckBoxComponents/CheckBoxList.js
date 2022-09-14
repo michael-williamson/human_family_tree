@@ -11,12 +11,12 @@ export const CheckBoxList = (props) => {
     arr = [{}],
     state = {},
     containerEventObject = {},
-    className = null,
+    className,
     checkboxComponentContainerStyles = {},
     checkboxListStyles = {},
     checkboxComponentProps = {},
-    siblingElements = null,
-    svgObject = null,
+    siblingElements,
+    svgObject,
   } = props;
 
   //

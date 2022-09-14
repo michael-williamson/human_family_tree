@@ -28,6 +28,7 @@ export const IndividualKey = (props) => {
     siblingElements = null,
     svgObject = null,
     individualPropertyState,
+    countObject,
     checkboxComponentContainerStyles = {},
     contextFN,
   } = props;
@@ -77,6 +78,7 @@ export const IndividualKey = (props) => {
                   onMouseEnter: handleHover(contextFN),
                 }
               : {},
+            countObject,
           }}
           siblingElements={siblingElements}
           svgObject={svgObject}
