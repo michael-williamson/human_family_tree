@@ -1,0 +1,6 @@
+.my-marker-labels{
+    font-style:italic;
+    background-color: rgb(0 0 0 / 63%);
+    padding:7px 10px;
+    border-radius: 10px;
+}

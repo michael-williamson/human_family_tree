@@ -7,6 +7,7 @@ import { Header } from "./Components/HeaderComponents/Header";
 import { Footer } from "./Components/FooterComponents/Footer";
 import { Router } from "./Router";
 import { mainAppContainerStyles } from "./Styles/MainAppStyles";
+import "./App.css";
 
 function App() {
   return (

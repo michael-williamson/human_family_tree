@@ -19,3 +19,6 @@ Testing around MUI Components requires awareness
 > Inline Function calling in MUI styles Objects to return a property from the theme Object will fail a test. To bypass this failure an Optional Chaining operator has been added to all affected
 
 > JavaScript/React/JSX Comments that extend themselves by multi-lines will be marked "// --> some text continued" to make description easier to read and follow
+
+> Property/Values being passed down that are not necessarily utilized by children components who are also Parent components to the intended target Component for these property/values
+> will often be seen merged onto a Components prop Object by using {...somePropObject} to avoid writing out the property/values for each child descendent
