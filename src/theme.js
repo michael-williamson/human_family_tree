@@ -50,6 +50,8 @@ const theme = createTheme({
       chocolate: "#d2691e",
       swipeableNavBG: "#0e0e0ee6",
       menuButtonBorder: "#fffde1",
+      aqua: "#00ffff",
+      darkBG: "rgb(0 0 0 / 81%)",
     },
   },
   //end of palette
