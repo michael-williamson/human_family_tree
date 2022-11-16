@@ -96,6 +96,25 @@
     },
     {
         "species": "erectus",
+        "city": "Johannesburg",
+        "country": "South Africa",
+        "continent": "Africa",
+        "gpsCoor": {
+            "lat": -25.91085,
+            "long": 27.76303
+        },
+        "date": "2.04mya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Drimolen_Main_Quarry.jpg/512px-Drimolen_Main_Quarry.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/c/c5/Drimolen_Main_Quarry.jpg",
+            "&lt;a href=&quot;https://commons.wikimedia.org/wiki/File:Drimolen_Main_Quarry.jpg&quot;&gt;Andy Herries&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/licenses/by-sa/4.0&quot;&gt;CC BY-SA 4.0&lt;/a&gt;, via Wikimedia Commons"
+        ],
+        "linkToInfo": "https://es.wikipedia.org/wiki/DNH_134",
+        "name": "DNH 134 or Drimolen erectus",
+        "wholeNumberYears": 2040000
+    },
+    {
+        "species": "erectus",
         "city": "West Turkana",
         "country": "Kenya",
         "continent": "Africa",

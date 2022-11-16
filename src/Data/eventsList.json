@@ -1,0 +1,31 @@
+[
+    {
+        "eventName": "Lake Toba Eruption",
+        "eventDescription": "",
+        "city": "Sumatra",
+        "country": "Indonesia",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 2.6845,
+            "long": 98.8756
+        },
+        "date": "75 tya",
+        "photoSourceLinks": [
+            "https://commons.wikimedia.org/wiki/File:Caldera_Toba.jpg",
+            "https://commons.wikimedia.org/wiki/File:Lake_Toba_(SRTM).jpg"
+        ],
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Caldera_Toba.jpg/256px-Caldera_Toba.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Caldera_Toba.jpg/512px-Caldera_Toba.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Lake_Toba_%28SRTM%29.jpg/256px-Lake_Toba_%28SRTM%29.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Lake_Toba_%28SRTM%29.jpg/512px-Lake_Toba_%28SRTM%29.jpg"
+        ],
+        "photoAttribution": [
+            "Yudhapohan, CC BY-SA 4.0",
+            "https://creativecommons.org/licenses/by-sa/4.0",
+            "via Wikimedia Commons"
+        ],
+        "linkToInfo": "https://en.wikipedia.org/wiki/Toba_catastrophe_theory",
+        "wholeNumberYears": 75000
+    }
+]

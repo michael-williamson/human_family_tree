@@ -1,0 +1,59 @@
+[
+  {
+    "name":"Straight of Gibraltar",
+    "gpsCoor": {
+        "lat": 35.97615,
+        "long": -5.54907
+    },
+    "linkToInfo": "",
+    "photoSourceLinks": [
+        "https://commons.wikimedia.org/wiki/File:Marokko_von_Spanien-5.jpg"
+    ],
+    "linksToPhotos": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Marokko_von_Spanien-5.jpg/640px-Marokko_von_Spanien-5.jpg"
+    ],
+    "photoAttribution": [
+        ", CC BY-SA 3.0",
+        "https://creativecommons.org/licenses/by-sa/3.0",
+        "via Wikimedia Commons"
+    ]
+  },
+  {
+    "name":"Nile River Valley",
+    "gpsCoor": {
+        "lat": 30.94576,
+        "long": 32.26667
+    },
+    "linkToInfo": "",
+    "photoSourceLinks": [
+        ""
+    ],
+    "linksToPhotos": [
+        ""
+    ],
+    "photoAttribution": [
+        ", CC BY-SA 3.0",
+        "https://creativecommons.org/licenses/by-sa/3.0",
+        "via Wikimedia Commons"
+    ]
+  },
+  {
+    "name":"Southern Red Sea Region",
+    "gpsCoor": {
+        "lat": 12.56563,
+        "long": 43.37844
+    },
+    "linkToInfo": "",
+    "photoSourceLinks": [
+        ""
+    ],
+    "linksToPhotos": [
+        ""
+    ],
+    "photoAttribution": [
+        ", CC BY-SA 3.0",
+        "https://creativecommons.org/licenses/by-sa/3.0",
+        "via Wikimedia Commons"
+    ]
+  }
+]

@@ -2,14 +2,26 @@
     {
         "name":"Green Sahara",
         "gpsCoor":{
-            "lat":23.83,
+            "lat":21.83,
             "long":13.56975
-        }
+        },
+        "linkToInfo": "https://en.wikipedia.org/wiki/African_humid_period",
+        "photoSourceLinks": [
+            "https://commons.wikimedia.org/wiki/File:Map_of_Sunda_and_Sahul.png"
+        ],
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Map_of_Sunda_and_Sahul.png/512px-Map_of_Sunda_and_Sahul.png"
+        ],
+        "photoAttribution": [
+            "Maximilian Dörrbecker (Chumwa), CC BY-SA 3.0",
+            "https://creativecommons.org/licenses/by-sa/3.0",
+            "via Wikimedia Commons"
+        ]
     },
     {
         "name":"Green Arabia",
         "gpsCoor":{
-            "lat":26.42131,
+            "lat":22.42131,
             "long":44.0223
         }
     },
