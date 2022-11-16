@@ -1,17 +1,19 @@
 import React from "react";
 import { Marker } from "@react-google-maps/api";
+import { useInfoWindowContextUpdater } from "../MapStateComponents/InfoWindowStateProvider";
+import { OPEN_INFO_WINDOW } from "../../../ConstantVariableNames";
 
 export const MarkerComponent = (props) => {
   const {
     lat,
     lng,
-    fillColor,
-    strokeColor,
-    handleMarkerClick,
+    iconObject,
     showIcon = true,
+    item,
     labelObject,
     highLighted = false,
   } = props;
+  const infoWindowContextUpdater = useInfoWindowContextUpdater();
   return (
     <Marker
       // animation={animation && window.google.maps.Animation.DROP}
@@ -20,17 +22,17 @@ export const MarkerComponent = (props) => {
       icon={
         showIcon
           ? {
-              path: window.google.maps.SymbolPath.CIRCLE,
-              fillColor: fillColor,
-              fillOpacity: 0.6,
-              strokeColor: strokeColor,
-              strokeWeight: 2,
-              scale: highLighted ? 25 : 7,
+              ...iconObject,
+              scaledSize: highLighted
+                ? { height: 100, width: 100 }
+                : { height: 35, width: 35 },
             }
-          : "cancel"
+          : null
       }
       label={labelObject}
-      onClick={handleMarkerClick(true)}
+      onClick={() =>
+        infoWindowContextUpdater({ type: OPEN_INFO_WINDOW, payload: item })
+      }
     />
   );
 };

@@ -12,6 +12,7 @@ import { svgObjectFN } from "../../../HelperFunctions/General";
 import { speciesIconColorObjectFN } from "../../../HelperFunctions/MapComponent/GoogleMapsComponent/MarkerComponents";
 import { MapLegendStateProvider } from "../MapStateComponents/MapLegendStateProvider";
 import { SpecimensArrayStateProvider } from "../MapStateComponents/SpecimensArrayStateProvider";
+import { InfoWindowStateProvider } from "../MapStateComponents/InfoWindowStateProvider";
 
 const speciesIconColorObject = speciesIconColorObjectFN(
   specimensArray,
@@ -43,13 +44,17 @@ export const MapContainer = () => {
     <Box sx={mapContainerStyles}>
       <SpecimensArrayStateProvider>
         <MapLegendStateProvider>
-          <GoogleMapComponent
-            speciesIconColorObject={speciesIconColorObject}
-            handleMarkerClick={handleMarkerClick}
-            currentItem={currentItem}
-            handleCloseInfoWindowClick={handleCloseInfoWindowClick}
-          />
-
+          <InfoWindowStateProvider>
+            <GoogleMapComponent
+              speciesIconColorObject={speciesIconColorObject}
+              handleMarkerClick={handleMarkerClick}
+              currentItem={currentItem}
+              handleCloseInfoWindowClick={handleCloseInfoWindowClick}
+            />
+          </InfoWindowStateProvider>
+          {/* <InfoBoxComponent>
+            <IceAgeInfoBox />
+          </InfoBoxComponent> */}
           <Button onClick={handleShowMapKey} sx={showMapKeyButtonStyles}>
             {showMapKey ? "Hide Map Key" : "Show Map Key"}
           </Button>

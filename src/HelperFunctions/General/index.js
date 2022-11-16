@@ -1,4 +1,5 @@
 import { Box } from "@mui/system";
+import entryExitPointsJSON from "../../Data/entryExitPoints.json";
 
 export const speciesArr = [
   "habilis",
@@ -42,6 +43,12 @@ export const overlaysArray = [
   "North American Ice Sheet",
   "European Ice Sheet",
 ];
+
+export const eventsArray = ["Lake Toba Eruption"];
+
+export const entryExitPointsArray = entryExitPointsJSON.map(
+  (item) => item.name
+);
 
 //corresponding lesser and greater dates for each property, each property will act as labels for checkboxes and other user interface displays
 export const datesCategoryObj = {

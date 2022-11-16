@@ -11,12 +11,18 @@ import {
 } from "../MapStateComponents/MapLegendStateProvider";
 import { useSpecimensArrayContext } from "../MapStateComponents/SpecimensArrayStateProvider";
 import overlayDataArray from "../../../Data/overlayData.json";
-import {
-  addIconOptionsFN,
-  comparisonFN,
-} from "../../../HelperFunctions/MapComponent/GoogleMapsComponent/MarkerComponents";
+import entryExitPoints from "../../../Data/entryExitPoints.json";
+import eventsList from "../../../Data/eventsList.json";
+import { comparisonFN } from "../../../HelperFunctions/MapComponent/GoogleMapsComponent/MarkerComponents";
 import { OVERLAYS, SPECIES } from "../../../ConstantVariableNames";
 import theme from "../../../theme";
+import {
+  footPrintBlueIcon,
+  skullIcon,
+  volcanoIcon,
+} from "../../../Media/MapIcons";
+import { useInfoWindowContext } from "../MapStateComponents/InfoWindowStateProvider";
+import { DrawingManagerComponent } from "./DrawingManagerComponents/DrawingManagerComponent";
 
 const containerStyle = {
   width: "100%",
@@ -32,16 +38,20 @@ const { REACT_APP_GOOGLE_API } = process.env;
 
 const options = { mapTypeId: "satellite", gestureHandling: "auto" };
 
+const librariesArray = ["drawing"];
+
 export const GoogleMapComponent = (props) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: REACT_APP_GOOGLE_API,
+    libraries: librariesArray,
   });
   const mapLegendContext = useMapLegendContext();
   const specimensArr = useSpecimensArrayContext();
   const mapLegendField = useMapLegendFieldContext();
   const speciesIconColorObject = useMapLegendIconColorObjectContext();
+  const infoWindowContext = useInfoWindowContext();
 
-  const { handleMarkerClick, currentItem, handleCloseInfoWindowClick } = props;
+  const { handleMarkerClick, handleCloseInfoWindowClick } = props;
 
   if (loadError) {
     return <div>Map cannot be loaded right now, sorry.</div>;
@@ -56,6 +66,8 @@ export const GoogleMapComponent = (props) => {
       center={center}
       zoom={2.5}
       options={options}
+      onClick={(e) => console.log(e, "mouse click event object")}
+      id="myGoogleMap"
     >
       {PolygonListArrayFN(mapLegendContext.overlays)}
       <MarkerList
@@ -64,11 +76,10 @@ export const GoogleMapComponent = (props) => {
         arr={specimensArr}
         // function used to highlight Markers corresponding with map key field being hovered on
         comparisonFN={comparisonFN(true, SPECIES, mapLegendField)}
-        addIconOptionsFN={addIconOptionsFN(
-          true,
-          SPECIES,
-          speciesIconColorObject
-        )}
+        iconObject={{
+          url: skullIcon,
+          scaledSize: { width: 35, height: 35 },
+        }}
         googleMarkerComponentProps={{
           // if any Markers are highlighted this will equal a string otherwise null indicates true
           // --> for animation
@@ -84,15 +95,34 @@ export const GoogleMapComponent = (props) => {
           className: "my-marker-labels",
           mapKeyValues: mapLegendContext[OVERLAYS],
         }}
+        iconObject={{ path: window.google.maps.SymbolPath.CIRCLE, scale: 0 }}
         comparisonFN={comparisonFN(true, OVERLAYS, mapLegendField)}
         googleMarkerComponentProps={{
-          showIcon: false,
+          showIcon: true,
+        }}
+      />
+      <MarkerList
+        arr={entryExitPoints}
+        iconObject={{
+          url: footPrintBlueIcon,
+          scaledSize: { width: 30, height: 30 },
+        }}
+        googleMarkerComponentProps={{
+          showIcon: true,
+        }}
+      />
+      <MarkerList
+        arr={eventsList}
+        iconObject={{
+          url: volcanoIcon,
+          scaledSize: { width: 30, height: 30 },
         }}
       />
       <InfoWindowComponentContainer
-        currentItem={currentItem}
+        currentItem={infoWindowContext}
         handleCloseInfoWindowClick={handleCloseInfoWindowClick}
       />
+      {/* <DrawingManagerComponent /> */}
     </GoogleMap>
   );
 };

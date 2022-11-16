@@ -7,16 +7,11 @@ import {
   allIndividualKeysContainer,
 } from "../../../Styles/MapComponentStyles/MapKeyComponentStyles";
 import { IndividualKey } from "./IndividualKey";
-import {
-  returnSVGObjectItem,
-  svgObjectFN,
-} from "../../../HelperFunctions/General";
 import { speciesCheckboxContainerStyles } from "../../../Styles/MapComponentStyles/MapKeyComponentStyles/SpeciesMapKeyStyles";
 import {
   useMapLegendContext,
   useMapLegendContextUpdater,
   useMapLegendFieldContextUpdater,
-  useMapLegendIconColorObjectContext,
 } from "../MapStateComponents/MapLegendStateProvider";
 import { keyObject } from "../../../HelperFunctions/MapComponent/MapContainerComponent/StateMaintenanceFN";
 import {
@@ -37,6 +32,10 @@ import {
   OVERLAYS_CAPITALIZED,
   UPDATING_INDIVIDUAL,
   DESELECT_ALL,
+  EVENTS,
+  EVENTS_CAPITALIZED,
+  POINTS_OF_INTEREST_CAPITALIZED,
+  POINTS_OF_INTEREST,
 } from "../../../ConstantVariableNames";
 
 export const MapKey = (props) => {
@@ -45,7 +44,6 @@ export const MapKey = (props) => {
   const specimensArrayStateUpdater = useSpecimensArrayContextUpdater();
   const mapLegendFieldContextUpdater = useMapLegendFieldContextUpdater();
   const countObject = useSpecimensArrayCountContext();
-  const speciesIconColorObject = useMapLegendIconColorObjectContext();
 
   const handleStateChange = (statePropertyName) => (item) => () => {
     const { [statePropertyName]: stateObject } = mapLegendContext;
@@ -94,18 +92,11 @@ export const MapKey = (props) => {
     });
   };
 
-  const svgObject = svgObjectFN(speciesIconColorObject, {
-    width: 40,
-    height: 40,
-  });
-
   const individualKeyObjectArray = [
     {
       titleText: SORT_BY_SPECIES,
       name: SPECIES,
       additionalProps: {
-        siblingElements: returnSVGObjectItem,
-        svgObject: svgObject,
         checkboxComponentContainerStyles: speciesCheckboxContainerStyles,
       },
     },
@@ -119,11 +110,21 @@ export const MapKey = (props) => {
       name: OVERLAYS,
       additionalProps: {},
     },
+    {
+      titleText: EVENTS_CAPITALIZED,
+      name: EVENTS,
+      additionalProps: {},
+    },
+    {
+      titleText: POINTS_OF_INTEREST_CAPITALIZED,
+      name: POINTS_OF_INTEREST,
+      additionalProps: {},
+    },
   ];
 
   return (
     <Box sx={mapKeyContainerStyles}>
-      <TextComponent text="Map Legend" styles={mapLegendTitleStyles} />
+      <TextComponent text="Map Key" styles={mapLegendTitleStyles} />
       <Box sx={allIndividualKeysContainer}>
         {individualKeyObjectArray.map((item, index) => {
           return (

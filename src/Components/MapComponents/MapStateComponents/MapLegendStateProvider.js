@@ -4,9 +4,11 @@ import {
   speciesKeyObject,
   datesKeyObject,
   overlaysKeyObject,
+  eventsKeyObject,
+  poiKeyObject,
 } from "../../../HelperFunctions/MapComponent/MapContainerComponent/StateMaintenanceFN";
 import specimensArray from "../../../Data/anthroData.json";
-import { SELECT_ALL } from "../../../ConstantVariableNames";
+import { POINTS_OF_INTEREST, SELECT_ALL } from "../../../ConstantVariableNames";
 
 export const MapLegendContext = React.createContext();
 export const MapLegendContextUpdater = React.createContext();
@@ -25,6 +27,8 @@ const mapLegendInitialState = {
   species: speciesKeyObject(),
   dates: datesKeyObject(),
   overlays: overlaysKeyObject(),
+  events: eventsKeyObject(),
+  [POINTS_OF_INTEREST]: poiKeyObject(),
 };
 
 const colorObject = speciesIconColorObjectFN(specimensArray, "species");

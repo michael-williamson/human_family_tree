@@ -4,11 +4,10 @@ import { MarkerComponent } from "./MarkerComponent";
 
 export const MarkerList = (props) => {
   const {
-    handleMarkerClick,
-
+    // handleMarkerClick,
     arr = [],
     labelObject,
-    addIconOptionsFN = () => {},
+    iconObject = {},
     googleMarkerComponentProps = {},
     comparisonFN,
   } = props;
@@ -30,10 +29,8 @@ export const MarkerList = (props) => {
             labelObject ? labelObjectUpdater(labelObject, item.name) : undefined
           }
           highLighted={comparisonFN && comparisonFN(item)}
-          handleMarkerClick={
-            handleMarkerClick ? handleMarkerClick(item) : (arg) => null
-          }
-          {...addIconOptionsFN(item)}
+          item={item}
+          iconObject={{ ...iconObject }}
           {...googleMarkerComponentProps}
         />
       ))}
