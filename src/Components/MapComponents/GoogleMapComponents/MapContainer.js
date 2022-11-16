@@ -52,9 +52,6 @@ export const MapContainer = () => {
               handleCloseInfoWindowClick={handleCloseInfoWindowClick}
             />
           </InfoWindowStateProvider>
-          {/* <InfoBoxComponent>
-            <IceAgeInfoBox />
-          </InfoBoxComponent> */}
           <Button onClick={handleShowMapKey} sx={showMapKeyButtonStyles}>
             {showMapKey ? "Hide Map Key" : "Show Map Key"}
           </Button>

@@ -22,7 +22,6 @@ import {
   volcanoIcon,
 } from "../../../Media/MapIcons";
 import { useInfoWindowContext } from "../MapStateComponents/InfoWindowStateProvider";
-import { DrawingManagerComponent } from "./DrawingManagerComponents/DrawingManagerComponent";
 
 const containerStyle = {
   width: "100%",
@@ -122,7 +121,6 @@ export const GoogleMapComponent = (props) => {
         currentItem={infoWindowContext}
         handleCloseInfoWindowClick={handleCloseInfoWindowClick}
       />
-      {/* <DrawingManagerComponent /> */}
     </GoogleMap>
   );
 };
