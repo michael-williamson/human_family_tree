@@ -15,6 +15,9 @@ const CLOSE_INFO_WINDOW = "close info window";
 const OPEN_INFO_WINDOW = "open info window";
 const POINTS_OF_INTEREST = "points of interest";
 const POINTS_OF_INTEREST_CAPITALIZED = "Points of Interest";
+const SATELLITE = "satellite";
+const HYBRID = "hybrid";
+const ROADMAP = "roadmap";
 
 export {
   DATES,
@@ -34,4 +37,7 @@ export {
   CLOSE_INFO_WINDOW,
   POINTS_OF_INTEREST,
   POINTS_OF_INTEREST_CAPITALIZED,
+  SATELLITE,
+  ROADMAP,
+  HYBRID,
 };

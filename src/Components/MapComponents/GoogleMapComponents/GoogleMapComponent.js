@@ -14,7 +14,13 @@ import overlayDataArray from "../../../Data/overlayData.json";
 import entryExitPoints from "../../../Data/entryExitPoints.json";
 import eventsList from "../../../Data/eventsList.json";
 import { comparisonFN } from "../../../HelperFunctions/MapComponent/GoogleMapsComponent/MarkerComponents";
-import { OVERLAYS, SPECIES } from "../../../ConstantVariableNames";
+import {
+  HYBRID,
+  OVERLAYS,
+  ROADMAP,
+  SATELLITE,
+  SPECIES,
+} from "../../../ConstantVariableNames";
 import theme from "../../../theme";
 import {
   footPrintBlueIcon,
@@ -33,9 +39,18 @@ const center = {
   lng: 23.4010213,
 };
 
+const mapTypesStringArray = [SATELLITE, ROADMAP, HYBRID];
+
 const { REACT_APP_GOOGLE_API } = process.env;
 
-const options = { mapTypeId: "satellite", gestureHandling: "auto" };
+const options = {
+  mapTypeId: SATELLITE,
+  gestureHandling: "auto",
+  mapTypeControl: true,
+  mapTypeControlOptions: {
+    mapTypeIds: mapTypesStringArray,
+  },
+};
 
 const librariesArray = ["drawing"];
 
