@@ -46,6 +46,8 @@ const { REACT_APP_GOOGLE_API } = process.env;
 const options = {
   mapTypeId: SATELLITE,
   gestureHandling: "auto",
+  scrollwheel: false,
+  zoomControl: true,
   mapTypeControl: true,
   mapTypeControlOptions: {
     mapTypeIds: mapTypesStringArray,
