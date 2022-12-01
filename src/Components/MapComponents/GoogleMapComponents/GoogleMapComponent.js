@@ -1,5 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
-import { GoogleMap, useLoadScript, InfoBox } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  useLoadScript,
+  InfoBox,
+  Marker,
+} from "@react-google-maps/api";
 import { Skeleton } from "@mui/material";
 import { Box } from "@mui/system";
 import { MarkerList } from "./MarkerList";
@@ -102,11 +107,13 @@ export const GoogleMapComponent = (props) => {
       }}
       id="myGoogleMap"
     >
+      <Marker position={latLngObject} visible={latLngObject.lat !== 0} />
       <InfoBox
         position={latLngObject}
-        pixelOffset={{ height: 0, width: 0 }}
+        pixelOffset={{ height: 40, width: 40 }}
         onLoad={(instance) => {
           infoBoxInstance.current = instance;
+          instance.isHidden = true;
         }}
       >
         <Box
@@ -123,7 +130,8 @@ export const GoogleMapComponent = (props) => {
             sx={{
               position: "absolute",
               top: 0,
-              right: 0,
+              left: "50%",
+              right: "50%",
               color: "white",
               cursor: "pointer",
             }}
