@@ -49,11 +49,20 @@ const mapTypesStringArray = [SATELLITE, ROADMAP, HYBRID];
 
 const { REACT_APP_GOOGLE_API } = process.env;
 
+// window.google.maps.ControlPosition  the object key/value pairs
+// e.g. TOP_LEFT: 1 ,  the object can be viewed in the console by
+// typing window.google.maps.ControlPosition,  this explains how I
+// got to the value below for the position of some Controls
+
 const options = {
   mapTypeId: SATELLITE,
   gestureHandling: "auto",
   scrollwheel: false,
   zoomControl: true,
+  zoomControlOptions: {
+    // position is set to top left for zoom
+    position: 1,
+  },
   mapTypeControl: true,
   mapTypeControlOptions: {
     mapTypeIds: mapTypesStringArray,
