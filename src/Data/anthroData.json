@@ -134,6 +134,25 @@
     },
     {
         "species": "erectus",
+        "city": "Yunyang",
+        "country": "China",
+        "continent": "Asia",
+        "gpsCoor": {
+            "lat": 30.93184,
+            "long": 108.40295
+        },
+        "date": "1.1mya",
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Yunxian_Man_Cranium_II_%2810161611733%29.jpg/512px-Yunxian_Man_Cranium_II_%2810161611733%29.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/a/a5/Yunxian_Man_Cranium_II_%2810161611733%29.jpg",
+            "&lt;a href=&quot;https://commons.wikimedia.org/wiki/File:Yunxian_Man_Cranium_II_(10161611733).jpg&quot;&gt;Gary Todd from Xinzheng, China&lt;/a&gt;, CC0, via Wikimedia Commons"
+        ],
+        "linkToInfo": "https://www.nature.com/articles/d41586-022-04142-0",
+        "name": "Yunxian Man",
+        "wholeNumberYears": 1100000
+    },
+    {
+        "species": "erectus",
         "city": "Koobi Fora",
         "country": "Kenya",
         "continent": "Africa",
