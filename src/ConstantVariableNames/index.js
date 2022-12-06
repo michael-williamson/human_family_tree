@@ -18,6 +18,13 @@ const POINTS_OF_INTEREST_CAPITALIZED = "Points of Interest";
 const SATELLITE = "satellite";
 const HYBRID = "hybrid";
 const ROADMAP = "roadmap";
+const CITY = "city";
+const COUNTRY = "country";
+const CONTINENT = "continent";
+const DATE = "date";
+const DESCRIPTION = "description";
+const EVENT_NAME = "eventName";
+const ENTRY_EXIT_POINTS = "entryExitPoints";
 
 export {
   DATES,
@@ -40,4 +47,11 @@ export {
   SATELLITE,
   ROADMAP,
   HYBRID,
+  CITY,
+  COUNTRY,
+  CONTINENT,
+  DATE,
+  DESCRIPTION,
+  EVENT_NAME,
+  ENTRY_EXIT_POINTS,
 };
