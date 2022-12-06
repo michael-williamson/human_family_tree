@@ -21,6 +21,8 @@ import entryExitPoints from "../../../Data/entryExitPoints.json";
 import eventsList from "../../../Data/eventsList.json";
 import { comparisonFN } from "../../../HelperFunctions/MapComponent/GoogleMapsComponent/MarkerComponents";
 import {
+  ENTRY_EXIT_POINTS,
+  EVENTS,
   HYBRID,
   OVERLAYS,
   ROADMAP,
@@ -165,6 +167,7 @@ export const GoogleMapComponent = (props) => {
         speciesIconColorObject={speciesIconColorObject}
         handleMarkerClick={handleMarkerClick}
         arr={specimensArr}
+        typeOfMarker={SPECIES}
         // function used to highlight Markers corresponding with map key field being hovered on
         comparisonFN={comparisonFN(true, SPECIES, mapLegendField)}
         iconObject={{
@@ -179,6 +182,7 @@ export const GoogleMapComponent = (props) => {
       />
       <MarkerList
         arr={overlayDataArray}
+        typeOfMarker={OVERLAYS}
         labelObject={{
           color: theme.palette.primary.main,
           fontSize: "14px",
@@ -194,6 +198,7 @@ export const GoogleMapComponent = (props) => {
       />
       <MarkerList
         arr={entryExitPoints}
+        typeOfMarker={ENTRY_EXIT_POINTS}
         iconObject={{
           url: footPrintBlueIcon,
           scaledSize: { width: 30, height: 30 },
@@ -204,6 +209,7 @@ export const GoogleMapComponent = (props) => {
       />
       <MarkerList
         arr={eventsList}
+        typeOfMarker={EVENTS}
         iconObject={{
           url: volcanoIcon,
           scaledSize: { width: 30, height: 30 },

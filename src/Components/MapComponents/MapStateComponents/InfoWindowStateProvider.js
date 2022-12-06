@@ -14,13 +14,14 @@ export function useInfoWindowContextUpdater() {
 
 function infoWindowStateReducer(state, action) {
   if (action.type === CLOSE_INFO_WINDOW) {
-    return {};
+    return { item: {} };
   }
-  return { ...action.payload };
+  return action.payload;
 }
 
 export const InfoWindowStateProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(infoWindowStateReducer, {});
+  // the model of the state object will be {item:{},typeOfMarker:""}
+  const [state, dispatch] = useReducer(infoWindowStateReducer, { item: {} });
   return (
     <InfoWindowContext.Provider value={state}>
       <InfoWindowContextUpdater.Provider value={dispatch}>

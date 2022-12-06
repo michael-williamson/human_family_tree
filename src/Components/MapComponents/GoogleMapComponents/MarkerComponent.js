@@ -12,6 +12,7 @@ export const MarkerComponent = (props) => {
     item,
     labelObject,
     highLighted = false,
+    typeOfMarker = "default",
   } = props;
   const infoWindowContextUpdater = useInfoWindowContextUpdater();
   return (
@@ -31,7 +32,10 @@ export const MarkerComponent = (props) => {
       }
       label={labelObject}
       onClick={() =>
-        infoWindowContextUpdater({ type: OPEN_INFO_WINDOW, payload: item })
+        infoWindowContextUpdater({
+          type: OPEN_INFO_WINDOW,
+          payload: { typeOfMarker, item },
+        })
       }
     />
   );

@@ -10,6 +10,7 @@ export const MarkerList = (props) => {
     iconObject = {},
     googleMarkerComponentProps = {},
     comparisonFN,
+    typeOfMarker,
   } = props;
 
   const labelObjectUpdater = (obj, name) => {
@@ -23,6 +24,7 @@ export const MarkerList = (props) => {
       {arr.map((item) => (
         <MarkerComponent
           key={`${item.name}${Math.random() * 1000}`}
+          typeOfMarker={typeOfMarker}
           lat={item.gpsCoor.lat}
           lng={item.gpsCoor.long}
           labelObject={
