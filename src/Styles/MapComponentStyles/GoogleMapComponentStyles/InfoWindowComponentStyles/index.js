@@ -14,7 +14,7 @@ export const infoWindowContainerStyles = {
   backgroundSize: "cover",
   position: "relative",
   isolation: "isolate",
-  justifyItems: "center",
+  justifyItems: "start",
   rowGap: { xs: 2, sm: 2 },
   "&:after": {
     content: "''",
@@ -30,13 +30,17 @@ export const infoWindowTitleText = {
   textShadow: "7px 6px 2px rgb(0 0 0 / 40%)",
   fontSize: { xs: 20, lg: 40 },
   fontWeight: "bold",
+  width: "100%",
+  textAlign: "center",
 };
 
 export const infoWindowImageContainer = {};
 
 export const infoWindowImageStyles = {
   width: { xs: "25%", md: "50%" },
+  maxHeight: "200px",
   borderRadius: 2,
+  margin: "0 auto",
 };
 
 export const infoWindowFieldsContainerStyles = {
@@ -53,24 +57,24 @@ export const infoWindowFieldsContainerStyles = {
 
 export const infoWindowIndividualFieldsContainer = {
   display: "grid",
-  gridTemplateColumns: "auto auto",
+  gridTemplateColumns: "repeat(4,auto)",
   gridColumnGap: { xs: 5, sm: 48 },
-  justifyContent: { xs: "space-evenly", sm: "center" },
-  alignItems: "center",
-  width: { xs: "100%", md: "50%" },
+  alignItems: "start",
 };
 
 export const infoWindowLabelFieldStyles = {
   color: "#f5f5dc",
   boxShadow: "rgb(215 136 0 / 8%) 10px 2px 20px 5px",
   backgroundColor: "rgb(215 136 0 / 8%)",
-  fontSize: { xs: 18, lg: 30 },
+  fontSize: { xs: 18, lg: 18 },
   fontWeight: 500,
+  pl: 1,
 };
 
 export const infoWindowTextFieldStyles = {
   color: "rgb(215, 136, 0)",
-  fontSize: { xs: 20, lg: 40 },
+  fontSize: { xs: 20, lg: 18 },
   fontFamily: (theme) => theme.fonts.Kalam,
   whiteSpace: "nowrap",
+  gridColumn: "2/5",
 };
