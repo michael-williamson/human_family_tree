@@ -14,7 +14,7 @@ export const infoWindowContainerStyles = {
   backgroundSize: "cover",
   position: "relative",
   isolation: "isolate",
-  justifyItems: "start",
+  justifyItems: "center",
   rowGap: { xs: 2, sm: 2 },
   "&:after": {
     content: "''",
@@ -77,4 +77,22 @@ export const infoWindowTextFieldStyles = {
   fontFamily: (theme) => theme.fonts.Kalam,
   whiteSpace: "nowrap",
   gridColumn: "2/5",
+};
+
+export const descriptionLabelStyle = {
+  gridColumn: "1/5",
+};
+
+export const descriptionTextStyle = {
+  whiteSpace: "break-spaces",
+  gridRowStart: "2",
+  gridColumn: "1/5",
+  textAlign: "center",
+};
+
+export const individualFieldContainerStyle = {
+  gridColumnGap: 0,
+  gridRowGap: 3,
+  gridTemplateRows: "2",
+  justifyItems: "center",
 };

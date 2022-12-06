@@ -12,6 +12,9 @@ import {
   infoWindowTextFieldStyles,
   infoWindowTitleText,
   infoWindowImageStyles,
+  descriptionLabelStyle,
+  descriptionTextStyle,
+  individualFieldContainerStyle,
 } from "../../../../Styles/MapComponentStyles/GoogleMapComponentStyles/InfoWindowComponentStyles";
 import { InfoFieldLabel } from "./IndividualInfoWindowComponents/InfoFieldLabel";
 import { InfoFieldText } from "./IndividualInfoWindowComponents/InfoFieldText";
@@ -21,9 +24,9 @@ import {
 } from "../../MapStateComponents/InfoWindowStateProvider";
 import { CLOSE_INFO_WINDOW, SPECIES } from "../../../../ConstantVariableNames";
 import {
-  paragraphTextFields,
   typeOfMarkersObject,
   windowsWithParagraphs,
+  styleExaminer,
 } from "../../../../HelperFunctions/MapComponent/GoogleMapsComponent/InfoWindowComponents";
 
 export const InfoWindowComponent = (props) => {
@@ -39,12 +42,6 @@ export const InfoWindowComponent = (props) => {
   // whitespace: "break-spaces"
 
   const examineStyles = windowsWithParagraphs.includes(typeOfMarker);
-
-  const styleExaminer = (item) => {
-    return paragraphTextFields[item]
-      ? { ...infoWindowTextFieldStyles, whiteSpace: "break-spaces" }
-      : infoWindowTextFieldStyles;
-  };
 
   return (
     <Box sx={infoWindowMainContainerStyles}>
@@ -67,13 +64,39 @@ export const InfoWindowComponent = (props) => {
             sx={infoWindowImageStyles}
           />
           {Object.keys(labelObject).map((item) => (
-            <Box key={item} sx={infoWindowIndividualFieldsContainer}>
-              <InfoFieldLabel text={item} styles={infoWindowLabelFieldStyles} />
+            <Box
+              key={item}
+              sx={
+                examineStyles
+                  ? styleExaminer(
+                      item,
+                      infoWindowIndividualFieldsContainer,
+                      individualFieldContainerStyle
+                    )
+                  : infoWindowIndividualFieldsContainer
+              }
+            >
+              <InfoFieldLabel
+                text={item}
+                styles={
+                  examineStyles
+                    ? styleExaminer(
+                        item,
+                        infoWindowLabelFieldStyles,
+                        descriptionLabelStyle
+                      )
+                    : infoWindowLabelFieldStyles
+                }
+              />
               <InfoFieldText
                 text={itemObject[labelObject[item]]}
                 styles={
                   examineStyles
-                    ? styleExaminer(item)
+                    ? styleExaminer(
+                        item,
+                        infoWindowTextFieldStyles,
+                        descriptionTextStyle
+                      )
                     : infoWindowTextFieldStyles
                 }
               />

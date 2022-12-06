@@ -3,6 +3,8 @@ import {
   CONTINENT,
   COUNTRY,
   DATE,
+  ENTRY_EXIT_POINTS,
+  EVENTS,
 } from "../../../../ConstantVariableNames";
 
 const generalPropertiesObj = {
@@ -32,8 +34,8 @@ export const typeOfMarkersObject = {
   },
   events: {
     ...generalPropertiesObj,
-    Event: "eventName",
     ...dateObj,
+    Description: "description",
   },
 };
 
@@ -41,8 +43,15 @@ export const typeOfMarkersObject = {
 // by creating a method to identify which InfoWindows will have paragraph text
 // & which properties specifically.
 
-export const windowsWithParagraphs = ["entryExitPoints"];
+export const windowsWithParagraphs = [ENTRY_EXIT_POINTS, EVENTS];
 
 export const paragraphTextFields = {
   Description: true,
+};
+
+export const styleExaminer = (item, defaultStyle, additionalStyles) => {
+  if (paragraphTextFields[item] === undefined) {
+    return defaultStyle;
+  }
+  return { ...defaultStyle, ...additionalStyles };
 };
