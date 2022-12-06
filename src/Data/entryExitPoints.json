@@ -1,11 +1,13 @@
 [
   {
-    "name":"Straight of Gibraltar",
+    "name":"Strait of Gibraltar",
+    "poiType":"Entry/Exit Migration Locations",
+    "description":"The Strait of Gibraltar is a very intriguing, 13 Kilometer wide narrow strait which lies between Europe & Africa.  During Ice Ages the width of the Strait would be much more narrow possibly allowing some hominids to end up in either place creating a genetic connection between the two land masses.",
     "gpsCoor": {
         "lat": 35.97615,
         "long": -5.54907
     },
-    "linkToInfo": "",
+    "linkToInfo": "https://en.wikipedia.org/wiki/Strait_of_Gibraltar",
     "photoSourceLinks": [
         "https://commons.wikimedia.org/wiki/File:Marokko_von_Spanien-5.jpg"
     ],
@@ -20,39 +22,43 @@
   },
   {
     "name":"Nile River Valley",
+    "poiType":"Entry/Exit Migration Locations",
+    "description":"The Nile River Valley has served as a major landmark in human evolution & history.  A fertile river valley allowing life to thrive even in time periods where most of the surrounding area is desert such as the current day.  In addition to its ability to cradle human life it is located right next to the connection of Africa to the Arabian Peninsula & beyond.  It cannot be overstated how important the Nile River Valley has been in our journey.",
     "gpsCoor": {
         "lat": 30.94576,
         "long": 32.26667
     },
-    "linkToInfo": "",
+    "linkToInfo": "https://en.wikipedia.org/wiki/Nile",
     "photoSourceLinks": [
-        ""
+        "https://commons.wikimedia.org/wiki/File:Nile_River_and_delta_from_orbit.jpg"
     ],
     "linksToPhotos": [
-        ""
+        "https://upload.wikimedia.org/wikipedia/commons/d/de/Nile_River_and_delta_from_orbit.jpg"
     ],
     "photoAttribution": [
-        ", CC BY-SA 3.0",
-        "https://creativecommons.org/licenses/by-sa/3.0",
+        "Jacques Descloitres, MODIS Rapid Response Team, NASA/sh",
+        "",
         "via Wikimedia Commons"
     ]
   },
   {
     "name":"Southern Red Sea Region",
+    "poiType":"Entry/Exit Migration Locations",
+    "description":"There is reason to believe that the Southern Red Sea Region has been an entry / exit point for humans going & coming from the African Continent.  At one geographical point it is about 20 km from the coast of modern day Djibouti to an island called Mayyun,  and then only about 3.5 km between Mayyun & what is present day Yemen.  It is not wrong to speculate that humans may have crossed this passage coming & going from Africa ,  also considering lower sea levels during the ice ages this possibility becomes even more feasible.",
     "gpsCoor": {
         "lat": 12.56563,
         "long": 43.37844
     },
-    "linkToInfo": "",
+    "linkToInfo": "https://en.wikipedia.org/wiki/Southern_Red_Sea_Region",
     "photoSourceLinks": [
-        ""
+        "https://commons.wikimedia.org/wiki/File:Red_Sea_(ISS006-E-51223).jpg"
     ],
     "linksToPhotos": [
-        ""
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Red_Sea_%28ISS006-E-51223%29.jpg/512px-Red_Sea_%28ISS006-E-51223%29.jpg"
     ],
     "photoAttribution": [
-        ", CC BY-SA 3.0",
-        "https://creativecommons.org/licenses/by-sa/3.0",
+        "NASA/International Space Station Crew",
+        "",
         "via Wikimedia Commons"
     ]
   }

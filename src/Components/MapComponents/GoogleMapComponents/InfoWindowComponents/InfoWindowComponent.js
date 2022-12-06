@@ -60,7 +60,7 @@ export const InfoWindowComponent = (props) => {
             component="img"
             // some JSON files have larger / smaller images in separate indexes
             src={
-              typeOfMarker !== SPECIES
+              typeOfMarker === SPECIES
                 ? itemObject.linksToPhotos[1]
                 : itemObject.linksToPhotos[0]
             }
