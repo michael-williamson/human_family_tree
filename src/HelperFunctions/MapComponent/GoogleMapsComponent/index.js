@@ -10,11 +10,15 @@ import {
   arabiaPaths,
   iceAgeEurope2Paths,
   laurentideIceSheetPaths,
+  sahulPaths,
+  sundalandPaths,
 } from "./PolygonCoordinates";
 
 // The order here must match the order in overlaysArray.  Array syncing vs. creating an object avoids potential
 // property naming conflict,  best to keep naming to a minimum and from a centralized location.
 const correspondingPolygonPathsArray = [
+  sahulPaths,
+  sundalandPaths,
   saharaPaths,
   arabiaPaths,
   laurentideIceSheetPaths,
@@ -29,8 +33,20 @@ export const PolygonListArrayFN = (stateObject) => {
       <PolygonComponent
         key={item}
         paths={correspondingPolygonPathsArray[index]}
-        options={{ ...polygonOptions, ...(index <= 1 ? greenFill : iceFill) }}
+        options={{ ...polygonOptions, ...(index <= 3 ? greenFill : iceFill) }}
       />
     );
   });
+};
+
+export const produceLatLngArray = (instance) => {
+  const latLngArray = instance.getPath().Vc;
+  const newLatLngArray = latLngArray.map((item) => {
+    return {
+      lat: item.lat(),
+      lng: item.lng(),
+    };
+  });
+
+  console.dir(newLatLngArray, "new array");
 };

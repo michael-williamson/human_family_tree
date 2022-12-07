@@ -38,6 +38,8 @@ export const datesArr = [
 ];
 
 export const overlaysArray = [
+  "Sahul",
+  "Sundaland",
   "Green Sahara",
   "Green Arabia",
   "North American Ice Sheet",

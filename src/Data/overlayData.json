@@ -1,5 +1,43 @@
 [
     {
+        "name":"Sahul",
+        "gpsCoor":{
+            "lat":-23.59908,
+            "long":134.12487
+        },
+        "linkToInfo": "https://en.wikipedia.org/wiki/Sahul",
+        "photoSourceLinks": [
+            "https://commons.wikimedia.org/wiki/File:Map_of_Sunda_and_Sahul.png"
+        ],
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Map_of_Sunda_and_Sahul.png/512px-Map_of_Sunda_and_Sahul.png"
+        ],
+        "photoAttribution": [
+            "Maximilian Dörrbecker (Chumwa), CC BY-SA 3.0",
+            "https://creativecommons.org/licenses/by-sa/3.0",
+            "via Wikimedia Commons"
+        ]
+    },
+    {
+        "name":"Sundaland",
+        "gpsCoor":{
+            "lat":7.5827,
+            "long":107.36975
+        },
+        "linkToInfo": "https://en.wikipedia.org/wiki/Sundalands",
+        "photoSourceLinks": [
+            "https://commons.wikimedia.org/wiki/File:Map_of_Sunda_and_Sahul.png"
+        ],
+        "linksToPhotos": [
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Map_of_Sunda_and_Sahul.png/512px-Map_of_Sunda_and_Sahul.png"
+        ],
+        "photoAttribution": [
+            "Maximilian Dörrbecker (Chumwa), CC BY-SA 3.0",
+            "https://creativecommons.org/licenses/by-sa/3.0",
+            "via Wikimedia Commons"
+        ]
+    },
+    {
         "name":"Green Sahara",
         "gpsCoor":{
             "lat":21.83,
