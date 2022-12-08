@@ -37,6 +37,8 @@ import {
   POINTS_OF_INTEREST_CAPITALIZED,
   POINTS_OF_INTEREST,
 } from "../../../ConstantVariableNames";
+import { SearchComponent } from "./SearchComponent";
+import specimensArray from "../../../Data/anthroData.json";
 
 export const MapKey = (props) => {
   const mapLegendContext = useMapLegendContext();
@@ -126,6 +128,7 @@ export const MapKey = (props) => {
     <Box sx={mapKeyContainerStyles}>
       <TextComponent text="Map Key" styles={mapLegendTitleStyles} />
       <Box sx={allIndividualKeysContainer}>
+        <SearchComponent searchableArray={specimensArray} />
         {individualKeyObjectArray.map((item, index) => {
           return (
             <IndividualKey

@@ -51,13 +51,13 @@ export const MapContainer = () => {
               currentItem={currentItem}
               handleCloseInfoWindowClick={handleCloseInfoWindowClick}
             />
+            <Button onClick={handleShowMapKey} sx={showMapKeyButtonStyles}>
+              {showMapKey ? "Hide Map Key" : "Show Map Key"}
+            </Button>
+            <Collapse in={showMapKey}>
+              <MapKey svgObject={svgObject} />
+            </Collapse>
           </InfoWindowStateProvider>
-          <Button onClick={handleShowMapKey} sx={showMapKeyButtonStyles}>
-            {showMapKey ? "Hide Map Key" : "Show Map Key"}
-          </Button>
-          <Collapse in={showMapKey}>
-            <MapKey svgObject={svgObject} />
-          </Collapse>
         </MapLegendStateProvider>
       </SpecimensArrayStateProvider>
     </Box>
