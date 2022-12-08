@@ -5,7 +5,7 @@ import {
   InfoBox,
   Marker,
 } from "@react-google-maps/api";
-import { Skeleton } from "@mui/material";
+import { IconButton, Skeleton } from "@mui/material";
 import { Box } from "@mui/system";
 import { MarkerList } from "./MarkerList";
 import { PolygonListArrayFN } from "../../../HelperFunctions/MapComponent/GoogleMapsComponent";
@@ -36,6 +36,7 @@ import {
   volcanoIcon,
 } from "../../../Media/MapIcons";
 import { useInfoWindowContext } from "../MapStateComponents/InfoWindowStateProvider";
+import { ContentCopy } from "@mui/icons-material";
 
 const containerStyle = {
   width: "100%",
@@ -131,27 +132,28 @@ export const GoogleMapComponent = (props) => {
           sx={{
             backgroundColor: (theme) => theme.palette.customColors.darkBG,
             borderRadius: 2,
-            width: 230,
+            width: 350,
             display: "grid",
-            gridTemplateColumns: "auto auto",
+            gridTemplateColumns: "repeat(3,auto)",
+            gridTemplateRows: "repeat(2,auto)",
+            justifyContent: "space-around",
             position: "relative",
           }}
         >
           <Box
             sx={{
-              position: "absolute",
-              top: 0,
-              left: "50%",
-              right: "50%",
               color: "white",
               cursor: "pointer",
+              fontSize: 14,
+              textAlign: "center",
+              gridColumn: "1/4",
             }}
             onClick={(e) => {
               infoBoxInstance.current.isHidden = true;
               setLatLngObject({ lat: 0, lng: 0 });
             }}
           >
-            X
+            [close]
           </Box>
           <Box sx={{ color: "white", fontSize: 20, py: 1, pl: 3 }}>
             lat: {latLngObject.lat.toFixed(2)}
@@ -159,6 +161,19 @@ export const GoogleMapComponent = (props) => {
           <Box sx={{ color: "white", fontSize: 20, py: 1 }}>
             lng: {latLngObject.lng.toFixed(2)}
           </Box>
+          <IconButton
+            onClick={(e) =>
+              navigator.clipboard
+                .writeText(
+                  `lat:${latLngObject.lat.toFixed(
+                    2
+                  )} lng:${latLngObject.lng.toFixed(2)}`
+                )
+                .then((val) => alert("copied!", val))
+            }
+          >
+            <ContentCopy sx={{ color: "white" }} />
+          </IconButton>
         </Box>
       </InfoBox>
 
