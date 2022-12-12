@@ -1,15 +1,65 @@
 import React, { useState } from "react";
-import { TextField } from "@mui/material";
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  RadioGroup,
+  TextField,
+  Radio,
+  CardMedia,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import { useInfoWindowContextUpdater } from "../MapStateComponents/InfoWindowStateProvider";
 import { OPEN_INFO_WINDOW, SPECIES } from "../../../ConstantVariableNames";
+import {
+  searchByLabelsStyles,
+  searchByRadioStyles,
+  searchResultsContainerStyles,
+  searchResultsImageStyles,
+} from "../../../Styles/MapComponentStyles/MapKeyComponentStyles";
 
 export const SearchComponent = ({ searchableArray }) => {
   const [input, setInput] = useState("");
+  const [searchBy, setSearchBy] = useState("name");
   const infoWindowContextUpdater = useInfoWindowContextUpdater();
 
+  const handleRadioChange = (e) => {
+    setSearchBy(e.target.value);
+  };
+
   return (
-    <Box sx={{ pt: 3 }}>
+    <Box>
+      <FormControl sx={{ py: 3 }}>
+        <FormLabel id="searchBy-radio-buttons" sx={searchByLabelsStyles}>
+          Search By:
+        </FormLabel>
+        <RadioGroup
+          aria-labelledby="searchBy-radio-buttons"
+          name="searchBy-radio-buttons"
+          value={searchBy}
+          onChange={handleRadioChange}
+          row={true}
+        >
+          <FormControlLabel
+            value="name"
+            control={<Radio sx={searchByRadioStyles} />}
+            label="Name"
+            sx={searchByLabelsStyles}
+          />
+          <FormControlLabel
+            value="city"
+            control={<Radio sx={searchByRadioStyles} />}
+            label="Location"
+            sx={searchByLabelsStyles}
+          />
+          <FormControlLabel
+            value="country"
+            control={<Radio sx={searchByRadioStyles} />}
+            label="Country"
+            sx={searchByLabelsStyles}
+          />
+        </RadioGroup>
+      </FormControl>
       <TextField
         id="outlined-search"
         label="Search"
@@ -48,7 +98,9 @@ export const SearchComponent = ({ searchableArray }) => {
           >
             {input.length > 0 &&
               searchableArray
-                .filter((item) => item.name.includes(input) && item.name)
+                .filter((item) =>
+                  item[searchBy].toLowerCase().includes(input.toLowerCase())
+                )
                 .sort((a, b) => {
                   const nameA = a.name.toUpperCase();
                   const nameB = b.name.toUpperCase();
@@ -64,7 +116,7 @@ export const SearchComponent = ({ searchableArray }) => {
                 .map((item) => (
                   <Box
                     key={item.name}
-                    sx={{ color: "white", cursor: "pointer", py: 1 }}
+                    sx={searchResultsContainerStyles}
                     onClick={() =>
                       infoWindowContextUpdater({
                         type: OPEN_INFO_WINDOW,
@@ -72,7 +124,15 @@ export const SearchComponent = ({ searchableArray }) => {
                       })
                     }
                   >
-                    {item.name}
+                    <Box> {item.name}</Box>
+                    <Box>
+                      {item.city}, {item.country}
+                    </Box>
+                    <CardMedia
+                      component="img"
+                      src={item.linksToPhotos[1]}
+                      sx={searchResultsImageStyles}
+                    />
                   </Box>
                 ))}
           </Box>

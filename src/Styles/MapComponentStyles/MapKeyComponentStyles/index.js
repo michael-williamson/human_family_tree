@@ -9,6 +9,7 @@ export const mapKeyContainerStyles = {
   borderRadius: 3,
   maxHeight: 600,
   overflow: "hidden",
+  width: { lg: 350 },
 };
 
 export const mapLegendTitleStyles = {
@@ -28,6 +29,7 @@ export const allIndividualKeysContainer = {
   display: "grid",
   rowGap: 5,
   pb: { xs: 5, md: 5 },
+  pl: { lg: 1 },
   "&::-webkit-scrollbar": {
     width: { xs: 5 },
   },
@@ -39,6 +41,30 @@ export const allIndividualKeysContainer = {
   "&::-webkit-scrollbar-thumb:hover": {
     backgroundColor: "darkorange",
   },
+};
+
+export const searchByLabelsStyles = {
+  color: "white",
+  "&.Mui-focused": { color: "white" },
+};
+
+export const searchByRadioStyles = {
+  color: (theme) => theme.palette.primary.main,
+  "&.Mui-checked": { color: (theme) => theme.palette.primary.main },
+};
+
+export const searchResultsContainerStyles = {
+  color: "white",
+  cursor: "pointer",
+  py: 1,
+  display: "grid",
+  gridTemplateColumns: "repeat(3,auto)",
+};
+
+export const searchResultsImageStyles = {
+  width: 40,
+  height: 40,
+  borderRadius: 3,
 };
 
 export const checkboxListContainerStyles = {
