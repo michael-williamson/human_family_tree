@@ -11,6 +11,7 @@ export const MarkerList = (props) => {
     googleMarkerComponentProps = {},
     comparisonFN,
     typeOfMarker,
+    showIcon = true,
   } = props;
 
   const labelObjectUpdater = (obj, name) => {
@@ -33,7 +34,8 @@ export const MarkerList = (props) => {
           highLighted={comparisonFN && comparisonFN(item)}
           item={item}
           iconObject={{ ...iconObject }}
-          {...googleMarkerComponentProps}
+          showIcon={showIcon}
+          googleMarkerComponentProps={googleMarkerComponentProps}
         />
       ))}
     </Box>

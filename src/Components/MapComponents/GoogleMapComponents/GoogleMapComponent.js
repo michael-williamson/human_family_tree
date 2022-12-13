@@ -5,7 +5,7 @@ import {
   InfoBox,
   Marker,
 } from "@react-google-maps/api";
-import { IconButton, Skeleton } from "@mui/material";
+import { IconButton, Skeleton, Button } from "@mui/material";
 import { Box } from "@mui/system";
 import { MarkerList } from "./MarkerList";
 import { PolygonListArrayFN } from "../../../HelperFunctions/MapComponent/GoogleMapsComponent";
@@ -35,8 +35,15 @@ import {
   skullIcon,
   volcanoIcon,
 } from "../../../Media/MapIcons";
-import { useInfoWindowContext } from "../MapStateComponents/InfoWindowStateProvider";
+import {
+  useInfoWindowContext,
+  useInfoWindowContextUpdater,
+} from "../MapStateComponents/InfoWindowStateProvider";
 import { ContentCopy } from "@mui/icons-material";
+import { MapKeyControl } from "./CustomControls/MapKeyControl";
+import { MapKey } from "../MapKeyComponents/MapKey";
+import { HideMapKeyControl } from "./CustomControls/HideMapKeyControl";
+import { showMapKeyButtonStyles } from "../../../Styles/MapComponentStyles/MapContainerStyles";
 
 const containerStyle = {
   width: "100%",
@@ -78,11 +85,14 @@ export const GoogleMapComponent = (props) => {
     googleMapsApiKey: REACT_APP_GOOGLE_API,
     libraries,
   });
+  const [mapInstance, setMapInstance] = useState(null);
+  const [hideMapKey, setHideMapKey] = useState(false);
   const mapLegendContext = useMapLegendContext();
   const specimensArr = useSpecimensArrayContext();
   const mapLegendField = useMapLegendFieldContext();
   const speciesIconColorObject = useMapLegendIconColorObjectContext();
   const infoWindowContext = useInfoWindowContext();
+  const infoWindowContextUpdater = useInfoWindowContextUpdater();
   const [latLngObject, setLatLngObject] = useState({ lat: 0, lng: 0 });
   const infoBoxInstance = useRef(null);
 
@@ -105,12 +115,21 @@ export const GoogleMapComponent = (props) => {
     return <Skeleton />;
   }
 
+  const handleOnLoad = (instance) => {
+    if (instance) {
+      setMapInstance(instance);
+    }
+  };
+
+  const handleHideMapKey = () => setHideMapKey((prev) => !prev);
+
   return (
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
       zoom={2.5}
       options={options}
+      onLoad={handleOnLoad}
       onRightClick={(e) => {
         if (infoBoxInstance.current.isHidden === true) {
           infoBoxInstance.current.isHidden = false;
@@ -120,6 +139,14 @@ export const GoogleMapComponent = (props) => {
       id="myGoogleMap"
     >
       <Marker position={latLngObject} visible={latLngObject.lat !== 0} />
+      <HideMapKeyControl mapInstance={mapInstance}>
+        <Button onClick={handleHideMapKey} sx={showMapKeyButtonStyles}>
+          {hideMapKey ? "Show Map Key" : "Hide Map Key"}
+        </Button>
+      </HideMapKeyControl>
+      <MapKeyControl mapInstance={mapInstance}>
+        <MapKey hideMapKey={hideMapKey} />
+      </MapKeyControl>
       <InfoBox
         position={latLngObject}
         pixelOffset={{ height: 40, width: 40 }}
@@ -177,7 +204,7 @@ export const GoogleMapComponent = (props) => {
         </Box>
       </InfoBox>
 
-      {PolygonListArrayFN(mapLegendContext.overlays)}
+      {PolygonListArrayFN(mapLegendContext.overlays, infoWindowContextUpdater)}
       <MarkerList
         speciesIconColorObject={speciesIconColorObject}
         handleMarkerClick={handleMarkerClick}
@@ -208,7 +235,7 @@ export const GoogleMapComponent = (props) => {
         iconObject={{ path: window.google.maps.SymbolPath.CIRCLE, scale: 0 }}
         comparisonFN={comparisonFN(true, OVERLAYS, mapLegendField)}
         googleMarkerComponentProps={{
-          showIcon: true,
+          zIndex: 2000,
         }}
       />
       <MarkerList
@@ -217,9 +244,6 @@ export const GoogleMapComponent = (props) => {
         iconObject={{
           url: footPrintBlueIcon,
           scaledSize: { width: 30, height: 30 },
-        }}
-        googleMarkerComponentProps={{
-          showIcon: true,
         }}
       />
       <MarkerList

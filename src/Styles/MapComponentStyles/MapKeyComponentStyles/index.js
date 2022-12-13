@@ -1,7 +1,4 @@
 export const mapKeyContainerStyles = {
-  position: "absolute",
-  right: 10,
-  top: 100,
   backgroundColor: "rgb(0 0 0 / 81%)",
   border: `1px solid white`,
   display: "grid",
@@ -10,6 +7,8 @@ export const mapKeyContainerStyles = {
   maxHeight: 600,
   overflow: "hidden",
   width: { lg: 350 },
+  visibility: "visible",
+  mr: { lg: 3 },
 };
 
 export const mapLegendTitleStyles = {

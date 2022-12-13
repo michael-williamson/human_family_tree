@@ -40,7 +40,7 @@ import {
 import { SearchComponent } from "./SearchComponent";
 import specimensArray from "../../../Data/anthroData.json";
 
-export const MapKey = (props) => {
+export const MapKey = ({ hideMapKey, setUpdatedProperty }) => {
   const mapLegendContext = useMapLegendContext();
   const mapLegendContextUpdater = useMapLegendContextUpdater();
   const specimensArrayStateUpdater = useSpecimensArrayContextUpdater();
@@ -69,6 +69,8 @@ export const MapKey = (props) => {
     };
 
     statePropertyName !== OVERLAYS &&
+      statePropertyName !== EVENTS &&
+      statePropertyName !== POINTS_OF_INTEREST &&
       specimensArrayStateUpdater({ type: statePropertyName, payload });
   };
 
@@ -124,9 +126,16 @@ export const MapKey = (props) => {
     },
   ];
 
+  const handleMapKeyContainerStyles = () =>
+    hideMapKey
+      ? { ...mapKeyContainerStyles, visibility: "hidden" }
+      : mapKeyContainerStyles;
+
   return (
-    <Box sx={mapKeyContainerStyles}>
-      <TextComponent text="Map Key" styles={mapLegendTitleStyles} />
+    <Box sx={handleMapKeyContainerStyles()}>
+      <Box>
+        <TextComponent text="Map Key" styles={mapLegendTitleStyles} />
+      </Box>
       <Box sx={allIndividualKeysContainer}>
         <SearchComponent searchableArray={specimensArray} />
         {individualKeyObjectArray.map((item, index) => {
@@ -137,7 +146,7 @@ export const MapKey = (props) => {
               checkboxState={mapLegendContext[item.name]}
               setCheckboxState={handleStateChange(item.name)}
               handleSelectAll={handleSelectAll(item.name)}
-              setUpdatedProperty={props.setUpdatedProperty}
+              setUpdatedProperty={setUpdatedProperty}
               individualPropertyState={item.name}
               countObject={
                 keysToCountArray.includes(item.name) ? countObject : null

@@ -1,80 +1,132 @@
 [
-    {
-        "name":"Sahul",
-        "gpsCoor":{
-            "lat":-23.59908,
-            "long":134.12487
-        },
-        "linkToInfo": "https://en.wikipedia.org/wiki/Sahul",
-        "photoSourceLinks": [
-            "https://commons.wikimedia.org/wiki/File:Map_of_Sunda_and_Sahul.png"
-        ],
-        "linksToPhotos": [
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Map_of_Sunda_and_Sahul.png/512px-Map_of_Sunda_and_Sahul.png"
-        ],
-        "photoAttribution": [
-            "Maximilian Dörrbecker (Chumwa), CC BY-SA 3.0",
-            "https://creativecommons.org/licenses/by-sa/3.0",
-            "via Wikimedia Commons"
-        ]
+  {
+    "name": "Sahul",
+    "description": "",
+    "gpsCoor": {
+      "lat": -23.59908,
+      "long": 134.12487
     },
-    {
-        "name":"Sundaland",
-        "gpsCoor":{
-            "lat":7.5827,
-            "long":107.36975
-        },
-        "linkToInfo": "https://en.wikipedia.org/wiki/Sundalands",
-        "photoSourceLinks": [
-            "https://commons.wikimedia.org/wiki/File:Map_of_Sunda_and_Sahul.png"
-        ],
-        "linksToPhotos": [
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Map_of_Sunda_and_Sahul.png/512px-Map_of_Sunda_and_Sahul.png"
-        ],
-        "photoAttribution": [
-            "Maximilian Dörrbecker (Chumwa), CC BY-SA 3.0",
-            "https://creativecommons.org/licenses/by-sa/3.0",
-            "via Wikimedia Commons"
-        ]
+    "linkToInfo": "https://en.wikipedia.org/wiki/Sahul",
+    "photoSourceLinks": [
+      "https://commons.wikimedia.org/wiki/File:Map_of_Sunda_and_Sahul.png"
+    ],
+    "linksToPhotos": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Map_of_Sunda_and_Sahul.png/512px-Map_of_Sunda_and_Sahul.png"
+    ],
+    "photoSizes": { "thumbnail": "", "md": "", "lg": "" },
+    "photoAttribution": [
+      "Maximilian Dörrbecker (Chumwa), CC BY-SA 3.0",
+      "https://creativecommons.org/licenses/by-sa/3.0",
+      "via Wikimedia Commons"
+    ]
+  },
+  {
+    "name": "Sundaland",
+    "description": "",
+    "gpsCoor": {
+      "lat": 15.0597,
+      "long": 102.89831
     },
-    {
-        "name":"Green Sahara",
-        "gpsCoor":{
-            "lat":21.83,
-            "long":13.56975
-        },
-        "linkToInfo": "https://en.wikipedia.org/wiki/African_humid_period",
-        "photoSourceLinks": [
-            "https://commons.wikimedia.org/wiki/File:Map_of_Sunda_and_Sahul.png"
-        ],
-        "linksToPhotos": [
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Map_of_Sunda_and_Sahul.png/512px-Map_of_Sunda_and_Sahul.png"
-        ],
-        "photoAttribution": [
-            "Maximilian Dörrbecker (Chumwa), CC BY-SA 3.0",
-            "https://creativecommons.org/licenses/by-sa/3.0",
-            "via Wikimedia Commons"
-        ]
+    "linkToInfo": "https://en.wikipedia.org/wiki/Sundalands",
+    "photoSourceLinks": [
+      "https://commons.wikimedia.org/wiki/File:Map_of_Sunda_and_Sahul.png"
+    ],
+    "linksToPhotos": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Map_of_Sunda_and_Sahul.png/512px-Map_of_Sunda_and_Sahul.png"
+    ],
+    "photoSizes": { "thumbnail": "", "md": "", "lg": "" },
+    "photoAttribution": [
+      "Maximilian Dörrbecker (Chumwa), CC BY-SA 3.0",
+      "https://creativecommons.org/licenses/by-sa/3.0",
+      "via Wikimedia Commons"
+    ]
+  },
+  {
+    "name": "Green Sahara",
+    "description": "",
+    "gpsCoor": {
+      "lat": 21.83,
+      "long": 13.56975
     },
-    {
-        "name":"Green Arabia",
-        "gpsCoor":{
-            "lat":22.42131,
-            "long":44.0223
-        }
+    "linkToInfo": "https://en.wikipedia.org/wiki/African_humid_period",
+    "photoSourceLinks": [
+      "https://commons.wikimedia.org/wiki/File:Oasis_in_Libya.jpg"
+    ],
+    "linksToPhotos": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Oasis_in_Libya.jpg/512px-Oasis_in_Libya.jpg"
+    ],
+    "photoSizes": {
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Oasis_in_Libya.jpg/64px-Oasis_in_Libya.jpg",
+      "md": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Oasis_in_Libya.jpg/256px-Oasis_in_Libya.jpg",
+      "lg": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Oasis_in_Libya.jpg/512px-Oasis_in_Libya.jpg"
     },
-    {
-        "name":"North American Ice Sheet",
-        "gpsCoor":{
-            "lat":58.12419,
-            "long":-99.6241
-        }
+    "photoAttribution": ["Sfivat", "Public Domain", "via Wikimedia Commons"]
+  },
+  {
+    "name": "Green Arabia",
+    "description": "",
+    "gpsCoor": {
+      "lat": 22.42131,
+      "long": 44.0223
     },
-    {
-        "name":"European Ice Sheet",
-        "gpsCoor":{
-            "lat":71.26682,
-            "long":38.32205
-        }
-    }
+    "linkToInfo": "",
+    "photoSourceLinks": [
+      "https://commons.wikimedia.org/wiki/File:Oasis_in_Libya.jpg"
+    ],
+    "linksToPhotos": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Oasis_in_Libya.jpg/512px-Oasis_in_Libya.jpg"
+    ],
+    "photoSizes": {
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Oasis_in_Libya.jpg/64px-Oasis_in_Libya.jpg",
+      "md": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Oasis_in_Libya.jpg/256px-Oasis_in_Libya.jpg",
+      "lg": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Oasis_in_Libya.jpg/512px-Oasis_in_Libya.jpg"
+    },
+    "photoAttribution": ["Sfivat", "Public Domain", "via Wikimedia Commons"]
+  },
+  {
+    "name": "North American Ice Sheet",
+    "description": "",
+    "gpsCoor": {
+      "lat": 58.12419,
+      "long": -99.6241
+    },
+    "linkToInfo": "",
+    "photoSourceLinks": [
+      "https://commons.wikimedia.org/wiki/File:Ice_shields_during_the_Pleistocene_period_in_North_America.svg"
+    ],
+    "linksToPhotos": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Ice_shields_during_the_Pleistocene_period_in_North_America.svg/512px-Ice_shields_during_the_Pleistocene_period_in_North_America.svg.png"
+    ],
+    "photoSizes": {
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Ice_shields_during_the_Pleistocene_period_in_North_America.svg/64px-Ice_shields_during_the_Pleistocene_period_in_North_America.svg.png",
+      "md": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Ice_shields_during_the_Pleistocene_period_in_North_America.svg/256px-Ice_shields_during_the_Pleistocene_period_in_North_America.svg.png",
+      "lg": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Ice_shields_during_the_Pleistocene_period_in_North_America.svg/512px-Ice_shields_during_the_Pleistocene_period_in_North_America.svg.png"
+    },
+    "photoAttribution": ["Lallint", " CC0", "via Wikimedia Commons"]
+  },
+  {
+    "name": "European Ice Sheet",
+    "description": "",
+    "gpsCoor": {
+      "lat": 71.26682,
+      "long": 38.32205
+    },
+    "linkToInfo": "",
+    "photoSourceLinks": [
+      "https://commons.wikimedia.org/wiki/File:Radar_transect_south_dome.jpg"
+    ],
+    "linksToPhotos": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Radar_transect_south_dome.jpg/512px-Radar_transect_south_dome.jpg"
+    ],
+    "photoSizes": {
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Radar_transect_south_dome.jpg/128px-Radar_transect_south_dome.jpg",
+      "md": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Radar_transect_south_dome.jpg/256px-Radar_transect_south_dome.jpg",
+      "lg": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Radar_transect_south_dome.jpg/512px-Radar_transect_south_dome.jpg"
+    },
+    "photoAttribution": [
+      "Silvan Leinss",
+      "CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>",
+      "via Wikimedia Commons"
+    ]
+  }
 ]

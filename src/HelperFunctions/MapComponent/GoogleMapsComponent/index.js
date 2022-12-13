@@ -13,6 +13,8 @@ import {
   sahulPaths,
   sundalandPaths,
 } from "./PolygonCoordinates";
+import overlaysJSON from "../../../Data/overlayData.json";
+import { OPEN_INFO_WINDOW } from "../../../ConstantVariableNames";
 
 // The order here must match the order in overlaysArray.  Array syncing vs. creating an object avoids potential
 // property naming conflict,  best to keep naming to a minimum and from a centralized location.
@@ -26,7 +28,15 @@ const correspondingPolygonPathsArray = [
 ];
 
 // Capitalized function Name because the return array of Components will be a React Component
-export const PolygonListArrayFN = (stateObject) => {
+export const PolygonListArrayFN = (stateObject, infoWindowContextUpdater) => {
+  const handleClick = (item) => () =>
+    infoWindowContextUpdater({
+      type: OPEN_INFO_WINDOW,
+      payload: {
+        typeOfMarker: "overlays",
+        item: overlaysJSON.find((overlay) => overlay.name === item),
+      },
+    });
   return overlaysArray.map((item, index) => {
     if (stateObject[item] === false) return null;
     return (
@@ -34,6 +44,7 @@ export const PolygonListArrayFN = (stateObject) => {
         key={item}
         paths={correspondingPolygonPathsArray[index]}
         options={{ ...polygonOptions, ...(index <= 3 ? greenFill : iceFill) }}
+        onClick={handleClick(item)}
       />
     );
   });

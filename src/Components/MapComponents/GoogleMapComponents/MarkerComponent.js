@@ -8,13 +8,19 @@ export const MarkerComponent = (props) => {
     lat,
     lng,
     iconObject,
-    showIcon = true,
+    showIcon,
     item,
     labelObject,
     highLighted = false,
     typeOfMarker = "default",
+    googleMarkerComponentProps = {},
   } = props;
   const infoWindowContextUpdater = useInfoWindowContextUpdater();
+  const handleClick = () =>
+    infoWindowContextUpdater({
+      type: OPEN_INFO_WINDOW,
+      payload: { typeOfMarker, item },
+    });
   return (
     <Marker
       // animation={animation && window.google.maps.Animation.DROP}
@@ -31,12 +37,8 @@ export const MarkerComponent = (props) => {
           : null
       }
       label={labelObject}
-      onClick={() =>
-        infoWindowContextUpdater({
-          type: OPEN_INFO_WINDOW,
-          payload: { typeOfMarker, item },
-        })
-      }
+      onClick={handleClick}
+      {...googleMarkerComponentProps}
     />
   );
 };

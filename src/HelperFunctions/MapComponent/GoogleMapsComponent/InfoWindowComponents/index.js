@@ -37,6 +37,9 @@ export const typeOfMarkersObject = {
     ...dateObj,
     Description: "description",
   },
+  overlays: {
+    Description: "description",
+  },
 };
 
 // the following array & corresponding object solves the issue of paragraph style text

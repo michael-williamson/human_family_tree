@@ -9,4 +9,5 @@ export const showMapKeyButtonStyles = {
   border: (theme) => `1px solid ${theme.palette.primary.main}`,
   fontSize: { xs: 10, md: 18, lg: 16 },
   color: "white",
+  width: { lg: 150 },
 };
