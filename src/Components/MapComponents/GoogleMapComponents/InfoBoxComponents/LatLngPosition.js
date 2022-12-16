@@ -5,7 +5,9 @@ import { ContentCopy } from "@mui/icons-material";
 import { InfoBoxComponentMain } from "./InfoBoxComponentMain";
 
 export const LatLngPosition = ({
-  latLngObject: { position, rightClick },
+  latLngObject,
+  rightClick,
+  setRightClick,
   setLatLngObject,
 }) => {
   const [instance, setInstance] = useState(null);
@@ -15,11 +17,13 @@ export const LatLngPosition = ({
       return;
     }
 
+    instance.isHidden = true;
+
     if (instance && instance.closeListener === null) {
       return;
     }
     instance.closeListener.instance.hidden = true;
-  }, [instance]);
+  }, [instance, instance?.closeListener]);
 
   useEffect(() => {
     if (instance === null) {
@@ -32,12 +36,11 @@ export const LatLngPosition = ({
 
   const handleOnLoad = (infoBoxInstance) => {
     setInstance(infoBoxInstance);
-    infoBoxInstance.hidden = true;
   };
 
   return (
     <InfoBoxComponentMain
-      position={position}
+      position={latLngObject}
       optional={{
         onLoad: handleOnLoad,
         pixelOffset: { height: 40, width: 40 },
@@ -65,24 +68,26 @@ export const LatLngPosition = ({
           }}
           onClick={(e) => {
             instance.isHidden = true;
-            setLatLngObject((prev) => ({
-              ...prev,
-              rightClick: false,
-            }));
+            setRightClick(false);
+            setLatLngObject({ lat: 0, lng: 0 });
           }}
         >
           [close]
         </Box>
         <Box sx={{ color: "white", fontSize: 20, py: 1, pl: 3 }}>
-          lat: {position.lat}
+          lat: {latLngObject.lat.toFixed(2)}
         </Box>
         <Box sx={{ color: "white", fontSize: 20, py: 1 }}>
-          lng: {position.lng}
+          lng: {latLngObject.lng.toFixed(2)}
         </Box>
         <IconButton
           onClick={(e) =>
             navigator.clipboard
-              .writeText(`lat:${position.lat} lng:${position.lng}`)
+              .writeText(
+                `lat:${latLngObject.lat.toFixed(
+                  2
+                )} lng:${latLngObject.lng.toFixed(2)}`
+              )
               .then((val) => alert("copied!", val))
           }
         >

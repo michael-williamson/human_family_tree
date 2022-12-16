@@ -88,10 +88,8 @@ export const GoogleMapComponent = (props) => {
   const speciesIconColorObject = useMapLegendIconColorObjectContext();
   const infoWindowContext = useInfoWindowContext();
   const infoWindowContextUpdater = useInfoWindowContextUpdater();
-  const [latLngObject, setLatLngObject] = useState({
-    position: { lat: 0, lng: 0 },
-    rightClick: false,
-  });
+  const [latLngObject, setLatLngObject] = useState({ lat: 0, lng: 0 });
+  const [rightClick, setRightClick] = useState(false);
 
   const { handleMarkerClick, handleCloseInfoWindowClick } = props;
 
@@ -119,13 +117,8 @@ export const GoogleMapComponent = (props) => {
       options={options}
       onLoad={handleOnLoad}
       onRightClick={(e) => {
-        setLatLngObject({
-          position: new window.google.maps.LatLng(
-            e.latLng.lat(),
-            e.latLng.lng()
-          ),
-          rightClick: true,
-        });
+        setLatLngObject({ lat: e.latLng.lat(), lng: e.latLng.lng() });
+        setRightClick(true);
       }}
       id="myGoogleMap"
     >
@@ -140,6 +133,8 @@ export const GoogleMapComponent = (props) => {
       </MapKeyControl>
       <LatLngPosition
         latLngObject={latLngObject}
+        rightClick={rightClick}
+        setRightClick={setRightClick}
         setLatLngObject={setLatLngObject}
       />
       {PolygonListArrayFN(mapLegendContext.overlays, infoWindowContextUpdater)}
