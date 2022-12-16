@@ -1,12 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
-import {
-  GoogleMap,
-  useLoadScript,
-  InfoBox,
-  Marker,
-} from "@react-google-maps/api";
-import { IconButton, Skeleton, Button } from "@mui/material";
-import { Box } from "@mui/system";
+import React, { useState } from "react";
+import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { Skeleton, Button } from "@mui/material";
+
 import { MarkerList } from "./MarkerList";
 import { PolygonListArrayFN } from "../../../HelperFunctions/MapComponent/GoogleMapsComponent";
 import { InfoWindowComponentContainer } from "./InfoWindowComponents/InfoWindowComponentContainer";
@@ -39,11 +34,11 @@ import {
   useInfoWindowContext,
   useInfoWindowContextUpdater,
 } from "../MapStateComponents/InfoWindowStateProvider";
-import { ContentCopy } from "@mui/icons-material";
 import { MapKeyControl } from "./CustomControls/MapKeyControl";
 import { MapKey } from "../MapKeyComponents/MapKey";
 import { HideMapKeyControl } from "./CustomControls/HideMapKeyControl";
 import { showMapKeyButtonStyles } from "../../../Styles/MapComponentStyles/MapContainerStyles";
+import { LatLngPosition } from "./InfoBoxComponents/LatLngPosition";
 
 const containerStyle = {
   width: "100%",
@@ -93,17 +88,10 @@ export const GoogleMapComponent = (props) => {
   const speciesIconColorObject = useMapLegendIconColorObjectContext();
   const infoWindowContext = useInfoWindowContext();
   const infoWindowContextUpdater = useInfoWindowContextUpdater();
-  const [latLngObject, setLatLngObject] = useState({ lat: 0, lng: 0 });
-  const infoBoxInstance = useRef(null);
-
-  useEffect(() => {
-    const instance = infoBoxInstance.current;
-    if (instance?.closeListener) {
-      let obj = instance.closeListener.instance;
-      // eslint-disable-next-line no-unused-vars
-      obj.hidden = true;
-    }
-  }, [infoBoxInstance.current?.closeListener]);
+  const [latLngObject, setLatLngObject] = useState({
+    position: { lat: 0, lng: 0 },
+    rightClick: false,
+  });
 
   const { handleMarkerClick, handleCloseInfoWindowClick } = props;
 
@@ -131,10 +119,13 @@ export const GoogleMapComponent = (props) => {
       options={options}
       onLoad={handleOnLoad}
       onRightClick={(e) => {
-        if (infoBoxInstance.current.isHidden === true) {
-          infoBoxInstance.current.isHidden = false;
-        }
-        setLatLngObject({ lat: e.latLng.lat(), lng: e.latLng.lng() });
+        setLatLngObject({
+          position: new window.google.maps.LatLng(
+            e.latLng.lat(),
+            e.latLng.lng()
+          ),
+          rightClick: true,
+        });
       }}
       id="myGoogleMap"
     >
@@ -147,63 +138,10 @@ export const GoogleMapComponent = (props) => {
       <MapKeyControl mapInstance={mapInstance}>
         <MapKey hideMapKey={hideMapKey} />
       </MapKeyControl>
-      <InfoBox
-        position={latLngObject}
-        pixelOffset={{ height: 40, width: 40 }}
-        onLoad={(instance) => {
-          infoBoxInstance.current = instance;
-          instance.isHidden = true;
-        }}
-      >
-        <Box
-          sx={{
-            backgroundColor: (theme) => theme.palette.customColors.darkBG,
-            borderRadius: 2,
-            width: 350,
-            display: "grid",
-            gridTemplateColumns: "repeat(3,auto)",
-            gridTemplateRows: "repeat(2,auto)",
-            justifyContent: "space-around",
-            position: "relative",
-          }}
-        >
-          <Box
-            sx={{
-              color: "white",
-              cursor: "pointer",
-              fontSize: 14,
-              textAlign: "center",
-              gridColumn: "1/4",
-            }}
-            onClick={(e) => {
-              infoBoxInstance.current.isHidden = true;
-              setLatLngObject({ lat: 0, lng: 0 });
-            }}
-          >
-            [close]
-          </Box>
-          <Box sx={{ color: "white", fontSize: 20, py: 1, pl: 3 }}>
-            lat: {latLngObject.lat.toFixed(2)}
-          </Box>
-          <Box sx={{ color: "white", fontSize: 20, py: 1 }}>
-            lng: {latLngObject.lng.toFixed(2)}
-          </Box>
-          <IconButton
-            onClick={(e) =>
-              navigator.clipboard
-                .writeText(
-                  `lat:${latLngObject.lat.toFixed(
-                    2
-                  )} lng:${latLngObject.lng.toFixed(2)}`
-                )
-                .then((val) => alert("copied!", val))
-            }
-          >
-            <ContentCopy sx={{ color: "white" }} />
-          </IconButton>
-        </Box>
-      </InfoBox>
-
+      <LatLngPosition
+        latLngObject={latLngObject}
+        setLatLngObject={setLatLngObject}
+      />
       {PolygonListArrayFN(mapLegendContext.overlays, infoWindowContextUpdater)}
       <MarkerList
         speciesIconColorObject={speciesIconColorObject}
