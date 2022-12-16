@@ -3,6 +3,7 @@ import {
   mapIcon,
   galleryIcon,
   chartsIcon,
+  glossaryIcon,
 } from "../../Media/PageTitle_Navigation_Icons";
 
 export const routesIcons = {
@@ -10,4 +11,5 @@ export const routesIcons = {
   Map: mapIcon,
   Gallery: galleryIcon,
   Charts: chartsIcon,
+  Glossary: glossaryIcon,
 };

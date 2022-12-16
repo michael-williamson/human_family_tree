@@ -3,6 +3,7 @@ export const routes = {
   Map: "Map",
   Gallery: "Gallery",
   Charts: "Charts",
+  Glossary: "Glossary",
 };
 
 export const routesArrayProperties = Object.keys(routes);
