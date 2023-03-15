@@ -44,6 +44,7 @@ export const overlaysArray = [
   "Green Arabia",
   "North American Ice Sheet",
   "European Ice Sheet",
+  "Lake Toba Eruption",
 ];
 
 export const eventsArray = ["Lake Toba Eruption"];
