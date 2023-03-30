@@ -5,6 +5,8 @@ import {
   mapKeyContainerStyles,
   mapLegendTitleStyles,
   allIndividualKeysContainer,
+  mapLegendTitleContainerStyles,
+  mapLegendTitleImageContainer,
 } from "../../../Styles/MapComponentStyles/MapKeyComponentStyles";
 import { IndividualKey } from "./IndividualKey";
 import { speciesCheckboxContainerStyles } from "../../../Styles/MapComponentStyles/MapKeyComponentStyles/SpeciesMapKeyStyles";
@@ -28,6 +30,8 @@ import {
 import { SearchComponent } from "./SearchComponent";
 import specimensArray from "../../../Data/anthroData.json";
 import { useMapLegendFieldsCount } from "../MapStateComponents/MapLegendFieldsCount";
+import { CardMedia } from "@mui/material";
+import { mapKeyIcon } from "../../../Media/PageTitle_Navigation_Icons";
 
 export const MapKey = ({ hideMapKey, setUpdatedProperty }) => {
   const mapLegendContext = useMapLegendContext();
@@ -87,15 +91,17 @@ export const MapKey = ({ hideMapKey, setUpdatedProperty }) => {
     },
   ];
 
-  const handleMapKeyContainerStyles = () =>
-    hideMapKey
-      ? { ...mapKeyContainerStyles, visibility: "hidden" }
-      : mapKeyContainerStyles;
+  const mapKeyContainerStylesObject = hideMapKey
+    ? { ...mapKeyContainerStyles, visibility: "hidden" }
+    : mapKeyContainerStyles;
 
   return (
-    <Box sx={handleMapKeyContainerStyles()}>
-      <Box>
+    <Box sx={mapKeyContainerStylesObject}>
+      <Box sx={mapLegendTitleContainerStyles}>
         <TextComponent text="Map Key" styles={mapLegendTitleStyles} />
+        <Box sx={mapLegendTitleImageContainer}>
+          <CardMedia component="img" src={mapKeyIcon} />
+        </Box>
       </Box>
       <Box sx={allIndividualKeysContainer}>
         <SearchComponent searchableArray={specimensArray} />

@@ -11,15 +11,25 @@ export const mapKeyContainerStyles = {
   mr: { lg: 3 },
 };
 
+export const mapLegendTitleContainerStyles = {
+  bgcolor: (theme) => theme.palette.customColors.beige,
+  borderRadius: "8px 8px 0px 0px",
+  display: "flex",
+  justifyContent: "center",
+};
+
 export const mapLegendTitleStyles = {
   color: "primary.main",
-  bgcolor: (theme) => theme.palette.customColors.beige,
   fontSize: { xs: 31 },
   fontWeight: "bold",
   textAlign: "center",
   pb: { xs: 0 },
   fontFamily: (theme) => theme.fonts.Kalam,
-  borderRadius: "8px 8px 0px 0px",
+};
+
+export const mapLegendTitleImageContainer = {
+  width: { xs: 50, lg: 50 },
+  pl: { lg: 2 },
 };
 
 export const allIndividualKeysContainer = {
