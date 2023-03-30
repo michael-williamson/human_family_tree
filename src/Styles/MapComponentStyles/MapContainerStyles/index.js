@@ -1,5 +1,6 @@
 export const mapContainerStyles = {
   position: "relative",
+  border: "7px solid rgb(215, 136, 0)",
 };
 
 export const showMapKeyButtonStyles = {
