@@ -13,88 +13,49 @@ import {
   useMapLegendContextUpdater,
   useMapLegendFieldContextUpdater,
 } from "../MapStateComponents/MapLegendStateProvider";
-import { keyObject } from "../../../HelperFunctions/MapComponent/MapContainerComponent/StateMaintenanceFN";
-import {
-  keysToCountArray,
-  selectOrDeselectFN,
-} from "../../../HelperFunctions/MapComponent/MapKeyComponents";
-import {
-  useSpecimensArrayContextUpdater,
-  useSpecimensArrayCountContext,
-} from "../MapStateComponents/SpecimensArrayStateProvider";
+import { keysToCountArray } from "../../../HelperFunctions/MapComponent/MapKeyComponents";
 import {
   DATES,
   SPECIES,
   OVERLAYS,
-  SELECT_ALL,
   SORT_BY_SPECIES,
   SORT_BY_DATES,
   OVERLAYS_CAPITALIZED,
   UPDATING_INDIVIDUAL,
-  DESELECT_ALL,
-  EVENTS,
-  EVENTS_CAPITALIZED,
   POINTS_OF_INTEREST_CAPITALIZED,
   POINTS_OF_INTEREST,
 } from "../../../ConstantVariableNames";
 import { SearchComponent } from "./SearchComponent";
 import specimensArray from "../../../Data/anthroData.json";
+import { useMapLegendFieldsCount } from "../MapStateComponents/MapLegendFieldsCount";
 
 export const MapKey = ({ hideMapKey, setUpdatedProperty }) => {
   const mapLegendContext = useMapLegendContext();
   const mapLegendContextUpdater = useMapLegendContextUpdater();
-  const specimensArrayStateUpdater = useSpecimensArrayContextUpdater();
   const mapLegendFieldContextUpdater = useMapLegendFieldContextUpdater();
-  const countObject = useSpecimensArrayCountContext();
+  const countObject = useMapLegendFieldsCount();
 
-  const handleStateChange = (statePropertyName) => (item) => () => {
-    const { [statePropertyName]: stateObject } = mapLegendContext;
-    const copyOfMapLegendObject = { ...mapLegendContext };
-
-    const updatedStateObject = {
-      [statePropertyName]: {
-        ...stateObject,
-        ...{ [item]: !stateObject[item] },
-      },
+  const handleStateChange = (statePropertyName) => (item) => (e) => {
+    const payloadMapKeyContext = {
+      statePropertyName,
+      item,
     };
 
     mapLegendContextUpdater({
       type: UPDATING_INDIVIDUAL,
-      payload: updatedStateObject,
-    });
-
-    const payload = {
-      propertyName: item,
-      prevStateCopy: copyOfMapLegendObject,
-    };
-
-    statePropertyName !== OVERLAYS &&
-      statePropertyName !== EVENTS &&
-      statePropertyName !== POINTS_OF_INTEREST &&
-      specimensArrayStateUpdater({ type: statePropertyName, payload });
-  };
-
-  const handleSelectAll = (statePropertyName) => (state) => () => {
-    const bool = selectOrDeselectFN(state);
-    const copyOfMapLegendObject = { ...mapLegendContext };
-    const updatedStateObject = {
-      [statePropertyName]: { ...keyObject(statePropertyName, bool) },
-    };
-    mapLegendContextUpdater({
-      type: SELECT_ALL,
-      payload: updatedStateObject,
-    });
-
-    const payload = {
-      propertyName: statePropertyName,
-      prevStateCopy: copyOfMapLegendObject,
-    };
-
-    specimensArrayStateUpdater({
-      type: bool ? SELECT_ALL : DESELECT_ALL,
-      payload,
+      payload: payloadMapKeyContext,
     });
   };
+
+  const handleSelectAll =
+    (statePropertyName) =>
+    ({ selectAllText }) =>
+    () => {
+      mapLegendContextUpdater({
+        type: selectAllText,
+        payload: { statePropertyName, item: null },
+      });
+    };
 
   const individualKeyObjectArray = [
     {
@@ -114,11 +75,11 @@ export const MapKey = ({ hideMapKey, setUpdatedProperty }) => {
       name: OVERLAYS,
       additionalProps: {},
     },
-    {
-      titleText: EVENTS_CAPITALIZED,
-      name: EVENTS,
-      additionalProps: {},
-    },
+    // {
+    //   titleText: EVENTS_CAPITALIZED,
+    //   name: EVENTS,
+    //   additionalProps: {},
+    // },
     {
       titleText: POINTS_OF_INTEREST_CAPITALIZED,
       name: POINTS_OF_INTEREST,
@@ -149,7 +110,9 @@ export const MapKey = ({ hideMapKey, setUpdatedProperty }) => {
               setUpdatedProperty={setUpdatedProperty}
               individualPropertyState={item.name}
               countObject={
-                keysToCountArray.includes(item.name) ? countObject : null
+                keysToCountArray.includes(item.name)
+                  ? countObject[item.name]
+                  : null
               }
               contextFN={mapLegendFieldContextUpdater}
               {...item.additionalProps}

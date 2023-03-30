@@ -1,4 +1,5 @@
 import {
+  DATES,
   MOUSE_ENTER,
   MOUSE_LEAVE,
   SPECIES,
@@ -71,7 +72,7 @@ export const objectEval = (obj, label) => {
 
 // function that creates an object with key/values representing recurring similarities in array objects
 // --> & creating a count based on criteria
-export const itemPropertyCountObject = (arr, propertyToCount) => {
+export const itemPropertyCountObject = (arr = [], propertyToCount) => {
   const countObject = {};
   arr.forEach((item) =>
     countObject[item[propertyToCount]]
@@ -82,4 +83,4 @@ export const itemPropertyCountObject = (arr, propertyToCount) => {
 };
 
 // array to determine which IndividualKey Components to use itemPropertyCountObject
-export const keysToCountArray = [SPECIES];
+export const keysToCountArray = [SPECIES, DATES];

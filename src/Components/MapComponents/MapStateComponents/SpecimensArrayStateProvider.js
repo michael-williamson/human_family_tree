@@ -1,17 +1,15 @@
-import React, { useReducer, useContext } from "react";
+import React, { useReducer, useContext, useState, useEffect } from "react";
 import specimensArray from "../../../Data/anthroData.json";
 import {
+  ADD,
   DATES,
   DESELECT_ALL,
   SELECT_ALL,
   SPECIES,
+  SUBTRACT,
+  UPDATING_INDIVIDUAL,
 } from "../../../ConstantVariableNames";
-import {
-  addSelectedDate,
-  addSelectedSpecies,
-  subtractedSelectedDate,
-  subtractedSelectedSpecies,
-} from "../../../HelperFunctions/MapComponent/MapStateComponents";
+
 import { itemPropertyCountObject } from "../../../HelperFunctions/MapComponent/MapKeyComponents";
 
 const SpecimensArrayContext = React.createContext();
@@ -26,95 +24,58 @@ export const useSpecimensArrayContextUpdater = () =>
 export const useSpecimensArrayCountContext = () =>
   useContext(SpecimensArraySpeciesCountContext);
 
-const filterFN = (arr) => {
-  // here the original array is placed inside a closure to create only one reference b/c it
-  // --> is a large array, also originalArrayPersisted represents an array inside of a closure
-  // --> that persists across renders to circumvent needing duplicate date evaluations when a species
-  // --> is checked true/false.
-  let originalArray = arr;
-  let originalArrayPersisted = arr;
-  return (
-    { propertyName: updatedProperty, prevStateCopy },
-    { state, message, currentKeyItem }
-  ) => {
-    // creating a props object that allows passing same argument to each function
-    // --> while using destructuring to inside the function to match corresponding parameters
-    const props = { state, updatedProperty, prevStateCopy };
-    // props.arr will pass the persisted array if necessary, & original array will only be referenced
-    // --> the Individual Key checked was the Dates map key
-    props.arr = originalArrayPersisted;
-    currentKeyItem === DATES && (props.originalArray = originalArray);
-    const checked =
-      currentKeyItem && prevStateCopy[currentKeyItem][updatedProperty];
-    // in the switch statement depending on conditions the originalArrayPersisted array
-    // --> will need to updated
-    switch (message) {
-      case DATES:
-        return (originalArrayPersisted = checked
-          ? subtractedSelectedDate(props)
-          : addSelectedDate(props)) && checked
-          ? subtractedSelectedDate(props)
-          : addSelectedDate(props);
-      case SPECIES:
-        return checked
-          ? subtractedSelectedSpecies(props)
-          : addSelectedSpecies(props);
-      case SELECT_ALL:
-        // if selecting all dates eval will be matching species that are checked & returning the
-        // --> full original array b/c now the dates evaluated being all selected is the full original array.
-        return (originalArrayPersisted =
-          updatedProperty === DATES
-            ? [...originalArray]
-            : originalArrayPersisted && updatedProperty === DATES
-            ? addSelectedDate({ ...props, selectAll: true })
-            : addSelectedSpecies({ ...props, selectAll: true }));
-      case DESELECT_ALL:
+const speciesUpdater = (state, mapLegendState, arr = [], individualBoolean) => {
+  // this function will run when the UPDATING_INDIVIDUAL message is received in the specimensArrayReducer.
+  // --> the state will be the current specimens array; the mapLegendState will provide which items are checked or not
+  // --> the arr will be from the synchronizedDataObject from the MapStateProvider.  The individualBoolean will be determined
+  // --> by the last active checkbox in the Map Key.
+
+  // if adding we add the specimens that are true in both the species key & the dates key.
+  // --> For subtracting specimens we take the state & filter out specimens that don't meet both
+  // ->> true criteria in the Map Key.
+  const filteredArray = (bool) => {
+    if (bool) {
+      return arr.filter((item) => {
         return (
-          (originalArrayPersisted =
-            updatedProperty === DATES ? [] : originalArrayPersisted) && []
+          mapLegendState[SPECIES][item.species] &&
+          mapLegendState[DATES][item[DATES]]
         );
-      default:
+      });
     }
+
+    return state.filter((item) => {
+      return (
+        mapLegendState[SPECIES][item[SPECIES]] &&
+        mapLegendState[DATES][item[DATES]]
+      );
+    });
   };
+
+  const type = individualBoolean ? ADD : SUBTRACT;
+
+  switch (type) {
+    case ADD:
+      // adding to state array filteredArray
+      return [...state, ...filteredArray(individualBoolean)];
+    case SUBTRACT:
+      // filtering out specimens from complete specimensArray state array
+      return [...filteredArray(individualBoolean)];
+    default:
+      return [...state];
+  }
 };
 
-const filterByFN = filterFN(specimensArray, specimensArray);
-
-const specimensArrayReducer = (state, action) => {
-  const filterInfoProps = {
-    state,
-  };
-  switch (action.type) {
-    case DATES:
-      return [
-        ...filterByFN(action.payload, {
-          ...filterInfoProps,
-          message: DATES,
-          currentKeyItem: DATES,
-        }),
-      ];
-    case SPECIES:
-      return [
-        ...filterByFN(action.payload, {
-          ...filterInfoProps,
-          message: SPECIES,
-          currentKeyItem: SPECIES,
-        }),
-      ];
+const specimensArrayReducer = (
+  state,
+  { type, payload: { mapLegendState, arr, individualBoolean } }
+) => {
+  switch (type) {
     case SELECT_ALL:
-      return [
-        ...filterByFN(action.payload, {
-          ...filterInfoProps,
-          message: SELECT_ALL,
-        }),
-      ];
+      return [...specimensArray];
     case DESELECT_ALL:
-      return [
-        ...filterByFN(action.payload, {
-          ...filterInfoProps,
-          message: DESELECT_ALL,
-        }),
-      ];
+      return [];
+    case UPDATING_INDIVIDUAL:
+      return speciesUpdater(state, mapLegendState, arr, individualBoolean);
     default:
       break;
   }
@@ -122,11 +83,18 @@ const specimensArrayReducer = (state, action) => {
 
 export const SpecimensArrayStateProvider = ({ children }) => {
   const [state, dispatch] = useReducer(specimensArrayReducer, specimensArray);
-  const countObject = itemPropertyCountObject(state, SPECIES);
+  const [speciesCount, setSpeciesCount] = useState(
+    itemPropertyCountObject(state, SPECIES)
+  );
+
+  useEffect(() => {
+    setSpeciesCount(itemPropertyCountObject(state, SPECIES));
+  }, [state]);
+
   return (
     <SpecimensArrayContext.Provider value={state}>
       <SpecimensArrayUpdaterContext.Provider value={dispatch}>
-        <SpecimensArraySpeciesCountContext.Provider value={countObject}>
+        <SpecimensArraySpeciesCountContext.Provider value={speciesCount}>
           {children}
         </SpecimensArraySpeciesCountContext.Provider>
       </SpecimensArrayUpdaterContext.Provider>

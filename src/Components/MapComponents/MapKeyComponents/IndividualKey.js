@@ -16,6 +16,7 @@ import {
   handleHover,
   selectOrDeselectFN,
 } from "../../../HelperFunctions/MapComponent/MapKeyComponents";
+import { DESELECT_ALL, SELECT_ALL } from "../../../ConstantVariableNames";
 
 export const IndividualKey = (props) => {
   const [showList, setShowList] = useState(false);
@@ -32,9 +33,15 @@ export const IndividualKey = (props) => {
     checkboxComponentContainerStyles = {},
     contextFN,
   } = props;
+  const checkboxListArr = Object.keys(checkboxState);
+
   const clickHandler = (e) => {
     setShowList(!showList);
   };
+
+  const selectAllText = selectOrDeselectFN(checkboxState)
+    ? SELECT_ALL
+    : DESELECT_ALL;
 
   return (
     <CheckboxListContainer
@@ -52,13 +59,16 @@ export const IndividualKey = (props) => {
       </Box>
 
       <Collapse in={showList}>
-        {handleSelectAll && (
-          <Button onClick={handleSelectAll(checkboxState)}>
-            {selectOrDeselectFN(checkboxState) ? "Select All" : "Deselect All"}
+        {/* NOTE: some individual keys may not require a select all / deselect all function 
+            which is the reason for the handleSelectAll boolean short circuit
+        */}
+        {handleSelectAll && checkboxListArr.length >= 3 && (
+          <Button onClick={handleSelectAll({ selectAllText })}>
+            {selectAllText}
           </Button>
         )}
         <CheckBoxList
-          arr={Object.keys(checkboxState)}
+          arr={checkboxListArr}
           state={checkboxState}
           containerEventObject={
             eventObjectArrayNames.includes(individualPropertyState)

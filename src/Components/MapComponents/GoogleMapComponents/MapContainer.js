@@ -7,6 +7,7 @@ import { speciesIconColorObjectFN } from "../../../HelperFunctions/MapComponent/
 import { MapLegendStateProvider } from "../MapStateComponents/MapLegendStateProvider";
 import { SpecimensArrayStateProvider } from "../MapStateComponents/SpecimensArrayStateProvider";
 import { InfoWindowStateProvider } from "../MapStateComponents/InfoWindowStateProvider";
+import { MapLegendFieldsCount } from "../MapStateComponents/MapLegendFieldsCount";
 
 const speciesIconColorObject = speciesIconColorObjectFN(
   specimensArray,
@@ -27,16 +28,18 @@ export const MapContainer = () => {
   return (
     <Box sx={mapContainerStyles}>
       <SpecimensArrayStateProvider>
-        <MapLegendStateProvider>
-          <InfoWindowStateProvider>
-            <GoogleMapComponent
-              speciesIconColorObject={speciesIconColorObject}
-              handleMarkerClick={handleMarkerClick}
-              currentItem={currentItem}
-              handleCloseInfoWindowClick={handleCloseInfoWindowClick}
-            />
-          </InfoWindowStateProvider>
-        </MapLegendStateProvider>
+        <MapLegendFieldsCount>
+          <MapLegendStateProvider>
+            <InfoWindowStateProvider>
+              <GoogleMapComponent
+                speciesIconColorObject={speciesIconColorObject}
+                handleMarkerClick={handleMarkerClick}
+                currentItem={currentItem}
+                handleCloseInfoWindowClick={handleCloseInfoWindowClick}
+              />
+            </InfoWindowStateProvider>
+          </MapLegendStateProvider>
+        </MapLegendFieldsCount>
       </SpecimensArrayStateProvider>
     </Box>
   );
