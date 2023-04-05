@@ -84,3 +84,30 @@ export const itemPropertyCountObject = (arr = [], propertyToCount) => {
 
 // array to determine which IndividualKey Components to use itemPropertyCountObject
 export const keysToCountArray = [SPECIES, DATES];
+
+// This will serve as the formatted Object created from anthroData.json
+// --> & will be the central data object Application wide
+// --> There are some properties in the json object that require functionality such as
+// --> regular expressions.  It will be easier to handle this on load so that the overall
+// --> specimens array will stay unchanged throughout runtime
+export const specimensArrayFormatter = (arr) => {
+  const specimensArray = [...arr];
+
+  const regex = /<a[^>]*>(?<textBetween>[^<]+)<\/a>/gi;
+
+  const imageAttributesArray = (string) => {
+    return string.matchAll(regex);
+  };
+
+  specimensArray.forEach((item) => {
+    item.imageAttributesArray = [];
+    if (typeof item.linksToPhotos[2] === "string") {
+      const regexMatches = imageAttributesArray(item.linksToPhotos[2]);
+      for (const match of regexMatches) {
+        item.imageAttributesArray.push(match.groups.textBetween);
+      }
+    }
+  });
+
+  return specimensArray;
+};

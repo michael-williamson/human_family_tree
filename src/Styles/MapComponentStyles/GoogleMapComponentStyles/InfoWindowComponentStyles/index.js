@@ -96,3 +96,11 @@ export const individualFieldContainerStyle = {
   gridTemplateRows: "2",
   justifyItems: "center",
 };
+
+export const imageAttributionLabelStyles = {
+  color: (theme) => theme.palette.primary.main,
+};
+
+export const imageAttributionLinkStyles = {
+  color: "#fff",
+};

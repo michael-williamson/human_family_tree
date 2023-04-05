@@ -10,7 +10,10 @@ import {
   UPDATING_INDIVIDUAL,
 } from "../../../ConstantVariableNames";
 
-import { itemPropertyCountObject } from "../../../HelperFunctions/MapComponent/MapKeyComponents";
+import {
+  itemPropertyCountObject,
+  specimensArrayFormatter,
+} from "../../../HelperFunctions/MapComponent/MapKeyComponents";
 
 const SpecimensArrayContext = React.createContext();
 const SpecimensArrayUpdaterContext = React.createContext();
@@ -23,6 +26,8 @@ export const useSpecimensArrayContextUpdater = () =>
 
 export const useSpecimensArrayCountContext = () =>
   useContext(SpecimensArraySpeciesCountContext);
+
+const formattedSpecimensArray = specimensArrayFormatter(specimensArray);
 
 const speciesUpdater = (state, mapLegendState, arr = [], individualBoolean) => {
   // this function will run when the UPDATING_INDIVIDUAL message is received in the specimensArrayReducer.
@@ -71,7 +76,7 @@ const specimensArrayReducer = (
 ) => {
   switch (type) {
     case SELECT_ALL:
-      return [...specimensArray];
+      return [...formattedSpecimensArray];
     case DESELECT_ALL:
       return [];
     case UPDATING_INDIVIDUAL:
@@ -82,7 +87,10 @@ const specimensArrayReducer = (
 };
 
 export const SpecimensArrayStateProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(specimensArrayReducer, specimensArray);
+  const [state, dispatch] = useReducer(
+    specimensArrayReducer,
+    formattedSpecimensArray
+  );
   const [speciesCount, setSpeciesCount] = useState(
     itemPropertyCountObject(state, SPECIES)
   );

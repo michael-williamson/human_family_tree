@@ -1,7 +1,5 @@
 import React from "react";
-import { TextComponent } from "../../../../ReusableComponents/TextComponent";
 
-export const InfoFieldText = (props) => {
-  const { text, styles } = props;
-  return <TextComponent text={text} styles={styles} />;
+export const InfoFieldText = ({ styles, children }) => {
+  return <>{children}</>;
 };

@@ -6,7 +6,7 @@ export const CheckBoxListTitle = (props) => {
   const { titleText, titleTextStyles, IconComponent } = props;
   return (
     <Box>
-      <TextComponent styles={titleTextStyles} text={titleText} />
+      <TextComponent styles={titleTextStyles}>{titleText}</TextComponent>
       {IconComponent}
     </Box>
   );

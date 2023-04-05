@@ -1,7 +1,6 @@
 import React from "react";
-import { TextComponent } from "../../../../ReusableComponents/TextComponent";
+import { Box } from "@mui/system";
 
-export const InfoFieldLabel = (props) => {
-  const { text, styles } = props;
-  return <TextComponent text={`${text}:`} styles={styles} />;
+export const InfoFieldLabel = ({ styles, children }) => {
+  return <Box sx={styles}>{children}</Box>;
 };

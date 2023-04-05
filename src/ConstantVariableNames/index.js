@@ -6,6 +6,7 @@ const CITY = "city";
 const COUNTRY = "country";
 const CONTINENT = "continent";
 const DATE = "date";
+const LINK_TO_INFO = "linkToInfo";
 
 // event constants
 const MOUSE_ENTER = "mouseenter";
@@ -87,4 +88,5 @@ export {
   PROP_NAME,
   ITEM,
   STATE_PROP_NAME,
+  LINK_TO_INFO,
 };

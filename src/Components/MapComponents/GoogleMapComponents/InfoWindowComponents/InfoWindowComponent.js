@@ -1,7 +1,7 @@
 import React from "react";
 // import { Link } from "react-router-dom";
 import { Box } from "@mui/system";
-import { CardMedia } from "@mui/material";
+import { CardMedia, Link } from "@mui/material";
 import { InfoWindow } from "@react-google-maps/api";
 import { TextComponent } from "../../../ReusableComponents/TextComponent";
 import {
@@ -13,11 +13,11 @@ import {
   infoWindowTitleText,
   infoWindowImageStyles,
   descriptionLabelStyle,
-  descriptionTextStyle,
   individualFieldContainerStyle,
+  imageAttributionLabelStyles,
+  imageAttributionLinkStyles,
 } from "../../../../Styles/MapComponentStyles/GoogleMapComponentStyles/InfoWindowComponentStyles";
-import { InfoFieldLabel } from "./IndividualInfoWindowComponents/InfoFieldLabel";
-import { InfoFieldText } from "./IndividualInfoWindowComponents/InfoFieldText";
+
 import {
   useInfoWindowContext,
   useInfoWindowContextUpdater,
@@ -28,6 +28,8 @@ import {
   windowsWithParagraphs,
   styleExaminer,
 } from "../../../../HelperFunctions/MapComponent/GoogleMapsComponent/InfoWindowComponents";
+import { InfoWindowFieldComponent } from "./IndividualInfoWindowComponents/InfoWindowFieldComponent";
+import { ImageAttributionComponent } from "../../../ReusableComponents/ImageAttributionComponent";
 
 export const InfoWindowComponent = (props) => {
   const { item: itemObject, typeOfMarker } = useInfoWindowContext();
@@ -36,6 +38,8 @@ export const InfoWindowComponent = (props) => {
   if (Object.keys(itemObject).length <= 0) return null;
 
   const labelObject = typeOfMarkersObject[typeOfMarker];
+
+  const [author = "", license = ""] = itemObject.imageAttributesArray;
 
   // examineStyles & styleExaminer allow dynamic styling ,  & this case in particular
   // deals with paragraph style text & whether or not to use whiteSpace: "nowrap" or
@@ -52,7 +56,9 @@ export const InfoWindowComponent = (props) => {
         }
       >
         <Box sx={infoWindowContainerStyles}>
-          <TextComponent text={itemObject.name} styles={infoWindowTitleText} />
+          <TextComponent styles={infoWindowTitleText}>
+            {itemObject.name}
+          </TextComponent>
           <CardMedia
             component="img"
             // some JSON files have larger / smaller images in separate indexes
@@ -62,6 +68,12 @@ export const InfoWindowComponent = (props) => {
                 : itemObject.linksToPhotos[0]
             }
             sx={infoWindowImageStyles}
+          />
+          <ImageAttributionComponent
+            author={author}
+            license={license}
+            labelStyles={imageAttributionLabelStyles}
+            linkStyles={imageAttributionLinkStyles}
           />
           {Object.keys(labelObject).map((item) => (
             <Box
@@ -76,9 +88,9 @@ export const InfoWindowComponent = (props) => {
                   : infoWindowIndividualFieldsContainer
               }
             >
-              <InfoFieldLabel
-                text={item}
-                styles={
+              <InfoWindowFieldComponent
+                label={`${item}:`}
+                labelStyles={
                   examineStyles
                     ? styleExaminer(
                         item,
@@ -87,21 +99,34 @@ export const InfoWindowComponent = (props) => {
                       )
                     : infoWindowLabelFieldStyles
                 }
-              />
-              <InfoFieldText
-                text={itemObject[labelObject[item]]}
-                styles={
+                fieldText={itemObject[labelObject[item]]}
+                fieldTextStyles={
                   examineStyles
                     ? styleExaminer(
                         item,
-                        infoWindowTextFieldStyles,
-                        descriptionTextStyle
+                        infoWindowLabelFieldStyles,
+                        descriptionLabelStyle
                       )
                     : infoWindowTextFieldStyles
                 }
               />
             </Box>
           ))}
+          <InfoWindowFieldComponent
+            label={"Link to More Info:"}
+            labelStyles={infoWindowLabelFieldStyles}
+            fieldText={
+              <Link
+                component="a"
+                href={itemObject.linkToInfo}
+                sx={infoWindowTextFieldStyles}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Click Here
+              </Link>
+            }
+          />
         </Box>
       </InfoWindow>
     </Box>
