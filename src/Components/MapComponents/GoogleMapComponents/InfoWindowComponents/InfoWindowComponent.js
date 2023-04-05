@@ -39,7 +39,14 @@ export const InfoWindowComponent = (props) => {
 
   const labelObject = typeOfMarkersObject[typeOfMarker];
 
-  const [author = "", license = ""] = itemObject.imageAttributesArray;
+  let author, license;
+
+  if (itemObject.attributesArray) {
+    if (itemObject.attributesArray.length === 2) {
+      author = itemObject.attributesArray[0];
+      license = itemObject.attributesArray[1];
+    }
+  }
 
   // examineStyles & styleExaminer allow dynamic styling ,  & this case in particular
   // deals with paragraph style text & whether or not to use whiteSpace: "nowrap" or
