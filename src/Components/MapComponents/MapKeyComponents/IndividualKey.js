@@ -62,11 +62,11 @@ export const IndividualKey = (props) => {
         {/* NOTE: some individual keys may not require a select all / deselect all function 
             which is the reason for the handleSelectAll boolean short circuit
         */}
-        {handleSelectAll && checkboxListArr.length >= 3 && (
+        {/* {handleSelectAll && checkboxListArr.length >= 3 && (
           <Button onClick={handleSelectAll({ selectAllText })}>
             {selectAllText}
           </Button>
-        )}
+        )} */}
         <CheckBoxList
           arr={checkboxListArr}
           state={checkboxState}

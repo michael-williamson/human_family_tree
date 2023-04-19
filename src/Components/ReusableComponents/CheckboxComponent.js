@@ -26,11 +26,12 @@ export const CheckboxComponent = (props) => {
       <FormControlLabel
         sx={{ ...formControlStyles }}
         // ability to keep a count of items related to checkbox, return count or 0 if no items exist
-        label={
-          countObject
-            ? `${label} (${countObject[label] > 0 ? countObject[label] : 0})`
-            : label
-        }
+        // label={
+        //   countObject
+        //     ? `${label} (${countObject[label] > 0 ? countObject[label] : 0})`
+        //     : label
+        // }
+        label={label}
         checked={checked}
         onChange={handleChange(label)}
         control={<Checkbox sx={{ ...checkboxStyles }} />}

@@ -26,6 +26,7 @@ const POINTS_OF_INTEREST = "points of interest";
 const POINTS_OF_INTEREST_CAPITALIZED = "Points of Interest";
 const EVENT_NAME = "eventName";
 const ENTRY_EXIT_POINTS = "entryExitPoints";
+const ENTRY_EXIT_POINTS_TITLE = "Entry & Exit Points";
 
 // info window constants
 const CLOSE_INFO_WINDOW = "close info window";
@@ -40,6 +41,7 @@ const DESCRIPTION = "description";
 
 // constants for managing state
 const ADD = "add";
+const ADD_INDIVIDUAL = "add individual";
 const SUBTRACT = "subtract";
 const ACTIVE_FIELD = "active field";
 const ACTIVE_KEY = "active key";
@@ -50,6 +52,20 @@ const PROP_NAME = "propName";
 const INDIV_PROP_NAME = "indivPropName";
 
 let STATE_PROP_NAME;
+
+// relative url / api routes
+const SPECIMENS_ARRAY = "specimensArray";
+const SPECIMENS_BY_DATE = "specimensByDate";
+const SPECIMENS_BY_SPECIES = "specimensBySpecies";
+const SPECIMENS_BY_ID = "specimensById";
+const EVENT_ARRAY = "events";
+const OVERLAY_ARRAY = "overlays";
+const ENTRY_EXIT_POINTS_ARRAY = "entryExitPoints";
+
+// remote server constants
+const REMOTE_SERVER_BASE_URL =
+  "https://human-family-tree-server.herokuapp.com/";
+const LOCAL_SERVER_BASE_URL = "http://localhost:5000/";
 
 export {
   DATES,
@@ -80,7 +96,9 @@ export {
   DESCRIPTION,
   EVENT_NAME,
   ENTRY_EXIT_POINTS,
+  ENTRY_EXIT_POINTS_TITLE,
   ADD,
+  ADD_INDIVIDUAL,
   SUBTRACT,
   ACTIVE_FIELD,
   ACTIVE_KEY,
@@ -89,4 +107,13 @@ export {
   ITEM,
   STATE_PROP_NAME,
   LINK_TO_INFO,
+  REMOTE_SERVER_BASE_URL,
+  LOCAL_SERVER_BASE_URL,
+  SPECIMENS_ARRAY,
+  SPECIMENS_BY_DATE,
+  SPECIMENS_BY_SPECIES,
+  SPECIMENS_BY_ID,
+  EVENT_ARRAY,
+  OVERLAY_ARRAY,
+  ENTRY_EXIT_POINTS_ARRAY,
 };

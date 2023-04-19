@@ -15,6 +15,8 @@ import {
 import specimensArray from "../../../Data/anthroData.json";
 
 export const MapLegendFieldsCountContext = React.createContext();
+export const MapLegendSpeciesCountContext = React.createContext();
+export const MapLegendDatesCountContext = React.createContext();
 export const MapLegendFieldsCountUpdater = React.createContext();
 export const SynchronizedDataObjectContext = React.createContext();
 
@@ -24,6 +26,14 @@ export const loadedMapKeyComparison = mapKeyComparison(synchronizedDataObject);
 export function useMapLegendFieldsCount() {
   return useContext(MapLegendFieldsCountContext);
 }
+
+export const useMapLegendSpeciesCount = () => {
+  return useContext(MapLegendSpeciesCountContext);
+};
+
+export const useMapLegendDatesCount = () => {
+  return useContext(MapLegendDatesCountContext);
+};
 
 export function useMapLegendFieldsCountUpdater() {
   return useContext(MapLegendFieldsCountUpdater);
@@ -113,7 +123,6 @@ export const MapLegendFieldsCount = ({ children }) => {
     mapLegendFieldsCountReducer,
     createCountObject(synchronizedDataObject, [SPECIES, DATES])
   );
-  // const [synchronizedDataObject] = useState(synchronizedDataObject);
   return (
     <MapLegendFieldsCountContext.Provider value={fieldsCountObject}>
       <MapLegendFieldsCountUpdater.Provider value={fieldsCountDispatch}>

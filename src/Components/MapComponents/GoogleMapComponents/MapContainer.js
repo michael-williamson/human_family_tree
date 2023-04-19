@@ -2,17 +2,11 @@ import React, { useState } from "react";
 import { Box } from "@mui/system";
 import { GoogleMapComponent } from "./GoogleMapComponent";
 import { mapContainerStyles } from "../../../Styles/MapComponentStyles/MapContainerStyles";
-import specimensArray from "../../../Data/anthroData.json";
-import { speciesIconColorObjectFN } from "../../../HelperFunctions/MapComponent/GoogleMapsComponent/MarkerComponents";
 import { MapLegendStateProvider } from "../MapStateComponents/MapLegendStateProvider";
-import { SpecimensArrayStateProvider } from "../MapStateComponents/SpecimensArrayStateProvider";
 import { InfoWindowStateProvider } from "../MapStateComponents/InfoWindowStateProvider";
 import { MapLegendFieldsCount } from "../MapStateComponents/MapLegendFieldsCount";
-
-const speciesIconColorObject = speciesIconColorObjectFN(
-  specimensArray,
-  "species"
-);
+import { HTTPRequestStateProvider } from "../MapStateComponents/HTTPRequestStateProvider";
+import { MapPopulationStateContext } from "../MapStateComponents/MapPopulationStateContext";
 
 export const MapContainer = () => {
   const [currentItem, setCurrentItem] = useState({});
@@ -27,20 +21,21 @@ export const MapContainer = () => {
 
   return (
     <Box sx={mapContainerStyles}>
-      <SpecimensArrayStateProvider>
-        <MapLegendFieldsCount>
+      <MapPopulationStateContext>
+        <HTTPRequestStateProvider>
           <MapLegendStateProvider>
-            <InfoWindowStateProvider>
-              <GoogleMapComponent
-                speciesIconColorObject={speciesIconColorObject}
-                handleMarkerClick={handleMarkerClick}
-                currentItem={currentItem}
-                handleCloseInfoWindowClick={handleCloseInfoWindowClick}
-              />
-            </InfoWindowStateProvider>
+            <MapLegendFieldsCount>
+              <InfoWindowStateProvider>
+                <GoogleMapComponent
+                  handleMarkerClick={handleMarkerClick}
+                  currentItem={currentItem}
+                  handleCloseInfoWindowClick={handleCloseInfoWindowClick}
+                />
+              </InfoWindowStateProvider>
+            </MapLegendFieldsCount>
           </MapLegendStateProvider>
-        </MapLegendFieldsCount>
-      </SpecimensArrayStateProvider>
+        </HTTPRequestStateProvider>
+      </MapPopulationStateContext>
     </Box>
   );
 };

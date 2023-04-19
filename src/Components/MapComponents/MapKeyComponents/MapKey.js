@@ -26,6 +26,8 @@ import {
   UPDATING_INDIVIDUAL,
   POINTS_OF_INTEREST_CAPITALIZED,
   POINTS_OF_INTEREST,
+  ENTRY_EXIT_POINTS,
+  ENTRY_EXIT_POINTS_TITLE,
 } from "../../../ConstantVariableNames";
 import { SearchComponent } from "./SearchComponent";
 import specimensArray from "../../../Data/anthroData.json";
@@ -39,10 +41,10 @@ export const MapKey = ({ hideMapKey, setUpdatedProperty }) => {
   const mapLegendFieldContextUpdater = useMapLegendFieldContextUpdater();
   const countObject = useMapLegendFieldsCount();
 
-  const handleStateChange = (statePropertyName) => (item) => (e) => {
+  const handleStateChange = (propertyName) => (fieldName) => (e) => {
     const payloadMapKeyContext = {
-      statePropertyName,
-      item,
+      propertyName,
+      fieldName,
     };
 
     mapLegendContextUpdater({
@@ -52,12 +54,12 @@ export const MapKey = ({ hideMapKey, setUpdatedProperty }) => {
   };
 
   const handleSelectAll =
-    (statePropertyName) =>
+    (propertyName) =>
     ({ selectAllText }) =>
     () => {
       mapLegendContextUpdater({
         type: selectAllText,
-        payload: { statePropertyName, item: null },
+        payload: { propertyName, item: null },
       });
     };
 
@@ -84,11 +86,11 @@ export const MapKey = ({ hideMapKey, setUpdatedProperty }) => {
     //   name: EVENTS,
     //   additionalProps: {},
     // },
-    {
-      titleText: POINTS_OF_INTEREST_CAPITALIZED,
-      name: POINTS_OF_INTEREST,
-      additionalProps: {},
-    },
+    // {
+    //   titleText: ENTRY_EXIT_POINTS_TITLE,
+    //   name: ENTRY_EXIT_POINTS,
+    //   additionalProps: {},
+    // },
   ];
 
   const mapKeyContainerStylesObject = hideMapKey

@@ -4,7 +4,6 @@ import { MarkerComponent } from "./MarkerComponent";
 
 export const MarkerList = (props) => {
   const {
-    // handleMarkerClick,
     arr = [],
     labelObject,
     iconObject = {},
@@ -27,7 +26,7 @@ export const MarkerList = (props) => {
           key={`${item.name}${Math.random() * 1000}`}
           typeOfMarker={typeOfMarker}
           lat={item.gpsCoor.lat}
-          lng={item.gpsCoor.long}
+          lng={item.gpsCoor?.lng || item.gpsCoor.long}
           labelObject={
             labelObject ? labelObjectUpdater(labelObject, item.name) : undefined
           }

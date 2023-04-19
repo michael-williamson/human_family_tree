@@ -1,4 +1,20 @@
-import { DATES, SPECIES } from "../../../ConstantVariableNames";
+import {
+  ADD,
+  DATES,
+  ENTRY_EXIT_POINTS,
+  ENTRY_EXIT_POINTS_ARRAY,
+  EVENTS,
+  EVENT_ARRAY,
+  LOCAL_SERVER_BASE_URL,
+  OVERLAYS,
+  OVERLAY_ARRAY,
+  SELECT_ALL,
+  SPECIES,
+  SPECIMENS_ARRAY,
+  SPECIMENS_BY_DATE,
+  SPECIMENS_BY_ID,
+  SPECIMENS_BY_SPECIES,
+} from "../../../ConstantVariableNames";
 import { datesCategoryObj } from "../../General";
 import { v4 as uuidv4 } from "uuid";
 
@@ -123,22 +139,6 @@ const idAssignment = (arr) => {
     [SPECIES]: speciesObject,
   };
 
-  // workingObject.updateDateObject = function (species, type) {
-  //   const obj = {};
-  //   const arr = this.speciesObject[species]["itemsArr"];
-  //   arr.forEach((item) => (obj[item] ? obj[item]++ : (obj[item] = 1)));
-  //   this.datesObject.updateCount(obj, type);
-  // };
-
-  // workingObject.datesObject.updateCount = function (obj, type) {
-  //   const arr = Object.keys(obj);
-  //   arr.forEach((item) => {
-  //     type === ADD
-  //       ? (this[item].itemCount = this[item].itemCount + obj[item])
-  //       : (this[item].itemCount = this[item].itemCount - obj[item]);
-  //   });
-  // };
-
   return workingObject;
 };
 
@@ -182,3 +182,56 @@ export const mapKeyComparison =
   };
 
 export const selectDeselectCountHandler = () => {};
+
+const matchingKeyValues = {
+  [DATES]: [SPECIMENS_BY_DATE],
+  [SPECIES]: [SPECIMENS_BY_SPECIES],
+  [EVENTS]: [EVENT_ARRAY],
+  [OVERLAYS]: [OVERLAY_ARRAY],
+  [ENTRY_EXIT_POINTS]: [ENTRY_EXIT_POINTS_ARRAY],
+};
+
+const apiAddressesObject = {
+  [SPECIES]: "api/specimensArray",
+  [SPECIMENS_BY_DATE]: "api/specimensByDate",
+  [SPECIMENS_BY_SPECIES]: "api/specimensBySpecies",
+  [SPECIMENS_BY_ID]: "api/specimensById",
+  [EVENTS]: "api/events",
+  [OVERLAYS]: "api/overlays",
+  [ENTRY_EXIT_POINTS]: "api/entryExitPoints",
+};
+
+export const devApiAddressesObject = {
+  [SPECIMENS_BY_SPECIES]: "http://localhost:5000/api/specimensBySpecies",
+  [SPECIMENS_BY_DATE]: "http://localhost:5000/api/specimensByDate",
+};
+
+export const selectAllAddressesObject = {
+  [SPECIES]: "http://localhost:5000/api/specimensArray",
+  [SPECIMENS_BY_DATE]: "http://localhost:5000/api/specimensByDate",
+  [SPECIMENS_BY_SPECIES]: "http://localhost:5000/api/specimensBySpecies",
+  [EVENTS]: "http://localhost:5000/api/events",
+  [OVERLAYS]: "http://localhost:5000/api/overlays",
+  [ENTRY_EXIT_POINTS]: "http://localhost:5000/api/entryExitPoints",
+};
+
+export const action = ({ message, propertyName, fieldName }) => {
+  switch (message) {
+    case SELECT_ALL:
+      return apiAddressesObject[propertyName];
+    case ADD:
+      return httpRequestParamHandler({ propertyName, fieldName });
+    default:
+      break;
+  }
+};
+
+export const httpRequestParamHandler = ({ propertyName, fieldName }) => {
+  const propName = matchingKeyValues[propertyName];
+  if (fieldName) {
+    const urlString = devApiAddressesObject[propName];
+    return `${urlString}/${fieldName}`;
+  }
+
+  return apiAddressesObject[propertyName];
+};

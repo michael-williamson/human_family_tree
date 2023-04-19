@@ -13,12 +13,8 @@ import { InfoWindowComponentContainer } from "./InfoWindowComponents/InfoWindowC
 import {
   useMapLegendContext,
   useMapLegendFieldContext,
-  useMapLegendIconColorObjectContext,
 } from "../MapStateComponents/MapLegendStateProvider";
-import { useSpecimensArrayContext } from "../MapStateComponents/SpecimensArrayStateProvider";
-import overlayDataArray from "../../../Data/overlayData.json";
-import entryExitPoints from "../../../Data/entryExitPoints.json";
-import eventsList from "../../../Data/eventsList.json";
+
 import { comparisonFN } from "../../../HelperFunctions/MapComponent/GoogleMapsComponent/MarkerComponents";
 import {
   ENTRY_EXIT_POINTS,
@@ -44,6 +40,12 @@ import { MapKey } from "../MapKeyComponents/MapKey";
 import { HideMapKeyControl } from "./CustomControls/HideMapKeyControl";
 import { showMapKeyButtonStyles } from "../../../Styles/MapComponentStyles/MapContainerStyles";
 import { LatLngPosition } from "./InfoBoxComponents/LatLngPosition";
+import {
+  useEntryExitPointsArrayContext,
+  useEventArrayContext,
+  useOverlayArrayContext,
+  useSpecimensArrayContext,
+} from "../MapStateComponents/MapPopulationStateContext";
 
 const containerStyle = {
   width: "100%",
@@ -79,6 +81,10 @@ const options = {
   },
 };
 
+console.log(
+  "there is a temporary fix for gps coordinates in the MarkerList component I will need to fix this!!! : console log message line 85 google maps component"
+);
+
 export const GoogleMapComponent = (props) => {
   const [libraries] = useState(["drawing"]);
   const { isLoaded, loadError } = useLoadScript({
@@ -88,11 +94,13 @@ export const GoogleMapComponent = (props) => {
   const [mapInstance, setMapInstance] = useState(null);
   const [hideMapKey, setHideMapKey] = useState(false);
   const mapLegendContext = useMapLegendContext();
-  const specimensArr = useSpecimensArrayContext();
   const mapLegendField = useMapLegendFieldContext();
-  const speciesIconColorObject = useMapLegendIconColorObjectContext();
   const infoWindowContext = useInfoWindowContext();
   const infoWindowContextUpdater = useInfoWindowContextUpdater();
+  const specimensArrayContext = useSpecimensArrayContext();
+  const eventArrayContext = useEventArrayContext();
+  const overlayArrayContext = useOverlayArrayContext();
+  const entryExitPointsArrayContext = useEntryExitPointsArrayContext();
   const [latLngObject, setLatLngObject] = useState({ lat: 0, lng: 0 });
   const [rightClick, setRightClick] = useState(false);
 
@@ -144,9 +152,8 @@ export const GoogleMapComponent = (props) => {
       />
       {PolygonListArrayFN(mapLegendContext.overlays, infoWindowContextUpdater)}
       <MarkerList
-        speciesIconColorObject={speciesIconColorObject}
         handleMarkerClick={handleMarkerClick}
-        arr={specimensArr}
+        arr={specimensArrayContext}
         typeOfMarker={SPECIES}
         // function used to highlight Markers corresponding with map key field being hovered on
         comparisonFN={comparisonFN(true, SPECIES, mapLegendField)}
@@ -161,7 +168,7 @@ export const GoogleMapComponent = (props) => {
         }}
       />
       <MarkerList
-        arr={overlayDataArray}
+        arr={overlayArrayContext}
         typeOfMarker={OVERLAYS}
         labelObject={{
           color: theme.palette.primary.main,
@@ -177,7 +184,7 @@ export const GoogleMapComponent = (props) => {
         }}
       />
       <MarkerList
-        arr={entryExitPoints}
+        arr={entryExitPointsArrayContext}
         typeOfMarker={ENTRY_EXIT_POINTS}
         iconObject={{
           url: footPrintBlueIcon,
@@ -185,7 +192,7 @@ export const GoogleMapComponent = (props) => {
         }}
       />
       <MarkerList
-        arr={eventsList}
+        arr={eventArrayContext}
         typeOfMarker={EVENTS}
         iconObject={{
           url: volcanoIcon,

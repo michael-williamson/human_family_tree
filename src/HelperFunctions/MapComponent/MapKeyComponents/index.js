@@ -111,3 +111,16 @@ export const specimensArrayFormatter = (arr) => {
 
   return specimensArray;
 };
+
+export const getRequestsURLS = ({ param, propertyName }) => {
+  const obj = {
+    specimensArray:
+      "https://human-family-tree-server.herokuapp.com/api/specimensArray",
+    specimensByDate: `"https://human-family-tree-server.herokuapp.com/api/specimensByDate/${param}"`,
+    specimensBySpecies:
+      "https://human-family-tree-server.herokuapp.com/api/specimensBySpecies",
+    specimensById:
+      "https://human-family-tree-server.herokuapp.com/api/specimensById",
+  };
+  return obj[propertyName];
+};

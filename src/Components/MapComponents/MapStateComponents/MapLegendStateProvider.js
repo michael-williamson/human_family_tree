@@ -1,5 +1,4 @@
 import React, { useReducer, useContext, useState, useEffect } from "react";
-import { speciesIconColorObjectFN } from "../../../HelperFunctions/MapComponent/GoogleMapsComponent/MarkerComponents";
 import {
   speciesKeyObject,
   datesKeyObject,
@@ -8,7 +7,6 @@ import {
   poiKeyObject,
 } from "../../../HelperFunctions/MapComponent/MapContainerComponent/StateMaintenanceFN";
 
-import specimensArray from "../../../Data/anthroData.json";
 import {
   DATES,
   DESELECT_ALL,
@@ -17,15 +15,12 @@ import {
   SPECIES,
   SUBTRACT,
   ADD,
-  UPDATING_INDIVIDUAL,
   ACTIVE_FIELD,
   ACTIVE_KEY,
 } from "../../../ConstantVariableNames";
-import { useSpecimensArrayContextUpdater } from "../MapStateComponents/SpecimensArrayStateProvider";
-import {
-  useMapLegendFieldsCountUpdater,
-  useSynchronizedDataObjectContext,
-} from "../MapStateComponents/MapLegendFieldsCount";
+import { useMapLegendFieldsCountUpdater } from "../MapStateComponents/MapLegendFieldsCount";
+import { useNetworkRequestDispatch } from "./HTTPRequestStateProvider";
+import { useArrayDispatchContext } from "./MapPopulationStateContext";
 
 // The Map Legend Dispatch function is located in the MapKey.js Component,  if it is being updated it is happening there
 
@@ -34,53 +29,8 @@ export const MapLegendContextUpdater = React.createContext();
 
 export const MapLegendFieldHoverContext = React.createContext();
 export const MapLegendFieldHoverContextUpdater = React.createContext();
-export const MapLegendIconColorObject = React.createContext();
 
 export const relatedPropertiesArray = [SPECIES, DATES];
-
-function mapLegendReducer(
-  state,
-  { type, payload: { statePropertyName, item } }
-) {
-  if (type === SELECT_ALL || type === DESELECT_ALL) {
-    const bool = type === SELECT_ALL;
-    const obj = {};
-    Object.keys(state[statePropertyName]).forEach(
-      (eachProp) => (obj[eachProp] = bool)
-    );
-
-    return {
-      ...state,
-      [statePropertyName]: obj,
-      [ACTIVE_FIELD]: null,
-      [ACTIVE_KEY]: statePropertyName,
-    };
-  }
-
-  // this is the case where an individual field is selected or deselected;  the values being passed:
-  // -->  the statePropertyName e.g. species,dates,overlay, etc... ;  the itemProperty name which tells
-  // --> the exact item to update ;
-
-  // we grab the current value for this particular item which is a boolean
-  //--> creating the stateUpdateObject is where we adjust the boolean value accordingly
-  const bool = state[statePropertyName][item];
-
-  const stateUpdateObject = {
-    ...state[statePropertyName],
-    [item]: !bool,
-  };
-
-  return {
-    ...state,
-    [statePropertyName]: stateUpdateObject,
-    [ACTIVE_KEY]: statePropertyName,
-    [ACTIVE_FIELD]: relatedPropertiesArray.find(
-      (arrayItem) => arrayItem === statePropertyName
-    )
-      ? item
-      : null,
-  };
-}
 
 const mapLegendInitialState = {
   species: speciesKeyObject(),
@@ -91,8 +41,6 @@ const mapLegendInitialState = {
   [ACTIVE_KEY]: null,
   [ACTIVE_FIELD]: null,
 };
-
-const colorObject = speciesIconColorObjectFN(specimensArray, "species");
 
 export function useMapLegendContext() {
   return useContext(MapLegendContext);
@@ -110,10 +58,6 @@ export function useMapLegendFieldContextUpdater() {
   return useContext(MapLegendFieldHoverContextUpdater);
 }
 
-export function useMapLegendIconColorObjectContext() {
-  return useContext(MapLegendIconColorObject);
-}
-
 export const MapLegendStateProvider = ({ children }) => {
   const [mapLegendState, mapLegendDispatch] = useReducer(
     mapLegendReducer,
@@ -121,9 +65,9 @@ export const MapLegendStateProvider = ({ children }) => {
   );
   const [currentField, setCurrentField] = useState("");
 
-  const specimenArrayStateUpdater = useSpecimensArrayContextUpdater();
   const fieldsCountUpdater = useMapLegendFieldsCountUpdater();
-  const synchronizedDataObject = useSynchronizedDataObjectContext();
+  const networkRequestDispatch = useNetworkRequestDispatch();
+  const arrayDispatch = useArrayDispatchContext();
 
   useEffect(() => {
     // The constants (ACTIVE_KEY,ACTIVE_FIELD) relates to the actual property name on the mapLegendState
@@ -153,63 +97,114 @@ export const MapLegendStateProvider = ({ children }) => {
         ? SELECT_ALL
         : DESELECT_ALL;
 
-      fieldsCountUpdater({
-        type,
-        payload: {
-          statePropertyName: activeKey,
-          individualProperty: null,
-          mapLegendState,
-          synchronizedDataObject,
-        },
-      });
-
-      specimenArrayStateUpdater({
-        type,
-        payload: {
-          mapLegendState: null,
-          arr: null,
-          individualBoolean: null,
-        },
-      });
+      // fieldsCountUpdater({
+      //   type,
+      //   payload: {
+      //     statePropertyName: activeKey,
+      //     individualProperty: null,
+      //     mapLegendState,
+      //   },
+      // });
     }
     if (mapLegendState[ACTIVE_FIELD] !== null) {
       const type = mapLegendState[activeKey][activeField] ? ADD : SUBTRACT;
-      const arr = synchronizedDataObject[activeKey][activeField]["itemsArr"];
-      fieldsCountUpdater({
-        type,
-        payload: {
-          statePropertyName: activeKey,
-          individualProperty: activeField,
-          mapLegendState,
-        },
-      });
-
-      specimenArrayStateUpdater({
-        type: UPDATING_INDIVIDUAL,
-        payload: {
-          mapLegendState,
-          arr,
-          individualBoolean: mapLegendState[activeKey][activeField],
-        },
-      });
+      // fieldsCountUpdater({
+      //   type,
+      //   payload: {
+      //     statePropertyName: activeKey,
+      //     individualProperty: activeField,
+      //     mapLegendState,
+      //   },
+      // });
     }
 
     return () => {};
-  }, [
-    mapLegendState,
-    specimenArrayStateUpdater,
-    fieldsCountUpdater,
-    synchronizedDataObject,
-  ]);
+  }, [mapLegendState, fieldsCountUpdater]);
+
+  const stateUpdateHandler = ({
+    type,
+    payload: { propertyName, fieldName },
+  }) => {
+    const bool = mapLegendState[propertyName][fieldName];
+    const message = bool ? SUBTRACT : ADD;
+    (function () {
+      switch (message) {
+        case SUBTRACT:
+          return arrayDispatch({
+            propertyName,
+            message,
+            fieldName,
+            mapLegendState,
+          });
+        case ADD:
+          return networkRequestDispatch({
+            message,
+            propertyName,
+            fieldName,
+            mapLegendState,
+          });
+        default:
+          break;
+      }
+    })();
+
+    const payload = {
+      propertyName,
+      fieldName,
+    };
+    mapLegendDispatch({ type, payload });
+  };
+
+  function mapLegendReducer(
+    state,
+    { type, payload: { propertyName, fieldName } }
+  ) {
+    if (type === SELECT_ALL || type === DESELECT_ALL) {
+      const bool = type === SELECT_ALL;
+      const obj = {};
+      Object.keys(state[propertyName]).forEach(
+        (eachProp) => (obj[eachProp] = bool)
+      );
+
+      return {
+        ...state,
+        [propertyName]: obj,
+        [ACTIVE_FIELD]: null,
+        [ACTIVE_KEY]: propertyName,
+      };
+    }
+
+    // this is the case where an individual field is selected or deselected;  the values being passed:
+    // -->  the statePropertyName e.g. species,dates,overlay, etc... ;  the itemProperty name which tells
+    // --> the exact item to update ;
+
+    // we grab the current value for this particular item which is a boolean
+    //--> creating the stateUpdateObject is where we adjust the boolean value accordingly
+    const bool = state[propertyName][fieldName];
+
+    const stateUpdateObject = {
+      ...state[propertyName],
+      [fieldName]: !bool,
+    };
+
+    return {
+      ...state,
+      [propertyName]: stateUpdateObject,
+      [ACTIVE_KEY]: propertyName,
+      [ACTIVE_FIELD]: relatedPropertiesArray.find(
+        (arrayItem) => arrayItem === propertyName
+      )
+        ? fieldName
+        : null,
+    };
+  }
 
   return (
     <MapLegendContext.Provider value={mapLegendState}>
-      <MapLegendContextUpdater.Provider value={mapLegendDispatch}>
+      <MapLegendContextUpdater.Provider value={stateUpdateHandler}>
         <MapLegendFieldHoverContext.Provider value={currentField}>
           <MapLegendFieldHoverContextUpdater.Provider value={setCurrentField}>
-            <MapLegendIconColorObject.Provider value={colorObject}>
-              {children}
-            </MapLegendIconColorObject.Provider>
+            {children}
           </MapLegendFieldHoverContextUpdater.Provider>
         </MapLegendFieldHoverContext.Provider>
       </MapLegendContextUpdater.Provider>
