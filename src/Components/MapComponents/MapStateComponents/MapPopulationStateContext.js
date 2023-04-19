@@ -10,11 +10,7 @@ import {
   SPECIES,
   SUBTRACT,
 } from "../../../ConstantVariableNames";
-import {
-  reduceArray,
-  datesPropertyObject,
-  speciesPropertyObject,
-} from "../../../HelperFunctions/MapComponent/MapStateComponents/MapPopulationStateContext";
+import { reduceArray } from "../../../HelperFunctions/MapComponent/MapStateComponents/MapPopulationStateContext";
 // This component will be responsible for maintaining all data structures associated with
 //--> populating the map with markers & other content
 
@@ -64,6 +60,10 @@ const stateReducer = (
     case DESELECT_ALL:
       return [];
     case ADD:
+      console.log([
+        ...state,
+        ...reduceArray({ arr, propertyName, mapLegendState, individual }),
+      ]);
       return [
         ...state,
         ...reduceArray({ arr, propertyName, mapLegendState, individual }),
@@ -93,7 +93,6 @@ export const MapPopulationStateContext = ({ children }) => {
             propertyName,
             arr,
             mapLegendState,
-            ...speciesPropertyObject,
           });
         case DATES:
           return specimensArrayDispatch({
@@ -102,7 +101,6 @@ export const MapPopulationStateContext = ({ children }) => {
             propertyName,
             arr,
             mapLegendState,
-            ...datesPropertyObject,
           });
         case EVENTS:
           return eventArrayDispatch({

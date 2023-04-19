@@ -8,6 +8,11 @@ import {
   ENTRY_EXIT_POINTS,
 } from "../../../../ConstantVariableNames";
 
+export const speciesDatesPropertyObject = {
+  [SPECIES]: DATES,
+  [DATES]: SPECIES,
+};
+
 export const reduceArray = ({
   arr,
   propertyName,
@@ -19,19 +24,13 @@ export const reduceArray = ({
     return arr;
   }
   if (mapLegendState) {
+    propertyName = speciesDatesPropertyObject[propertyName];
     return arr.filter(
       (item) => mapLegendState[propertyName][item[propertyName]] === true
     );
   }
+
   return arr.filter((item) => item[propertyName] !== fieldName);
-};
-
-export const speciesPropertyObject = {
-  propertyName: DATES,
-};
-
-export const datesPropertyObject = {
-  propertyName: SPECIES,
 };
 
 export const otherThanSpecimensArray = [
