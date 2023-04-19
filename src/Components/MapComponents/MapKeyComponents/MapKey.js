@@ -24,10 +24,6 @@ import {
   SORT_BY_DATES,
   OVERLAYS_CAPITALIZED,
   UPDATING_INDIVIDUAL,
-  POINTS_OF_INTEREST_CAPITALIZED,
-  POINTS_OF_INTEREST,
-  ENTRY_EXIT_POINTS,
-  ENTRY_EXIT_POINTS_TITLE,
 } from "../../../ConstantVariableNames";
 import { SearchComponent } from "./SearchComponent";
 import specimensArray from "../../../Data/anthroData.json";

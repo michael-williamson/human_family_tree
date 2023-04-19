@@ -73,7 +73,7 @@ export const MapLegendStateProvider = ({ children }) => {
     // The constants (ACTIVE_KEY,ACTIVE_FIELD) relates to the actual property name on the mapLegendState
     // --> whereas the corresponding camel case variables are the actual values on these objects
     const activeKey = mapLegendState[ACTIVE_KEY];
-    const activeField = mapLegendState[ACTIVE_FIELD];
+    // const activeField = mapLegendState[ACTIVE_FIELD];
 
     // update the specimens array only if properties contained in
     // --> relatedPropertiesArray
@@ -87,36 +87,36 @@ export const MapLegendStateProvider = ({ children }) => {
     // --> we will only continue it the updateSpecimensArray variable is true
     if (activeKey === null || !updateSpecimensArray) return;
 
-    if (
-      mapLegendState[ACTIVE_FIELD] === null &&
-      mapLegendState[ACTIVE_KEY] !== null
-    ) {
-      const type = Object.keys(mapLegendState[activeKey]).find(
-        (item) => mapLegendState[activeKey][item] === true
-      )
-        ? SELECT_ALL
-        : DESELECT_ALL;
+    // if (
+    //   mapLegendState[ACTIVE_FIELD] === null &&
+    //   mapLegendState[ACTIVE_KEY] !== null
+    // ) {
+    //   const type = Object.keys(mapLegendState[activeKey]).find(
+    //     (item) => mapLegendState[activeKey][item] === true
+    //   )
+    //     ? SELECT_ALL
+    //     : DESELECT_ALL;
 
-      // fieldsCountUpdater({
-      //   type,
-      //   payload: {
-      //     statePropertyName: activeKey,
-      //     individualProperty: null,
-      //     mapLegendState,
-      //   },
-      // });
-    }
-    if (mapLegendState[ACTIVE_FIELD] !== null) {
-      const type = mapLegendState[activeKey][activeField] ? ADD : SUBTRACT;
-      // fieldsCountUpdater({
-      //   type,
-      //   payload: {
-      //     statePropertyName: activeKey,
-      //     individualProperty: activeField,
-      //     mapLegendState,
-      //   },
-      // });
-    }
+    //   fieldsCountUpdater({
+    //     type,
+    //     payload: {
+    //       statePropertyName: activeKey,
+    //       individualProperty: null,
+    //       mapLegendState,
+    //     },
+    //   });
+    // }
+    // if (mapLegendState[ACTIVE_FIELD] !== null) {
+    //   const type = mapLegendState[activeKey][activeField] ? ADD : SUBTRACT;
+    //   fieldsCountUpdater({
+    //     type,
+    //     payload: {
+    //       statePropertyName: activeKey,
+    //       individualProperty: activeField,
+    //       mapLegendState,
+    //     },
+    //   });
+    // }
 
     return () => {};
   }, [mapLegendState, fieldsCountUpdater]);

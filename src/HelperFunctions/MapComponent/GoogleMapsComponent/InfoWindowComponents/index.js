@@ -5,7 +5,6 @@ import {
   DATE,
   ENTRY_EXIT_POINTS,
   EVENTS,
-  LINK_TO_INFO,
 } from "../../../../ConstantVariableNames";
 
 const generalPropertiesObj = {

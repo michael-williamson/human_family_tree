@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box } from "@mui/system";
-import { IconButton, Button, Collapse } from "@mui/material";
+import { IconButton, Collapse } from "@mui/material";
 import { KeyboardArrowDown } from "@mui/icons-material";
 import { CheckboxListContainer } from "../CheckBoxComponents/CheckBoxListContainer";
 import { CheckBoxListTitle } from "../CheckBoxComponents/CheckBoxListTitle";
@@ -14,9 +14,7 @@ import {
 import {
   eventObjectArrayNames,
   handleHover,
-  selectOrDeselectFN,
 } from "../../../HelperFunctions/MapComponent/MapKeyComponents";
-import { DESELECT_ALL, SELECT_ALL } from "../../../ConstantVariableNames";
 
 export const IndividualKey = (props) => {
   const [showList, setShowList] = useState(false);
@@ -25,7 +23,6 @@ export const IndividualKey = (props) => {
     titleText,
     checkboxState,
     setCheckboxState,
-    handleSelectAll = null,
     siblingElements = null,
     svgObject = null,
     individualPropertyState,
@@ -38,10 +35,6 @@ export const IndividualKey = (props) => {
   const clickHandler = (e) => {
     setShowList(!showList);
   };
-
-  const selectAllText = selectOrDeselectFN(checkboxState)
-    ? SELECT_ALL
-    : DESELECT_ALL;
 
   return (
     <CheckboxListContainer

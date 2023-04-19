@@ -1,10 +1,8 @@
-import React, { useReducer, useContext } from "react";
+import React, { useReducer, useContext, useCallback } from "react";
 import {
   ADD,
-  ADD_INDIVIDUAL,
   DATES,
   DESELECT_ALL,
-  ENTRY_EXIT_POINTS,
   EVENTS,
   OVERLAYS,
   POINTS_OF_INTEREST,
@@ -85,62 +83,57 @@ export const MapPopulationStateContext = ({ children }) => {
     stateReducer,
     []
   );
-
-  const handleStateUpdate = ({
-    propertyName,
-    message,
-    arr,
-    fieldName,
-    mapLegendState,
-  }) => {
-    console.log(propertyName, "prop name line 96");
-    switch (propertyName) {
-      case SPECIES:
-        return specimensArrayDispatch({
-          message,
-          fieldName,
-          propertyName,
-          arr,
-          mapLegendState,
-          ...speciesPropertyObject,
-        });
-      case DATES:
-        return specimensArrayDispatch({
-          message,
-          fieldName,
-          propertyName,
-          arr,
-          mapLegendState,
-          ...datesPropertyObject,
-        });
-      case EVENTS:
-        return eventArrayDispatch({
-          message,
-          fieldName,
-          propertyName,
-          arr,
-          individual: message,
-        });
-      case OVERLAYS:
-        return overlayArrayDispatch({
-          message,
-          fieldName,
-          propertyName,
-          arr,
-          individual: message,
-        });
-      case POINTS_OF_INTEREST:
-        return entryExitPointsArrayDispatch({
-          message,
-          fieldName,
-          propertyName,
-          arr,
-          individual: message,
-        });
-      default:
-        break;
-    }
-  };
+  const handleStateUpdate = useCallback(
+    ({ propertyName, message, arr, fieldName, mapLegendState }) => {
+      switch (propertyName) {
+        case SPECIES:
+          return specimensArrayDispatch({
+            message,
+            fieldName,
+            propertyName,
+            arr,
+            mapLegendState,
+            ...speciesPropertyObject,
+          });
+        case DATES:
+          return specimensArrayDispatch({
+            message,
+            fieldName,
+            propertyName,
+            arr,
+            mapLegendState,
+            ...datesPropertyObject,
+          });
+        case EVENTS:
+          return eventArrayDispatch({
+            message,
+            fieldName,
+            propertyName,
+            arr,
+            individual: message,
+          });
+        case OVERLAYS:
+          return overlayArrayDispatch({
+            message,
+            fieldName,
+            propertyName,
+            arr,
+            individual: message,
+          });
+        case POINTS_OF_INTEREST:
+          return entryExitPointsArrayDispatch({
+            message,
+            fieldName,
+            propertyName,
+            arr,
+            individual: message,
+          });
+        default:
+          break;
+      }
+    },
+    []
+  );
 
   return (
     <SpecimensArrayContext.Provider value={specimensArray}>

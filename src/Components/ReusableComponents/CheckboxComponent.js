@@ -16,7 +16,6 @@ export const CheckboxComponent = (props) => {
     checked = false,
     formControlStyles = {},
     label = "label",
-    countObject,
     handleChange,
     siblingElements = null,
   } = props;

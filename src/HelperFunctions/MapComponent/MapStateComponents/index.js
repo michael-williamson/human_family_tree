@@ -5,12 +5,10 @@ import {
   ENTRY_EXIT_POINTS_ARRAY,
   EVENTS,
   EVENT_ARRAY,
-  LOCAL_SERVER_BASE_URL,
   OVERLAYS,
   OVERLAY_ARRAY,
   SELECT_ALL,
   SPECIES,
-  SPECIMENS_ARRAY,
   SPECIMENS_BY_DATE,
   SPECIMENS_BY_ID,
   SPECIMENS_BY_SPECIES,
@@ -214,6 +212,24 @@ export const selectAllAddressesObject = {
   [OVERLAYS]: "http://localhost:5000/api/overlays",
   [ENTRY_EXIT_POINTS]: "http://localhost:5000/api/entryExitPoints",
 };
+
+export const fetchArray =
+  (axiosRef, arrayDispatchContext) =>
+  ({ message, propertyName, fieldName, mapLegendState }) => {
+    // action function found in helperfunctions folder
+    const url = action({ message, propertyName, fieldName });
+    // to update the specimens array with http requests we need to first make the request
+    // --> then call the reducer / dispatch function within the context of the Promise to
+    // --> capture the returned data & relay it to the context of the Specimens Array Context Provider
+    // -->
+    (async function () {
+      const { status, data } = await axiosRef.current.get(url);
+      if (status === 200 && Array.isArray(data)) {
+        const arr = [...data];
+        arrayDispatchContext({ message, propertyName, arr, mapLegendState });
+      }
+    })();
+  };
 
 export const action = ({ message, propertyName, fieldName }) => {
   switch (message) {
