@@ -1,7 +1,5 @@
 import React from "react";
 import { Marker } from "@react-google-maps/api";
-import { useInfoWindowContextUpdater } from "../MapStateComponents/InfoWindowStateProvider";
-import { OPEN_INFO_WINDOW } from "../../../ConstantVariableNames";
 
 export const MarkerComponent = (props) => {
   const {
@@ -14,13 +12,13 @@ export const MarkerComponent = (props) => {
     highLighted = false,
     typeOfMarker = "default",
     googleMarkerComponentProps = {},
+    clickHandler,
   } = props;
-  const infoWindowContextUpdater = useInfoWindowContextUpdater();
-  const handleClick = () =>
-    infoWindowContextUpdater({
-      type: OPEN_INFO_WINDOW,
-      payload: { typeOfMarker, item },
-    });
+
+  const handleClick = () => {
+    clickHandler({ item, typeOfMarker });
+  };
+
   return (
     <Marker
       // animation={animation && window.google.maps.Animation.DROP}

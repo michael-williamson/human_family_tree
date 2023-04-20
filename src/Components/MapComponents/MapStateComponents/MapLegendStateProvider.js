@@ -1,4 +1,4 @@
-import React, { useReducer, useContext, useState, useEffect } from "react";
+import React, { useReducer, useContext, useState } from "react";
 import {
   speciesKeyObject,
   datesKeyObject,
@@ -18,7 +18,6 @@ import {
   ACTIVE_FIELD,
   ACTIVE_KEY,
 } from "../../../ConstantVariableNames";
-import { useMapLegendFieldsCountUpdater } from "../MapStateComponents/MapLegendFieldsCount";
 import { useNetworkRequestDispatch } from "./HTTPRequestStateProvider";
 import { useArrayDispatchContext } from "./MapPopulationStateContext";
 
@@ -65,61 +64,8 @@ export const MapLegendStateProvider = ({ children }) => {
   );
   const [currentField, setCurrentField] = useState("");
 
-  const fieldsCountUpdater = useMapLegendFieldsCountUpdater();
   const networkRequestDispatch = useNetworkRequestDispatch();
   const arrayDispatch = useArrayDispatchContext();
-
-  useEffect(() => {
-    // The constants (ACTIVE_KEY,ACTIVE_FIELD) relates to the actual property name on the mapLegendState
-    // --> whereas the corresponding camel case variables are the actual values on these objects
-    const activeKey = mapLegendState[ACTIVE_KEY];
-    // const activeField = mapLegendState[ACTIVE_FIELD];
-
-    // update the specimens array only if properties contained in
-    // --> relatedPropertiesArray
-    const updateSpecimensArray = relatedPropertiesArray.find(
-      (item) => item === activeKey
-    );
-
-    // the mapLegendState[ACTIVE_KEY] will equal null until a field is checked in the
-    // --> Map legend...
-    // since the MapLegendCountContext & SpecimensArrayContext only concerns the Dates & Species
-    // --> we will only continue it the updateSpecimensArray variable is true
-    if (activeKey === null || !updateSpecimensArray) return;
-
-    // if (
-    //   mapLegendState[ACTIVE_FIELD] === null &&
-    //   mapLegendState[ACTIVE_KEY] !== null
-    // ) {
-    //   const type = Object.keys(mapLegendState[activeKey]).find(
-    //     (item) => mapLegendState[activeKey][item] === true
-    //   )
-    //     ? SELECT_ALL
-    //     : DESELECT_ALL;
-
-    //   fieldsCountUpdater({
-    //     type,
-    //     payload: {
-    //       statePropertyName: activeKey,
-    //       individualProperty: null,
-    //       mapLegendState,
-    //     },
-    //   });
-    // }
-    // if (mapLegendState[ACTIVE_FIELD] !== null) {
-    //   const type = mapLegendState[activeKey][activeField] ? ADD : SUBTRACT;
-    //   fieldsCountUpdater({
-    //     type,
-    //     payload: {
-    //       statePropertyName: activeKey,
-    //       individualProperty: activeField,
-    //       mapLegendState,
-    //     },
-    //   });
-    // }
-
-    return () => {};
-  }, [mapLegendState, fieldsCountUpdater]);
 
   const stateUpdateHandler = ({
     type,

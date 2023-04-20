@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import {
   GoogleMap,
   useLoadScript,
@@ -10,16 +10,13 @@ import { Skeleton, Button } from "@mui/material";
 import { MarkerList } from "./MarkerList";
 import { PolygonListArrayFN } from "../../../HelperFunctions/MapComponent/GoogleMapsComponent";
 import { InfoWindowComponentContainer } from "./InfoWindowComponents/InfoWindowComponentContainer";
-import {
-  useMapLegendContext,
-  useMapLegendFieldContext,
-} from "../MapStateComponents/MapLegendStateProvider";
+import { useMapLegendContext } from "../MapStateComponents/MapLegendStateProvider";
 
-import { comparisonFN } from "../../../HelperFunctions/MapComponent/GoogleMapsComponent/MarkerComponents";
 import {
   ENTRY_EXIT_POINTS,
   EVENTS,
   HYBRID,
+  OPEN_INFO_WINDOW,
   OVERLAYS,
   ROADMAP,
   SATELLITE,
@@ -43,6 +40,7 @@ import {
   useOverlayArrayContext,
   useSpecimensArrayContext,
 } from "../MapStateComponents/MapPopulationStateContext";
+import { FieldContextHookComponent } from "../../HookComponents/FieldContextHookComponent";
 
 const containerStyle = {
   width: "100%",
@@ -91,7 +89,7 @@ export const GoogleMapComponent = (props) => {
   const [mapInstance, setMapInstance] = useState(null);
   const [hideMapKey, setHideMapKey] = useState(false);
   const mapLegendContext = useMapLegendContext();
-  const mapLegendField = useMapLegendFieldContext();
+  // const mapLegendField = useMapLegendFieldContext();
   const infoWindowContextUpdater = useInfoWindowContextUpdater();
   const specimensArrayContext = useSpecimensArrayContext();
   const eventArrayContext = useEventArrayContext();
@@ -99,6 +97,15 @@ export const GoogleMapComponent = (props) => {
   const entryExitPointsArrayContext = useEntryExitPointsArrayContext();
   const [latLngObject, setLatLngObject] = useState({ lat: 0, lng: 0 });
   const [rightClick, setRightClick] = useState(false);
+  const markerClickHandler = useCallback(
+    ({ typeOfMarker, item }) => {
+      infoWindowContextUpdater({
+        type: OPEN_INFO_WINDOW,
+        payload: { typeOfMarker, item },
+      });
+    },
+    [infoWindowContextUpdater]
+  );
 
   if (loadError) {
     return <div>Map cannot be loaded right now, sorry.</div>;
@@ -145,20 +152,15 @@ export const GoogleMapComponent = (props) => {
         setLatLngObject={setLatLngObject}
       />
       {PolygonListArrayFN(mapLegendContext.overlays, infoWindowContextUpdater)}
-      <MarkerList
+      <FieldContextHookComponent
         arr={specimensArrayContext}
         typeOfMarker={SPECIES}
         // function used to highlight Markers corresponding with map key field being hovered on
-        comparisonFN={comparisonFN(true, SPECIES, mapLegendField)}
         iconObject={{
           url: skullIcon,
           scaledSize: { width: 35, height: 35 },
         }}
-        googleMarkerComponentProps={{
-          // if any Markers are highlighted this will equal a string otherwise null indicates true
-          // --> for animation
-          animation: mapLegendField === null,
-        }}
+        clickHandler={markerClickHandler}
       />
       <MarkerList
         arr={overlayArrayContext}
@@ -171,10 +173,10 @@ export const GoogleMapComponent = (props) => {
           mapKeyValues: mapLegendContext[OVERLAYS],
         }}
         iconObject={{ path: window.google.maps.SymbolPath.CIRCLE, scale: 0 }}
-        comparisonFN={comparisonFN(true, OVERLAYS, mapLegendField)}
         googleMarkerComponentProps={{
           zIndex: 2000,
         }}
+        clickHandler={markerClickHandler}
       />
       <MarkerList
         arr={entryExitPointsArrayContext}
@@ -183,6 +185,7 @@ export const GoogleMapComponent = (props) => {
           url: footPrintBlueIcon,
           scaledSize: { width: 30, height: 30 },
         }}
+        clickHandler={markerClickHandler}
       />
       <MarkerList
         arr={eventArrayContext}
@@ -191,6 +194,7 @@ export const GoogleMapComponent = (props) => {
           url: volcanoIcon,
           scaledSize: { width: 30, height: 30 },
         }}
+        clickHandler={markerClickHandler}
       />
       {mapLegendContext.overlays["Lake Toba Eruption"] && (
         <Circle

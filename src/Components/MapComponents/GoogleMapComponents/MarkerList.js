@@ -8,15 +8,20 @@ export const MarkerList = (props) => {
     labelObject,
     iconObject = {},
     googleMarkerComponentProps = {},
-    comparisonFN,
     typeOfMarker,
     showIcon = true,
+    clickHandler,
+    mapLegendFieldContext = null,
   } = props;
 
   const labelObjectUpdater = (obj, name) => {
     const objCopy = { ...obj };
     objCopy.text = name;
     return obj["mapKeyValues"][name] ? objCopy : null;
+  };
+
+  const highLighted = (item) => {
+    return item[typeOfMarker] === mapLegendFieldContext;
   };
 
   return (
@@ -30,11 +35,12 @@ export const MarkerList = (props) => {
           labelObject={
             labelObject ? labelObjectUpdater(labelObject, item.name) : undefined
           }
-          highLighted={comparisonFN && comparisonFN(item)}
+          highLighted={mapLegendFieldContext && highLighted(item)}
           item={item}
-          iconObject={{ ...iconObject }}
+          iconObject={iconObject}
           showIcon={showIcon}
           googleMarkerComponentProps={googleMarkerComponentProps}
+          clickHandler={clickHandler}
         />
       ))}
     </Box>
