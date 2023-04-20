@@ -18,7 +18,9 @@ export const Header = () => {
   return (
     <Box sx={headerContainerStyles}>
       <Link to={routes.Welcome} style={headerLinkTitleStyles}>
-        <TextComponent styles={headerTitleStyles} text="Human Family Tree" />
+        <TextComponent styles={headerTitleStyles}>
+          Human Family Tree
+        </TextComponent>
       </Link>
       {match ? (
         <SwipeableNavbar buttonStyles={swipeableDrawerButton} />

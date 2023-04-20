@@ -18,10 +18,9 @@ export const PageTitle = (props) => {
   } = props;
   return (
     <Box sx={{ ...pageTitleContainer, ...pageTitleContainerAdditionalStyles }}>
-      <TextComponent
-        text={text}
-        styles={{ ...pageTitleStyles, ...specificTextStyles }}
-      />
+      <TextComponent styles={{ ...pageTitleStyles, ...specificTextStyles }}>
+        {text}
+      </TextComponent>
       <CardMedia
         src={imageSrc}
         component="img"

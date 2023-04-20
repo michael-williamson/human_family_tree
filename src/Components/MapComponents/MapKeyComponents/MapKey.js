@@ -96,7 +96,7 @@ export const MapKey = ({ hideMapKey, setUpdatedProperty }) => {
   return (
     <Box sx={mapKeyContainerStylesObject}>
       <Box sx={mapLegendTitleContainerStyles}>
-        <TextComponent text="Map Key" styles={mapLegendTitleStyles} />
+        <TextComponent styles={mapLegendTitleStyles}>Map Key</TextComponent>
         <Box sx={mapLegendTitleImageContainer}>
           <CardMedia component="img" src={mapKeyIcon} />
         </Box>
