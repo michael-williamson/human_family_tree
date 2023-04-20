@@ -13,17 +13,7 @@ import {
 import { action } from "../../../HelperFunctions/MapComponent/MapStateComponents";
 import { useArrayDispatchContext } from "./MapPopulationStateContext";
 
-const SpecimensArrayContext = React.createContext();
-const SpecimensArrayDispatch = React.createContext();
 const NetworkRequestDispatch = React.createContext();
-
-export const useSpecimensArrayContext = () => {
-  return useContext(SpecimensArrayContext);
-};
-
-export const useSpecimensArrayDispatch = () => {
-  return useContext(SpecimensArrayDispatch);
-};
 
 export const useNetworkRequestDispatch = () => {
   return useContext(NetworkRequestDispatch);
@@ -40,7 +30,6 @@ export const HTTPRequestStateProvider = ({ children }) => {
       // --> then call the reducer / dispatch function within the context of the Promise to
       // --> capture the returned data & relay it to the context of the Specimens Array Context Provider
       // -->
-
       const { status, data } = await axiosRef.current.get(url);
       if (status === 200 && Array.isArray(data)) {
         const arr = [...data];
@@ -49,19 +38,17 @@ export const HTTPRequestStateProvider = ({ children }) => {
     },
     [arrayDispatchContext]
   );
-  useEffect(() => {
-    const baseURL =
-      process.env.NODE_ENV === "production"
-        ? REMOTE_SERVER_BASE_URL
-        : LOCAL_SERVER_BASE_URL;
-    axiosRef.current = axios.create({
-      baseURL,
-      timeout: 1000,
-      headers: { "X-Custom-Header": "foobar" },
-    });
 
-    return () => {};
-  }, []);
+  const baseURL =
+    process.env.NODE_ENV === "production"
+      ? REMOTE_SERVER_BASE_URL
+      : LOCAL_SERVER_BASE_URL;
+
+  axiosRef.current = axios.create({
+    baseURL,
+    timeout: 1000,
+    headers: { "X-Custom-Header": "foobar" },
+  });
 
   useEffect(() => {
     fetchArray({
