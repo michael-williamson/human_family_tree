@@ -60,10 +60,6 @@ const stateReducer = (
     case DESELECT_ALL:
       return [];
     case ADD:
-      console.log([
-        ...state,
-        ...reduceArray({ arr, propertyName, mapLegendState, individual }),
-      ]);
       return [
         ...state,
         ...reduceArray({ arr, propertyName, mapLegendState, individual }),
@@ -85,6 +81,16 @@ export const MapPopulationStateContext = ({ children }) => {
   );
   const handleStateUpdate = useCallback(
     ({ propertyName, message, arr, fieldName, mapLegendState }) => {
+      // before possibly sending a changing reference to the reducer, mapLegendState is reassigned to a new object so that the reference passed to the
+      // --> reducer function is isolated to this function's context to prevent any mutations that would otherwise be possible passing a state reference
+      const speciesKeyState = mapLegendState && mapLegendState.species;
+      const datesKeyState = mapLegendState && mapLegendState.dates;
+
+      mapLegendState = mapLegendState && {
+        [SPECIES]: { ...speciesKeyState },
+        [DATES]: { ...datesKeyState },
+      };
+
       switch (propertyName) {
         case SPECIES:
           return specimensArrayDispatch({

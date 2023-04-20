@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box } from "@mui/system";
 import { GoogleMapComponent } from "./GoogleMapComponent";
 import { mapContainerStyles } from "../../../Styles/MapComponentStyles/MapContainerStyles";
@@ -9,16 +9,6 @@ import { HTTPRequestStateProvider } from "../MapStateComponents/HTTPRequestState
 import { MapPopulationStateContext } from "../MapStateComponents/MapPopulationStateContext";
 
 export const MapContainer = () => {
-  const [currentItem, setCurrentItem] = useState({});
-
-  const handleMarkerClick = (item) => (markerClick) => (e) => {
-    markerClick && setCurrentItem(item);
-  };
-
-  const handleCloseInfoWindowClick = () => {
-    setCurrentItem({});
-  };
-
   return (
     <Box sx={mapContainerStyles}>
       <MapPopulationStateContext>
@@ -26,11 +16,7 @@ export const MapContainer = () => {
           <MapLegendStateProvider>
             <MapLegendFieldsCount>
               <InfoWindowStateProvider>
-                <GoogleMapComponent
-                  handleMarkerClick={handleMarkerClick}
-                  currentItem={currentItem}
-                  handleCloseInfoWindowClick={handleCloseInfoWindowClick}
-                />
+                <GoogleMapComponent />
               </InfoWindowStateProvider>
             </MapLegendFieldsCount>
           </MapLegendStateProvider>

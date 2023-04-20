@@ -53,11 +53,13 @@ export const InfoWindowComponent = (props) => {
   // whitespace: "break-spaces"
 
   const examineStyles = windowsWithParagraphs.includes(typeOfMarker);
-
+  const lng = itemObject.gpsCoor.lng
+    ? itemObject.gpsCoor.lng
+    : itemObject.gpsCoor.long;
   return (
     <Box sx={infoWindowMainContainerStyles}>
       <InfoWindow
-        position={{ lat: itemObject.gpsCoor.lat, lng: itemObject.gpsCoor.long }}
+        position={{ lat: itemObject.gpsCoor.lat, lng }}
         onCloseClick={() =>
           infoWindowContextUpdater({ type: CLOSE_INFO_WINDOW })
         }

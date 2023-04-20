@@ -31,10 +31,7 @@ import {
   skullIcon,
   volcanoIcon,
 } from "../../../Media/MapIcons";
-import {
-  useInfoWindowContext,
-  useInfoWindowContextUpdater,
-} from "../MapStateComponents/InfoWindowStateProvider";
+import { useInfoWindowContextUpdater } from "../MapStateComponents/InfoWindowStateProvider";
 import { MapKeyControl } from "./CustomControls/MapKeyControl";
 import { MapKey } from "../MapKeyComponents/MapKey";
 import { HideMapKeyControl } from "./CustomControls/HideMapKeyControl";
@@ -95,7 +92,6 @@ export const GoogleMapComponent = (props) => {
   const [hideMapKey, setHideMapKey] = useState(false);
   const mapLegendContext = useMapLegendContext();
   const mapLegendField = useMapLegendFieldContext();
-  const infoWindowContext = useInfoWindowContext();
   const infoWindowContextUpdater = useInfoWindowContextUpdater();
   const specimensArrayContext = useSpecimensArrayContext();
   const eventArrayContext = useEventArrayContext();
@@ -103,8 +99,6 @@ export const GoogleMapComponent = (props) => {
   const entryExitPointsArrayContext = useEntryExitPointsArrayContext();
   const [latLngObject, setLatLngObject] = useState({ lat: 0, lng: 0 });
   const [rightClick, setRightClick] = useState(false);
-
-  const { handleMarkerClick, handleCloseInfoWindowClick } = props;
 
   if (loadError) {
     return <div>Map cannot be loaded right now, sorry.</div>;
@@ -152,7 +146,6 @@ export const GoogleMapComponent = (props) => {
       />
       {PolygonListArrayFN(mapLegendContext.overlays, infoWindowContextUpdater)}
       <MarkerList
-        handleMarkerClick={handleMarkerClick}
         arr={specimensArrayContext}
         typeOfMarker={SPECIES}
         // function used to highlight Markers corresponding with map key field being hovered on
@@ -213,10 +206,7 @@ export const GoogleMapComponent = (props) => {
           }}
         />
       )}
-      <InfoWindowComponentContainer
-        currentItem={infoWindowContext}
-        handleCloseInfoWindowClick={handleCloseInfoWindowClick}
-      />
+      <InfoWindowComponentContainer />
     </GoogleMap>
   );
 };
