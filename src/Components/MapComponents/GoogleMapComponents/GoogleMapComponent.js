@@ -1,46 +1,16 @@
-import React, { useCallback, useState } from "react";
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-  Circle,
-} from "@react-google-maps/api";
+import React, { useState } from "react";
+import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import { Skeleton, Button } from "@mui/material";
-
-import { MarkerList } from "./MarkerList";
-import { PolygonListArrayFN } from "../../../HelperFunctions/MapComponent/GoogleMapsComponent";
 import { InfoWindowComponentContainer } from "./InfoWindowComponents/InfoWindowComponentContainer";
-import { useMapLegendContext } from "../MapStateComponents/MapLegendStateProvider";
-
-import {
-  ENTRY_EXIT_POINTS,
-  EVENTS,
-  HYBRID,
-  OPEN_INFO_WINDOW,
-  OVERLAYS,
-  ROADMAP,
-  SATELLITE,
-  SPECIES,
-} from "../../../ConstantVariableNames";
-import theme from "../../../theme";
-import {
-  footPrintBlueIcon,
-  skullIcon,
-  volcanoIcon,
-} from "../../../Media/MapIcons";
-import { useInfoWindowContextUpdater } from "../MapStateComponents/InfoWindowStateProvider";
+import { HYBRID, ROADMAP, SATELLITE } from "../../../ConstantVariableNames";
 import { MapKeyControl } from "./CustomControls/MapKeyControl";
 import { MapKey } from "../MapKeyComponents/MapKey";
 import { HideMapKeyControl } from "./CustomControls/HideMapKeyControl";
 import { showMapKeyButtonStyles } from "../../../Styles/MapComponentStyles/MapContainerStyles";
 import { LatLngPosition } from "./InfoBoxComponents/LatLngPosition";
-import {
-  useEntryExitPointsArrayContext,
-  useEventArrayContext,
-  useOverlayArrayContext,
-  useSpecimensArrayContext,
-} from "../MapStateComponents/MapPopulationStateContext";
-import { FieldContextHookComponent } from "../../HookComponents/FieldContextHookComponent";
+import { MarkerListsContainer } from "./MarkerListsContainer";
+import { LakeTobaCircleComponent } from "./CircleComponents/LakeTobaCircleComponent";
+import { PolygonListComponent } from "../../../HelperFunctions/MapComponent/GoogleMapsComponent/PolygonComponents/PolygonListComponent";
 
 const containerStyle = {
   width: "100%",
@@ -88,24 +58,8 @@ export const GoogleMapComponent = (props) => {
   });
   const [mapInstance, setMapInstance] = useState(null);
   const [hideMapKey, setHideMapKey] = useState(false);
-  const mapLegendContext = useMapLegendContext();
-  // const mapLegendField = useMapLegendFieldContext();
-  const infoWindowContextUpdater = useInfoWindowContextUpdater();
-  const specimensArrayContext = useSpecimensArrayContext();
-  const eventArrayContext = useEventArrayContext();
-  const overlayArrayContext = useOverlayArrayContext();
-  const entryExitPointsArrayContext = useEntryExitPointsArrayContext();
   const [latLngObject, setLatLngObject] = useState({ lat: 0, lng: 0 });
   const [rightClick, setRightClick] = useState(false);
-  const markerClickHandler = useCallback(
-    ({ typeOfMarker, item }) => {
-      infoWindowContextUpdater({
-        type: OPEN_INFO_WINDOW,
-        payload: { typeOfMarker, item },
-      });
-    },
-    [infoWindowContextUpdater]
-  );
 
   if (loadError) {
     return <div>Map cannot be loaded right now, sorry.</div>;
@@ -151,65 +105,10 @@ export const GoogleMapComponent = (props) => {
         setRightClick={setRightClick}
         setLatLngObject={setLatLngObject}
       />
-      {PolygonListArrayFN(mapLegendContext.overlays, infoWindowContextUpdater)}
-      <FieldContextHookComponent
-        arr={specimensArrayContext}
-        typeOfMarker={SPECIES}
-        // function used to highlight Markers corresponding with map key field being hovered on
-        iconObject={{
-          url: skullIcon,
-          scaledSize: { width: 35, height: 35 },
-        }}
-        clickHandler={markerClickHandler}
-      />
-      <MarkerList
-        arr={overlayArrayContext}
-        typeOfMarker={OVERLAYS}
-        labelObject={{
-          color: theme.palette.primary.main,
-          fontSize: "14px",
-          fontWeight: "bold",
-          className: "my-marker-labels",
-          mapKeyValues: mapLegendContext[OVERLAYS],
-        }}
-        iconObject={{ path: window.google.maps.SymbolPath.CIRCLE, scale: 0 }}
-        googleMarkerComponentProps={{
-          zIndex: 2000,
-        }}
-        clickHandler={markerClickHandler}
-      />
-      <MarkerList
-        arr={entryExitPointsArrayContext}
-        typeOfMarker={ENTRY_EXIT_POINTS}
-        iconObject={{
-          url: footPrintBlueIcon,
-          scaledSize: { width: 30, height: 30 },
-        }}
-        clickHandler={markerClickHandler}
-      />
-      <MarkerList
-        arr={eventArrayContext}
-        typeOfMarker={EVENTS}
-        iconObject={{
-          url: volcanoIcon,
-          scaledSize: { width: 30, height: 30 },
-        }}
-        clickHandler={markerClickHandler}
-      />
-      {mapLegendContext.overlays["Lake Toba Eruption"] && (
-        <Circle
-          center={{ lat: 2.6845, lng: 98.8756 }}
-          radius={2375000}
-          options={{
-            strokeColor: "#c61c1c99",
-            strokeOpacity: 0.6,
-            fillColor: "#c61c1c99",
-            fillOpacity: 0.5,
-            visible: true,
-            zIndex: 1,
-          }}
-        />
-      )}
+      <PolygonListComponent />
+      <MarkerListsContainer />
+
+      <LakeTobaCircleComponent />
       <InfoWindowComponentContainer />
     </GoogleMap>
   );
