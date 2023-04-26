@@ -54,3 +54,10 @@ updatedJsonTest.json
 src/Components/DynamicComponents/ComponentWrapper.js
 src/Components/DynamicComponents/PropsInjector.js
 src/Components/MapComponents/MapStateComponents/SpecimensArrayStateProvider.js
+src/Data/speciesArrays.json
+src/Data/overlayData.json
+src/Data/eventsList.json
+src/Data/events.json
+src/Data/entryExitPoints.json
+src/Data/anthroData.json
+src/Components/ChartComponents/IndividualCharts/SpeciesTimeline.js
