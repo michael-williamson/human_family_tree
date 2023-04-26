@@ -53,3 +53,4 @@ jsonCreator.js
 updatedJsonTest.json
 src/Components/DynamicComponents/ComponentWrapper.js
 src/Components/DynamicComponents/PropsInjector.js
+src/Components/MapComponents/MapStateComponents/SpecimensArrayStateProvider.js
