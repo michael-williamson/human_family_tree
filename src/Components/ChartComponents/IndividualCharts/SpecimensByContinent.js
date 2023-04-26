@@ -1,8 +1,8 @@
 import React from "react";
 import { Box } from "@mui/system";
 import { Bar } from "react-chartjs-2";
-import anthroData from "../../../Data/anthroData.json";
 import { colorGenerator } from "../../../HelperFunctions/ChartComponent";
+import { useSpecimensArrayContext } from "../../MapComponents/MapStateComponents/MapPopulationStateContext";
 
 const continentsArray = [
   "Africa",
@@ -20,10 +20,10 @@ function DataSetItem(data, fillBool, colorArray) {
   this.borderColor = colorArray[1];
 }
 
-const continentCountObject = () => {
+const continentCountObject = (specimensArray) => {
   const colorArray = colorGenerator(continentsArray.length, 0.2, 1);
   const resultObject = {};
-  anthroData.forEach((item) => {
+  specimensArray.forEach((item) => {
     const currentContinent = item.continent;
     if (resultObject[currentContinent]) {
       resultObject[currentContinent] += 1;
@@ -37,11 +37,6 @@ const continentCountObject = () => {
     dataArray.push(resultObject[prop]);
   }
   return new DataSetItem(dataArray, false, colorArray);
-};
-
-const data = {
-  labels: continentsArray,
-  datasets: [continentCountObject()],
 };
 
 const options = {
@@ -118,6 +113,11 @@ const options = {
 };
 
 export const SpecimensByContinent = () => {
+  const specimensArray = useSpecimensArrayContext();
+  const data = {
+    labels: continentsArray,
+    datasets: [continentCountObject(specimensArray)],
+  };
   return (
     <Box>
       <div>

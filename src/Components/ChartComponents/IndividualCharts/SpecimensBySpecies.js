@@ -1,8 +1,8 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
 import { speciesArr } from "../../../HelperFunctions/General";
-import anthroData from "../../../Data/anthroData.json";
 import { colorGenerator } from "../../../HelperFunctions/ChartComponent";
+import { useSpecimensArrayContext } from "../../MapComponents/MapStateComponents/MapPopulationStateContext";
 
 function DataSetItem(data, fillBool, colorArray) {
   this.data = data;
@@ -11,10 +11,10 @@ function DataSetItem(data, fillBool, colorArray) {
   this.borderColor = colorArray[1];
 }
 
-const speciesCountObject = () => {
+const speciesCountObject = (specimensArray) => {
   const colorArray = colorGenerator(speciesArr.length, 0.2, 1);
   const resultObject = {};
-  anthroData.forEach((item) => {
+  specimensArray.forEach((item) => {
     const currentSpecies = item.species;
     if (resultObject[currentSpecies]) {
       resultObject[currentSpecies] += 1;
@@ -48,10 +48,6 @@ const speciesCountObject = () => {
 //   },
 // };
 
-const data = {
-  labels: speciesArr,
-  datasets: [speciesCountObject()],
-};
 const options = {
   indexAxis: "y",
   plugins: {
@@ -127,6 +123,11 @@ const options = {
 };
 
 export const SpecimensBySpecies = () => {
+  const specimensArray = useSpecimensArrayContext();
+  const data = {
+    labels: speciesArr,
+    datasets: [speciesCountObject(specimensArray)],
+  };
   return (
     <div>
       <Bar data={data} options={options} height={400} width={400} />

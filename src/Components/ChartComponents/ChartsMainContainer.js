@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Box } from "@mui/system";
 import { ChartsMenuContainer } from "./ChartsMenuContainer";
 import { ChartsView } from "./ChartsView";
+import { MapPopulationStateContext } from "../MapComponents/MapStateComponents/MapPopulationStateContext";
+import { HTTPRequestStateProvider } from "../MapComponents/MapStateComponents/HTTPRequestStateProvider";
 
 export const ChartsMainContainer = () => {
   const [chart, setChart] = useState();
@@ -11,7 +13,11 @@ export const ChartsMainContainer = () => {
   return (
     <Box>
       <ChartsMenuContainer handler={handler} />
-      <ChartsView chart={chart} />
+      <MapPopulationStateContext>
+        <HTTPRequestStateProvider>
+          <ChartsView chart={chart} />
+        </HTTPRequestStateProvider>
+      </MapPopulationStateContext>
     </Box>
   );
 };
