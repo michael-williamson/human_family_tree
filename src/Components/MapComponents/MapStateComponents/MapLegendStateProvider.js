@@ -4,13 +4,11 @@ import {
   datesKeyObject,
   overlaysKeyObject,
   eventsKeyObject,
-  poiKeyObject,
 } from "../../../HelperFunctions/MapComponent/MapContainerComponent/StateMaintenanceFN";
 
 import {
   DATES,
   DESELECT_ALL,
-  POINTS_OF_INTEREST,
   SELECT_ALL,
   SPECIES,
   SUBTRACT,
@@ -36,7 +34,7 @@ const mapLegendInitialState = {
   dates: datesKeyObject(),
   overlays: overlaysKeyObject(),
   events: eventsKeyObject(),
-  [POINTS_OF_INTEREST]: poiKeyObject(),
+  // [POINTS_OF_INTEREST]: poiKeyObject(),
   [ACTIVE_KEY]: null,
   [ACTIVE_FIELD]: null,
 };
