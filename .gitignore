@@ -61,3 +61,4 @@ src/Data/events.json
 src/Data/entryExitPoints.json
 src/Data/anthroData.json
 src/Components/ChartComponents/IndividualCharts/SpeciesTimeline.js
+src/Components/MapComponents/MapStateComponents/MapLegendFieldsCount.js
