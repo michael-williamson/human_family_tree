@@ -15,7 +15,6 @@ import {
   useMapLegendContextUpdater,
   useMapLegendFieldContextUpdater,
 } from "../MapStateComponents/MapLegendStateProvider";
-import { keysToCountArray } from "../../../HelperFunctions/MapComponent/MapKeyComponents";
 import {
   DATES,
   SPECIES,
@@ -25,9 +24,6 @@ import {
   OVERLAYS_CAPITALIZED,
   UPDATING_INDIVIDUAL,
 } from "../../../ConstantVariableNames";
-import { SearchComponent } from "./SearchComponent";
-import specimensArray from "../../../Data/anthroData.json";
-import { useMapLegendFieldsCount } from "../MapStateComponents/MapLegendFieldsCount";
 import { CardMedia } from "@mui/material";
 import { mapKeyIcon } from "../../../Media/PageTitle_Navigation_Icons";
 
@@ -35,7 +31,6 @@ export const MapKey = ({ hideMapKey, setUpdatedProperty }) => {
   const mapLegendContext = useMapLegendContext();
   const mapLegendContextUpdater = useMapLegendContextUpdater();
   const mapLegendFieldContextUpdater = useMapLegendFieldContextUpdater();
-  const countObject = useMapLegendFieldsCount();
 
   const handleStateChange = (propertyName) => (fieldName) => (e) => {
     const payloadMapKeyContext = {
@@ -102,7 +97,7 @@ export const MapKey = ({ hideMapKey, setUpdatedProperty }) => {
         </Box>
       </Box>
       <Box sx={allIndividualKeysContainer}>
-        <SearchComponent searchableArray={specimensArray} />
+        {/* <SearchComponent searchableArray={specimensArray} /> */}
         {individualKeyObjectArray.map((item, index) => {
           return (
             <IndividualKey
@@ -113,11 +108,7 @@ export const MapKey = ({ hideMapKey, setUpdatedProperty }) => {
               handleSelectAll={handleSelectAll(item.name)}
               setUpdatedProperty={setUpdatedProperty}
               individualPropertyState={item.name}
-              countObject={
-                keysToCountArray.includes(item.name)
-                  ? countObject[item.name]
-                  : null
-              }
+              countObject={null}
               contextFN={mapLegendFieldContextUpdater}
               {...item.additionalProps}
             />
