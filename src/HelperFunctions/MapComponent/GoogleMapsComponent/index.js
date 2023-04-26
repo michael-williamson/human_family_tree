@@ -1,4 +1,4 @@
-import { PolygonComponent } from "../../../Components/MapComponents/GoogleMapComponents/PolygonComponent";
+import { PolygonComponent } from "../../../Components/MapComponents/GoogleMapComponents/ShapeComponents/PolygonComponent";
 import {
   greenFill,
   iceFill,

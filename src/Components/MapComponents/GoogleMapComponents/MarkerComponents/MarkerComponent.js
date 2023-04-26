@@ -6,7 +6,7 @@ export const MarkerComponent = (props) => {
     lat,
     lng,
     iconObject,
-    showIcon,
+    showIcon = true,
     item,
     labelObject,
     highLighted = false,
@@ -16,24 +16,26 @@ export const MarkerComponent = (props) => {
   } = props;
 
   const handleClick = () => {
-    clickHandler({ item, typeOfMarker });
+    clickHandler && clickHandler({ item, typeOfMarker });
   };
+
+  let icon = null;
+
+  if (showIcon && highLighted) {
+    icon = {
+      ...iconObject,
+      scaledSize: { height: 100, width: 100 },
+    };
+  } else if (showIcon) {
+    icon = { ...iconObject, scaledSize: { height: 35, width: 35 } };
+  }
 
   return (
     <Marker
       // animation={animation && window.google.maps.Animation.DROP}
       animation={false}
       position={{ lat, lng }}
-      icon={
-        showIcon
-          ? {
-              ...iconObject,
-              scaledSize: highLighted
-                ? { height: 100, width: 100 }
-                : { height: 35, width: 35 },
-            }
-          : null
-      }
+      icon={icon}
       label={labelObject}
       onClick={handleClick}
       {...googleMarkerComponentProps}

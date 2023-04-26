@@ -4,24 +4,24 @@ import {
   useEventArrayContext,
   useOverlayArrayContext,
   useSpecimensArrayContext,
-} from "../MapStateComponents/MapPopulationStateContext";
-import { useInfoWindowContextUpdater } from "../MapStateComponents/InfoWindowStateProvider";
+} from "../../MapStateComponents/MapPopulationStateContext";
+import { useInfoWindowContextUpdater } from "../../MapStateComponents/InfoWindowStateProvider";
 import {
   ENTRY_EXIT_POINTS,
   EVENTS,
   OPEN_INFO_WINDOW,
   OVERLAYS,
   SPECIES,
-} from "../../../ConstantVariableNames";
-import { FieldContextHookComponent } from "../../HookComponents/FieldContextHookComponent";
+} from "../../../../ConstantVariableNames";
+import { FieldContextHookComponent } from "../../../HookComponents/FieldContextHookComponent";
 import {
   footPrintBlueIcon,
   skullIcon,
   volcanoIcon,
-} from "../../../Media/MapIcons";
+} from "../../../../Media/MapIcons";
 import { MarkerList } from "./MarkerList";
-import theme from "../../../theme";
-import { useMapLegendContext } from "../MapStateComponents/MapLegendStateProvider";
+import theme from "../../../../theme";
+import { useMapLegendContext } from "../../MapStateComponents/MapLegendStateProvider";
 
 export const MarkerListsContainer = () => {
   const specimensArrayContext = useSpecimensArrayContext();

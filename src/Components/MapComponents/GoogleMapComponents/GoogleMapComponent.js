@@ -8,8 +8,8 @@ import { MapKey } from "../MapKeyComponents/MapKey";
 import { HideMapKeyControl } from "./CustomControls/HideMapKeyControl";
 import { showMapKeyButtonStyles } from "../../../Styles/MapComponentStyles/MapContainerStyles";
 import { LatLngPosition } from "./InfoBoxComponents/LatLngPosition";
-import { MarkerListsContainer } from "./MarkerListsContainer";
-import { LakeTobaCircleComponent } from "./CircleComponents/LakeTobaCircleComponent";
+import { MarkerListsContainer } from "./MarkerComponents/MarkerListsContainer";
+import { LakeTobaCircleComponent } from "./ShapeComponents/LakeTobaCircleComponent";
 import { PolygonListComponent } from "../../../HelperFunctions/MapComponent/GoogleMapsComponent/PolygonComponents/PolygonListComponent";
 
 const containerStyle = {

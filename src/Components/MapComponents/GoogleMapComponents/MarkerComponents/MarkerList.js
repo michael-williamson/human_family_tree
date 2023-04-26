@@ -1,6 +1,7 @@
 import React from "react";
 import { Box } from "@mui/system";
 import { MarkerComponent } from "./MarkerComponent";
+import { v4 } from "uuid";
 
 export const MarkerList = (props) => {
   const {
@@ -28,7 +29,7 @@ export const MarkerList = (props) => {
     <Box>
       {arr.map((item) => (
         <MarkerComponent
-          key={`${item.name}${Math.random() * 1000}`}
+          key={v4()}
           typeOfMarker={typeOfMarker}
           lat={item.gpsCoor.lat}
           lng={item.gpsCoor?.lng || item.gpsCoor.long}
