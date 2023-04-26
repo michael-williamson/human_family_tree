@@ -32,7 +32,7 @@ export const MarkerList = (props) => {
           key={v4()}
           typeOfMarker={typeOfMarker}
           lat={item.gpsCoor.lat}
-          lng={item.gpsCoor?.lng || item.gpsCoor.long}
+          lng={item.gpsCoor.lng}
           labelObject={
             labelObject ? labelObjectUpdater(labelObject, item.name) : undefined
           }
