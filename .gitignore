@@ -51,3 +51,5 @@ src/media/readMeMedia/site_map.png
 Project_Instructions
 jsonCreator.js
 updatedJsonTest.json
+src/Components/DynamicComponents/ComponentWrapper.js
+src/Components/DynamicComponents/PropsInjector.js
