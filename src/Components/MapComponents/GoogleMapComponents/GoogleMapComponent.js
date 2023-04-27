@@ -46,10 +46,6 @@ const options = {
   },
 };
 
-console.log(
-  "there is a temporary fix for gps coordinates in the MarkerList component I will need to fix this!!! : console log message line 85 google maps component"
-);
-
 export const GoogleMapComponent = (props) => {
   const [libraries] = useState(["drawing"]);
   const { isLoaded, loadError } = useLoadScript({
