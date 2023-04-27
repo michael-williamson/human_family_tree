@@ -11,7 +11,7 @@ export const SpecimensView = (props) => {
       {specimensArray
         .filter((item) => item.species === props.species)
         .map((item) => (
-          <IndividualSpecimen {...item} key={item.name} />
+          <IndividualSpecimen {...item} key={item.ID} />
         ))}
     </Box>
   );

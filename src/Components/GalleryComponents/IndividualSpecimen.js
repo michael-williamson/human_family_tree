@@ -13,6 +13,11 @@ import {
   imageViewIconStyles,
   individualSpecimenFieldsContainerFN,
 } from "../../Styles/GalleryComponentStyles/IndividualSpecimenStyles";
+import { ImageAttributionComponent } from "../ReusableComponents/ImageAttributionComponent";
+import {
+  imageAttributionLabelStyles,
+  imageAttributionLinkStyles,
+} from "../../Styles/MapComponentStyles/GoogleMapComponentStyles/InfoWindowComponentStyles";
 
 const labels = [
   "Species",
@@ -38,7 +43,16 @@ const propertyConversion = {
       Click for More Info
     </Link>
   ),
-  "Image Credit": () => "text to prove calling",
+  "Image Credit": ({ imageAttributes: { author, license } }) => {
+    return (
+      <ImageAttributionComponent
+        author={author}
+        license={license}
+        labelStyles={imageAttributionLabelStyles}
+        linkStyles={imageAttributionLinkStyles}
+      />
+    );
+  },
 };
 
 export const IndividualSpecimen = (props) => {
@@ -48,11 +62,12 @@ export const IndividualSpecimen = (props) => {
     setOpacity(bool);
   };
 
+  const containerStyle = linksToPhotos[0]
+    ? individualSpecimenContainer(linksToPhotos[0])
+    : {};
+
   return (
-    <Box
-      sx={individualSpecimenContainer(linksToPhotos[0]) || {}}
-      className="individualSpecimen"
-    >
+    <Box sx={containerStyle} className="individualSpecimen">
       <ImageSearch
         sx={imageViewIconStyles}
         onMouseEnter={opacityHandler(false)}
@@ -62,7 +77,7 @@ export const IndividualSpecimen = (props) => {
 
       <Box sx={individualSpecimenFieldsContainerFN(opacity)}>
         {labels.map((item, index) => (
-          <Box sx={{ ...individualSpecimenFields }} key={index}>
+          <Box sx={individualSpecimenFields} key={item}>
             <SpecimenLabels label={`${item}:`} styles={specimenLabelStyles} />
             <SpecimenInfoText
               text={

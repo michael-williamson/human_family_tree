@@ -1,7 +1,6 @@
 import React from "react";
 import { TextComponent } from "../../ReusableComponents/TextComponent";
 
-export const SpecimenInfoText = (props) => {
-  const { text = "info", styles = {} } = props;
-  return <TextComponent text={text} styles={styles} />;
+export const SpecimenInfoText = ({ text = "info", styles = {} }) => {
+  return <TextComponent styles={styles}>{text}</TextComponent>;
 };
