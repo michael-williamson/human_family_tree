@@ -2,7 +2,6 @@ import React from "react";
 import { Box } from "@mui/system";
 import { Bar } from "react-chartjs-2";
 import { colorGenerator } from "../../../HelperFunctions/ChartComponent";
-import { useSpecimensArrayContext } from "../../MapComponents/MapStateComponents/MapPopulationStateContext";
 
 const continentsArray = [
   "Africa",
@@ -112,11 +111,10 @@ const options = {
   },
 };
 
-export const SpecimensByContinent = () => {
-  const specimensArray = useSpecimensArrayContext();
+export const SpecimensByContinent = ({ arr }) => {
   const data = {
     labels: continentsArray,
-    datasets: [continentCountObject(specimensArray)],
+    datasets: [continentCountObject(arr)],
   };
   return (
     <Box>

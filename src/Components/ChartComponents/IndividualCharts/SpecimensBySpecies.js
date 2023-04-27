@@ -2,7 +2,6 @@ import React from "react";
 import { Bar } from "react-chartjs-2";
 import { speciesArr } from "../../../HelperFunctions/General";
 import { colorGenerator } from "../../../HelperFunctions/ChartComponent";
-import { useSpecimensArrayContext } from "../../MapComponents/MapStateComponents/MapPopulationStateContext";
 
 function DataSetItem(data, fillBool, colorArray) {
   this.data = data;
@@ -122,11 +121,10 @@ const options = {
   },
 };
 
-export const SpecimensBySpecies = () => {
-  const specimensArray = useSpecimensArrayContext();
+export const SpecimensBySpecies = ({ arr }) => {
   const data = {
     labels: speciesArr,
-    datasets: [speciesCountObject(specimensArray)],
+    datasets: [speciesCountObject(arr)],
   };
   return (
     <div>
