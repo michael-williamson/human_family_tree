@@ -67,6 +67,12 @@ const REMOTE_SERVER_BASE_URL =
   "https://human-family-tree-server.herokuapp.com/";
 const LOCAL_SERVER_BASE_URL = "http://localhost:5000/";
 
+// charts page constants
+const TIMELINE_OF_SPECIES = "Timeline of Species";
+const SPECIES_BY_CONTINENT = "Species by Continent";
+const NUMBER_OF_SPECIMENS_BY_SPECIES = "Amount of Specimens by Species";
+const TIMELINE_OF_EVENTS = "Timeline of Events";
+
 export {
   DATES,
   SPECIES,
@@ -116,4 +122,8 @@ export {
   EVENT_ARRAY,
   OVERLAY_ARRAY,
   ENTRY_EXIT_POINTS_ARRAY,
+  TIMELINE_OF_EVENTS,
+  TIMELINE_OF_SPECIES,
+  NUMBER_OF_SPECIMENS_BY_SPECIES,
+  SPECIES_BY_CONTINENT,
 };

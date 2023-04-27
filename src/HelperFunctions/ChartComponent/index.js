@@ -1,3 +1,10 @@
+import {
+  NUMBER_OF_SPECIMENS_BY_SPECIES,
+  SPECIES_BY_CONTINENT,
+  TIMELINE_OF_EVENTS,
+  TIMELINE_OF_SPECIES,
+} from "../../ConstantVariableNames";
+
 export const getOrCreateTooltip = (chart) => {
   let tooltipEl = chart.canvas.parentNode.querySelector("div");
 
@@ -140,3 +147,10 @@ export const colorGenerator = (length, opacity1, opacity2) => {
   }
   return colorArray;
 };
+
+export const chartsArray = [
+  TIMELINE_OF_EVENTS,
+  TIMELINE_OF_SPECIES,
+  SPECIES_BY_CONTINENT,
+  NUMBER_OF_SPECIMENS_BY_SPECIES,
+];
