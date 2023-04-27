@@ -32,8 +32,8 @@ export const MarkerComponent = (props) => {
 
   return (
     <Marker
-      // animation={animation && window.google.maps.Animation.DROP}
-      animation={false}
+      animation={window.google.maps.Animation.DROP}
+      // animation={false}
       position={{ lat, lng }}
       icon={icon}
       label={labelObject}

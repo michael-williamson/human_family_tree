@@ -9,11 +9,13 @@ export const FieldContextHookComponent = (props) => {
     <MarkerList
       {...props}
       mapLegendFieldContext={mapLegendFieldContext}
-      googleMarkerComponentProps={{
-        // if any Markers are highlighted this will equal a string otherwise null indicates true
-        // --> for animation
-        animation: mapLegendFieldContext === null,
-      }}
+      googleMarkerComponentProps={
+        {
+          // if any Markers are highlighted this will equal a string otherwise null indicates true
+          // --> for animation
+          // animation: mapLegendFieldContext === null,
+        }
+      }
     />
   );
 };
