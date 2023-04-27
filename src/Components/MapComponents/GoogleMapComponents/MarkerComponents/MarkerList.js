@@ -2,18 +2,16 @@ import React from "react";
 import { Box } from "@mui/system";
 import { MarkerComponent } from "./MarkerComponent";
 
-export const MarkerList = (props) => {
-  const {
-    arr = [],
-    labelObject,
-    iconObject = {},
-    googleMarkerComponentProps = {},
-    typeOfMarker,
-    showIcon = true,
-    clickHandler,
-    mapLegendFieldContext = null,
-  } = props;
-
+export const MarkerList = ({
+  arr = [],
+  labelObject,
+  iconObject = {},
+  googleMarkerComponentProps = {},
+  typeOfMarker,
+  showIcon = true,
+  clickHandler,
+  mapLegendFieldContext = null,
+}) => {
   const labelObjectUpdater = (obj, name) => {
     const objCopy = { ...obj };
     objCopy.text = name;

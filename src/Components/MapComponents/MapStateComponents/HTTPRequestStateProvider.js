@@ -11,7 +11,10 @@ import {
   SPECIES,
 } from "../../../ConstantVariableNames";
 import { action } from "../../../HelperFunctions/MapComponent/MapStateComponents";
-import { useArrayDispatchContext } from "./MapPopulationStateContext";
+import {
+  useArrayDispatchContext,
+  useObjectDispatchContext,
+} from "./MapPopulationStateContext";
 
 const NetworkRequestDispatch = React.createContext();
 
@@ -22,6 +25,7 @@ export const useNetworkRequestDispatch = () => {
 export const HTTPRequestStateProvider = ({ children }) => {
   const axiosRef = useRef(null);
   const arrayDispatchContext = useArrayDispatchContext();
+  const objectDispatchContext = useObjectDispatchContext();
   const fetchArray = useCallback(
     async ({ message, propertyName, fieldName, mapLegendState }) => {
       // action function found in helperfunctions folder
@@ -31,12 +35,16 @@ export const HTTPRequestStateProvider = ({ children }) => {
       // --> capture the returned data & relay it to the context of the Specimens Array Context Provider
       // -->
       const { status, data } = await axiosRef.current.get(url);
+      console.log(status, data, "what is res");
       if (status === 200 && Array.isArray(data)) {
         const arr = [...data];
         arrayDispatchContext({ message, propertyName, arr, mapLegendState });
+      } else if (status === 200 && typeof data === "object") {
+        const object = { ...data };
+        objectDispatchContext({ message, propertyName, object });
       }
     },
-    [arrayDispatchContext]
+    [arrayDispatchContext, objectDispatchContext]
   );
 
   const baseURL =

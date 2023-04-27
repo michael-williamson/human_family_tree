@@ -11,23 +11,33 @@ import {
   TIMELINE_OF_SPECIES,
 } from "../../ConstantVariableNames";
 
-const componentGenerator = (state, chart) => {
+const componentGenerator = ({ arr, fetchArray, chart, specimensObject }) => {
   switch (chart) {
     case TIMELINE_OF_EVENTS:
-      return <EventsTimeline arr={state} />;
+      return <EventsTimeline arr={arr} />;
     case TIMELINE_OF_SPECIES:
-      return <SpeciesTimeline arr={state} />;
+      return (
+        <SpeciesTimeline
+          fetchArray={fetchArray}
+          specimensObject={specimensObject}
+        />
+      );
     case SPECIES_BY_CONTINENT:
-      return <SpecimensByContinent arr={state} />;
+      return <SpecimensByContinent arr={arr} />;
     case NUMBER_OF_SPECIMENS_BY_SPECIES:
-      return <SpecimensBySpecies arr={state} />;
+      return <SpecimensBySpecies arr={arr} />;
     default:
       break;
   }
 };
 
-export const ChartsView = ({ chart, arr }) => {
-  const component = componentGenerator(arr, chart);
+export const ChartsView = ({ chart, arr, fetchArray, specimensObject }) => {
+  const component = componentGenerator({
+    arr,
+    fetchArray,
+    chart,
+    specimensObject,
+  });
 
   return <Box>{component}</Box>;
 };

@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Box } from "@mui/system";
 import { ChartsView } from "./ChartsView";
-import { useSpecimensArrayContext } from "../MapComponents/MapStateComponents/MapPopulationStateContext";
+import {
+  useSpecimensArrayContext,
+  useSpecimensObjectContext,
+} from "../MapComponents/MapStateComponents/MapPopulationStateContext";
 import { useNetworkRequestDispatch } from "../MapComponents/MapStateComponents/HTTPRequestStateProvider";
 import { MenuContainer } from "../ReusableComponents/MenuContainer";
 import {
@@ -16,6 +19,7 @@ export const ChartsMainContainer = () => {
   const [chart, setChart] = useState();
   const fetchArray = useNetworkRequestDispatch();
   const specimensArray = useSpecimensArrayContext();
+  const specimensObject = useSpecimensObjectContext();
   useEffect(() => {
     fetchArray({
       message: SELECT_ALL,
@@ -36,7 +40,12 @@ export const ChartsMainContainer = () => {
         clickHandler={handler}
         menuButtonStyles={menuButtonStyles}
       />
-      <ChartsView chart={chart} arr={specimensArray} />
+      <ChartsView
+        chart={chart}
+        arr={specimensArray}
+        fetchArray={fetchArray}
+        specimensObject={specimensObject}
+      />
     </Box>
   );
 };

@@ -15,19 +15,29 @@ import { reduceArray } from "../../../HelperFunctions/MapComponent/MapStateCompo
 //--> populating the map with markers & other content
 
 const SpecimensArrayContext = React.createContext();
+const SpecimensObjectContext = React.createContext();
 const EventArrayContext = React.createContext();
 const OverlayArrayContext = React.createContext();
 const EntryExitPointsArrayContext = React.createContext();
 const SpeciesCountContext = React.createContext();
 const DatesCountContext = React.createContext();
 const ArrayDispatchContext = React.createContext();
+const ObjectDispatchContext = React.createContext();
 
 export const useArrayDispatchContext = () => {
   return useContext(ArrayDispatchContext);
 };
 
+export const useObjectDispatchContext = () => {
+  return useContext(ObjectDispatchContext);
+};
+
 export const useSpecimensArrayContext = () => {
   return useContext(SpecimensArrayContext);
+};
+
+export const useSpecimensObjectContext = () => {
+  return useContext(SpecimensObjectContext);
 };
 
 export const useEventArrayContext = () => {
@@ -71,8 +81,21 @@ const stateReducer = (
   }
 };
 
+const objectReducer = (state, { message, propertyName, object }) => {
+  switch (message) {
+    case SELECT_ALL:
+      return { ...object };
+    default:
+      break;
+  }
+};
+
 export const MapPopulationStateContext = ({ children }) => {
   const [specimensArray, specimensArrayDispatch] = useReducer(stateReducer, []);
+  const [specimensObject, specimensObjectDispatch] = useReducer(
+    objectReducer,
+    {}
+  );
   const [eventArray, eventArrayDispatch] = useReducer(stateReducer, []);
   const [overlayArray, overlayArrayDispatch] = useReducer(stateReducer, []);
   const [entryExitPointsArray, entryExitPointsArrayDispatch] = useReducer(
@@ -141,15 +164,21 @@ export const MapPopulationStateContext = ({ children }) => {
 
   return (
     <SpecimensArrayContext.Provider value={specimensArray}>
-      <EventArrayContext.Provider value={eventArray}>
-        <OverlayArrayContext.Provider value={overlayArray}>
-          <EntryExitPointsArrayContext.Provider value={entryExitPointsArray}>
-            <ArrayDispatchContext.Provider value={handleStateUpdate}>
-              {children}
-            </ArrayDispatchContext.Provider>
-          </EntryExitPointsArrayContext.Provider>
-        </OverlayArrayContext.Provider>
-      </EventArrayContext.Provider>
+      <SpecimensObjectContext.Provider value={specimensObject}>
+        <ObjectDispatchContext.Provider value={specimensObjectDispatch}>
+          <EventArrayContext.Provider value={eventArray}>
+            <OverlayArrayContext.Provider value={overlayArray}>
+              <EntryExitPointsArrayContext.Provider
+                value={entryExitPointsArray}
+              >
+                <ArrayDispatchContext.Provider value={handleStateUpdate}>
+                  {children}
+                </ArrayDispatchContext.Provider>
+              </EntryExitPointsArrayContext.Provider>
+            </OverlayArrayContext.Provider>
+          </EventArrayContext.Provider>
+        </ObjectDispatchContext.Provider>
+      </SpecimensObjectContext.Provider>
     </SpecimensArrayContext.Provider>
   );
 };
