@@ -10,7 +10,7 @@ import { showMapKeyButtonStyles } from "../../../Styles/MapComponentStyles/MapCo
 import { LatLngPosition } from "./InfoBoxComponents/LatLngPosition";
 import { MarkerListsContainer } from "./MarkerComponents/MarkerListsContainer";
 import { LakeTobaCircleComponent } from "./ShapeComponents/LakeTobaCircleComponent";
-import { PolygonListComponent } from "../../../HelperFunctions/MapComponent/GoogleMapsComponent/PolygonComponents/PolygonListComponent";
+import { PolygonListComponent } from "./ShapeComponents/PolygonListComponent";
 
 const containerStyle = {
   width: "100%",

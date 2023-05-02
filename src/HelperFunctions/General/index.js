@@ -1,4 +1,21 @@
 import { Box } from "@mui/system";
+import {
+  EUROPEAN_ICE_SHEET,
+  GREEN_ARABIA,
+  GREEN_SAHARA,
+  LAKE_TOBA_ERUPTION,
+  NORTH_AMERICAN_ICE_SHEET,
+  SAHUL,
+  SUNDALAND,
+} from "../../ConstantVariableNames";
+import {
+  arabiaPaths,
+  iceAgeEurope2Paths,
+  laurentideIceSheetPaths,
+  saharaPaths,
+  sahulPaths,
+  sundalandPaths,
+} from "../MapComponent/GoogleMapsComponent/PolygonCoordinates";
 
 export const speciesArr = [
   "habilis",
@@ -37,16 +54,65 @@ export const datesArr = [
 ];
 
 export const overlaysArray = [
-  "Sahul",
-  "Sundaland",
-  "Green Sahara",
-  "Green Arabia",
-  "North American Ice Sheet",
-  "European Ice Sheet",
-  "Lake Toba Eruption",
+  SAHUL,
+  SUNDALAND,
+  GREEN_SAHARA,
+  GREEN_ARABIA,
+  NORTH_AMERICAN_ICE_SHEET,
+  EUROPEAN_ICE_SHEET,
+  LAKE_TOBA_ERUPTION,
 ];
 
-export const eventsArray = ["Lake Toba Eruption"];
+export const greenOverlays = [SAHUL, SUNDALAND, GREEN_SAHARA, GREEN_ARABIA];
+
+export const whiteOverlays = [NORTH_AMERICAN_ICE_SHEET, EUROPEAN_ICE_SHEET];
+
+export const greenFill = {
+  fillColor: "rgb(81 101 74 / 75%)",
+  strokeColor: "rgb(81 101 74 / 75%)",
+};
+
+export const iceFill = {
+  fillColor: "rgb(246 246 246 / 60%)",
+  strokeColor: "white",
+};
+
+export const polygonOptions = {
+  fillOpacity: 1,
+  strokeOpacity: 1,
+  geodesic: true,
+  zIndex: 1,
+};
+
+export const overlaysObjectConversion = ({ arr, styleObject }) => {
+  const object = {};
+  const arrayLooper = (arr, styleObject) =>
+    arr.forEach(
+      (item) => (object[item] = { ...polygonOptions, ...styleObject })
+    );
+  arrayLooper(arr, styleObject);
+  return object;
+};
+
+export const correspondingPolygonPathsObject = {
+  [SAHUL]: sahulPaths,
+  [SUNDALAND]: sundalandPaths,
+  [GREEN_SAHARA]: saharaPaths,
+  [GREEN_ARABIA]: arabiaPaths,
+  [NORTH_AMERICAN_ICE_SHEET]: laurentideIceSheetPaths,
+  [EUROPEAN_ICE_SHEET]: iceAgeEurope2Paths,
+};
+
+export const greenFillObject = overlaysObjectConversion({
+  arr: greenOverlays,
+  styleObject: greenFill,
+});
+export const whiteFillObject = overlaysObjectConversion({
+  arr: whiteOverlays,
+  styleObject: iceFill,
+});
+
+export const eventsArray = [LAKE_TOBA_ERUPTION];
 
 //corresponding lesser and greater dates for each property, each property will act as labels for checkboxes and other user interface displays
 export const datesCategoryObj = {
