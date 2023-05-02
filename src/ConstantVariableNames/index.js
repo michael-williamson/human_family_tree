@@ -73,6 +73,15 @@ const SPECIES_BY_CONTINENT = "Species by Continent";
 const NUMBER_OF_SPECIMENS_BY_SPECIES = "Amount of Specimens by Species";
 const TIMELINE_OF_EVENTS = "Timeline of Events";
 
+// overlays constants
+const SAHUL = "Sahul";
+const SUNDALAND = "Sundaland";
+const GREEN_SAHARA = "Green Sahara";
+const GREEN_ARABIA = "Green Arabia";
+const NORTH_AMERICAN_ICE_SHEET = "North American Ice Sheet";
+const EUROPEAN_ICE_SHEET = "European Ice Sheet";
+const LAKE_TOBA_ERUPTION = "Lake Toba Eruption";
+
 export {
   DATES,
   SPECIES,
@@ -126,4 +135,11 @@ export {
   TIMELINE_OF_SPECIES,
   NUMBER_OF_SPECIMENS_BY_SPECIES,
   SPECIES_BY_CONTINENT,
+  SAHUL,
+  SUNDALAND,
+  GREEN_ARABIA,
+  GREEN_SAHARA,
+  NORTH_AMERICAN_ICE_SHEET,
+  EUROPEAN_ICE_SHEET,
+  LAKE_TOBA_ERUPTION,
 };
