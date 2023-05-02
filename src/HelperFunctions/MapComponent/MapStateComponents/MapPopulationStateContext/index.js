@@ -21,20 +21,24 @@ export const reduceArray = ({
   mapLegendState,
   individual,
 }) => {
+  // for now this 1st if statement will handle the specimens array state
   if (mapLegendState) {
-    propertyName = speciesDatesPropertyObject[propertyName];
-    return arr.filter(
-      (item) => mapLegendState[propertyName][item[propertyName]] === true
-    );
+    if (individual === ADD) {
+      propertyName = speciesDatesPropertyObject[propertyName];
+      return arr.filter(
+        (item) => mapLegendState[propertyName][item[propertyName]] === true
+      );
+    }
+    return arr.filter((item) => item[propertyName] !== fieldName);
   }
+
+  // These 2 if statements will be handling the arrays that aren't the specimens arrays
   if (individual === ADD) {
     return [arr.find((item) => item.name === fieldName)];
   }
   if (individual === SUBTRACT) {
     return arr.filter((item) => item.name !== fieldName);
   }
-
-  return arr.filter((item) => item[propertyName] !== fieldName);
 };
 
 export const otherThanSpecimensArray = [

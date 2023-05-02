@@ -82,6 +82,11 @@ const NORTH_AMERICAN_ICE_SHEET = "North American Ice Sheet";
 const EUROPEAN_ICE_SHEET = "European Ice Sheet";
 const LAKE_TOBA_ERUPTION = "Lake Toba Eruption";
 
+// helperFunction constants
+const DESTRUCTURE_ONE = "Destructure One";
+const DESTRUCTURE_TWO = "Destructure Two";
+const DESTRUCTURE_BOTH = "Destructure Both";
+
 export {
   DATES,
   SPECIES,
@@ -142,4 +147,7 @@ export {
   NORTH_AMERICAN_ICE_SHEET,
   EUROPEAN_ICE_SHEET,
   LAKE_TOBA_ERUPTION,
+  DESTRUCTURE_ONE,
+  DESTRUCTURE_TWO,
+  DESTRUCTURE_BOTH,
 };

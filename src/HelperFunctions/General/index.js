@@ -1,5 +1,8 @@
 import { Box } from "@mui/system";
 import {
+  DESTRUCTURE_BOTH,
+  DESTRUCTURE_ONE,
+  DESTRUCTURE_TWO,
   EUROPEAN_ICE_SHEET,
   GREEN_ARABIA,
   GREEN_SAHARA,
@@ -170,4 +173,67 @@ export const svgObjectFN = (colorObject, svgObject) => {
 
 export const returnSVGObjectItem = (svgObject, item) => {
   return svgObject[item];
+};
+
+export const objectDestructured = (object, property) => {
+  return object[property];
+};
+
+export const conditionsEqual = (
+  conditionsEqual,
+  conditionOne,
+  conditionTwo
+) => {
+  return conditionsEqual
+    ? conditionOne === conditionTwo
+    : conditionOne !== conditionTwo;
+};
+
+export const filterType = (
+  type,
+  item,
+  conditionOne,
+  conditionTwo,
+  conditionsEqual
+) => {
+  switch (type) {
+    case DESTRUCTURE_ONE:
+      return conditionsEqual(
+        conditionsEqual,
+        objectDestructured(item, conditionOne),
+        conditionTwo
+      );
+    case DESTRUCTURE_TWO:
+      return conditionsEqual(
+        conditionsEqual,
+        conditionOne,
+        objectDestructured(item, conditionTwo)
+      );
+    case DESTRUCTURE_BOTH:
+      return conditionsEqual(
+        objectDestructured(item, conditionOne),
+        objectDestructured(item, conditionTwo)
+      );
+
+    default:
+      break;
+  }
+};
+
+export const arrayFilter = (
+  arr,
+  conditionOne,
+  conditionTwo,
+  destructure,
+  conditionsEqual
+) => {
+  return arr.filter((item) => {
+    return filterType(
+      destructure,
+      item,
+      conditionOne,
+      conditionTwo,
+      conditionsEqual
+    );
+  });
 };

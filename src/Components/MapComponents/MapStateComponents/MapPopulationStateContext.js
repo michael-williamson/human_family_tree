@@ -81,7 +81,13 @@ const stateReducer = (
         }),
       ];
     case SUBTRACT:
-      return reduceArray({ arr: state, fieldName, propertyName, individual });
+      return reduceArray({
+        arr: state,
+        fieldName,
+        propertyName,
+        mapLegendState,
+        individual,
+      });
     default:
       break;
   }
@@ -128,6 +134,7 @@ export const MapPopulationStateContext = ({ children }) => {
             propertyName,
             arr,
             mapLegendState,
+            individual: message,
           });
         case DATES:
           return specimensArrayDispatch({
@@ -136,6 +143,7 @@ export const MapPopulationStateContext = ({ children }) => {
             propertyName,
             arr,
             mapLegendState,
+            individual: message,
           });
         case EVENTS:
           return eventArrayDispatch({
