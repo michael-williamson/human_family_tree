@@ -37,7 +37,13 @@ export const HTTPRequestStateProvider = ({ children }) => {
       const { status, data } = await axiosRef.current.get(url);
       if (status === 200 && Array.isArray(data)) {
         const arr = [...data];
-        arrayDispatchContext({ message, propertyName, arr, mapLegendState });
+        arrayDispatchContext({
+          message,
+          propertyName,
+          arr,
+          mapLegendState,
+          fieldName,
+        });
       } else if (status === 200 && typeof data === "object") {
         const object = { ...data };
         objectDispatchContext({ message, propertyName, object });

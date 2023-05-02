@@ -20,17 +20,17 @@ export const reduceArray = ({
   mapLegendState,
   individual,
 }) => {
-  if (individual === ADD) {
-    return arr;
-  }
   if (mapLegendState) {
     propertyName = speciesDatesPropertyObject[propertyName];
     return arr.filter(
       (item) => mapLegendState[propertyName][item[propertyName]] === true
     );
   }
+  if (individual === ADD) {
+    return [arr.find((item) => item.name === fieldName)];
+  }
 
-  return arr.filter((item) => item[propertyName] !== fieldName);
+  return arr.filter((item) => item.name !== fieldName);
 };
 
 export const otherThanSpecimensArray = [

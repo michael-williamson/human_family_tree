@@ -72,7 +72,13 @@ const stateReducer = (
     case ADD:
       return [
         ...state,
-        ...reduceArray({ arr, propertyName, mapLegendState, individual }),
+        ...reduceArray({
+          arr,
+          propertyName,
+          mapLegendState,
+          individual,
+          fieldName,
+        }),
       ];
     case SUBTRACT:
       return reduceArray({ arr: state, fieldName, propertyName });

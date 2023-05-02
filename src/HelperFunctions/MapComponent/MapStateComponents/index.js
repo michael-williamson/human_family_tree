@@ -232,6 +232,8 @@ export const fetchArray =
   };
 
 export const action = ({ message, propertyName, fieldName }) => {
+  message =
+    propertyName === SPECIES || propertyName === DATES ? message : SELECT_ALL;
   switch (message) {
     case SELECT_ALL:
       return apiAddressesObject[propertyName];
