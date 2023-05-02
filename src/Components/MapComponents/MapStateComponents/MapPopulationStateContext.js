@@ -81,7 +81,7 @@ const stateReducer = (
         }),
       ];
     case SUBTRACT:
-      return reduceArray({ arr: state, fieldName, propertyName });
+      return reduceArray({ arr: state, fieldName, propertyName, individual });
     default:
       break;
   }

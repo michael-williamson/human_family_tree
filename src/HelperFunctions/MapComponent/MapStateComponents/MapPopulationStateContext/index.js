@@ -6,6 +6,7 @@ import {
   SPECIES,
   ADD,
   ENTRY_EXIT_POINTS,
+  SUBTRACT,
 } from "../../../../ConstantVariableNames";
 
 export const speciesDatesPropertyObject = {
@@ -29,8 +30,11 @@ export const reduceArray = ({
   if (individual === ADD) {
     return [arr.find((item) => item.name === fieldName)];
   }
+  if (individual === SUBTRACT) {
+    return arr.filter((item) => item.name !== fieldName);
+  }
 
-  return arr.filter((item) => item.name !== fieldName);
+  return arr.filter((item) => item[propertyName] !== fieldName);
 };
 
 export const otherThanSpecimensArray = [
