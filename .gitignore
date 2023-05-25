@@ -26,9 +26,6 @@ yarn-error.log*
 fileWriter.js
 settings.json
 listArrays.js
-tsconfig.json
-src/react-app-env.d.ts
-src/global.d.ts
 
 /.vscode
 components_explained.txt
@@ -64,3 +61,4 @@ src/Data/events.json
 src/Data/entryExitPoints.json
 src/Data/anthroData.json
 src/Components/MapComponents/MapStateComponents/MapLegendFieldsCount.js
+about_application.txt
