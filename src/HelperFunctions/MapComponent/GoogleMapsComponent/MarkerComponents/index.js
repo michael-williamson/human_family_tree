@@ -2,7 +2,7 @@ import { randomColorGenerator } from "../../../General";
 
 export const speciesIconColorObjectFN = (array, itemProperty) => {
   const colorObject = {};
-  array.forEach((item) => {
+  array.forEach(item => {
     if (colorObject[item[itemProperty]]) return null;
     else {
       colorObject[item[itemProperty]] = randomColorGenerator();
@@ -17,7 +17,7 @@ export const speciesIconColorObjectFN = (array, itemProperty) => {
 // --> operational animation will be set to false for more seamless renders
 export const comparisonFN =
   (objComparison = false, propName = null, compValue) =>
-  (value) => {
+  value => {
     if (objComparison) {
       return value[propName] === compValue;
     }
@@ -26,7 +26,7 @@ export const comparisonFN =
 
 export const addIconOptionsFN =
   (addIconOptions = false, propValue, colorObject) =>
-  (item) => {
+  item => {
     if (!addIconOptions) {
       return {};
     }

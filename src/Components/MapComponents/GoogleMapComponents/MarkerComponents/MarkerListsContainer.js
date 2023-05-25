@@ -49,19 +49,27 @@ export const MarkerListsContainer = () => {
           url: skullIcon,
           scaledSize: { width: 35, height: 35 },
         }}
+        propsObject={{
+          icon: { url: skullIcon, scaledSize: { width: 100, height: 100 } },
+          animation: window.google.maps.Animation.BOUNCE,
+        }}
+        listOfChanges={["iconScale"]}
         clickHandler={markerClickHandler}
-        highLighted={true}
+        iconEditable={true}
       />
       <MarkerList
         arr={overlayArrayContext}
         typeOfMarker={OVERLAYS}
-        labelObject={{
-          color: theme.palette.primary.main,
-          fontSize: "14px",
-          fontWeight: "bold",
-          className: "my-marker-labels",
-          mapKeyValues: mapLegendContext[OVERLAYS],
+        propsObject={{
+          label: {
+            color: theme.palette.primary.main,
+            fontSize: "14px",
+            fontWeight: "bold",
+            className: "my-marker-labels",
+            mapKeyValues: mapLegendContext[OVERLAYS],
+          },
         }}
+        listOfChanges={["addLabelText"]}
         iconObject={{ path: window.google.maps.SymbolPath.CIRCLE, scale: 0 }}
         googleMarkerComponentProps={{
           zIndex: 2000,
