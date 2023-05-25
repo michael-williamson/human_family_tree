@@ -1,46 +1,47 @@
-import React from "react";
-import { Box } from "@mui/system";
-import { MarkerComponent } from "./MarkerComponent";
+import { Marker } from "@react-google-maps/api";
 
 export const MarkerList = ({
   arr = [],
+  animation,
   labelObject,
   iconObject = {},
-  googleMarkerComponentProps = {},
+  additionalProps = {},
   typeOfMarker,
   showIcon = true,
   clickHandler,
   mapLegendFieldContext = null,
+  highLighted = false,
+  controlFlowObject = {},
 }) => {
-  const labelObjectUpdater = (obj, name) => {
-    const objCopy = { ...obj };
-    objCopy.text = name;
-    return obj["mapKeyValues"][name] ? objCopy : null;
-  };
-
-  const highLighted = (item) => {
-    return item[typeOfMarker] === mapLegendFieldContext;
-  };
-
   return (
-    <Box>
-      {arr.map((item) => (
-        <MarkerComponent
-          key={item.ID}
-          typeOfMarker={typeOfMarker}
-          lat={item.gpsCoor.lat}
-          lng={item.gpsCoor.lng}
-          labelObject={
-            labelObject ? labelObjectUpdater(labelObject, item.name) : undefined
-          }
-          highLighted={mapLegendFieldContext && highLighted(item)}
-          item={item}
-          iconObject={iconObject}
-          showIcon={showIcon}
-          googleMarkerComponentProps={googleMarkerComponentProps}
-          clickHandler={clickHandler}
-        />
-      ))}
-    </Box>
+    <>
+      {arr.map(({ ID, gpsCoor, name, [typeOfMarker]: category }) => {
+        let label = labelObject;
+        let controlFlow = {};
+        if (highLighted && mapLegendFieldContext === category) {
+          controlFlow = {
+            icon: { ...iconObject, scaledSize: { height: 100, width: 100 } },
+            animation: window.google.maps.Animation.BOUNCE,
+          };
+        }
+
+        if (labelObject) {
+          // label = { ...labelObject, text: name };
+          controlFlow = { label: { ...labelObject, text: name } };
+        }
+
+        return (
+          <Marker
+            key={ID}
+            position={gpsCoor}
+            icon={iconObject}
+            label={label}
+            animation={animation}
+            {...controlFlow}
+            {...additionalProps}
+          />
+        );
+      })}
+    </>
   );
 };

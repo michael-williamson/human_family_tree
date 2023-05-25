@@ -26,6 +26,9 @@ yarn-error.log*
 fileWriter.js
 settings.json
 listArrays.js
+tsconfig.json
+src/react-app-env.d.ts
+src/global.d.ts
 
 /.vscode
 components_explained.txt

@@ -20,8 +20,8 @@ import {
   volcanoIcon,
 } from "../../../../Media/MapIcons";
 import { MarkerList } from "./MarkerList";
-import theme from "../../../../theme";
 import { useMapLegendContext } from "../../MapStateComponents/MapLegendStateProvider";
+import theme from "../../../../theme";
 
 export const MarkerListsContainer = () => {
   const specimensArrayContext = useSpecimensArrayContext();
@@ -50,6 +50,7 @@ export const MarkerListsContainer = () => {
           scaledSize: { width: 35, height: 35 },
         }}
         clickHandler={markerClickHandler}
+        highLighted={true}
       />
       <MarkerList
         arr={overlayArrayContext}
