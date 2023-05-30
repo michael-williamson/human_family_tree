@@ -1,12 +1,12 @@
+import { MarkerPropsOmittedTypes } from "../../../../Components/MapComponents/GoogleMapComponents/MarkerComponents/MarkerList"
+
+
 interface PropsFactoryBaseType {
-    changesObject:{}
-    propsObject:{
-        icon:google.maps.Icon
-        label:google.maps.MarkerLabel
-    }
+    changesObject:MarkerPropsOmittedTypes
+    propsObject:MarkerPropsOmittedTypes
         category:string
-        name:string
-        fieldContext:string
+        name:string   
+        fieldContext:string | undefined
 }
 
 interface PropsFactoryType extends PropsFactoryBaseType {
@@ -35,7 +35,7 @@ const iconScale = ({changesObject,propsObject,category,fieldContext}:IndividualM
 }
 
 const addLabelText = ({changesObject,propsObject,name}:IndividualMessageHandlers) => {
-    changesObject = {...changesObject,label:{...propsObject.label,text:name}}
+    changesObject = {...changesObject,label:{...propsObject.label as {},text:name}}
     return changesObject;
 }
 

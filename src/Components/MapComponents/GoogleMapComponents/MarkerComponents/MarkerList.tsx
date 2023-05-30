@@ -1,37 +1,35 @@
-import { Marker } from "@react-google-maps/api";
+import { Marker, MarkerProps } from "@react-google-maps/api";
 import { propsFactory } from "../../../../HelperFunctions/MapComponent/GoogleMapsComponent/MarkerComponents/markerListControlFlow";
+import { JsonDataObjectTypes } from "../../../../Types/jsonTypes";
 
-interface MarkerListProps {
-  arr: Array<{}>;
-  animation: google.maps.Animation;
-  labelObject: string | google.maps.MarkerLabel;
-  iconObject: string | google.maps.Icon | google.maps.Symbol | undefined;
-  updatedIconObject: {};
-  additionalProps: {};
+export type MarkerPropsOmittedTypes = Omit<MarkerProps, "position">;
+
+interface MarkerListProps extends MarkerPropsOmittedTypes {
+  arr: Array<JsonDataObjectTypes>;
+  additionalProps?: {};
   typeOfMarker: string;
   clickHandler: Function;
-  mapLegendFieldContext: string;
-  iconEditable: boolean;
-  controlFlowObject: {};
-  propsObject: { icon: google.maps.Icon; label: google.maps.MarkerLabel };
-  listOfChanges: Array<any> | undefined;
+  fieldContext?: string | undefined;
+  propsObject: MarkerPropsOmittedTypes;
+  listOfChanges?: Array<string>;
 }
 
 export const MarkerList: React.FC<MarkerListProps> = ({
   arr = [],
   animation,
-  iconObject,
+  icon,
   additionalProps,
   typeOfMarker,
   clickHandler,
-  mapLegendFieldContext: fieldContext,
+  fieldContext,
   propsObject,
   listOfChanges,
 }) => {
   return (
     <>
-      {arr.map(({ ID, gpsCoor, name, [typeOfMarker]: category }: any) => {
-        let changesObject = {};
+      {arr.map((item: any) => {
+        const { ID, gpsCoor, name, [typeOfMarker]: category } = item;
+        let changesObject: MarkerPropsOmittedTypes = {};
         if (listOfChanges) {
           changesObject = propsFactory({
             listOfChanges,
@@ -43,12 +41,15 @@ export const MarkerList: React.FC<MarkerListProps> = ({
           });
         }
 
+        const handlerWithItem = clickHandler(typeOfMarker, item);
+
         return (
           <Marker
             key={ID}
             position={gpsCoor}
-            icon={iconObject}
+            icon={icon}
             animation={animation}
+            onClick={handlerWithItem}
             {...changesObject}
             {...additionalProps}
           />

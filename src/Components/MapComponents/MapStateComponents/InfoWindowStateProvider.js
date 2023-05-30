@@ -1,5 +1,8 @@
-import React, { useContext, useReducer } from "react";
-import { CLOSE_INFO_WINDOW } from "../../../ConstantVariableNames";
+import React, { useContext, useReducer, useCallback } from "react";
+import {
+  CLOSE_INFO_WINDOW,
+  OPEN_INFO_WINDOW,
+} from "../../../ConstantVariableNames";
 
 export const InfoWindowContext = React.createContext();
 export const InfoWindowContextUpdater = React.createContext();
@@ -17,6 +20,18 @@ function infoWindowStateReducer(state, action) {
     return { item: {} };
   }
   return action.payload;
+}
+
+export function useMarkerClickHandler(infoWindowContextUpdater) {
+  return useCallback(
+    (typeOfMarker, item) => () => {
+      infoWindowContextUpdater({
+        type: OPEN_INFO_WINDOW,
+        payload: { typeOfMarker, item },
+      });
+    },
+    [infoWindowContextUpdater]
+  );
 }
 
 export const InfoWindowStateProvider = ({ children }) => {
