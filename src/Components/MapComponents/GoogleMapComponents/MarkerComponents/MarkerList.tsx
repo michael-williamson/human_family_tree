@@ -8,7 +8,8 @@ interface MarkerListProps extends MarkerPropsOmittedTypes {
   arr: Array<JsonDataObjectTypes>;
   additionalProps?: {};
   typeOfMarker: string;
-  clickHandler: Function;
+  clickHandler?: any;
+  handlerState?: any;
   fieldContext?: string | undefined;
   propsObject: MarkerPropsOmittedTypes;
   listOfChanges?: Array<string>;
@@ -21,6 +22,7 @@ export const MarkerList: React.FC<MarkerListProps> = ({
   additionalProps,
   typeOfMarker,
   clickHandler,
+  handlerState,
   fieldContext,
   propsObject,
   listOfChanges,
@@ -41,15 +43,13 @@ export const MarkerList: React.FC<MarkerListProps> = ({
           });
         }
 
-        const handlerWithItem = clickHandler(typeOfMarker, item);
-
         return (
           <Marker
             key={ID}
             position={gpsCoor}
             icon={icon}
             animation={animation}
-            onClick={handlerWithItem}
+            onClick={clickHandler || handlerState[ID]}
             {...changesObject}
             {...additionalProps}
           />

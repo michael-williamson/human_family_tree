@@ -3,10 +3,15 @@ import { useSpecimensArrayContext } from "../../MapStateComponents/MapPopulation
 import { SPECIES } from "../../../../ConstantVariableNames";
 import { skullIcon } from "../../../../Media/MapIcons";
 import { useMapLegendFieldContext } from "../../MapStateComponents/MapLegendStateProvider";
+import { useState } from "react";
+import { clickHandlerFactory } from "../../../../HelperFunctions/MapComponent/GoogleMapsComponent/MarkerComponents/MarkerClickHandler";
 
 export const SpeciesMarkerList = ({ clickHandler }: any) => {
   const specimensArrayContext = useSpecimensArrayContext();
   const fieldContext = useMapLegendFieldContext();
+  const [handlerState] = useState(
+    clickHandlerFactory(clickHandler, specimensArrayContext, SPECIES)
+  );
   return (
     <MarkerList
       arr={specimensArrayContext}
@@ -21,7 +26,7 @@ export const SpeciesMarkerList = ({ clickHandler }: any) => {
       }}
       fieldContext={fieldContext}
       listOfChanges={["iconScale"]}
-      clickHandler={clickHandler}
+      handlerState={handlerState}
     />
   );
 };
