@@ -49,7 +49,7 @@ export const MarkerList: React.FC<MarkerListProps> = ({
             position={gpsCoor}
             icon={icon}
             animation={animation}
-            onClick={clickHandler || handlerState[ID]}
+            onClick={clickHandler ? clickHandler : handlerState[ID]}
             {...changesObject}
             {...additionalProps}
           />

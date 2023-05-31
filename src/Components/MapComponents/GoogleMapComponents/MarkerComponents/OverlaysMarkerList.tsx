@@ -20,7 +20,7 @@ export const OverlaysMarkerList = ({ clickHandler }: any) => {
       }}
       listOfChanges={["addLabelText"]}
       icon={{ path: window.google.maps.SymbolPath.CIRCLE, scale: 0 }}
-      clickHandler={clickHandler}
+      clickHandler={() => console.log("clicked overlay")}
     />
   );
 };
