@@ -46,7 +46,7 @@ const options = {
   },
 };
 
-export const GoogleMapComponent = (props) => {
+export const GoogleMapComponent = props => {
   const [libraries] = useState(["drawing"]);
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: REACT_APP_GOOGLE_API,
@@ -65,13 +65,13 @@ export const GoogleMapComponent = (props) => {
     return <Skeleton />;
   }
 
-  const handleOnLoad = (instance) => {
+  const handleOnLoad = instance => {
     if (instance) {
       setMapInstance(instance);
     }
   };
 
-  const handleHideMapKey = () => setHideMapKey((prev) => !prev);
+  const handleHideMapKey = () => setHideMapKey(prev => !prev);
 
   return (
     <GoogleMap
@@ -80,7 +80,7 @@ export const GoogleMapComponent = (props) => {
       zoom={2.5}
       options={options}
       onLoad={handleOnLoad}
-      onRightClick={(e) => {
+      onRightClick={e => {
         setLatLngObject({ lat: e.latLng.lat(), lng: e.latLng.lng() });
         setRightClick(true);
       }}
