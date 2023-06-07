@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import { Skeleton, Button } from "@mui/material";
-import { InfoWindowComponentContainer } from "./InfoWindowComponents/InfoWindowComponentContainer";
 import { HYBRID, ROADMAP, SATELLITE } from "../../../ConstantVariableNames";
 import { MapKeyControl } from "./CustomControls/MapKeyControl";
 import { MapKey } from "../MapKeyComponents/MapKey";
@@ -11,6 +10,7 @@ import { LatLngPosition } from "./InfoBoxComponents/LatLngPosition";
 import { MarkerListsContainer } from "./MarkerComponents/MarkerListsContainer";
 import { LakeTobaCircleComponent } from "./ShapeComponents/LakeTobaCircleComponent";
 import { PolygonListComponent } from "./ShapeComponents/PolygonListComponent";
+import { MarkerItemInfoWindow } from "./InfoWindowComponents/MarkerItemInfoWindow";
 
 const containerStyle = {
   width: "100%",
@@ -73,6 +73,11 @@ export const GoogleMapComponent = props => {
 
   const handleHideMapKey = () => setHideMapKey(prev => !prev);
 
+  const rightClickHandler = e => {
+    setLatLngObject({ lat: e.latLng.lat(), lng: e.latLng.lng() });
+    setRightClick(true);
+  };
+
   return (
     <GoogleMap
       mapContainerStyle={containerStyle}
@@ -80,10 +85,7 @@ export const GoogleMapComponent = props => {
       zoom={2.5}
       options={options}
       onLoad={handleOnLoad}
-      onRightClick={e => {
-        setLatLngObject({ lat: e.latLng.lat(), lng: e.latLng.lng() });
-        setRightClick(true);
-      }}
+      onRightClick={rightClickHandler}
       id="myGoogleMap"
     >
       <Marker position={latLngObject} visible={latLngObject.lat !== 0} />
@@ -105,7 +107,7 @@ export const GoogleMapComponent = props => {
       <MarkerListsContainer />
 
       <LakeTobaCircleComponent />
-      <InfoWindowComponentContainer />
+      <MarkerItemInfoWindow />
     </GoogleMap>
   );
 };

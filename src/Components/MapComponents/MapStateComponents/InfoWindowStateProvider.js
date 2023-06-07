@@ -17,7 +17,7 @@ export function useInfoWindowContextUpdater() {
 
 function infoWindowStateReducer(state, action) {
   if (action.type === CLOSE_INFO_WINDOW) {
-    return { item: {} };
+    return { item: {}, typeOfMarker: "", closeWindow: true };
   }
   return action.payload;
 }
@@ -27,7 +27,7 @@ export function useMarkerClickHandler(infoWindowContextUpdater) {
     (typeOfMarker, item) => () => {
       infoWindowContextUpdater({
         type: OPEN_INFO_WINDOW,
-        payload: { typeOfMarker, item },
+        payload: { typeOfMarker, item, closeWindow: false },
       });
     },
     [infoWindowContextUpdater]
@@ -36,7 +36,11 @@ export function useMarkerClickHandler(infoWindowContextUpdater) {
 
 export const InfoWindowStateProvider = ({ children }) => {
   // the model of the state object will be {item:{},typeOfMarker:""}
-  const [state, dispatch] = useReducer(infoWindowStateReducer, { item: {} });
+  const [state, dispatch] = useReducer(infoWindowStateReducer, {
+    item: {},
+    typeOfMarker: "",
+    closeWindow: true,
+  });
   return (
     <InfoWindowContext.Provider value={state}>
       <InfoWindowContextUpdater.Provider value={dispatch}>
