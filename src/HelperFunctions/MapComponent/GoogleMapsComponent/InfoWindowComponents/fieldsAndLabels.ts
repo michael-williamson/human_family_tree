@@ -35,6 +35,8 @@ const generalPropertiesObj = {
     },
     overlays: {
       Description: "description",
+      ...dateObj,
+      ...generalPropertiesObj,
     },
   };
 

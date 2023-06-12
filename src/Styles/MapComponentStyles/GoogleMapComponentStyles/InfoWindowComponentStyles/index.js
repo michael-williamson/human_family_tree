@@ -26,7 +26,7 @@ export const infoWindowContainerStyles = {
 };
 
 export const infoWindowTitleText = {
-  color: (theme) => theme.palette.primary.main,
+  color: theme => theme.palette.primary.main,
   textShadow: "7px 6px 2px rgb(0 0 0 / 40%)",
   fontSize: { xs: 20, lg: 40 },
   fontWeight: "bold",
@@ -35,6 +35,13 @@ export const infoWindowTitleText = {
 };
 
 export const infoWindowImageContainer = {};
+
+// export const descriptionTextStyle = {
+//   whiteSpace: "break-spaces",
+//   gridRowStart: "2",
+//   gridColumn: "1/5",
+//   textAlign: "center",
+// };
 
 export const infoWindowImageStyles = {
   width: { xs: "25%", md: "50%" },
@@ -74,8 +81,9 @@ export const infoWindowLabelFieldStyles = {
 export const infoWindowTextFieldStyles = {
   color: "rgb(215, 136, 0)",
   fontSize: { xs: 20, lg: 18 },
-  fontFamily: (theme) => theme.fonts.Kalam,
-  whiteSpace: "nowrap",
+  fontFamily: theme => theme.fonts.Kalam,
+  // whiteSpace: "nowrap",
+  whiteSpace: "break-spaces",
   gridColumn: "2/5",
 };
 
@@ -98,7 +106,7 @@ export const individualFieldContainerStyle = {
 };
 
 export const imageAttributionLabelStyles = {
-  color: (theme) => theme.palette.primary.main,
+  color: theme => theme.palette.primary.main,
 };
 
 export const imageAttributionLinkStyles = {
