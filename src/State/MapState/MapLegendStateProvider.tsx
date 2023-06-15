@@ -1,5 +1,7 @@
 import React, { useReducer, useContext, useState } from "react";
 import { SpeciesCheckboxProvider } from "./SpeciesCheckboxProvider";
+import { DatesCheckboxProvider } from "./DatesCheckboxProvider";
+import { OverlaysCheckboxProvider } from "./OverlaysCheckboxProvider";
 
 export const MapLegendContext = React.createContext(null);
 export const MapLegendContextUpdater = React.createContext(null);
@@ -24,7 +26,11 @@ export function useMapLegendContextUpdater() {
 export const MapLegendStateProvider = ({ children }: any) => {
   return (
     <>
-      <SpeciesCheckboxProvider>{children}</SpeciesCheckboxProvider>
+      <SpeciesCheckboxProvider>
+        <DatesCheckboxProvider>
+          <OverlaysCheckboxProvider>{children}</OverlaysCheckboxProvider>
+        </DatesCheckboxProvider>
+      </SpeciesCheckboxProvider>
     </>
   );
 };
