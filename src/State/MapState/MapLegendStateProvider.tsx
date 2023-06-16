@@ -1,9 +1,9 @@
-import React, { useReducer, useContext, useState } from "react";
+import React, { useContext } from "react";
 import { SpeciesCheckboxProvider } from "./SpeciesCheckboxProvider";
 import { DatesCheckboxProvider } from "./DatesCheckboxProvider";
 import { OverlaysCheckboxProvider } from "./OverlaysCheckboxProvider";
 
-export const MapLegendContext = React.createContext(null);
+export const MapLegendContext = React.createContext({});
 export const MapLegendContextUpdater = React.createContext(null);
 
 // const SpeciesCheckboxContext = React.createContext(null);
@@ -25,12 +25,12 @@ export function useMapLegendContextUpdater() {
 
 export const MapLegendStateProvider = ({ children }: any) => {
   return (
-    <>
+    <MapLegendContextUpdater.Provider value={null}>
       <SpeciesCheckboxProvider>
         <DatesCheckboxProvider>
           <OverlaysCheckboxProvider>{children}</OverlaysCheckboxProvider>
         </DatesCheckboxProvider>
       </SpeciesCheckboxProvider>
-    </>
+    </MapLegendContextUpdater.Provider>
   );
 };

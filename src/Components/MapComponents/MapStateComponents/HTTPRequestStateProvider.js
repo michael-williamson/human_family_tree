@@ -15,6 +15,7 @@ import {
   useArrayDispatchContext,
   useObjectDispatchContext,
 } from "./MapPopulationStateContext";
+import { httpRequest } from "../../../HTTP/httpRequests";
 
 const NetworkRequestDispatch = React.createContext();
 
@@ -35,6 +36,7 @@ export const HTTPRequestStateProvider = ({ children }) => {
       // --> capture the returned data & relay it to the context of the Specimens Array Context Provider
       // -->
       const { status, data } = await axiosRef.current.get(url);
+      console.log(httpRequest(url));
       if (status === 200 && Array.isArray(data)) {
         const arr = [...data];
         arrayDispatchContext({
