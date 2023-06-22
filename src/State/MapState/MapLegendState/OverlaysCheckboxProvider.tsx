@@ -1,5 +1,5 @@
 import React, { useContext, useReducer } from "react";
-import { overlaysKeyObject } from "../../HelperFunctions/MapComponent/MapContainerComponent/StateMaintenanceFN";
+import { overlaysKeyObject } from "../../../HelperFunctions/MapComponent/MapContainerComponent/StateMaintenanceFN";
 
 const initialState = overlaysKeyObject();
 

@@ -3,6 +3,7 @@ import { mapContainerStyles } from "../../../Styles/MapComponentStyles/MapContai
 import { MapLegendStateProvider } from "../MapStateComponents/MapLegendStateProvider";
 import { InfoWindowStateProvider } from "../MapStateComponents/InfoWindowStateProvider";
 import { Container } from "../../ReusableComponents/Container";
+import { MapStateProvider } from "../../../State/MapState/MapStateProvider";
 
 export const MapContainer = () => {
   return (

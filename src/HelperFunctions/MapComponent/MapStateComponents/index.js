@@ -29,25 +29,22 @@ export const addSelectedDate = ({
   if (selectAll)
     return [
       ...state,
-      ...originalArray.filter((item) => prevStateCopy.species[item.species]),
+      ...originalArray.filter(item => prevStateCopy.species[item.species]),
     ];
-  const comparisonStatement = (item) =>
+  const comparisonStatement = item =>
     item.wholeNumberYears >= datesCategoryObj[updatedProperty].lesser &&
     item.wholeNumberYears <= datesCategoryObj[updatedProperty].greater &&
     prevStateCopy.species[item.species];
-  return [
-    ...state,
-    ...originalArray.filter((item) => comparisonStatement(item)),
-  ];
+  return [...state, ...originalArray.filter(item => comparisonStatement(item))];
 };
 
 export const subtractedSelectedDate = ({ state, updatedProperty }) => {
   //after testing remove curly braces and return logical OR
-  const comparisonStatement = (item) =>
+  const comparisonStatement = item =>
     item.wholeNumberYears < datesCategoryObj[updatedProperty].lesser ||
     item.wholeNumberYears > datesCategoryObj[updatedProperty].greater;
 
-  return state.filter((item) => comparisonStatement(item));
+  return state.filter(item => comparisonStatement(item));
 };
 
 export const addSelectedSpecies = ({
@@ -59,14 +56,14 @@ export const addSelectedSpecies = ({
   if (selectAll) return [...state, ...arr];
   return [
     ...state,
-    ...arr.filter((item) => {
+    ...arr.filter(item => {
       return item[SPECIES] === updatedProperty;
     }),
   ];
 };
 
 export const subtractedSelectedSpecies = ({ state, updatedProperty }) => {
-  return state.filter((item) => {
+  return state.filter(item => {
     return item[SPECIES] !== updatedProperty;
   });
 };
@@ -100,8 +97,8 @@ const addToDateObject = (datesObject, item, datesPropertiesArr) => {
     : (datesObject[datesPropertiesArr[index]] = { itemsArr: [item] });
 };
 
-const addCount = (obj) => {
-  Object.keys(obj).forEach((item) => {
+const addCount = obj => {
+  Object.keys(obj).forEach(item => {
     obj[item].itemCount = obj[item].itemsArr.length;
     obj[item].totalItemCount = obj[item].itemsArr.length;
   });
@@ -115,12 +112,12 @@ const addToSpeciesObject = (speciesObject, item) => {
     : (speciesObject[item.species] = { itemsArr: [item] });
 };
 
-const idAssignment = (arr) => {
+const idAssignment = arr => {
   const idObject = {};
   const datesObject = {};
   const speciesObject = {};
   const datesPropertiesArr = Object.keys(datesCategoryObj);
-  arr.forEach((item) => {
+  arr.forEach(item => {
     item["isChecked"] = true;
     const id = uuidv4();
     item.id = id;
@@ -140,7 +137,7 @@ const idAssignment = (arr) => {
   return workingObject;
 };
 
-export const buildDataArray = (arr) => {
+export const buildDataArray = arr => {
   const whatIsObject = idAssignment(arr);
   return whatIsObject;
 };
@@ -152,7 +149,7 @@ export const createCountObject = (data, propertyNamesArray) => {
     const obj = {};
     propertyName = propertyNamesArray.shift();
     const individualDataObject = data[propertyName];
-    Object.keys(individualDataObject).forEach((item) => {
+    Object.keys(individualDataObject).forEach(item => {
       const currentCount = individualDataObject[item]["itemCount"];
       obj[item] = currentCount;
     });
@@ -166,12 +163,11 @@ const assignId = (obj, id, item) => {
 };
 
 export const mapKeyComparison =
-  (dataObject) =>
-  (state, individualKeyProperty, itemProperty, addOrSubtract) => {
+  dataObject => (state, individualKeyProperty, itemProperty, addOrSubtract) => {
     const arr = dataObject[individualKeyProperty][itemProperty].itemsArr;
     const whichProperty = individualKeyProperty === DATES ? SPECIES : DATES;
     const mapKeyObject = state[whichProperty];
-    return arr.filter((item) => {
+    return arr.filter(item => {
       // if I want to add items according to the state of the map key
       // --> the map key will need to be true
       // --. If I want to subtract

@@ -3,13 +3,15 @@ import { Box } from "@mui/system";
 import { FormControlLabel } from "@mui/material";
 import { Checkbox } from "@mui/material";
 import { objectEval } from "../../HelperFunctions/MapComponent/MapKeyComponents";
+import { useMapContextUpdater } from "../../State/MapState/MapStateProvider";
 
-export const CheckboxComponent = (props) => {
+export const CheckboxComponent = props => {
   //useMemo because new event object unnecessary on rerenders
   const memoizedEventObject = useMemo(
     () => objectEval(props.fieldEventObject, props.label),
     [props.fieldEventObject, props.label]
   );
+  const handler = useMapContextUpdater();
   const {
     checkboxComponentContainerStyles = {},
     checkboxStyles = {},
@@ -17,6 +19,7 @@ export const CheckboxComponent = (props) => {
     formControlStyles = {},
     label = "label",
     handleChange,
+    inputProps,
     siblingElements = null,
   } = props;
 
@@ -33,7 +36,27 @@ export const CheckboxComponent = (props) => {
         label={label}
         checked={checked}
         onChange={handleChange(label)}
-        control={<Checkbox sx={checkboxStyles} />}
+        control={
+          <Checkbox
+            sx={checkboxStyles}
+            name={label}
+            inputProps={inputProps}
+            data-category="species"
+            onChange={e => {
+              console.log(
+                e.target.value,
+                e.target.name,
+                e.target.dataset.category,
+                "event ojbect checkbox"
+              );
+              handler({
+                type: e.target.checked ? "subtract" : "add",
+                category: e.target.dataset.category,
+                fieldName: e.target.name,
+              });
+            }}
+          />
+        }
       />
       {siblingElements}
     </Box>

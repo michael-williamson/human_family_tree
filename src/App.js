@@ -10,6 +10,8 @@ import { mainAppContainerStyles } from "./Styles/MainAppStyles";
 import "./App.css";
 import { MapPopulationStateContext } from "./Components/MapComponents/MapStateComponents/MapPopulationStateContext";
 import { HTTPRequestStateProvider } from "./Components/MapComponents/MapStateComponents/HTTPRequestStateProvider";
+import { MapLegendStateProvider } from "./State/MapState/MapLegendState/MapLegendStateProvider";
+import { MapStateProvider } from "./State/MapState/MapStateProvider";
 
 function App() {
   return (
@@ -18,11 +20,15 @@ function App() {
         <ThemeProvider theme={theme}>
           <Box sx={mainAppContainerStyles}>
             <Header />
-            <MapPopulationStateContext>
-              <HTTPRequestStateProvider>
-                <Router />
-              </HTTPRequestStateProvider>
-            </MapPopulationStateContext>
+            <MapStateProvider>
+              <MapPopulationStateContext>
+                <HTTPRequestStateProvider>
+                  <MapLegendStateProvider>
+                    <Router />
+                  </MapLegendStateProvider>
+                </HTTPRequestStateProvider>
+              </MapPopulationStateContext>
+            </MapStateProvider>
 
             <Footer />
           </Box>

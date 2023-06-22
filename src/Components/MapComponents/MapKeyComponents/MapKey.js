@@ -1,4 +1,3 @@
-import React from "react";
 import { Box } from "@mui/system";
 import { TextComponent } from "../../ReusableComponents/TextComponent";
 import {
@@ -32,7 +31,7 @@ export const MapKey = ({ hideMapKey, setUpdatedProperty }) => {
   const mapLegendContextUpdater = useMapLegendContextUpdater();
   const mapLegendFieldContextUpdater = useMapLegendFieldContextUpdater();
 
-  const handleStateChange = (propertyName) => (fieldName) => (e) => {
+  const handleStateChange = propertyName => fieldName => e => {
     const payloadMapKeyContext = {
       propertyName,
       fieldName,
@@ -45,7 +44,7 @@ export const MapKey = ({ hideMapKey, setUpdatedProperty }) => {
   };
 
   const handleSelectAll =
-    (propertyName) =>
+    propertyName =>
     ({ selectAllText }) =>
     () => {
       mapLegendContextUpdater({
@@ -102,6 +101,7 @@ export const MapKey = ({ hideMapKey, setUpdatedProperty }) => {
           return (
             <IndividualKey
               key={index}
+              inputProps={{ "data-category": item.name }}
               titleText={item.titleText}
               checkboxState={mapLegendContext[item.name]}
               setCheckboxState={handleStateChange(item.name)}

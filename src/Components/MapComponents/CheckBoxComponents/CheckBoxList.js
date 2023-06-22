@@ -6,12 +6,13 @@ import {
   checkboxStyles,
 } from "../../../Styles/MapComponentStyles/MapKeyComponentStyles";
 
-export const CheckBoxList = (props) => {
+export const CheckBoxList = props => {
   const {
     arr = [{}],
     state = {},
     containerEventObject = {},
     className,
+    inputProps,
     checkboxComponentContainerStyles = {},
     checkboxListStyles = {},
     checkboxComponentProps = {},
@@ -22,11 +23,16 @@ export const CheckBoxList = (props) => {
   //
   //options for checkboxComponentProps: checkboxStyles, formControlStyles, handleChange
   return (
-    <Box sx={checkboxListStyles} {...containerEventObject}>
-      {arr.map((item) => (
+    <Box
+      sx={checkboxListStyles}
+      {...containerEventObject}
+      data-category="species"
+    >
+      {arr.map(item => (
         <CheckboxComponent
           key={item}
           label={item}
+          inputProps={inputProps}
           className={className}
           checked={state[item]}
           formControlStyles={formControlStyles}

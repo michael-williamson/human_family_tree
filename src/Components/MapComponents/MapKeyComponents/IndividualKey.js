@@ -16,11 +16,12 @@ import {
   handleHover,
 } from "../../../HelperFunctions/MapComponent/MapKeyComponents";
 
-export const IndividualKey = (props) => {
+export const IndividualKey = props => {
   const [showList, setShowList] = useState(false);
 
   const {
     titleText,
+    inputProps,
     checkboxState,
     setCheckboxState,
     siblingElements = null,
@@ -32,7 +33,7 @@ export const IndividualKey = (props) => {
   } = props;
   const checkboxListArr = Object.keys(checkboxState);
 
-  const clickHandler = (e) => {
+  const clickHandler = e => {
     setShowList(!showList);
   };
 
@@ -63,6 +64,7 @@ export const IndividualKey = (props) => {
         <CheckBoxList
           arr={checkboxListArr}
           state={checkboxState}
+          inputProps={inputProps}
           containerEventObject={
             eventObjectArrayNames.includes(individualPropertyState)
               ? {

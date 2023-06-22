@@ -1,5 +1,5 @@
 import React, { useContext, useReducer } from "react";
-import { speciesKeyObject } from "../../HelperFunctions/MapComponent/MapContainerComponent/StateMaintenanceFN/index";
+import { speciesKeyObject } from "../../../HelperFunctions/MapComponent/MapContainerComponent/StateMaintenanceFN";
 
 const initialState = speciesKeyObject();
 
