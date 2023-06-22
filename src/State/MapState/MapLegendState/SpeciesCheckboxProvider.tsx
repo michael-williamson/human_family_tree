@@ -1,5 +1,10 @@
 import React, { useContext, useReducer } from "react";
 import { speciesKeyObject } from "../../../HelperFunctions/MapComponent/MapContainerComponent/StateMaintenanceFN";
+import {
+  providerControlFlow,
+  reducer,
+} from "../../../HelperFunctions/State/MapLegendState";
+import { SPECIES } from "../../../ConstantVariableNames";
 
 const initialState = speciesKeyObject();
 
@@ -14,19 +19,19 @@ export function useSpeciesCheckboxUpdater() {
   return useContext(SpeciesCheckboxContextUpdater);
 }
 
-function checkboxReducer(state: any, { payload }: any) {
-  const { fieldName, bool } = payload;
-  return {
-    ...state,
-    [fieldName]: !bool,
-  };
-}
-
-export const SpeciesCheckboxProvider = ({ children }: any) => {
+export const SpeciesCheckboxProvider = ({ children, action }: any) => {
   const [speciesCheckboxState, speciesCheckboxDispatch] = useReducer(
-    checkboxReducer,
+    reducer,
     initialState
   );
+
+  providerControlFlow({
+    state: speciesCheckboxState,
+    action,
+    providerCategory: SPECIES,
+    dispatch: speciesCheckboxDispatch,
+  });
+
   return (
     <SpeciesCheckboxContext.Provider value={speciesCheckboxState}>
       <SpeciesCheckboxContextUpdater.Provider value={speciesCheckboxDispatch}>

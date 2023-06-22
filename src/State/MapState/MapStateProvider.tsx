@@ -20,10 +20,9 @@ export const MapStateProvider = ({ children }: any) => {
     fieldName: "initial",
   });
   const clickHandler = (actionObject: any) => {
-    console.log(actionObject, "action object");
     setAction(actionObject);
   };
-  console.log(action, "what is action");
+
   return (
     <MapContextUpdater.Provider value={clickHandler}>
       <MapLegendStateProvider action={action} setAction={setAction}>

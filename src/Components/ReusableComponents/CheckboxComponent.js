@@ -4,6 +4,7 @@ import { FormControlLabel } from "@mui/material";
 import { Checkbox } from "@mui/material";
 import { objectEval } from "../../HelperFunctions/MapComponent/MapKeyComponents";
 import { useMapContextUpdater } from "../../State/MapState/MapStateProvider";
+import { addSubtractType } from "../../HelperFunctions/State/MapLegendState";
 
 export const CheckboxComponent = props => {
   //useMemo because new event object unnecessary on rerenders
@@ -47,10 +48,12 @@ export const CheckboxComponent = props => {
                 e.target.value,
                 e.target.name,
                 e.target.dataset.category,
+                e.target.checked,
                 "event ojbect checkbox"
               );
+
               handler({
-                type: e.target.checked ? "subtract" : "add",
+                type: addSubtractType(e.target.checked),
                 category: e.target.dataset.category,
                 fieldName: e.target.name,
               });

@@ -1,8 +1,7 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { SpeciesCheckboxProvider } from "./SpeciesCheckboxProvider";
 import { DatesCheckboxProvider } from "./DatesCheckboxProvider";
 import { OverlaysCheckboxProvider } from "./OverlaysCheckboxProvider";
-import { DATES, OVERLAYS, SPECIES } from "../../../ConstantVariableNames";
 
 export const MapLegendContext = React.createContext({});
 export const MapLegendContextUpdater = React.createContext(null);
@@ -26,56 +25,17 @@ export function useMapLegendContextUpdater() {
 
 export const MapLegendStateProvider = ({
   children,
-  action,
-  setAction = () => null,
+  action = {
+    type: "initial",
+    category: "initial",
+    fieldName: "initial",
+  },
 }: any) => {
-  const [speciesData, setSpeciesData] = useState({});
-  const [datesData, setDatesData] = useState({});
-  const [overlaysData, setOverlaysData] = useState({});
-  const switchBoard = useCallback(
-    (
-      actionObject = {
-        type: "initial",
-        category: "initial",
-        fieldName: "initial",
-      }
-    ) => {
-      const { category } = actionObject;
-
-      console.log(category, "inside map legend provider");
-
-      switch (category) {
-        case SPECIES:
-          setSpeciesData(actionObject);
-
-          break;
-        case DATES:
-          setDatesData(actionObject);
-          break;
-        case OVERLAYS:
-          setOverlaysData(actionObject);
-          break;
-      }
-    },
-    []
-  );
-
-  useEffect(() => {
-    if (action && action.type === "initial") return;
-    switchBoard(action);
-    setAction({
-      type: "initial",
-      category: "initial",
-      fieldName: "initial",
-    });
-    return () => {};
-  }, [switchBoard, action, setAction]);
-
   return (
     <MapLegendContextUpdater.Provider value={null}>
-      <SpeciesCheckboxProvider action={speciesData}>
-        <DatesCheckboxProvider action={datesData}>
-          <OverlaysCheckboxProvider action={overlaysData}>
+      <SpeciesCheckboxProvider action={action}>
+        <DatesCheckboxProvider action={action}>
+          <OverlaysCheckboxProvider action={action}>
             {children}
           </OverlaysCheckboxProvider>
         </DatesCheckboxProvider>
