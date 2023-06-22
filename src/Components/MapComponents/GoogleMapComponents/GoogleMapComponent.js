@@ -11,6 +11,7 @@ import { MarkerListsContainer } from "./MarkerComponents/MarkerListsContainer";
 import { LakeTobaCircleComponent } from "./ShapeComponents/LakeTobaCircleComponent";
 import { PolygonListComponent } from "./ShapeComponents/PolygonListComponent";
 import { MarkerItemInfoWindow } from "./InfoWindowComponents/MarkerItemInfoWindow";
+import { MapKeyContainer } from "../MapKey/MapKeyContainer";
 
 const containerStyle = {
   width: "100%",
@@ -97,6 +98,7 @@ export const GoogleMapComponent = props => {
       <MapKeyControl mapInstance={mapInstance}>
         <MapKey hideMapKey={hideMapKey} />
       </MapKeyControl>
+      <MapKeyContainer />
       <LatLngPosition
         latLngObject={latLngObject}
         rightClick={rightClick}

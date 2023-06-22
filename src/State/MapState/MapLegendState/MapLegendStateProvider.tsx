@@ -23,21 +23,12 @@ export function useMapLegendContextUpdater() {
   return useContext(MapLegendContextUpdater);
 }
 
-export const MapLegendStateProvider = ({
-  children,
-  action = {
-    type: "initial",
-    category: "initial",
-    fieldName: "initial",
-  },
-}: any) => {
+export const MapLegendStateProvider = ({ children }: any) => {
   return (
     <MapLegendContextUpdater.Provider value={null}>
-      <SpeciesCheckboxProvider action={action}>
-        <DatesCheckboxProvider action={action}>
-          <OverlaysCheckboxProvider action={action}>
-            {children}
-          </OverlaysCheckboxProvider>
+      <SpeciesCheckboxProvider>
+        <DatesCheckboxProvider>
+          <OverlaysCheckboxProvider>{children}</OverlaysCheckboxProvider>
         </DatesCheckboxProvider>
       </SpeciesCheckboxProvider>
     </MapLegendContextUpdater.Provider>

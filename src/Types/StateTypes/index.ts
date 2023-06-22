@@ -1,5 +1,5 @@
 export interface ActionType {
     type:string;
-    category:string;
+    category:string | undefined;
     fieldName:string;
 }
