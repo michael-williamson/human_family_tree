@@ -1,10 +1,11 @@
-import React, { useContext, useReducer } from "react";
+import React, { Dispatch, useContext, useReducer } from "react";
 import { overlaysKeyObject } from "../../../HelperFunctions/MapComponent/MapContainerComponent/StateMaintenanceFN";
+import { reducer } from "../../../HelperFunctions/State/MapLegendState";
 
 const initialState = overlaysKeyObject();
 
 const OverlaysCheckboxContext = React.createContext(initialState);
-const OverlaysCheckboxContextUpdater = React.createContext({});
+const OverlaysCheckboxContextUpdater = React.createContext({} as Dispatch<any>);
 
 export function useOverlaysCheckbox() {
   return useContext(OverlaysCheckboxContext);
@@ -14,17 +15,9 @@ export function useOverlaysCheckboxUpdater() {
   return useContext(OverlaysCheckboxContextUpdater);
 }
 
-function checkboxReducer(state: any, { payload }: any) {
-  const { fieldName, bool } = payload;
-  return {
-    ...state,
-    [fieldName]: !bool,
-  };
-}
-
 export const OverlaysCheckboxProvider = ({ children }: any) => {
   const [overlaysCheckboxState, overlaysCheckboxDispatch] = useReducer(
-    checkboxReducer,
+    reducer,
     initialState
   );
   return (

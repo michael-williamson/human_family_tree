@@ -1,5 +1,11 @@
 import { Checkbox, FormControlLabel } from "@mui/material";
 import { OnChangeFunctionType } from "../../../../Types/GlobalTypes";
+import { CheckboxLIstTitle } from "./CheckboxLIstTitle";
+import { Container } from "../../../ReusableComponents/Container";
+import {
+  checkboxListContainerStyles,
+  checkboxListStyles,
+} from "../../../../Styles/MapComponentStyles/MapKeyComponentStyles";
 
 // easy copy paste
 // <CheckboxListComponent arr={[]} state={{}} clickHandler={(e)=>null}/>
@@ -15,6 +21,7 @@ interface CheckboxListTypes {
   inputProps?: object;
   checkboxStyles?: object;
   formControlStyles?: object;
+  titleText?: string;
 }
 
 export const CheckboxListComponent = ({
@@ -24,28 +31,32 @@ export const CheckboxListComponent = ({
   checkboxStyles,
   formControlStyles,
   clickHandler,
+  titleText,
 }: CheckboxListTypes) => {
   return (
-    <div>
-      {arr.map((item: string) => {
-        return (
-          <FormControlLabel
-            key={item}
-            label={item}
-            checked={state[item]}
-            sx={formControlStyles}
-            control={
-              <Checkbox
-                key={item}
-                sx={checkboxStyles}
-                inputProps={inputProps}
-                name={item}
-                onChange={clickHandler}
-              />
-            }
-          />
-        );
-      })}
-    </div>
+    <Container containerStyles={checkboxListContainerStyles}>
+      <CheckboxLIstTitle />
+      <Container containerStyles={checkboxListStyles}>
+        {arr.map((item: string) => {
+          return (
+            <FormControlLabel
+              key={item}
+              label={item}
+              checked={state[item]}
+              sx={formControlStyles}
+              control={
+                <Checkbox
+                  key={item}
+                  sx={checkboxStyles}
+                  inputProps={inputProps}
+                  name={item}
+                  onChange={clickHandler}
+                />
+              }
+            />
+          );
+        })}
+      </Container>
+    </Container>
   );
 };

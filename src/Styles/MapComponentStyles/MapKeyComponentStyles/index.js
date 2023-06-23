@@ -12,7 +12,7 @@ export const mapKeyContainerStyles = {
 };
 
 export const mapLegendTitleContainerStyles = {
-  bgcolor: (theme) => theme.palette.customColors.beige,
+  bgcolor: theme => theme.palette.customColors.beige,
   borderRadius: "8px 8px 0px 0px",
   display: "flex",
   justifyContent: "center",
@@ -24,7 +24,7 @@ export const mapLegendTitleStyles = {
   fontWeight: "bold",
   textAlign: "center",
   pb: { xs: 0 },
-  fontFamily: (theme) => theme.fonts.Kalam,
+  fontFamily: theme => theme.fonts.Kalam,
 };
 
 export const mapLegendTitleImageContainer = {
@@ -52,14 +52,34 @@ export const allIndividualKeysContainer = {
   },
 };
 
+export const checkboxListContainer = {
+  overflowY: "scroll",
+  maxHeight: 400,
+  display: "grid",
+  rowGap: 5,
+  pb: { xs: 5, md: 5 },
+  pl: { lg: 1 },
+  "&::-webkit-scrollbar": {
+    width: { xs: 5 },
+  },
+  "&::-webkit-scrollbar-track": {},
+  "&::-webkit-scrollbar-thumb": {
+    backgroundColor: "orange",
+    borderRadius: 5,
+  },
+  "&::-webkit-scrollbar-thumb:hover": {
+    backgroundColor: "darkorange",
+  },
+};
+
 export const searchByLabelsStyles = {
   color: "white",
   "&.Mui-focused": { color: "white" },
 };
 
 export const searchByRadioStyles = {
-  color: (theme) => theme.palette.primary.main,
-  "&.Mui-checked": { color: (theme) => theme.palette.primary.main },
+  color: theme => theme.palette.primary.main,
+  "&.Mui-checked": { color: theme => theme.palette.primary.main },
 };
 
 export const searchResultsContainerStyles = {
