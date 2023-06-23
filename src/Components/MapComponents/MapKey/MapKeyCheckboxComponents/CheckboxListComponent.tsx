@@ -24,9 +24,14 @@ interface CheckboxListTypes {
   titleText?: string;
 }
 
+const checkboxChecked = (state: any, item: string) => {
+  return state[item];
+};
+
 export const CheckboxListComponent = ({
   arr,
   state,
+
   inputProps,
   checkboxStyles,
   formControlStyles,
@@ -42,7 +47,7 @@ export const CheckboxListComponent = ({
             <FormControlLabel
               key={item}
               label={item}
-              checked={state[item]}
+              checked={checkboxChecked(state, item)}
               sx={formControlStyles}
               control={
                 <Checkbox
