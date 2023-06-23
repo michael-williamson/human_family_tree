@@ -98,6 +98,7 @@ export const GoogleMapComponent = props => {
       <MapKeyControl mapInstance={mapInstance}>
         <MapKey hideMapKey={hideMapKey} />
       </MapKeyControl>
+
       <MapKeyContainer />
       <LatLngPosition
         latLngObject={latLngObject}
