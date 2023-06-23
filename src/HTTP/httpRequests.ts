@@ -1,5 +1,5 @@
 import axios from "axios";
-import {   ADD,
+import {  
     DATES,
     ENTRY_EXIT_POINTS,
     ENTRY_EXIT_POINTS_ARRAY,
@@ -9,7 +9,6 @@ import {   ADD,
     OVERLAYS,
     OVERLAY_ARRAY,
     REMOTE_SERVER_BASE_URL,
-    SELECT_ALL,
     SPECIES,
     SPECIMENS_BY_DATE,
     SPECIMENS_BY_ID,
@@ -26,23 +25,23 @@ const axiosInstance = axios.create({
     headers: { "X-Custom-Header": "foobar" },
   });
 
-  const matchingKeyValues = {
-    [DATES]: [SPECIMENS_BY_DATE],
-    [SPECIES]: [SPECIMENS_BY_SPECIES],
-    [EVENTS]: [EVENT_ARRAY],
-    [OVERLAYS]: [OVERLAY_ARRAY],
-    [ENTRY_EXIT_POINTS]: [ENTRY_EXIT_POINTS_ARRAY],
-  };
+  // const matchingKeyValues = {
+  //   [DATES]: [SPECIMENS_BY_DATE],
+  //   [SPECIES]: [SPECIMENS_BY_SPECIES],
+  //   [EVENTS]: [EVENT_ARRAY],
+  //   [OVERLAYS]: [OVERLAY_ARRAY],
+  //   [ENTRY_EXIT_POINTS]: [ENTRY_EXIT_POINTS_ARRAY],
+  // };
   
-  const apiAddressesObject = {
-    [SPECIES]: "api/specimensArray",
-    [SPECIMENS_BY_DATE]: "api/specimensByDate",
-    [SPECIMENS_BY_SPECIES]: "api/specimensBySpecies",
-    [SPECIMENS_BY_ID]: "api/specimensById",
-    [EVENTS]: "api/events",
-    [OVERLAYS]: "api/overlays",
-    [ENTRY_EXIT_POINTS]: "api/entryExitPoints",
-  };
+  // const apiAddressesObject = {
+  //   [SPECIES]: "api/specimensArray",
+  //   [SPECIMENS_BY_DATE]: "api/specimensByDate",
+  //   [SPECIMENS_BY_SPECIES]: "api/specimensBySpecies",
+  //   [SPECIMENS_BY_ID]: "api/specimensById",
+  //   [EVENTS]: "api/events",
+  //   [OVERLAYS]: "api/overlays",
+  //   [ENTRY_EXIT_POINTS]: "api/entryExitPoints",
+  // };
   
   export const devApiAddressesObject = {
     [SPECIMENS_BY_SPECIES]: "http://localhost:5000/api/specimensBySpecies",
