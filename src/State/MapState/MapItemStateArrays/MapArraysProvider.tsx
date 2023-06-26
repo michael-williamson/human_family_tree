@@ -15,11 +15,14 @@ interface CheckboxHandlerObjectType {
 }
 
 export const MapArraysProvider = ({ children, action }: any) => {
+  console.log("action: ", action);
   return (
     <>
-      <SpecimensArrayProvider>
-        <EventsArrayProvider>
-          <OverlaysArrayProvider>{children}</OverlaysArrayProvider>
+      <SpecimensArrayProvider action={action}>
+        <EventsArrayProvider action={action}>
+          <OverlaysArrayProvider action={action}>
+            {children}
+          </OverlaysArrayProvider>
         </EventsArrayProvider>
       </SpecimensArrayProvider>
     </>

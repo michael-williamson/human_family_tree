@@ -1,5 +1,10 @@
 export interface ActionType {
     type:string;
-    category:string | undefined;
+    category:string;
     fieldName:string;
+}
+
+export interface ArrayDispatch {
+    data:[]
+
 }

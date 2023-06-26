@@ -13,6 +13,7 @@ import {
     SPECIMENS_BY_DATE,
     SPECIMENS_BY_ID,
     SPECIMENS_BY_SPECIES, } from "../ConstantVariableNames";
+import { ActionType } from "../Types/StateTypes";
 
 const baseURL =
 process.env.NODE_ENV === "production"
@@ -25,25 +26,25 @@ const axiosInstance = axios.create({
     headers: { "X-Custom-Header": "foobar" },
   });
 
-  // const matchingKeyValues = {
-  //   [DATES]: [SPECIMENS_BY_DATE],
-  //   [SPECIES]: [SPECIMENS_BY_SPECIES],
-  //   [EVENTS]: [EVENT_ARRAY],
-  //   [OVERLAYS]: [OVERLAY_ARRAY],
-  //   [ENTRY_EXIT_POINTS]: [ENTRY_EXIT_POINTS_ARRAY],
-  // };
+  const matchingKeyValues:{[index: string]:string} = {
+    [DATES]: SPECIMENS_BY_DATE,
+    [SPECIES]: SPECIMENS_BY_SPECIES,
+    [EVENTS]: EVENT_ARRAY,
+    [OVERLAYS]: OVERLAY_ARRAY,
+    [ENTRY_EXIT_POINTS]: ENTRY_EXIT_POINTS_ARRAY,
+  };
   
-  // const apiAddressesObject = {
-  //   [SPECIES]: "api/specimensArray",
-  //   [SPECIMENS_BY_DATE]: "api/specimensByDate",
-  //   [SPECIMENS_BY_SPECIES]: "api/specimensBySpecies",
-  //   [SPECIMENS_BY_ID]: "api/specimensById",
-  //   [EVENTS]: "api/events",
-  //   [OVERLAYS]: "api/overlays",
-  //   [ENTRY_EXIT_POINTS]: "api/entryExitPoints",
-  // };
+  const apiAddressesObject :{[index: string]:string}= {
+    [SPECIES]: "api/specimensArray",
+    [SPECIMENS_BY_DATE]: "api/specimensByDate",
+    [SPECIMENS_BY_SPECIES]: "api/specimensBySpecies",
+    [SPECIMENS_BY_ID]: "api/specimensById",
+    [EVENTS]: "api/events",
+    [OVERLAYS]: "api/overlays",
+    [ENTRY_EXIT_POINTS]: "api/entryExitPoints",
+  };
   
-  export const devApiAddressesObject = {
+  export const devApiAddressesObject:{[index: string]:string} = {
     [SPECIMENS_BY_SPECIES]: "http://localhost:5000/api/specimensBySpecies",
     [SPECIMENS_BY_DATE]: "http://localhost:5000/api/specimensByDate",
   };
@@ -58,6 +59,16 @@ const axiosInstance = axios.create({
   };
 
     console.log("axios instance created")
+
+    export const httpRequestParamHandler = ({ category, fieldName,type }:ActionType) => {
+      const propName = matchingKeyValues[category];
+      if (fieldName) {
+        const urlString = devApiAddressesObject[propName];
+        return `${urlString}/${fieldName}`;
+      }
+    
+      return apiAddressesObject[category];
+    };
 
   export const httpRequest = async (url:string) => {
     const {status,data} = await axiosInstance.get(url);
