@@ -25,7 +25,6 @@ export const SpecimensArrayProvider = ({ children }: any) => {
       if (type === ADD) {
         const url = httpRequestParamHandler({ type, category, fieldName });
         const data = await httpRequest(url);
-        console.log("data: ", data);
         specimensArrayDispatch({ type, data, fieldName });
       }
 
