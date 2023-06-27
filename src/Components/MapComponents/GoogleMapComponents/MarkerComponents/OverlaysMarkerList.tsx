@@ -1,10 +1,10 @@
 import { MarkerList } from "./MarkerList";
 import { OVERLAYS } from "../../../../ConstantVariableNames";
 import theme from "../../../../theme";
-import { useOverlayArrayContext } from "../../MapStateComponents/MapPopulationStateContext";
+import { useOverlaysArrayContext } from "../../../../State/MapState/MapItemStateArrays/OverlaysArrayProvider";
 
 export const OverlaysMarkerList = ({ clickHandler }: any) => {
-  const overlayArrayContext = useOverlayArrayContext();
+  const overlayArrayContext = useOverlaysArrayContext();
   return (
     <MarkerList
       arr={overlayArrayContext}
