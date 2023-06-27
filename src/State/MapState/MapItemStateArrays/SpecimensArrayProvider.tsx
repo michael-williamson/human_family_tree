@@ -31,7 +31,7 @@ export const useSpecimensArrayContextUpdater = () => {
 export const SpecimensArrayProvider = ({ children }: any) => {
   const [specimensArray, specimensArrayDispatch] = useReducer(arrayReducer, []);
   const arrayUpdater = useCallback(
-    async ({ type, category, fieldName }: ActionType) => {
+    async ({ type, category, fieldName, checkboxState }: ActionType) => {
       if (type === ADD) {
         const url = httpRequestParamHandler({ type, category, fieldName });
         const data = await httpRequest(url);
@@ -39,7 +39,8 @@ export const SpecimensArrayProvider = ({ children }: any) => {
           type,
           data,
           fieldName,
-          addFN: addSpeciesCategory,
+          checkboxState,
+          reducerFN: addSpeciesCategory,
         });
       }
 
@@ -47,7 +48,8 @@ export const SpecimensArrayProvider = ({ children }: any) => {
         type,
         data: [],
         fieldName,
-        filterFN: filterBySpecies,
+        category,
+        reducerFN: filterBySpecies,
       });
     },
     [specimensArrayDispatch]

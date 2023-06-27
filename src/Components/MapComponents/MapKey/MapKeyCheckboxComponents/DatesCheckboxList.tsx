@@ -11,17 +11,24 @@ import {
   checkboxStyles,
   formControlStyles,
 } from "../../../../Styles/MapComponentStyles/MapKeyComponentStyles";
+import { useSpecimensArrayContextUpdater } from "../../../../State/MapState/MapItemStateArrays/SpecimensArrayProvider";
+import { useSpeciesCheckbox } from "../../../../State/MapState/MapLegendState/SpeciesCheckboxProvider";
 
 export const DatesCheckboxList = () => {
   const datesCheckboxState = useDatesCheckbox();
+  const speciesCheckboxState = useSpeciesCheckbox();
   const datesCheckboxUpdater = useDatesCheckboxUpdater();
+  const specimensArrayUpdater = useSpecimensArrayContextUpdater();
   const clickHandler: OnChangeFunctionType = e => {
     console.log("e: ", e);
-    datesCheckboxUpdater({
+    const action = {
       type: addSubtractType(e.target.checked),
       category: e.target.dataset.category,
       fieldName: e.target.name,
-    });
+      checkboxState: speciesCheckboxState,
+    };
+    datesCheckboxUpdater(action);
+    specimensArrayUpdater(action);
   };
   const inputProps = { "data-category": DATES };
   return (
