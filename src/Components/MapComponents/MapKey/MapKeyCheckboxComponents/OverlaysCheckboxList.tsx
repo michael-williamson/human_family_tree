@@ -12,17 +12,21 @@ import {
   checkboxStyles,
   formControlStyles,
 } from "../../../../Styles/MapComponentStyles/MapKeyComponentStyles";
+import { useOverlaysArrayContextUpdater } from "../../../../State/MapState/MapItemStateArrays/OverlaysArrayProvider";
 
 export const OverlaysCheckboxList = () => {
   const overlaysCheckboxState = useOverlaysCheckbox();
   const overlaysCheckboxUpdater = useOverlaysCheckboxUpdater();
+  const overlaysArrayUpdater = useOverlaysArrayContextUpdater();
   const clickHandler: OnChangeFunctionType = e => {
     console.log("e: ", e);
-    overlaysCheckboxUpdater({
+    const action = {
       type: addSubtractType(e.target.checked),
       category: e.target.dataset.category,
       fieldName: e.target.name,
-    });
+    };
+    overlaysCheckboxUpdater(action);
+    overlaysArrayUpdater(action);
   };
   const inputProps = { "data-category": OVERLAYS };
   return (
