@@ -14,8 +14,8 @@ export const MarkerListsContainer = () => {
     <>
       <SpeciesMarkerList clickHandler={markerClickHandler} />
       <OverlaysMarkerList clickHandler={markerClickHandler} />
-      <ExitPointsMarkerList clickHandler={markerClickHandler} />
-      <EventMarkerList clickHandler={markerClickHandler} />
+      {/* <ExitPointsMarkerList clickHandler={markerClickHandler} />
+      <EventMarkerList clickHandler={markerClickHandler} /> */}
     </>
   );
 };

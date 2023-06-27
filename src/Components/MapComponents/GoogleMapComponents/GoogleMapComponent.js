@@ -95,9 +95,9 @@ export const GoogleMapComponent = props => {
           {hideMapKey ? "Show Map Key" : "Hide Map Key"}
         </Button>
       </HideMapKeyControl>
-      <MapKeyControl mapInstance={mapInstance}>
+      {/* <MapKeyControl mapInstance={mapInstance}>
         <MapKey hideMapKey={hideMapKey} />
-      </MapKeyControl>
+      </MapKeyControl> */}
 
       <MapKeyContainer />
       <LatLngPosition
