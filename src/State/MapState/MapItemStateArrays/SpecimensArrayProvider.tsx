@@ -40,6 +40,7 @@ export const SpecimensArrayProvider = ({ children }: any) => {
           data,
           fieldName,
           checkboxState,
+          category,
           reducerFN: addSpeciesCategory,
         });
       }
