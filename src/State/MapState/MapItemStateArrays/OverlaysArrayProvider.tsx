@@ -39,7 +39,7 @@ export const OverlaysArrayProvider = ({ children }: any) => {
           type,
           data: overlaysArrayInstance.current,
           fieldName,
-          addFN: addSingleOverlay,
+          reducerFN: addSingleOverlay,
         });
       }
 
@@ -47,7 +47,7 @@ export const OverlaysArrayProvider = ({ children }: any) => {
         type,
         data: [],
         fieldName,
-        filterFN: filterByName,
+        reducerFN: filterByName,
       });
     },
     [overlaysArrayDispatch]
