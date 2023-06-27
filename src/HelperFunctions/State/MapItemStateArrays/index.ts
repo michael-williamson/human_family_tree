@@ -1,14 +1,27 @@
-import { ADD, DESELECT_ALL, SELECT_ALL, SUBTRACT } from "../../../ConstantVariableNames";
+import { ADD, DESELECT_ALL, SELECT_ALL, SPECIES, SUBTRACT } from "../../../ConstantVariableNames";
 
-export const filterBySpecies = (state:any,fieldName:string) => {
-    return [
+interface ReducerData {
+  state:any;
+  fieldName:string;
+  category?:string;
+  data?:[]
+}
+
+export const filterBySpecies = ({state,fieldName,category}:ReducerData) => {
+    const speciesPropertyFiltered = [
         ...state.filter((item: any) => {
           return item.species !== fieldName;
         }),
       ];
+    const datesPropertyFiltered = [
+      ...state.filter((item: any) => {
+        return item.dates !== fieldName;
+      })
+    ]
+    return category === SPECIES? speciesPropertyFiltered:datesPropertyFiltered;
 }
 
-export const filterByName = (state:any,fieldName:string) => {
+export const filterByName = ({state,fieldName}:ReducerData) => {
     console.log('fieldName: ', fieldName);
     return [
         ...state.filter((item: any) => {
@@ -17,18 +30,19 @@ export const filterByName = (state:any,fieldName:string) => {
       ];
 }
 
-export const addSingleOverlay = (state:any,fieldName:string,data:[]) => {
+export const addSingleOverlay = ({state,fieldName,data=[]}:ReducerData) => {
     return [...state,data.find((item:any)=>item.name === fieldName)]
 }
 
-export const addSpeciesCategory = (state:any,fieldName:string,data:[]) => {
+export const addSpeciesCategory = ({state,data=[]}:ReducerData) => {
+  console.log('data: ', data);
     return [...state,...data]
 }
 
 
 export const arrayReducer = (state:any,obj:any) => {
     console.log('obj: ', obj);
-    const {type,data,fieldName,filterFN,addFN} = obj;
+    const {type,data,fieldName,category,reducerFN} = obj;
 
     switch (type) {
       case SELECT_ALL:
@@ -36,8 +50,8 @@ export const arrayReducer = (state:any,obj:any) => {
       case DESELECT_ALL:
         return [];
       case ADD:
-        return addFN(state,fieldName,data);
+        return reducerFN({state,fieldName,category,data});
       case SUBTRACT:
-        return filterFN(state,fieldName)
+        return reducerFN({state,fieldName,category,data})
     }
 }
