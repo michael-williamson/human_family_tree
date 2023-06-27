@@ -22,7 +22,6 @@ export const SpeciesCheckboxList = () => {
     console.log("e.target.checked: ", e.target.checked);
     const action = {
       type: addSubtractType(e.target.checked),
-
       category: e.target.dataset.category,
       fieldName: e.target.name,
     };

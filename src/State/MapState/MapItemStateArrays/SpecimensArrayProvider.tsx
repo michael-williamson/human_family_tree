@@ -1,11 +1,21 @@
-import React, { Dispatch, useCallback, useContext, useReducer } from "react";
-import { arrayReducer } from "../../../HelperFunctions/State/MapItemStateArrays";
+import React, {
+  Dispatch,
+  useCallback,
+  useContext,
+  useEffect,
+  useReducer,
+} from "react";
+import {
+  addSpeciesCategory,
+  arrayReducer,
+  filterBySpecies,
+} from "../../../HelperFunctions/State/MapItemStateArrays";
 import {
   httpRequest,
   httpRequestParamHandler,
 } from "../../../HTTP/httpRequests";
 import { ActionType } from "../../../Types/StateTypes";
-import { ADD } from "../../../ConstantVariableNames";
+import { ADD, SELECT_ALL, SPECIES } from "../../../ConstantVariableNames";
 
 const SpecimensArrayContext = React.createContext([] as any);
 const SpecimensArrayContextUpdater = React.createContext({} as Dispatch<any>);
@@ -25,13 +35,40 @@ export const SpecimensArrayProvider = ({ children }: any) => {
       if (type === ADD) {
         const url = httpRequestParamHandler({ type, category, fieldName });
         const data = await httpRequest(url);
-        specimensArrayDispatch({ type, data, fieldName });
+        return specimensArrayDispatch({
+          type,
+          data,
+          fieldName,
+          addFN: addSpeciesCategory,
+        });
       }
 
-      specimensArrayDispatch({ type, data: [], fieldName });
+      return specimensArrayDispatch({
+        type,
+        data: [],
+        fieldName,
+        filterFN: filterBySpecies,
+      });
     },
     [specimensArrayDispatch]
   );
+
+  useEffect(() => {
+    const action = {
+      type: SELECT_ALL,
+      category: SPECIES,
+      fieldName: "",
+    };
+    const requestFN = async () => {
+      const url = httpRequestParamHandler(action);
+      const data = await httpRequest(url);
+      specimensArrayDispatch({ type: SELECT_ALL, data });
+    };
+
+    requestFN();
+
+    return () => {};
+  }, []);
 
   return (
     <SpecimensArrayContext.Provider value={specimensArray}>
