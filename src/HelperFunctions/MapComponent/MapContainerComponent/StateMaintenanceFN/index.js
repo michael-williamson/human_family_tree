@@ -12,19 +12,20 @@ const arraysObject = {
   events: eventsArray,
 };
 
-export const keyObject = (propName, bool = true) => {
+// $*$_tbg keyObject to be globalized
+export const keyObject = (propName, value) => {
   const object = {};
-  arraysObject[propName].forEach((item) => {
-    object[`${item}`] = bool;
+  arraysObject[propName].forEach(item => {
+    object[`${item}`] = value;
   });
 
   if (object) return object;
 };
 
-export const speciesKeyObject = () => keyObject("species");
+export const speciesKeyObject = () => keyObject("species", true);
 
-export const datesKeyObject = () => keyObject("dates");
+export const datesKeyObject = () => keyObject("dates", true);
 
-export const overlaysKeyObject = () => keyObject("overlays");
+export const overlaysKeyObject = () => keyObject("overlays", true);
 
-export const eventsKeyObject = () => keyObject("events");
+export const eventsKeyObject = () => keyObject("events", true);
