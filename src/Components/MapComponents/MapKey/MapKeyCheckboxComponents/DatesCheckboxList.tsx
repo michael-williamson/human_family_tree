@@ -13,12 +13,14 @@ import {
 } from "../../../../Styles/MapComponentStyles/MapKeyComponentStyles";
 import { useSpecimensArrayContextUpdater } from "../../../../State/MapState/MapItemStateArrays/SpecimensArrayProvider";
 import { useSpeciesCheckbox } from "../../../../State/MapState/MapLegendState/SpeciesCheckboxProvider";
+import { useDatesCountContext } from "../../../../State/MapState/MapItemCountState/DatesCountProvider";
 
 export const DatesCheckboxList = () => {
   const datesCheckboxState = useDatesCheckbox();
   const speciesCheckboxState = useSpeciesCheckbox();
   const datesCheckboxUpdater = useDatesCheckboxUpdater();
   const specimensArrayUpdater = useSpecimensArrayContextUpdater();
+  const datesCount = useDatesCountContext();
   const clickHandler: OnChangeFunctionType = e => {
     console.log("e: ", e);
     const action = {
@@ -26,6 +28,7 @@ export const DatesCheckboxList = () => {
       category: e.target.dataset.category,
       fieldName: e.target.name,
       checkboxState: speciesCheckboxState,
+      count: datesCount,
     };
     datesCheckboxUpdater(action);
     specimensArrayUpdater(action);

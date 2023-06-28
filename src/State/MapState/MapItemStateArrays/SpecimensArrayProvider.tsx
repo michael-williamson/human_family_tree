@@ -15,8 +15,14 @@ import {
   httpRequestParamHandler,
 } from "../../../HTTP/httpRequests";
 import { ActionType } from "../../../Types/StateTypes";
-import { ADD, SELECT_ALL, SPECIES } from "../../../ConstantVariableNames";
+import {
+  ADD,
+  DATES,
+  SELECT_ALL,
+  SPECIES,
+} from "../../../ConstantVariableNames";
 import { useSpeciesCountUpdater } from "../MapItemCountState/SpeciesCountProvider";
+import { useDatesCountUpdater } from "../MapItemCountState/DatesCountProvider";
 
 const SpecimensArrayContext = React.createContext([] as any);
 const SpecimensArrayContextUpdater = React.createContext({} as Dispatch<any>);
@@ -31,12 +37,16 @@ export const useSpecimensArrayContextUpdater = () => {
 
 export const SpecimensArrayProvider = ({ children }: any) => {
   const [specimensArray, specimensArrayDispatch] = useReducer(arrayReducer, []);
-  const setCountState = useSpeciesCountUpdater();
+  const setSpeciesCount = useSpeciesCountUpdater();
+  const setDatesCount = useDatesCountUpdater();
   const arrayUpdater = useCallback(
     async ({ type, category, fieldName, checkboxState, count }: ActionType) => {
+      const setCountState =
+        category === SPECIES ? setSpeciesCount : setDatesCount;
       if (type === ADD) {
         const url = httpRequestParamHandler({ type, category, fieldName });
         const data = await httpRequest(url);
+
         return specimensArrayDispatch({
           type,
           data,
@@ -59,7 +69,7 @@ export const SpecimensArrayProvider = ({ children }: any) => {
         reducerFN: filterBySpecies,
       });
     },
-    [specimensArrayDispatch, setCountState]
+    [specimensArrayDispatch, setSpeciesCount, setDatesCount]
   );
 
   useEffect(() => {
@@ -71,24 +81,25 @@ export const SpecimensArrayProvider = ({ children }: any) => {
     const requestFN = async () => {
       const url = httpRequestParamHandler(action);
       const data = await httpRequest(url);
-      const quickCounter = (data: any) => {
+      const quickCounter = (data: any, propName: string, stateUpdate: any) => {
         let obj: any = {};
         data.forEach((item: any) => {
-          const speciesProp = item.species;
+          const speciesProp = item[propName];
           if (obj[speciesProp]) return obj[speciesProp]++;
           obj[speciesProp] = 1;
           return;
         });
-        setCountState(obj);
+        stateUpdate(obj);
       };
-      quickCounter(data);
+      quickCounter(data, SPECIES, setSpeciesCount);
+      quickCounter(data, DATES, setDatesCount);
       specimensArrayDispatch({ type: SELECT_ALL, data });
     };
 
     requestFN();
 
     return () => {};
-  }, [setCountState]);
+  }, [setSpeciesCount, setDatesCount]);
 
   return (
     <SpecimensArrayContext.Provider value={specimensArray}>

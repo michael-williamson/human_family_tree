@@ -1,4 +1,4 @@
-import { ADD, DATES, DESELECT_ALL, SELECT_ALL, SPECIES, SUBTRACT } from "../../../ConstantVariableNames";
+import { ADD, DATE, DATES, DESELECT_ALL, SELECT_ALL, SPECIES, SUBTRACT } from "../../../ConstantVariableNames";
 import { counter } from "../MapCountState";
 
 interface ReducerData {
@@ -22,6 +22,7 @@ export const filterBySpecies = ({state,fieldName,category,count,setCountState}:R
       ];
     const datesPropertyFiltered = [
       ...state.filter((item: any) => {
+        item.dates === fieldName && countClone[item.dates]--
         return item.dates !== fieldName;
       })
     ]
@@ -57,10 +58,15 @@ export const addSpeciesCategory = ({state,data=[],category,checkboxState,count,s
       setCountState(countClone);
       return stateArray;
     }
-    return [...state,...data.filter((item:any)=>{
+    const stateArray = [...state,...data.filter((item:any)=>{
       const prop = item[SPECIES];
+      const datesProp = item[DATES]
+      const propertyBool = checkboxState[prop]
+      counter(countClone,datesProp,propertyBool)
       return checkboxState[prop];
     })]
+    setCountState(countClone);
+    return stateArray;
 }
 
 
