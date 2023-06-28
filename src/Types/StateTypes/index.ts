@@ -3,6 +3,7 @@ export interface ActionType {
     category:string;
     fieldName:string;
     checkboxState?:any;
+    count?:any;
 }
 
 export interface ArrayDispatch {
