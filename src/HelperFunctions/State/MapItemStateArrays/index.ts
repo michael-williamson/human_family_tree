@@ -1,4 +1,5 @@
 import { ADD, DATES, DESELECT_ALL, SELECT_ALL, SPECIES, SUBTRACT } from "../../../ConstantVariableNames";
+import { counter } from "../MapCountState";
 
 interface ReducerData {
   state:any;
@@ -6,11 +7,16 @@ interface ReducerData {
   category?:string;
   data?:[]
   checkboxState?:any;
+  count?:any;
+  setCountState:any;
 }
 
-export const filterBySpecies = ({state,fieldName,category}:ReducerData) => {
+// Part of the item subtraction 
+export const filterBySpecies = ({state,fieldName,category,count,setCountState}:ReducerData) => {
+  const countClone = {...count};
     const speciesPropertyFiltered = [
         ...state.filter((item: any) => {
+          item.species === fieldName && countClone[item.species]--
           return item.species !== fieldName;
         }),
       ];
@@ -19,9 +25,11 @@ export const filterBySpecies = ({state,fieldName,category}:ReducerData) => {
         return item.dates !== fieldName;
       })
     ]
+    setCountState(countClone)
     return category === SPECIES? speciesPropertyFiltered:datesPropertyFiltered;
 }
 
+// Part of the item subtraction 
 export const filterByName = ({state,fieldName}:ReducerData) => {
     return [
         ...state.filter((item: any) => {
@@ -34,13 +42,20 @@ export const addSingleOverlay = ({state,fieldName,data=[]}:ReducerData) => {
     return [...state,data.find((item:any)=>item.name === fieldName)]
 }
 
-export const addSpeciesCategory = ({state,data=[],category,checkboxState}:ReducerData) => {
+// Part of adding an item to state
+export const addSpeciesCategory = ({state,data=[],category,checkboxState,count,setCountState}:ReducerData) => {
+  const countClone = {...count}
     if(category===SPECIES){
-      return [...state,...data.filter((item:any)=>{
+      const stateArray = [...state,...data.filter((item:any)=>{
         const prop = item[DATES];
-        return checkboxState[prop];
+        const speciesProp = item[SPECIES]
+        const propertyBool = checkboxState[prop];
+        counter(countClone,speciesProp,propertyBool)
+        return propertyBool;
 
       })]
+      setCountState(countClone);
+      return stateArray;
     }
     return [...state,...data.filter((item:any)=>{
       const prop = item[SPECIES];
@@ -51,7 +66,7 @@ export const addSpeciesCategory = ({state,data=[],category,checkboxState}:Reduce
 
 export const arrayReducer = (state:any,obj:any) => {
     console.log('obj: ', obj);
-    const {type,data,fieldName,category,reducerFN,checkboxState} = obj;
+    const {type,data,fieldName,category,reducerFN,checkboxState,count,setCountState} = obj;
 
     switch (type) {
       case SELECT_ALL:
@@ -59,8 +74,8 @@ export const arrayReducer = (state:any,obj:any) => {
       case DESELECT_ALL:
         return [];
       case ADD:
-        return reducerFN({state,fieldName,category,data,checkboxState});
+        return reducerFN({state,fieldName,category,data,checkboxState,count,setCountState});
       case SUBTRACT:
-        return reducerFN({state,fieldName,category,data,checkboxState})
+        return reducerFN({state,fieldName,category,data,checkboxState,count,setCountState})
     }
 }
