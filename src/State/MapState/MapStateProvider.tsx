@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { MapLegendStateProvider } from "./MapLegendState/MapLegendStateProvider";
 import { MapArraysProvider } from "./MapItemStateArrays/MapArraysProvider";
+import { CountProvider } from "./MapItemCountState/CountProvider";
 
 const MapContext = React.createContext({});
 const MapContextUpdater = React.createContext({});
@@ -17,7 +18,9 @@ export const MapStateProvider = ({ children }: any) => {
   return (
     <MapContextUpdater.Provider value={{}}>
       <MapLegendStateProvider>
-        <MapArraysProvider>{children}</MapArraysProvider>
+        <CountProvider>
+          <MapArraysProvider>{children}</MapArraysProvider>
+        </CountProvider>
       </MapLegendStateProvider>
     </MapContextUpdater.Provider>
   );
