@@ -90,9 +90,7 @@ export const polygonOptions = {
 export const overlaysObjectConversion = ({ arr, styleObject }) => {
   const object = {};
   const arrayLooper = (arr, styleObject) =>
-    arr.forEach(
-      (item) => (object[item] = { ...polygonOptions, ...styleObject })
-    );
+    arr.forEach(item => (object[item] = { ...polygonOptions, ...styleObject }));
   arrayLooper(arr, styleObject);
   return object;
 };
@@ -141,14 +139,14 @@ export const datesCategoryObj = {
 
 let rgbRandomNumberRounded = () => Math.floor(Math.random() * 256);
 
-export const randomColorGenerator = (transparency) =>
+export const randomColorGenerator = transparency =>
   `rgba(${rgbRandomNumberRounded()},${rgbRandomNumberRounded()},${rgbRandomNumberRounded()}${
     transparency ? `,${1 * Math.random()}` : ""
   })`;
 
 export const svgObjectFN = (colorObject, svgObject) => {
   const objectToConstruct = {};
-  Object.keys(colorObject).forEach((item) => {
+  Object.keys(colorObject).forEach(item => {
     objectToConstruct[item] = (
       <Box sx={{ cursor: "pointer" }}>
         <svg
@@ -227,7 +225,7 @@ export const arrayFilter = (
   destructure,
   conditionsEqual
 ) => {
-  return arr.filter((item) => {
+  return arr.filter(item => {
     return filterType(
       destructure,
       item,
@@ -236,4 +234,10 @@ export const arrayFilter = (
       conditionsEqual
     );
   });
+};
+
+export const countLabelCreator = (labelText, addOn) => {
+  // $*$_ in this case addOn will be the count object from the
+  // --> count state provider
+  return `${labelText} (${addOn})`;
 };
