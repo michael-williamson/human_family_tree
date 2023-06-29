@@ -18,6 +18,8 @@ import { useSpecimensArrayContextUpdater } from "../../../../State/MapState/MapI
 import { useDatesCheckbox } from "../../../../State/MapState/MapLegendState/DatesCheckboxProvider";
 import { useSpeciesCountContext } from "../../../../State/MapState/MapItemCountState/SpeciesCountProvider";
 
+const inputProps = { "data-category": SPECIES };
+
 export const SpeciesCheckboxList = () => {
   const speciesCheckboxUpdater = useSpeciesCheckboxUpdater();
   const speciesCheckboxState = useSpeciesCheckbox();
@@ -37,7 +39,7 @@ export const SpeciesCheckboxList = () => {
     speciesCheckboxUpdater(action);
     specimensArrayUpdater(action);
   };
-  const inputProps = { "data-category": SPECIES };
+
   return (
     <>
       <CheckboxListComponent

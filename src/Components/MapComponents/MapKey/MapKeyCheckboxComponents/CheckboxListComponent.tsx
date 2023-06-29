@@ -56,11 +56,10 @@ export const CheckboxListComponent = ({
               key={item}
               disableTypography={true}
               label={countLabelCreator(item, addOn[item])}
-              checked={checkboxChecked(state, item)}
+              checked={state[item]}
               sx={formControlStyles}
               control={
                 <Checkbox
-                  key={item}
                   sx={checkboxStyles}
                   inputProps={inputProps}
                   name={item}

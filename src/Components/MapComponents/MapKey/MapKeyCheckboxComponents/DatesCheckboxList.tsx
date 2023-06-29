@@ -18,6 +18,8 @@ import { useSpecimensArrayContextUpdater } from "../../../../State/MapState/MapI
 import { useSpeciesCheckbox } from "../../../../State/MapState/MapLegendState/SpeciesCheckboxProvider";
 import { useDatesCountContext } from "../../../../State/MapState/MapItemCountState/DatesCountProvider";
 
+const inputProps = { "data-category": DATES };
+
 export const DatesCheckboxList = () => {
   const datesCheckboxState = useDatesCheckbox();
   const speciesCheckboxState = useSpeciesCheckbox();
@@ -36,7 +38,7 @@ export const DatesCheckboxList = () => {
     datesCheckboxUpdater(action);
     specimensArrayUpdater(action);
   };
-  const inputProps = { "data-category": DATES };
+
   return (
     <>
       <CheckboxListComponent
