@@ -241,3 +241,11 @@ export const countLabelCreator = (labelText, addOn) => {
   // --> count state provider
   return `${labelText} (${addOn})`;
 };
+
+export const labelCreator = (labelText, addOn) => {
+  if (addOn) {
+    return `${labelText} (${addOn})`;
+  }
+
+  return labelText;
+};

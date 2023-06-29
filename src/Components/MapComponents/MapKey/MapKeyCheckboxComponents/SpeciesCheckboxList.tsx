@@ -5,10 +5,7 @@ import {
   useSpeciesCheckbox,
   useSpeciesCheckboxUpdater,
 } from "../../../../State/MapState/MapLegendState/SpeciesCheckboxProvider";
-import {
-  countLabelCreator,
-  speciesArr,
-} from "../../../../HelperFunctions/General";
+import { labelCreator, speciesArr } from "../../../../HelperFunctions/General";
 import { SPECIES } from "../../../../ConstantVariableNames";
 import {
   checkboxStyles,
@@ -47,10 +44,11 @@ export const SpeciesCheckboxList = () => {
         state={speciesCheckboxState as {}}
         clickHandler={clickHandler}
         inputProps={inputProps}
+        titleText="Sort by Species"
         formControlStyles={formControlStyles}
         checkboxStyles={checkboxStyles}
         customLabelProps={{
-          labelCreator: countLabelCreator,
+          labelCreator,
           addOn: speciesCount,
         }}
       />

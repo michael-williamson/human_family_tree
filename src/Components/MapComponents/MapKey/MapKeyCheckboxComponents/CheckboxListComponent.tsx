@@ -6,7 +6,6 @@ import {
   checkboxListContainerStyles,
   checkboxListStyles,
 } from "../../../../Styles/MapComponentStyles/MapKeyComponentStyles";
-import { CustomLabel } from "../../../ReusableComponents/CustomLabel";
 import { countLabelCreator } from "../../../../HelperFunctions/General";
 
 // easy copy paste
@@ -27,10 +26,6 @@ interface CheckboxListTypes {
   customLabelProps: any;
 }
 
-const checkboxChecked = (state: any, item: string) => {
-  return state[item];
-};
-
 export const CheckboxListComponent = ({
   arr,
 
@@ -48,14 +43,14 @@ export const CheckboxListComponent = ({
 }: CheckboxListTypes) => {
   return (
     <Container containerStyles={checkboxListContainerStyles}>
-      <CheckboxLIstTitle />
+      <CheckboxLIstTitle titleText={titleText} />
       <Container containerStyles={checkboxListStyles}>
         {arr.map((item: string) => {
           return (
             <FormControlLabel
               key={item}
               disableTypography={true}
-              label={countLabelCreator(item, addOn[item])}
+              label={labelCreator(item, addOn[item])}
               checked={state[item]}
               sx={formControlStyles}
               control={

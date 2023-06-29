@@ -8,12 +8,16 @@ import {
 import { IconButton } from "@mui/material";
 import { KeyboardArrowDown } from "@mui/icons-material";
 
-export const CheckboxLIstTitle = () => {
+export const CheckboxLIstTitle = ({
+  titleText,
+}: {
+  titleText: string | undefined;
+}) => {
   return (
     <Container containerStyles={{}}>
       <CheckBoxListTitle
         titleTextStyles={titleTextStyles}
-        titleText={"title"}
+        titleText={titleText}
         iconComponent={{}}
       />
       <IconButton sx={showListButtonStyles}>

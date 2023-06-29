@@ -1,6 +1,9 @@
 import React from "react";
 import { CheckboxListComponent } from "./CheckboxListComponent";
-import { overlaysArray } from "../../../../HelperFunctions/General";
+import {
+  labelCreator,
+  overlaysArray,
+} from "../../../../HelperFunctions/General";
 import {
   useOverlaysCheckbox,
   useOverlaysCheckboxUpdater,
@@ -36,9 +39,10 @@ export const OverlaysCheckboxList = () => {
         state={overlaysCheckboxState as {}}
         clickHandler={clickHandler}
         inputProps={inputProps}
+        titleText="Overlays"
         formControlStyles={formControlStyles}
         checkboxStyles={checkboxStyles}
-        customLabelProps={{}}
+        customLabelProps={{ labelCreator }}
       />
     </div>
   );
