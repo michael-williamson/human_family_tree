@@ -95,11 +95,10 @@ export const GoogleMapComponent = props => {
           {hideMapKey ? "Show Map Key" : "Hide Map Key"}
         </Button>
       </HideMapKeyControl>
-      {/* <MapKeyControl mapInstance={mapInstance}>
-        <MapKey hideMapKey={hideMapKey} />
-      </MapKeyControl> */}
+      <MapKeyControl mapInstance={mapInstance}>
+        <MapKeyContainer />
+      </MapKeyControl>
 
-      <MapKeyContainer />
       <LatLngPosition
         latLngObject={latLngObject}
         rightClick={rightClick}
