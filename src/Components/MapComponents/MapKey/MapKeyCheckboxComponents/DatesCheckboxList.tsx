@@ -1,6 +1,9 @@
 import { CheckboxListComponent } from "./CheckboxListComponent";
 import { DATES } from "../../../../ConstantVariableNames";
-import { datesArr } from "../../../../HelperFunctions/General";
+import {
+  countLabelCreator,
+  datesArr,
+} from "../../../../HelperFunctions/General";
 import {
   useDatesCheckbox,
   useDatesCheckboxUpdater,
@@ -43,6 +46,10 @@ export const DatesCheckboxList = () => {
         inputProps={inputProps}
         formControlStyles={formControlStyles}
         checkboxStyles={checkboxStyles}
+        customLabelProps={{
+          labelCreator: countLabelCreator,
+          addOn: datesCount,
+        }}
       />
     </>
   );

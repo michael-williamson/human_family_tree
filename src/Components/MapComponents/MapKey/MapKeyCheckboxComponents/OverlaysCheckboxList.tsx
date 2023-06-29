@@ -38,6 +38,7 @@ export const OverlaysCheckboxList = () => {
         inputProps={inputProps}
         formControlStyles={formControlStyles}
         checkboxStyles={checkboxStyles}
+        customLabelProps={{}}
       />
     </div>
   );
