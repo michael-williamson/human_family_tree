@@ -1,4 +1,4 @@
-import { Checkbox, FormControlLabel } from "@mui/material";
+import { Checkbox, Collapse, FormControlLabel } from "@mui/material";
 import { OnChangeFunctionType } from "../../../../Types/GlobalTypes";
 import { CheckboxLIstTitle } from "./CheckboxLIstTitle";
 import { Container } from "../../../ReusableComponents/Container";
@@ -7,6 +7,7 @@ import {
   checkboxListStyles,
 } from "../../../../Styles/MapComponentStyles/MapKeyComponentStyles";
 import { countLabelCreator } from "../../../../HelperFunctions/General";
+import { useState } from "react";
 
 // easy copy paste
 // <CheckboxListComponent arr={[]} state={{}} clickHandler={(e)=>null}/>
@@ -41,30 +42,39 @@ export const CheckboxListComponent = ({
     addOn = { label: "label" },
   },
 }: CheckboxListTypes) => {
+  const [showList, setShowList] = useState(false);
+  const collapseHandler = (e: any) => {
+    setShowList(!showList);
+  };
   return (
     <Container containerStyles={checkboxListContainerStyles}>
-      <CheckboxLIstTitle titleText={titleText} />
-      <Container containerStyles={checkboxListStyles}>
-        {arr.map((item: string) => {
-          return (
-            <FormControlLabel
-              key={item}
-              disableTypography={true}
-              label={labelCreator(item, addOn[item])}
-              checked={state[item]}
-              sx={formControlStyles}
-              control={
-                <Checkbox
-                  sx={checkboxStyles}
-                  inputProps={inputProps}
-                  name={item}
-                  onChange={clickHandler}
-                />
-              }
-            />
-          );
-        })}
-      </Container>
+      <CheckboxLIstTitle
+        titleText={titleText}
+        collapseHandler={collapseHandler}
+      />
+      <Collapse in={showList}>
+        <Container containerStyles={checkboxListStyles}>
+          {arr.map((item: string) => {
+            return (
+              <FormControlLabel
+                key={item}
+                disableTypography={true}
+                label={labelCreator(item, addOn[item])}
+                checked={state[item]}
+                sx={formControlStyles}
+                control={
+                  <Checkbox
+                    sx={checkboxStyles}
+                    inputProps={inputProps}
+                    name={item}
+                    onChange={clickHandler}
+                  />
+                }
+              />
+            );
+          })}
+        </Container>
+      </Collapse>
     </Container>
   );
 };

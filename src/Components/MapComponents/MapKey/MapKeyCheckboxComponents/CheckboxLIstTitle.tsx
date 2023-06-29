@@ -10,8 +10,10 @@ import { KeyboardArrowDown } from "@mui/icons-material";
 
 export const CheckboxLIstTitle = ({
   titleText,
+  collapseHandler,
 }: {
   titleText: string | undefined;
+  collapseHandler: any;
 }) => {
   return (
     <Container containerStyles={{}}>
@@ -20,7 +22,7 @@ export const CheckboxLIstTitle = ({
         titleText={titleText}
         iconComponent={{}}
       />
-      <IconButton sx={showListButtonStyles}>
+      <IconButton sx={showListButtonStyles} onClick={collapseHandler}>
         <KeyboardArrowDown />
       </IconButton>
     </Container>
