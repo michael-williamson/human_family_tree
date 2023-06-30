@@ -3,15 +3,14 @@ import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import { Skeleton, Button } from "@mui/material";
 import { HYBRID, ROADMAP, SATELLITE } from "../../../ConstantVariableNames";
 import { MapKeyControl } from "./CustomControls/MapKeyControl";
-import { MapKey } from "../MapKeyComponents/MapKey";
 import { HideMapKeyControl } from "./CustomControls/HideMapKeyControl";
 import { showMapKeyButtonStyles } from "../../../Styles/MapComponentStyles/MapContainerStyles";
 import { LatLngPosition } from "./InfoBoxComponents/LatLngPosition";
-import { MarkerListsContainer } from "./MarkerComponents/MarkerListsContainer";
 import { LakeTobaCircleComponent } from "./ShapeComponents/LakeTobaCircleComponent";
 import { PolygonListComponent } from "./ShapeComponents/PolygonListComponent";
 import { MarkerItemInfoWindow } from "./InfoWindowComponents/MarkerItemInfoWindow";
 import { MapKeyContainer } from "../MapKey/MapKeyContainer";
+import { MarkerListsContainer } from "./MarkerComponents/MarkerListsContainer";
 
 const containerStyle = {
   width: "100%",
@@ -89,22 +88,22 @@ export const GoogleMapComponent = props => {
       onRightClick={rightClickHandler}
       id="myGoogleMap"
     >
-      {/* <Marker position={latLngObject} visible={latLngObject.lat !== 0} />
+      <Marker position={latLngObject} visible={latLngObject.lat !== 0} />
       <HideMapKeyControl mapInstance={mapInstance}>
         <Button onClick={handleHideMapKey} sx={showMapKeyButtonStyles}>
           {hideMapKey ? "Show Map Key" : "Hide Map Key"}
         </Button>
-      </HideMapKeyControl> */}
+      </HideMapKeyControl>
       <MapKeyControl mapInstance={mapInstance}>
-        <MapKeyContainer />
+        <MapKeyContainer visibility={hideMapKey ? "hidden" : "visible"} />
       </MapKeyControl>
 
-      {/* <LatLngPosition
+      <LatLngPosition
         latLngObject={latLngObject}
         rightClick={rightClick}
         setRightClick={setRightClick}
         setLatLngObject={setLatLngObject}
-      /> */}
+      />
       <PolygonListComponent />
       <MarkerListsContainer />
 
