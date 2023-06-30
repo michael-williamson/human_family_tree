@@ -243,9 +243,8 @@ export const countLabelCreator = (labelText, addOn) => {
 };
 
 export const labelCreator = (labelText, addOn) => {
-  if (addOn) {
+  if (typeof addOn === "number") {
     return `${labelText} (${addOn})`;
   }
-
   return labelText;
 };

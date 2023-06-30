@@ -6,7 +6,6 @@ import {
   checkboxListContainerStyles,
   checkboxListStyles,
 } from "../../../../Styles/MapComponentStyles/MapKeyComponentStyles";
-import { countLabelCreator } from "../../../../HelperFunctions/General";
 import { useState } from "react";
 
 // easy copy paste
