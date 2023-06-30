@@ -5,11 +5,22 @@ import { MapKeyTitleComponent } from "./MapKeyCheckboxComponents/MapKeyTitleComp
 import { mapKeyContainerStyles } from "../../../Styles/MapComponentStyles/MapKeyComponentStyles";
 import { mapContainerStyles } from "../../../Styles/MapComponentStyles/MapContainerStyles";
 
-export const MapKeyContainer = () => {
+interface MapKeyContainerProps {
+  visibility: string;
+}
+
+export const stylesFormatter = (visibility: string = "visible") => {
+  return {
+    ...mapKeyContainerStyles,
+    ...mapContainerStyles,
+    visibility: visibility,
+  };
+};
+
+export const MapKeyContainer = ({ visibility }: MapKeyContainerProps) => {
+  const containerStyles = stylesFormatter(visibility);
   return (
-    <Container
-      containerStyles={{ ...mapKeyContainerStyles, ...mapContainerStyles }}
-    >
+    <Container containerStyles={containerStyles}>
       <MapKeyTitleComponent />
       <CheckboxListContainer />
     </Container>
