@@ -122,6 +122,7 @@ export const formControlStyles = {
   "& .MuiFormControlLabel-label": {
     fontFamily: "cursive",
   },
+  fontSize: { xs: "1rem" },
 };
 
 export const checkboxStyles = {
