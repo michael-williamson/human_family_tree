@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from "react";
+import React, { useContext } from "react";
 
 const EventsArrayContext = React.createContext({});
 
@@ -7,7 +7,6 @@ export const useEventsArrayContext = () => {
 };
 
 export const EventsArrayProvider = ({ children }: any) => {
-  const [eventsArray, eventsArrayDispatch] = useReducer(() => ({}), {});
   return (
     <EventsArrayContext.Provider value={{}}>
       {children}
