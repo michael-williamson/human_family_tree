@@ -89,22 +89,22 @@ export const GoogleMapComponent = props => {
       onRightClick={rightClickHandler}
       id="myGoogleMap"
     >
-      <Marker position={latLngObject} visible={latLngObject.lat !== 0} />
+      {/* <Marker position={latLngObject} visible={latLngObject.lat !== 0} />
       <HideMapKeyControl mapInstance={mapInstance}>
         <Button onClick={handleHideMapKey} sx={showMapKeyButtonStyles}>
           {hideMapKey ? "Show Map Key" : "Hide Map Key"}
         </Button>
-      </HideMapKeyControl>
+      </HideMapKeyControl> */}
       <MapKeyControl mapInstance={mapInstance}>
         <MapKeyContainer />
       </MapKeyControl>
 
-      <LatLngPosition
+      {/* <LatLngPosition
         latLngObject={latLngObject}
         rightClick={rightClick}
         setRightClick={setRightClick}
         setLatLngObject={setLatLngObject}
-      />
+      /> */}
       <PolygonListComponent />
       <MarkerListsContainer />
 

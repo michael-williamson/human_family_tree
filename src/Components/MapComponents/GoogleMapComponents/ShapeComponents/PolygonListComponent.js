@@ -1,4 +1,3 @@
-import { useOverlayArrayContext } from "../../MapStateComponents/MapPopulationStateContext";
 import { PolygonComponent } from "./PolygonComponent";
 
 import {
@@ -6,9 +5,10 @@ import {
   greenFillObject,
   whiteFillObject,
 } from "../../../../HelperFunctions/General";
+import { useOverlaysArrayContext } from "../../../../State/MapState/MapItemStateArrays/OverlaysArrayProvider";
 
 export const PolygonListComponent = () => {
-  const overlaysArray = useOverlayArrayContext();
+  const overlaysArray = useOverlaysArrayContext();
   // const handleClick = (item) => () =>
   //   infoWindowContextUpdater({
   //     type: OPEN_INFO_WINDOW,

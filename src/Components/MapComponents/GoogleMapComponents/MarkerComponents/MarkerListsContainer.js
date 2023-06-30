@@ -3,8 +3,6 @@ import {
   useMarkerClickHandler,
 } from "../../MapStateComponents/InfoWindowStateProvider";
 import { OverlaysMarkerList } from "./OverlaysMarkerList";
-import { EventMarkerList } from "./EventMarkerList";
-import { ExitPointsMarkerList } from "./ExitPointsMarkerList";
 import { SpeciesMarkerList } from "./SpeciesMarkerList";
 
 export const MarkerListsContainer = () => {

@@ -1,13 +1,12 @@
 import React from "react";
-import { useMapLegendContext } from "../../MapStateComponents/MapLegendStateProvider";
 import { Circle } from "@react-google-maps/api";
+import { useOverlaysCheckbox } from "../../../../State/MapState/MapLegendState/OverlaysCheckboxProvider";
 
 export const LakeTobaCircleComponent = () => {
-  const mapLegendContext = useMapLegendContext();
+  const overlaysCheckboxContext = useOverlaysCheckbox();
   return (
     <>
-      {" "}
-      {mapLegendContext.overlays["Lake Toba Eruption"] && (
+      {overlaysCheckboxContext["Lake Toba Eruption"] && (
         <Circle
           center={{ lat: 2.6845, lng: 98.8756 }}
           radius={2375000}
