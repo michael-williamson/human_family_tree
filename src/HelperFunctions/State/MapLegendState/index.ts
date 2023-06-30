@@ -1,7 +1,6 @@
 import { ADD, SUBTRACT } from "../../../ConstantVariableNames";
 
 export const reducer = (state:any,action:any) => {
-  console.log('action: ', action);
     const {fieldName,type} = action;
             console.log('checkedType(type): ', checkedType(type));
     return {

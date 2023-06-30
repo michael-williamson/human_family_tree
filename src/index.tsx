@@ -5,8 +5,6 @@ import App from "./App";
 
 import reportWebVitals from "./reportWebVitals";
 
-console.log("typeof window: ", typeof window);
-
 if (typeof window !== "undefined") {
   window.React = React;
 }

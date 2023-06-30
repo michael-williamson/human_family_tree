@@ -72,7 +72,6 @@ const axiosInstance = axios.create({
 
   export const httpRequest = async (url:string) => {
     const {status,data} = await axiosInstance.get(url);
-    console.log(status,data, "httpRequest function")
     if (status === 200 ) {
         return data;
       } 

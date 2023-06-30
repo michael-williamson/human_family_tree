@@ -72,7 +72,6 @@ export const addSpeciesCategory = ({state,data=[],category,checkboxState,count,s
 
 
 export const arrayReducer = (state:any,obj:any) => {
-    console.log('obj: ', obj);
     const {type,data,fieldName,category,reducerFN,checkboxState,count,setCountState} = obj;
 
     switch (type) {

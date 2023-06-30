@@ -24,8 +24,6 @@ export const SpeciesCheckboxList = () => {
   const specimensArrayUpdater = useSpecimensArrayContextUpdater();
   const speciesCount = useSpeciesCountContext();
   const clickHandler: OnChangeFunctionType = e => {
-    console.log("e: ", e);
-    console.log("e.target.checked: ", e.target.checked);
     const action = {
       type: addSubtractType(e.target.checked),
       category: e.target.dataset.category,
