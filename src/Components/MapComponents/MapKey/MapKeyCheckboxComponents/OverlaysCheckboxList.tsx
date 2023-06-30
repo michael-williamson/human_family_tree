@@ -22,7 +22,6 @@ export const OverlaysCheckboxList = () => {
   const overlaysCheckboxUpdater = useOverlaysCheckboxUpdater();
   const overlaysArrayUpdater = useOverlaysArrayContextUpdater();
   const clickHandler: OnChangeFunctionType = e => {
-    console.log("e: ", e);
     const action = {
       type: addSubtractType(e.target.checked),
       category: e.target.dataset.category,

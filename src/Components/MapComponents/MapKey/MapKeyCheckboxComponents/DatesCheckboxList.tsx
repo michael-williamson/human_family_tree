@@ -24,7 +24,6 @@ export const DatesCheckboxList = () => {
   const specimensArrayUpdater = useSpecimensArrayContextUpdater();
   const datesCount = useDatesCountContext();
   const clickHandler: OnChangeFunctionType = e => {
-    console.log("e: ", e);
     const action = {
       type: addSubtractType(e.target.checked),
       category: e.target.dataset.category,
