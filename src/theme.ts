@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme } from "@mui/material";
 import { red } from "@mui/material/colors";
 
 const googleFonts = {
@@ -54,6 +54,7 @@ const theme = createTheme({
       darkBG: "rgb(0 0 0 / 81%)",
     },
   },
+
   //end of palette
   fonts: {
     ...googleFonts,
