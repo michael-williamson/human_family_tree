@@ -1,8 +1,8 @@
 export const routes = {
-  Welcome: "",
-  Map: "Map",
-  Gallery: "Gallery",
-  Charts: "Charts",
+  Welcome: "/",
+  Map: "/Map",
+  Gallery: "/Gallery",
+  Charts: "/Charts",
   // Glossary: "Glossary",
 };
 
