@@ -13,17 +13,17 @@ import {
 } from "../../Styles/NavigationComponents/SwipeableNavbar";
 import { routesIcons } from "../../HelperFunctions/Routes";
 
-export const SwipeableNavbar = (props) => {
+export const SwipeableNavbar = (props: any) => {
   const [open, setOpen] = useState(false);
   const { buttonStyles } = props;
 
-  const handleChange = (bool) => (event) => {
+  const handleChange = (bool: boolean) => (event: any) => {
     if (
       event &&
       event.type === "keydown" &&
       (event.key === "Tab" || event.key === "Shift")
     ) {
-      return;
+      return null;
     }
     setOpen(bool);
   };
@@ -39,7 +39,7 @@ export const SwipeableNavbar = (props) => {
         {item}
       </NavLink>
       <CardMedia
-        src={routesIcons[`${item}`]}
+        src={routesIcons[item]}
         component="img"
         sx={navLinkIconStyles}
       />
@@ -55,7 +55,7 @@ export const SwipeableNavbar = (props) => {
         anchor="left"
         open={open}
         onClose={handleChange(false)}
-        onOpen={(e) => null}
+        // onOpen={(e) => null}
         sx={swipeableDrawerStyles}
       >
         {NavLinks}

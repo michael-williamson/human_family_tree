@@ -6,7 +6,11 @@ import {
   glossaryIcon,
 } from "../../Media/PageTitle_Navigation_Icons";
 
-export const routesIcons = {
+export interface RouteIconsType {
+  [key: string]: string;
+}
+
+export const routesIcons: RouteIconsType = {
   Welcome: homeIcon,
   Map: mapIcon,
   Gallery: galleryIcon,

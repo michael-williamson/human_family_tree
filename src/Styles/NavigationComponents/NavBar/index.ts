@@ -1,3 +1,4 @@
+import { CSSProperties } from "react";
 import theme from "../../../theme";
 
 export const navbarContainer = {
@@ -6,7 +7,11 @@ export const navbarContainer = {
   width: "100%",
 };
 
-export const navLinkStyles = {
+interface NavLinkTypes extends CSSProperties {
+  [key:string]:any;
+}
+
+export const navLinkStyles:NavLinkTypes = {
   color: "beige",
   fontFamily: theme.fonts.Kalam,
   textDecoration: "none",

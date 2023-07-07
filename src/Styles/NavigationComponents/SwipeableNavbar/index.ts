@@ -8,7 +8,7 @@ export const swipeableDrawerStyles = {
     justifyContent: "center",
     alignItems: "center",
     gridTemplateRows: "repeat(8,auto)",
-    backgroundColor: (theme) => theme.palette.customColors.swipeableNavBG,
+    backgroundColor: (theme: { palette: { customColors: { swipeableNavBG: any; }; }; }) => theme.palette.customColors.swipeableNavBG,
   },
 };
 
