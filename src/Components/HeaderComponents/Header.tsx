@@ -1,4 +1,3 @@
-import React from "react";
 import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
 import { routes } from "../../Routes/routes";

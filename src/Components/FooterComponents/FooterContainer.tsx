@@ -5,5 +5,6 @@ import { footerContainerStyles } from "../../Styles/FooterStyles";
 
 export const FooterContainer = () => {
   const match = useMediaQuery("(max-width:991px)");
-  return <Box sx={footerContainerStyles(match)}></Box>;
+  const footerStyle = footerContainerStyles(match);
+  return <Box sx={footerStyle}></Box>;
 };
