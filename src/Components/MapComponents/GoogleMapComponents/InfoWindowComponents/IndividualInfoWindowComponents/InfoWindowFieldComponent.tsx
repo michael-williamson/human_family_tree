@@ -20,7 +20,7 @@ export const InfoWindowFieldComponent = ({
       <InfoFieldLabel styles={null}>
         <TextComponent styles={labelStyles}>{label}</TextComponent>
       </InfoFieldLabel>
-      <InfoFieldText styles={null}>
+      <InfoFieldText>
         <TextComponent styles={fieldTextStyles}>{fieldText}</TextComponent>
       </InfoFieldText>
     </>
