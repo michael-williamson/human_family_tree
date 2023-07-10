@@ -5,7 +5,7 @@ import {
   eventsArray,
 } from "../../../General";
 
-const arraysObject = {
+const arraysObject:{[key:string]:any} = {
   species: speciesArr,
   dates: datesArr,
   overlays: overlaysArray,
@@ -13,13 +13,13 @@ const arraysObject = {
 };
 
 // $*$_tbg keyObject to be globalized
-export const keyObject = (propName, value) => {
-  const object = {};
-  arraysObject[propName].forEach(item => {
-    object[`${item}`] = value;
+export const keyObject = (propName:string, value:boolean|number) => {
+  const object = {} as {[key:string]:boolean|number};
+  arraysObject[propName].forEach((item:string) => {
+    object[item] = value;
   });
 
-  if (object) return object;
+ return object;
 };
 
 export const speciesKeyObject = () => keyObject("species", true);
