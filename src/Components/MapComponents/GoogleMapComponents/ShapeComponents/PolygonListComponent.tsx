@@ -18,17 +18,23 @@ export const PolygonListComponent = () => {
   //     },
   //   });
 
+  const greenFill: { [key: string]: any } = { ...greenFillObject };
+  const whiteFill: { [key: string]: any } = { ...whiteFillObject };
+  const correspondingPaths: { [key: string]: any } = {
+    ...correspondingPolygonPathsObject,
+  };
+
   return (
     <>
-      {overlaysArray.map(item => {
+      {overlaysArray.map((item: any) => {
         const name = item.name;
 
-        const optionsObject = greenFillObject[name] || whiteFillObject[name];
+        const optionsObject = greenFill[name] || whiteFill[name];
 
         return (
           <PolygonComponent
             key={item.ID}
-            paths={correspondingPolygonPathsObject[name]}
+            paths={correspondingPaths[name]}
             options={optionsObject}
           />
         );
