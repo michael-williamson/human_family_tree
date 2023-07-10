@@ -24,7 +24,7 @@ const center = {
 
 const mapTypesStringArray = [SATELLITE, ROADMAP, HYBRID];
 
-const { REACT_APP_GOOGLE_API } = process.env;
+const googleAPI = process.env.REACT_APP_GOOGLE_API!;
 
 // window.google.maps.ControlPosition  the object key/value pairs
 // e.g. TOP_LEFT: 1 ,  the object can be viewed in the console by
@@ -46,10 +46,10 @@ const options = {
   },
 };
 
-export const GoogleMapComponent = props => {
-  const [libraries] = useState(["drawing"]);
+export const GoogleMapComponent = (props: any) => {
+  const [libraries] = useState(["drawing"] as any);
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: REACT_APP_GOOGLE_API,
+    googleMapsApiKey: googleAPI,
     libraries,
   });
   const [mapInstance, setMapInstance] = useState(null);
@@ -65,7 +65,7 @@ export const GoogleMapComponent = props => {
     return <Skeleton />;
   }
 
-  const handleOnLoad = instance => {
+  const handleOnLoad = (instance: any) => {
     if (instance) {
       setMapInstance(instance);
     }
@@ -73,7 +73,7 @@ export const GoogleMapComponent = props => {
 
   const handleHideMapKey = () => setHideMapKey(prev => !prev);
 
-  const rightClickHandler = e => {
+  const rightClickHandler = (e: any) => {
     setLatLngObject({ lat: e.latLng.lat(), lng: e.latLng.lng() });
     setRightClick(true);
   };

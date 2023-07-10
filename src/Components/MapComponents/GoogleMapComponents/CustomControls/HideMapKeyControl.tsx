@@ -1,9 +1,8 @@
 import { Children, memo, useRef } from "react";
 import { createPortal } from "react-dom";
-import { ReactChildrenProp } from "../../../../Types/GlobalTypes";
 
 interface MapKeyControlType {
-  children: ReactChildrenProp;
+  children: any;
   mapInstance: any;
 }
 
