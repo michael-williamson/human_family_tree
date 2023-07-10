@@ -1,11 +1,14 @@
 import { Children, memo, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
+import { ReactChildrenProp } from "../../../../Types/GlobalTypes";
 
-const MapKey = ({ children, mapInstance }) => {
-  const containerElementRef = useRef(null);
-  useEffect(() => {
-    containerElementRef.current = document.createElement("div");
-  }, []);
+interface MapKeyControlType {
+  children: ReactChildrenProp;
+  mapInstance: any;
+}
+
+const MapKey = ({ children, mapInstance }: MapKeyControlType) => {
+  const containerElementRef = useRef(document.createElement("div"));
 
   useEffect(() => {
     mapInstance &&

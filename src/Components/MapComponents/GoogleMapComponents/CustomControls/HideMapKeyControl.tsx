@@ -1,10 +1,16 @@
 import { Children, memo, useRef } from "react";
 import { createPortal } from "react-dom";
+import { ReactChildrenProp } from "../../../../Types/GlobalTypes";
 
-const HideMapKey = ({ children, mapInstance }) => {
-  const containerElementRef = useRef(null);
+interface MapKeyControlType {
+  children: ReactChildrenProp;
+  mapInstance: any;
+}
+
+const HideMapKey = ({ children, mapInstance }: MapKeyControlType) => {
+  const containerElementRef = useRef(document.createElement("div"));
   if (mapInstance === null || undefined) return null;
-  containerElementRef.current = document.createElement("div");
+
   mapInstance.controls[window.google.maps.ControlPosition.TOP_RIGHT].push(
     containerElementRef.current
   );
