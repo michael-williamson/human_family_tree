@@ -1,8 +1,6 @@
-import { Box } from "@mui/system";
+
 import {
-  DESTRUCTURE_BOTH,
-  DESTRUCTURE_ONE,
-  DESTRUCTURE_TWO,
+
   EUROPEAN_ICE_SHEET,
   GREEN_ARABIA,
   GREEN_SAHARA,
@@ -87,10 +85,10 @@ export const polygonOptions = {
   zIndex: 1,
 };
 
-export const overlaysObjectConversion = ({ arr, styleObject }) => {
-  const object = {};
-  const arrayLooper = (arr, styleObject) =>
-    arr.forEach(item => (object[item] = { ...polygonOptions, ...styleObject }));
+export const overlaysObjectConversion = ({ arr, styleObject }:any) => {
+  const object:{[key:string]:any} = {};
+  const arrayLooper = (arr:any, styleObject:any) =>
+    arr.forEach((item:any) => (object[item] = { ...polygonOptions, ...styleObject }));
   arrayLooper(arr, styleObject);
   return object;
 };
@@ -139,110 +137,110 @@ export const datesCategoryObj = {
 
 let rgbRandomNumberRounded = () => Math.floor(Math.random() * 256);
 
-export const randomColorGenerator = transparency =>
+export const randomColorGenerator = (transparency:any) =>
   `rgba(${rgbRandomNumberRounded()},${rgbRandomNumberRounded()},${rgbRandomNumberRounded()}${
     transparency ? `,${1 * Math.random()}` : ""
   })`;
 
-export const svgObjectFN = (colorObject, svgObject) => {
-  const objectToConstruct = {};
-  Object.keys(colorObject).forEach(item => {
-    objectToConstruct[item] = (
-      <Box sx={{ cursor: "pointer" }}>
-        <svg
-          width={svgObject.width}
-          height={svgObject.height}
-          display="inline-block"
-        >
-          <circle
-            cx={svgObject.width / 2}
-            cy={svgObject.height / 2}
-            r="10"
-            stroke={colorObject[item]}
-            strokeWidth="3"
-            fill={colorObject[item]}
-          />
-        </svg>
-      </Box>
-    );
-  });
-  return { ...objectToConstruct };
-};
+// export const svgObjectFN = (colorObject:any, svgObject:any) => {
+//   const objectToConstruct:{[key:string]:any} = {};
+//   Object.keys(colorObject).forEach(item => {
+//     objectToConstruct[item] = (
+//       <Box sx={{ cursor: "pointer" }}>
+//         <svg
+//           width={svgObject.width}
+//           height={svgObject.height}
+//           display="inline-block"
+//         >
+//           <circle
+//             cx={svgObject.width / 2}
+//             cy={svgObject.height / 2}
+//             r="10"
+//             stroke={colorObject[item]}
+//             strokeWidth="3"
+//             fill={colorObject[item]}
+//           />
+//         </svg>
+//       </Box>
+//     );
+//   });
+//   return { ...objectToConstruct };
+// };
 
-export const returnSVGObjectItem = (svgObject, item) => {
-  return svgObject[item];
-};
+// export const returnSVGObjectItem = (svgObject, item) => {
+//   return svgObject[item];
+// };
 
-export const objectDestructured = (object, property) => {
-  return object[property];
-};
+// export const objectDestructured = (object, property) => {
+//   return object[property];
+// };
 
 export const conditionsEqual = (
-  conditionsEqual,
-  conditionOne,
-  conditionTwo
+  conditionsEqual:any,
+  conditionOne:any,
+  conditionTwo:any
 ) => {
   return conditionsEqual
     ? conditionOne === conditionTwo
     : conditionOne !== conditionTwo;
 };
 
-export const filterType = (
-  type,
-  item,
-  conditionOne,
-  conditionTwo,
-  conditionsEqual
-) => {
-  switch (type) {
-    case DESTRUCTURE_ONE:
-      return conditionsEqual(
-        conditionsEqual,
-        objectDestructured(item, conditionOne),
-        conditionTwo
-      );
-    case DESTRUCTURE_TWO:
-      return conditionsEqual(
-        conditionsEqual,
-        conditionOne,
-        objectDestructured(item, conditionTwo)
-      );
-    case DESTRUCTURE_BOTH:
-      return conditionsEqual(
-        objectDestructured(item, conditionOne),
-        objectDestructured(item, conditionTwo)
-      );
+// export const filterType = (
+//   type: any,
+//   item: any,
+//   conditionOne: any,
+//   conditionTwo: any,
+//   conditionsEqual: (arg0: any, arg1: any, arg2: undefined) => any
+// ) => {
+//   switch (type) {
+//     case DESTRUCTURE_ONE:
+//       return conditionsEqual(
+//         conditionsEqual,
+//         objectDestructured(item, conditionOne),
+//         conditionTwo
+//       );
+//     case DESTRUCTURE_TWO:
+//       return conditionsEqual(
+//         conditionsEqual,
+//         conditionOne,
+//         objectDestructured(item, conditionTwo)
+//       );
+//     case DESTRUCTURE_BOTH:
+//       return conditionsEqual(
+//         objectDestructured(item, conditionOne),
+//         objectDestructured(item, conditionTwo)
+//       );
 
-    default:
-      break;
-  }
-};
+//     default:
+//       break;
+//   }
+// };
 
-export const arrayFilter = (
-  arr,
-  conditionOne,
-  conditionTwo,
-  destructure,
-  conditionsEqual
-) => {
-  return arr.filter(item => {
-    return filterType(
-      destructure,
-      item,
-      conditionOne,
-      conditionTwo,
-      conditionsEqual
-    );
-  });
-};
+// export const arrayFilter = (
+//   arr,
+//   conditionOne,
+//   conditionTwo,
+//   destructure,
+//   conditionsEqual
+// ) => {
+//   return arr.filter(item => {
+//     return filterType(
+//       destructure,
+//       item,
+//       conditionOne,
+//       conditionTwo,
+//       conditionsEqual
+//     );
+//   });
+// };
 
-export const countLabelCreator = (labelText, addOn) => {
+export const countLabelCreator = (labelText: any, addOn: any) => {
   // $*$_ in this case addOn will be the count object from the
   // --> count state provider
   return `${labelText} (${addOn})`;
 };
 
-export const labelCreator = (labelText, addOn) => {
+export const labelCreator = (labelText: any, addOn: any) => {
   if (typeof addOn === "number") {
     return `${labelText} (${addOn})`;
   }

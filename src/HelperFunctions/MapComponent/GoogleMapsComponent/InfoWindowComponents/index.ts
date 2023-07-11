@@ -48,11 +48,11 @@ export const typeOfMarkersObject = {
 
 export const windowsWithParagraphs = [ENTRY_EXIT_POINTS, EVENTS];
 
-export const paragraphTextFields = {
+export const paragraphTextFields:{[key:string]:any} = {
   Description: true,
 };
 
-export const styleExaminer = (item, defaultStyle, additionalStyles) => {
+export const styleExaminer = (item: string | number, defaultStyle: any, additionalStyles: any) => {
   if (paragraphTextFields[item] === undefined) {
     return defaultStyle;
   }

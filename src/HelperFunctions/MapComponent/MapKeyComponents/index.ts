@@ -1,7 +1,6 @@
 import {
   DATES,
-  MOUSE_ENTER,
-  MOUSE_LEAVE,
+
   SPECIES,
 } from "../../../ConstantVariableNames";
 
@@ -20,17 +19,17 @@ export const speciesArr = [
   "longi",
 ];
 
-export const selectOrDeselectFN = (checkboxState) => {
-  // if 3 or more checkboxes are false the only option is to select all & by
-  // --> this function returning true tells the IndividualKey Component
-  // --> to list the "SELECT ALL" option & vice versa, the other message
-  // --> sent by returning true is that a click event tells the SpecimensArrayStateContext
-  // --> to evaluate this new condition, this of course is the exact opposite
-  // --> if false and "DESELECT ALL" are the command
-  return (
-    Object.values(checkboxState).filter((item) => item === false).length >= 3
-  );
-};
+// export const selectOrDeselectFN = (checkboxState) => {
+//   // if 3 or more checkboxes are false the only option is to select all & by
+//   // --> this function returning true tells the IndividualKey Component
+//   // --> to list the "SELECT ALL" option & vice versa, the other message
+//   // --> sent by returning true is that a click event tells the SpecimensArrayStateContext
+//   // --> to evaluate this new condition, this of course is the exact opposite
+//   // --> if false and "DESELECT ALL" are the command
+//   return (
+//     Object.values(checkboxState).filter((item) => item === false).length >= 3
+//   );
+// };
 
 // hover function used by components: ClassList,CheckListComponent.
 // avoids cluttered MapKey component by allowing import rather than
@@ -38,29 +37,29 @@ export const selectOrDeselectFN = (checkboxState) => {
 //--> functions ()=>()=> values can persist and be added as they become
 //--> available in children components.  This allows some level of
 //--> abstraction & adds dynamics.
-export const handleHover = (contextFN) => (value) => (e) => {
-  const { type } = e;
-  let arg;
-  switch (type) {
-    case MOUSE_ENTER:
-      arg = value;
-      break;
-    case MOUSE_LEAVE:
-      arg = null;
-      break;
-    default:
-      arg = null;
-  }
+// export const handleHover = (contextFN) => (value) => (e) => {
+//   const { type } = e;
+//   let arg;
+//   switch (type) {
+//     case MOUSE_ENTER:
+//       arg = value;
+//       break;
+//     case MOUSE_LEAVE:
+//       arg = null;
+//       break;
+//     default:
+//       arg = null;
+//   }
 
-  contextFN(arg);
-};
+//   contextFN(arg);
+// };
 
 // allows passing an event object only to Components
 // --> correlated to functionality.  Evaluation occurs
 // --> in the IndividualKeys Component.
 export const eventObjectArrayNames = [SPECIES];
 
-export const objectEval = (obj, label) => {
+export const objectEval = (obj: any, label: any) => {
   const objCopy = { ...obj };
   const length = Object.keys(objCopy).length;
   if (length === 0) return {};
@@ -72,8 +71,8 @@ export const objectEval = (obj, label) => {
 
 // function that creates an object with key/values representing recurring similarities in array objects
 // --> & creating a count based on criteria
-export const itemPropertyCountObject = (arr = [], propertyToCount) => {
-  const countObject = {};
+export const itemPropertyCountObject = (arr = [], propertyToCount: string) => {
+  const countObject:any = {};
   arr.forEach((item) =>
     countObject[item[propertyToCount]]
       ? countObject[item[propertyToCount]]++
@@ -90,19 +89,19 @@ export const keysToCountArray = [SPECIES, DATES];
 // --> There are some properties in the json object that require functionality such as
 // --> regular expressions.  It will be easier to handle this on load so that the overall
 // --> specimens array will stay unchanged throughout runtime
-export const specimensArrayFormatter = (arr) => {
+export const specimensArrayFormatter = (arr:any) => {
   const specimensArray = [...arr];
 
   const regex = /<a[^>]*>(?<textBetween>[^<]+)<\/a>/gi;
 
-  const imageAttributesArray = (string) => {
+  const imageAttributesArray = (string: string) => {
     return string.matchAll(regex);
   };
 
   specimensArray.forEach((item) => {
     item.imageAttributesArray = [];
     if (typeof item.linksToPhotos[2] === "string") {
-      const regexMatches = imageAttributesArray(item.linksToPhotos[2]);
+      const regexMatches:any = imageAttributesArray(item.linksToPhotos[2]);
       for (const match of regexMatches) {
         item.imageAttributesArray.push(match.groups.textBetween);
       }
@@ -112,8 +111,8 @@ export const specimensArrayFormatter = (arr) => {
   return specimensArray;
 };
 
-export const getRequestsURLS = ({ param, propertyName }) => {
-  const obj = {
+export const getRequestsURLS = ({ param, propertyName }:any) => {
+  const obj :{[key:string]:any} = {
     specimensArray:
       "https://human-family-tree-server.herokuapp.com/api/specimensArray",
     specimensByDate: `"https://human-family-tree-server.herokuapp.com/api/specimensByDate/${param}"`,
