@@ -1,35 +1,39 @@
 import React, { useState } from "react";
 import {
+  Box,
+  CardMedia,
   FormControl,
   FormControlLabel,
   FormLabel,
+  Radio,
   RadioGroup,
   TextField,
-  Radio,
-  CardMedia,
 } from "@mui/material";
-import { Box } from "@mui/system";
-import { useInfoWindowContextUpdater } from "../MapStateComponents/InfoWindowStateProvider";
-import { OPEN_INFO_WINDOW, SPECIES } from "../../../ConstantVariableNames";
 import {
   searchByLabelsStyles,
   searchByRadioStyles,
+  searchContainerStyles,
   searchResultsContainerStyles,
   searchResultsImageStyles,
-} from "../../../Styles/MapComponentStyles/MapKeyComponentStyles";
+} from "../../../../Styles/MapComponentStyles/MapKeyComponentStyles";
+import { OnChangeFunctionType } from "../../../../Types/GlobalTypes";
+import { useInfoWindowContextUpdater } from "../../MapStateComponents/InfoWindowStateProvider";
+import { OPEN_INFO_WINDOW, SPECIES } from "../../../../ConstantVariableNames";
+import { useFullSpecimensArray } from "../../../../State/MapState/MapItemStateArrays/SpecimensArrayProvider";
+import { Container } from "../../../ReusableComponents/Container";
 
-export const SearchComponent = ({ searchableArray }) => {
+export const SearchComponent = () => {
   const [input, setInput] = useState("");
   const [searchBy, setSearchBy] = useState("name");
+  const searchableArray = useFullSpecimensArray();
   const infoWindowContextUpdater = useInfoWindowContextUpdater();
 
-  const handleRadioChange = (e) => {
+  const handleRadioChange: OnChangeFunctionType = e => {
     setSearchBy(e.target.value);
   };
-
   return (
-    <Box>
-      <FormControl sx={{ py: 3 }}>
+    <Container containerStyles={searchContainerStyles}>
+      <FormControl sx={{ pb: 3 }}>
         <FormLabel id="searchBy-radio-buttons" sx={searchByLabelsStyles}>
           Search By:
         </FormLabel>
@@ -59,14 +63,14 @@ export const SearchComponent = ({ searchableArray }) => {
             sx={searchByLabelsStyles}
           />
         </RadioGroup>
-      </FormControl>
+      </FormControl>{" "}
       <TextField
         id="outlined-search"
         label="Search"
         type="search"
         fullWidth={true}
         value={input}
-        onChange={(e) => setInput(e.target.value)}
+        onChange={e => setInput(e.target.value)}
         InputLabelProps={{
           sx: {
             color: "black",
@@ -93,15 +97,15 @@ export const SearchComponent = ({ searchableArray }) => {
               pb: 3,
               border: "2px solid orange",
               borderTop: "none",
-              fontFamily: (theme) => theme.fonts.Kalam,
+              fontFamily: theme => theme.fonts.Kalam,
             }}
           >
             {input.length > 0 &&
               searchableArray
-                .filter((item) =>
+                .filter((item: any) =>
                   item[searchBy].toLowerCase().includes(input.toLowerCase())
                 )
-                .sort((a, b) => {
+                .sort((a: any, b: any) => {
                   const nameA = a.name.toUpperCase();
                   const nameB = b.name.toUpperCase();
                   if (nameA < nameB) {
@@ -113,9 +117,9 @@ export const SearchComponent = ({ searchableArray }) => {
 
                   return 0;
                 })
-                .map((item) => (
+                .map((item: any) => (
                   <Box
-                    key={item.name}
+                    key={item.ID}
                     sx={searchResultsContainerStyles}
                     onClick={() =>
                       infoWindowContextUpdater({
@@ -138,6 +142,6 @@ export const SearchComponent = ({ searchableArray }) => {
           </Box>
         </Box>
       )}
-    </Box>
+    </Container>
   );
 };

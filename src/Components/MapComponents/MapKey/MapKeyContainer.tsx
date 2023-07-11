@@ -4,6 +4,7 @@ import { CheckboxListContainer } from "./CheckboxListContainer";
 import { MapKeyTitleComponent } from "./MapKeyCheckboxComponents/MapKeyTitleComponent";
 import { mapKeyContainerStyles } from "../../../Styles/MapComponentStyles/MapKeyComponentStyles";
 import { mapContainerStyles } from "../../../Styles/MapComponentStyles/MapContainerStyles";
+import { SearchComponent } from "./MapKeySearchComponents/SearchComponent";
 
 interface MapKeyContainerProps {
   visibility: string;
@@ -22,6 +23,7 @@ export const MapKeyContainer = ({ visibility }: MapKeyContainerProps) => {
   return (
     <Container containerStyles={containerStyles}>
       <MapKeyTitleComponent />
+      <SearchComponent />
       <CheckboxListContainer />
     </Container>
   );

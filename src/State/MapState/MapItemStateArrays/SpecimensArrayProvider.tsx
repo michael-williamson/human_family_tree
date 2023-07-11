@@ -31,6 +31,8 @@ const SpecimensArrayContextUpdater = React.createContext({} as Dispatch<any>);
 
 const SpecimensBySpecies = React.createContext({} as any);
 
+const FullSpecimensArray = React.createContext({} as any);
+
 export const useSpecimensArrayContext = () => {
   return useContext(SpecimensArrayContext);
 };
@@ -43,9 +45,14 @@ export const useSpecimensBySpecies = () => {
   return useContext(SpecimensBySpecies);
 };
 
+export const useFullSpecimensArray = () => {
+  return useContext(FullSpecimensArray);
+};
+
 export const SpecimensArrayProvider = ({ children }: any) => {
   const [specimensArray, specimensArrayDispatch] = useReducer(arrayReducer, []);
   const [specimensBySpecies, setSpecimensBySpecies] = useState({});
+  const [fullSpecimensArray, setFullSpecimensArray] = useState([]);
   const setSpeciesCount = useSpeciesCountUpdater();
   const setDatesCount = useDatesCountUpdater();
   const arrayUpdater = useCallback(
@@ -103,12 +110,13 @@ export const SpecimensArrayProvider = ({ children }: any) => {
       quickCounter(data, SPECIES, setSpeciesCount);
       quickCounter(data, DATES, setDatesCount);
       specimensArrayDispatch({ type: SELECT_ALL, data });
+      setFullSpecimensArray(data);
     };
 
     requestFN();
 
     return () => {};
-  }, [setSpeciesCount, setDatesCount]);
+  }, [setSpeciesCount, setDatesCount, setFullSpecimensArray]);
 
   useEffect(() => {
     const action = {
@@ -130,7 +138,9 @@ export const SpecimensArrayProvider = ({ children }: any) => {
     <SpecimensArrayContext.Provider value={specimensArray}>
       <SpecimensArrayContextUpdater.Provider value={arrayUpdater}>
         <SpecimensBySpecies.Provider value={specimensBySpecies}>
-          {children}
+          <FullSpecimensArray.Provider value={fullSpecimensArray}>
+            {children}
+          </FullSpecimensArray.Provider>
         </SpecimensBySpecies.Provider>
       </SpecimensArrayContextUpdater.Provider>
     </SpecimensArrayContext.Provider>

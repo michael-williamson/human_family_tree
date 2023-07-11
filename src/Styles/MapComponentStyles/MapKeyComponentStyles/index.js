@@ -72,8 +72,13 @@ export const checkboxListContainer = {
   },
 };
 
+export const searchContainerStyles = {
+  px: 2,
+};
+
 export const searchByLabelsStyles = {
   color: "white",
+  fontSize: { xs: 20 },
   "&.Mui-focused": { color: "white" },
 };
 
