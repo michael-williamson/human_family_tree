@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { Box } from "@mui/system";
 import { Line } from "react-chartjs-2";
 import { speciesArr } from "../../../HelperFunctions/General";
@@ -7,14 +6,9 @@ import {
   datesCategoryProps,
 } from "../../../HelperFunctions/ChartComponent/IndividualChartsComponents/SpeciesByTimeline/index";
 import { colorGenerator } from "../../../HelperFunctions/ChartComponent";
-import {
-  SELECT_ALL,
-  SPECIES,
-  SPECIMENS_BY_SPECIES,
-} from "../../../ConstantVariableNames";
 
-const labels = (number) => {
-  return datesCategoryProps.map((item) => {
+const labels = number => {
+  return datesCategoryProps.map(item => {
     if (number) return datesCategoryObj[item].lesser;
     return datesCategoryObj[item].lesser.toString();
   });
@@ -28,7 +22,7 @@ function DataSetItem(label, data, fillBool, bgColor, borderColor) {
   this.borderColor = borderColor;
 }
 
-const dataSetCreator = (objectBySpecies) => {
+const dataSetCreator = objectBySpecies => {
   const labelsArr = labels(true);
   console.log(labelsArr, speciesArr, "what is?");
   const colorArray = colorGenerator(labelsArr.length, 0.2, 1);
@@ -37,7 +31,7 @@ const dataSetCreator = (objectBySpecies) => {
   const quad = Math.floor((labelsArr.length - 1) / 4);
   return speciesArr.map((item, index) => {
     const dataObject = {};
-    const comparatorMain = (date) => {
+    const comparatorMain = date => {
       return function comparator(currentIndex) {
         if (currentIndex === 1 || currentIndex === labelsArr.length - 2) {
           const prop =
@@ -195,17 +189,6 @@ const options = {
 };
 
 export const SpeciesTimeline = ({ fetchArray, specimensObject = {} }) => {
-  useEffect(() => {
-    fetchArray({ message: SELECT_ALL, propertyName: SPECIMENS_BY_SPECIES });
-
-    return () => {
-      fetchArray({
-        message: SELECT_ALL,
-        propertyName: SPECIES,
-      });
-    };
-  }, [fetchArray]);
-
   if (Object.keys(specimensObject).length <= 0) {
     return <Box>one moment...</Box>;
   }
