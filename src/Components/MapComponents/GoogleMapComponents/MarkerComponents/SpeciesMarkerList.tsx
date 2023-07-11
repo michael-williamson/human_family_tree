@@ -1,10 +1,10 @@
 import { MarkerList } from "./MarkerList";
 import { SPECIES } from "../../../../ConstantVariableNames";
 import { skullIcon } from "../../../../Media/MapIcons";
-import { useMapLegendFieldContext } from "../../MapStateComponents/MapLegendStateProvider";
 import { useState } from "react";
 import { clickHandlerFactory } from "../../../../HelperFunctions/MapComponent/GoogleMapsComponent/MarkerComponents/MarkerClickHandler";
 import { useSpecimensArrayContext } from "../../../../State/MapState/MapItemStateArrays/SpecimensArrayProvider";
+import { useMapLegendFieldContext } from "../../../../State/MapState/MapLegendState/SpeciesCheckboxProvider";
 
 export const SpeciesMarkerList = ({ clickHandler }: any) => {
   const specimensArrayContext = useSpecimensArrayContext();
