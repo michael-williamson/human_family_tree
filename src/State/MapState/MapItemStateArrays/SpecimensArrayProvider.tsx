@@ -4,6 +4,7 @@ import React, {
   useContext,
   useEffect,
   useReducer,
+  useState,
 } from "react";
 import {
   addSpeciesCategory,
@@ -20,12 +21,15 @@ import {
   DATES,
   SELECT_ALL,
   SPECIES,
+  SPECIMENS_BY_SPECIES,
 } from "../../../ConstantVariableNames";
 import { useSpeciesCountUpdater } from "../MapItemCountState/SpeciesCountProvider";
 import { useDatesCountUpdater } from "../MapItemCountState/DatesCountProvider";
 
 const SpecimensArrayContext = React.createContext([] as any);
 const SpecimensArrayContextUpdater = React.createContext({} as Dispatch<any>);
+
+const SpecimensBySpecies = React.createContext({} as any);
 
 export const useSpecimensArrayContext = () => {
   return useContext(SpecimensArrayContext);
@@ -35,8 +39,13 @@ export const useSpecimensArrayContextUpdater = () => {
   return useContext(SpecimensArrayContextUpdater);
 };
 
+export const useSpecimensBySpecies = () => {
+  return useContext(SpecimensBySpecies);
+};
+
 export const SpecimensArrayProvider = ({ children }: any) => {
   const [specimensArray, specimensArrayDispatch] = useReducer(arrayReducer, []);
+  const [specimensBySpecies, setSpecimensBySpecies] = useState({});
   const setSpeciesCount = useSpeciesCountUpdater();
   const setDatesCount = useDatesCountUpdater();
   const arrayUpdater = useCallback(
@@ -101,10 +110,28 @@ export const SpecimensArrayProvider = ({ children }: any) => {
     return () => {};
   }, [setSpeciesCount, setDatesCount]);
 
+  useEffect(() => {
+    const action = {
+      type: SELECT_ALL,
+      category: SPECIMENS_BY_SPECIES,
+      fieldName: "",
+    };
+    const requestFN = async () => {
+      const url = httpRequestParamHandler(action);
+      const data = await httpRequest(url);
+
+      setSpecimensBySpecies(data);
+    };
+    requestFN();
+    return () => {};
+  }, []);
+
   return (
     <SpecimensArrayContext.Provider value={specimensArray}>
       <SpecimensArrayContextUpdater.Provider value={arrayUpdater}>
-        {children}
+        <SpecimensBySpecies.Provider value={specimensBySpecies}>
+          {children}
+        </SpecimensBySpecies.Provider>
       </SpecimensArrayContextUpdater.Provider>
     </SpecimensArrayContext.Provider>
   );
