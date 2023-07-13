@@ -5,7 +5,7 @@ interface ReducerData {
   state:any;
   fieldName:string;
   category?:string;
-  data?:[]
+  data?:any[]
   checkboxState?:any;
   count?:any;
   setCountState:any;
@@ -68,6 +68,20 @@ export const addSpeciesCategory = ({state,data=[],category,checkboxState,count,s
     })]
     setCountState(countClone);
     return stateArray;
+}
+
+export const addSingleSpecimen = ({state,data=[{}],category,checkboxState,count,setCountState}:ReducerData) => {
+  // const countClone = {...count}
+  // data.forEach(item=>{
+  //   const prop = item[SPECIES];
+  //   const datesProp = item[DATES]
+  //   const propertyBool = checkboxState[prop]
+  //   counter(countClone,datesProp,propertyBool)
+  // })
+
+  // setCountState(countClone);
+  return [...state,...data]
+
 }
 
 

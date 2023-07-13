@@ -4,6 +4,7 @@ export interface ActionType {
     fieldName:string;
     checkboxState?:any;
     count?:any;
+    singleItem?:any[]
 }
 
 export interface ArrayDispatch {
