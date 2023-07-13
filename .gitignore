@@ -62,3 +62,5 @@ src/Data/entryExitPoints.json
 src/Data/anthroData.json
 src/Components/MapComponents/MapStateComponents/MapLegendFieldsCount.js
 about_application.txt
+converter.js
+formatter.ts
