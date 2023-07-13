@@ -11,6 +11,7 @@ import { PolygonListComponent } from "./ShapeComponents/PolygonListComponent";
 import { MarkerItemInfoWindow } from "./InfoWindowComponents/MarkerItemInfoWindow";
 import { MapKeyContainer } from "../MapKey/MapKeyContainer";
 import { MarkerListsContainer } from "./MarkerComponents/MarkerListsContainer";
+import { ProgressBar } from "../TimelineAnimation/ProgressBar";
 
 const containerStyle = {
   width: "100%",
@@ -88,6 +89,7 @@ export const GoogleMapComponent = (props: any) => {
       onRightClick={rightClickHandler}
       id="myGoogleMap"
     >
+      <ProgressBar />
       <Marker position={latLngObject} visible={latLngObject.lat !== 0} />
       <HideMapKeyControl mapInstance={mapInstance}>
         <Button onClick={handleHideMapKey} sx={showMapKeyButtonStyles}>
