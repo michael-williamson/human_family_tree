@@ -1,4 +1,3 @@
-import { arrayReducer } from '../MapItemStateArrays';
 import { datesCategoryObj } from './../../General/index';
 
 

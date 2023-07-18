@@ -6,10 +6,7 @@ import {
   useStartProgressContextUpdater,
   useTimelineProgressContext,
 } from "../../../State/MapState/MapTimelineAnimation/TimelineAnimationState";
-import {
-  generateTicks,
-  marksArrayCreator,
-} from "../../../HelperFunctions/MapComponent/GoogleMapsComponent/TimelineProgressComponents";
+import { marksArrayCreator } from "../../../HelperFunctions/MapComponent/GoogleMapsComponent/TimelineProgressComponents";
 
 const boxStyles = {
   position: "relative",
