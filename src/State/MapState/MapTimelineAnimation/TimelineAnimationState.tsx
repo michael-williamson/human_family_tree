@@ -30,9 +30,12 @@ export const useStartProgressContext = () => {
 export const useStartProgressContextUpdater = () => {
   return useContext(StartProgressContextUpdater);
 };
-
+const total = 2000000;
 let currentYear = 2000000;
 const yearsPerPercent = 2000000 / 100;
+
+const datesArrayClone = [...datesArr];
+datesArrayClone.shift();
 
 export const TimelineAnimationState = ({
   children,
@@ -41,9 +44,6 @@ export const TimelineAnimationState = ({
   const [startProgress, setStartProgress] = useState(false);
   const specimensByDate = useSpecimensByDate();
   const specimensArrayUpdater = useSpecimensArrayContextUpdater();
-  //   const setStartProgressHandler = useCallback((e:any) => {
-  //     setStartProgress(prev => !prev);
-  //   }, [setStartProgress]);
 
   useEffect(() => {
     if (!startProgress) {
@@ -57,33 +57,22 @@ export const TimelineAnimationState = ({
     };
     specimensArrayUpdater(action);
 
-    const datesArrayClone = [...datesArr];
-    const specimensByDateClone = { ...specimensByDate };
-    datesArrayClone.shift();
     const timer = setInterval(() => {
       setProgress(oldProgress => {
         if (oldProgress === 100) {
           setStartProgress(false);
           return 0;
         }
-        currentYear = currentYear - yearsPerPercent;
-
-        const data = datesPropertyComparison(
-          datesArrayClone,
-          currentYear,
-          specimensByDateClone
-        );
-        if (data) {
-          const action = {
-            type: ADD,
-            category: "Timeline Animation",
-            fieldName: "",
-            singleItem: data,
-          };
-          specimensArrayUpdater(action);
+        // return Math.min(oldProgress + 1, 100);
+        let diff;
+        if (oldProgress >= 44) {
+          diff = Math.random() * 1.6;
+        } else if (oldProgress >= 23) {
+          diff = Math.random() * 4.8;
+        } else {
+          diff = Math.random() * 4.4;
         }
-
-        return Math.min(oldProgress + 1, 100);
+        return Math.min(oldProgress + diff, 100);
       });
     }, 1200);
 
@@ -91,6 +80,39 @@ export const TimelineAnimationState = ({
       clearInterval(timer);
     };
   }, [startProgress, specimensByDate, specimensArrayUpdater]);
+
+  useEffect(() => {
+    if (!startProgress) {
+      return;
+    }
+
+    const diff = Math.floor(progress * yearsPerPercent);
+    console.log("diff: ", diff);
+    currentYear = Math.floor(total - diff);
+    console.log("currentYear: ", currentYear);
+
+    if (currentYear <= 0) {
+      return;
+    }
+
+    const data = datesPropertyComparison(
+      datesArrayClone,
+      currentYear,
+      specimensByDate
+    );
+    if (data.length) {
+      const action = {
+        type: ADD,
+        category: "Timeline Animation",
+        fieldName: "",
+        singleItem: data,
+      };
+      specimensArrayUpdater(action);
+    }
+
+    return () => {};
+  }, [specimensArrayUpdater, specimensByDate, progress, startProgress]);
+
   return (
     <TimelineProgressContext.Provider value={progress}>
       <StartProgressContext.Provider value={startProgress}>

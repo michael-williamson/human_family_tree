@@ -6,6 +6,10 @@ import {
   useStartProgressContextUpdater,
   useTimelineProgressContext,
 } from "../../../State/MapState/MapTimelineAnimation/TimelineAnimationState";
+import {
+  generateTicks,
+  marksArrayCreator,
+} from "../../../HelperFunctions/MapComponent/GoogleMapsComponent/TimelineProgressComponents";
 
 const boxStyles = {
   position: "relative",
@@ -22,34 +26,37 @@ const styles = {
   height: "100px",
 };
 
+const marks2 = marksArrayCreator();
+console.log("marks2: ", marks2);
+
 const marks = [
   {
     value: 0,
     label: "2 MYA",
   },
   {
-    value: 15,
+    value: 23,
     label: "500 TYA",
   },
   {
-    value: 35,
+    value: 44,
     label: "200 TYA",
   },
 
   {
-    value: 55,
+    value: 72,
     label: "100 TYA",
   },
+  // {
+  //   value: 79,
+  //   label: "75 TYA",
+  // },
   {
-    value: 67,
-    label: "75 TYA",
-  },
-  {
-    value: 80,
+    value: 88,
     label: "50 TYA",
   },
   {
-    value: 90,
+    value: 95,
     label: "25 TYA",
   },
   {
