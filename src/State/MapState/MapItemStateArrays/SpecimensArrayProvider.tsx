@@ -73,7 +73,6 @@ export const SpecimensArrayProvider = ({ children }: any) => {
       count,
       singleItem,
     }: ActionType) => {
-      console.log(type, "type");
       const setCountState =
         category === SPECIES ? setSpeciesCount : setDatesCount;
       if (type === DESELECT_ALL) {
