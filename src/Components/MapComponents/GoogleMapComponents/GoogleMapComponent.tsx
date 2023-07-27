@@ -88,7 +88,6 @@ export const GoogleMapComponent = (props: any) => {
       onRightClick={rightClickHandler}
       id="myGoogleMap"
     >
-      {/* <ProgressBar /> */}
       <Marker position={latLngObject} visible={latLngObject.lat !== 0} />
       <HideMapKeyControl mapInstance={mapInstance}>
         <Button onClick={handleHideMapKey} sx={showMapKeyButtonStyles}>

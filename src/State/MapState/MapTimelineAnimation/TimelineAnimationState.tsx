@@ -31,8 +31,8 @@ export const useStartProgressContextUpdater = () => {
   return useContext(StartProgressContextUpdater);
 };
 const total = 2000000;
-let currentYear = 2000000;
-const yearsPerPercent = 2000000 / 100;
+const onePercent = total / 100;
+let currentRate = 20000;
 
 const datesArrayClone = [...datesArr];
 datesArrayClone.shift();
@@ -42,6 +42,7 @@ export const TimelineAnimationState = ({
 }: React.HTMLAttributes<unknown>) => {
   const [progress, setProgress] = React.useState(0);
   const [startProgress, setStartProgress] = useState(false);
+  const [currentYear, setCurrentYear] = useState(total);
   const specimensByDate = useSpecimensByDate();
   const specimensArrayUpdater = useSpecimensArrayContextUpdater();
 
@@ -58,23 +59,8 @@ export const TimelineAnimationState = ({
     specimensArrayUpdater(action);
 
     const timer = setInterval(() => {
-      setProgress(oldProgress => {
-        if (oldProgress === 100) {
-          setStartProgress(false);
-          return 0;
-        }
-        // return Math.min(oldProgress + 1, 100);
-        let diff;
-        if (oldProgress >= 44) {
-          diff = Math.random() * 1.6;
-        } else if (oldProgress >= 23) {
-          diff = Math.random() * 4.8;
-        } else {
-          diff = Math.random() * 4.4;
-        }
-        return Math.min(oldProgress + diff, 100);
-      });
-    }, 1200);
+      setProgress(oldProgress => oldProgress + 1);
+    }, 1000);
 
     return () => {
       clearInterval(timer);
@@ -82,19 +68,60 @@ export const TimelineAnimationState = ({
   }, [startProgress, specimensByDate, specimensArrayUpdater]);
 
   useEffect(() => {
+    const calculateRemaining = (progress: number, currentYear: number) => {
+      const remaining = 100 - progress;
+      let diff = total - currentYear;
+      let realDiff = total - diff;
+      return realDiff / remaining;
+    };
+
+    const calculateRate = (amountProgress: number, amountYears: number) => {
+      return amountYears / amountProgress;
+    };
+
+    const rateCalculator = (rateMessage: string, oldCurrentYear: number) => {
+      switch (rateMessage) {
+        case "FOUR_TIMES":
+          return calculateRate(25, 1500000);
+        case "TWO_TIMES":
+          return calculateRate(25, 300000);
+        case "REMAINING":
+          return calculateRemaining(progress, oldCurrentYear);
+        default:
+          return onePercent;
+      }
+    };
+
+    setCurrentYear(oldCurrentYear => {
+      const progressValueObj: { [key: string]: string } = {
+        "1": "FOUR_TIMES",
+        "25": "TWO_TIMES",
+        "50": "REMAINING",
+      };
+      const progressStr = progress.toString();
+
+      if (progressValueObj[progressStr]) {
+        const yearDiff = rateCalculator(
+          progressValueObj[progressStr],
+          oldCurrentYear
+        );
+        currentRate = yearDiff;
+        return oldCurrentYear - yearDiff;
+      } else {
+        return oldCurrentYear - currentRate;
+      }
+    });
+
+    return () => {};
+  }, [progress]);
+
+  useEffect(() => {
     if (!startProgress) {
       return;
     }
-
-    const diff = Math.floor(progress * yearsPerPercent);
-    console.log("diff: ", diff);
-    currentYear = Math.floor(total - diff);
-    console.log("currentYear: ", currentYear);
-
     if (currentYear <= 0) {
-      return;
+      return setStartProgress(false);
     }
-
     const data = datesPropertyComparison(
       datesArrayClone,
       currentYear,
@@ -111,7 +138,13 @@ export const TimelineAnimationState = ({
     }
 
     return () => {};
-  }, [specimensArrayUpdater, specimensByDate, progress, startProgress]);
+  }, [
+    specimensArrayUpdater,
+    specimensByDate,
+    setStartProgress,
+    currentYear,
+    startProgress,
+  ]);
 
   return (
     <TimelineProgressContext.Provider value={progress}>

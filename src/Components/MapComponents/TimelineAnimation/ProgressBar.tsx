@@ -6,25 +6,13 @@ import {
   useStartProgressContextUpdater,
   useTimelineProgressContext,
 } from "../../../State/MapState/MapTimelineAnimation/TimelineAnimationState";
-import { marksArrayCreator } from "../../../HelperFunctions/MapComponent/GoogleMapsComponent/TimelineProgressComponents";
-
-const boxStyles = {
-  position: "relative",
-  width: "50%",
-  background: "white",
-  zIndex: "1000",
-  padding: "80px",
-};
-
-const styles = {
-  position: "relative",
-
-  background: "#ffffff",
-  height: "100px",
-};
-
-const marks2 = marksArrayCreator();
-console.log("marks2: ", marks2);
+import { Container } from "../../ReusableComponents/Container";
+import {
+  animationContainerStyles,
+  progressBarStyles,
+  slotElementStyles,
+  startButtonStyles,
+} from "../../../Styles/MapComponentStyles/TimelineAnimationStyles/timelineAnimationContainer";
 
 const marks = [
   {
@@ -32,30 +20,30 @@ const marks = [
     label: "2 MYA",
   },
   {
-    value: 23,
+    value: 25,
     label: "500 TYA",
   },
   {
-    value: 44,
+    value: 50,
     label: "200 TYA",
   },
 
-  {
-    value: 72,
-    label: "100 TYA",
-  },
+  // {
+  //   value: 95,
+  //   label: "100 TYA",
+  // },
   // {
   //   value: 79,
   //   label: "75 TYA",
   // },
-  {
-    value: 88,
-    label: "50 TYA",
-  },
-  {
-    value: 95,
-    label: "25 TYA",
-  },
+  // {
+  //   value: 88,
+  //   label: "50 TYA",
+  // },
+  // {
+  //   value: 95,
+  //   label: "25 TYA",
+  // },
   {
     value: 100,
     label: "present",
@@ -66,17 +54,7 @@ interface SlotElementType extends React.HTMLAttributes<unknown> {}
 
 const SlotElement = ({ children, ...other }: SlotElementType) => {
   return (
-    <Box
-      sx={{
-        color: "blue",
-        position: "absolute",
-
-        top: "30px",
-        fontWeight: "bold",
-      }}
-      component="span"
-      {...other}
-    >
+    <Box sx={slotElementStyles} component="span" {...other}>
       {children}
     </Box>
   );
@@ -90,8 +68,8 @@ export const ProgressBar = () => {
     setStartProgress(prev => !prev);
   };
   return (
-    <Box sx={boxStyles}>
-      <Box sx={styles}>
+    <Container containerStyles={animationContainerStyles}>
+      <Container containerStyles={progressBarStyles}>
         <Slider
           value={progress}
           valueLabelDisplay="auto"
@@ -102,8 +80,10 @@ export const ProgressBar = () => {
             markLabel: SlotElement,
           }}
         />
-        <Button onClick={handler}>{startProgress ? "Pause" : "Start"}</Button>
-      </Box>
-    </Box>
+        <Button onClick={handler} sx={startButtonStyles}>
+          {startProgress ? "Pause" : "Start"}
+        </Button>
+      </Container>
+    </Container>
   );
 };
